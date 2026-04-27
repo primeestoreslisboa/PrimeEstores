@@ -1,0 +1,262 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { zonas, zonaBySlug } from '../../data/zonaData';
+
+export function getStaticPaths() {
+  return zonas.map(z => ({ params: { zona: z.slug } }));
+}
+
+const { zona: slug } = Astro.params;
+const zona = zonaBySlug[slug!];
+
+const servicos = [
+  {
+    label: 'Estores Elétricos',
+    desc: 'Instalação de estores motorizados com telecomando, app ou domótica.',
+    href: '/servicos/estores-eletricos',
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>`,
+  },
+  {
+    label: 'Estores Manuais',
+    desc: 'Instalação de estores de enrolar, rolo e veneziana manuais.',
+    href: '/servicos/estores-manuais',
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7"/>`,
+  },
+  {
+    label: 'Reparação de Estores',
+    desc: 'Reparação urgente de qualquer tipo de estore — elétrico ou manual.',
+    href: '/servicos/reparacao-estores',
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>`,
+  },
+  {
+    label: 'Eletricidade',
+    desc: 'Instalação e reparação de circuitos elétricos para estores e não só.',
+    href: '/servicos/eletricidade',
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"/>`,
+  },
+];
+
+const baseUrl = 'https://www.primeestores.pt';
+const pageUrl = `${baseUrl}/zonas/${zona.slug}/`;
+
+const schemaLocalBusiness = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  '@id': `${baseUrl}/#business`,
+  name: 'Prime Estores',
+  url: baseUrl,
+  telephone: '+351923348323',
+  email: 'info@primeestores.pt',
+  image: `${baseUrl}/og-image.jpg`,
+  areaServed: { '@type': 'City', name: zona.nome },
+  geo: { '@type': 'GeoCoordinates', latitude: zona.geo.lat, longitude: zona.geo.lng },
+  priceRange: '€€',
+  openingHoursSpecification: [{
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+    opens: '08:00',
+    closes: '20:00',
+  }],
+};
+
+const schemaBreadcrumb = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Início', item: `${baseUrl}/` },
+    { '@type': 'ListItem', position: 2, name: 'Zonas', item: `${baseUrl}/zonas-que-servimos/` },
+    { '@type': 'ListItem', position: 3, name: zona.nome, item: pageUrl },
+  ],
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(schemaLocalBusiness)} />
+<script type="application/ld+json" set:html={JSON.stringify(schemaBreadcrumb)} />
+
+<Layout
+  title={zona.title}
+  description={zona.description}
+  keywords={zona.keywords}
+  canonicalURL={pageUrl}
+>
+
+  <!-- Hero -->
+  <section class="bg-gradient-to-br from-[#1A1A1A] to-[#8B1A1A] text-white py-16 lg:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <nav aria-label="Breadcrumb" class="mb-6">
+        <ol class="flex items-center gap-2 text-sm text-white/60">
+          <li><a href="/" class="hover:text-white transition-colors">Início</a></li>
+          <li aria-hidden="true"><span>/</span></li>
+          <li><a href="/zonas-que-servimos" class="hover:text-white transition-colors">Zonas</a></li>
+          <li aria-hidden="true"><span>/</span></li>
+          <li><span class="text-white">{zona.nome}</span></li>
+        </ol>
+      </nav>
+      <div class="max-w-3xl">
+        <span class="inline-block bg-white/10 border border-white/20 text-white text-xs font-semibold uppercase tracking-widest px-3 py-1 rounded-full mb-4">Zona de Serviço</span>
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black leading-tight mb-4">
+          Estores em {zona.nome}<br class="hidden sm:block" /> — Instalação e Reparação
+        </h1>
+        <p class="text-xl text-white/80 leading-relaxed mb-8">
+          {zona.intro}
+        </p>
+        <div class="flex flex-col sm:flex-row gap-3">
+          <a href="/orcamento" class="inline-flex items-center justify-center gap-2 bg-white text-[#8B1A1A] font-bold px-6 py-3.5 rounded-lg hover:bg-gray-100 transition-colors">
+            Pedir Orçamento Grátis
+          </a>
+          <a href="tel:+351923348323" class="inline-flex items-center justify-center gap-2 border-2 border-white text-white font-bold px-6 py-3.5 rounded-lg hover:bg-white/10 transition-colors">
+            +351 923 348 323
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Content -->
+  <section class="py-16 lg:py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-3 gap-12">
+
+        <!-- Main -->
+        <div class="lg:col-span-2 space-y-8">
+          <div>
+            <h2 class="text-2xl lg:text-3xl font-black text-[#1A1A1A] mb-4">
+              Serviços de estores em {zona.nome}
+            </h2>
+            <p class="text-gray-600 leading-relaxed mb-4">{zona.intro}</p>
+            <p class="text-gray-600 leading-relaxed">{zona.detail}</p>
+          </div>
+
+          <!-- Neighborhoods -->
+          <div>
+            <h2 class="text-xl font-black text-[#1A1A1A] mb-4">
+              Zonas e localidades cobertas em {zona.nome}
+            </h2>
+            <div class="flex flex-wrap gap-2">
+              {zona.bairros.map(b => (
+                <span class="bg-[#F5F5F5] text-gray-700 text-sm font-medium px-3 py-1.5 rounded-full border border-gray-200">
+                  {b}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <!-- Why us -->
+          <div>
+            <h2 class="text-xl font-black text-[#1A1A1A] mb-4">
+              Porque escolher a Prime Estores em {zona.nome}?
+            </h2>
+            <div class="grid sm:grid-cols-2 gap-4">
+              {[
+                { title: 'Resposta rápida', desc: `Técnicos disponíveis em ${zona.nome} de 2ª a sábado, 8h–20h.` },
+                { title: 'Orçamento gratuito', desc: 'Deslocamo-nos para avaliar o trabalho sem qualquer custo.' },
+                { title: 'Técnicos certificados', desc: 'Instaladores experientes com formação em marcas como Somfy e Nice.' },
+                { title: 'Garantia de 1 ano', desc: 'Todos os trabalhos de instalação têm garantia mínima de 1 ano.' },
+              ].map(item => (
+                <div class="flex gap-3 p-4 bg-[#F5F5F5] rounded-xl">
+                  <svg class="w-5 h-5 text-[#8B1A1A] flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                  </svg>
+                  <div>
+                    <div class="font-semibold text-[#1A1A1A] text-sm">{item.title}</div>
+                    <div class="text-gray-500 text-xs mt-0.5">{item.desc}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="space-y-6">
+          <!-- Contact box -->
+          <div class="bg-[#8B1A1A] rounded-2xl p-6 text-white">
+            <h3 class="font-black text-lg mb-2">Pedir orçamento em {zona.nome}</h3>
+            <p class="text-red-100 text-sm mb-5 leading-relaxed">Contacte-nos agora para um orçamento gratuito e sem compromisso.</p>
+            <a href="/orcamento" class="block w-full text-center bg-white text-[#8B1A1A] font-bold px-4 py-3 rounded-lg hover:bg-gray-100 transition-colors mb-3">
+              Formulário de orçamento
+            </a>
+            <a href="tel:+351923348323" class="block w-full text-center border-2 border-white text-white font-bold px-4 py-3 rounded-lg hover:bg-white/10 transition-colors text-sm">
+              +351 923 348 323
+            </a>
+          </div>
+          <!-- Info -->
+          <div class="bg-[#F5F5F5] rounded-2xl p-6">
+            <h3 class="font-bold text-[#1A1A1A] mb-4 text-sm uppercase tracking-wide">Informações</h3>
+            <div class="space-y-3 text-sm">
+              {[
+                'Resposta em menos de 24h',
+                'Garantia de 1 ano',
+                'Orçamento 100% gratuito',
+                'Técnicos certificados',
+                'Seg – Sáb: 8h00 – 20h00',
+              ].map(item => (
+                <div class="flex items-center gap-2">
+                  <svg class="w-4 h-4 text-[#8B1A1A] flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                  </svg>
+                  <span class="text-gray-600">{item}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+          <!-- Other zones -->
+          <div class="bg-white rounded-2xl p-6 border border-gray-100">
+            <h3 class="font-bold text-[#1A1A1A] mb-3 text-sm uppercase tracking-wide">Outras zonas</h3>
+            <a href="/zonas-que-servimos" class="text-[#8B1A1A] text-sm font-semibold hover:underline">
+              Ver todas as zonas →
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="py-16 bg-[#F5F5F5]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl lg:text-3xl font-black text-[#1A1A1A] mb-8 text-center">
+        Os nossos serviços em {zona.nome}
+      </h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {servicos.map(s => (
+          <a
+            href={s.href}
+            class="group bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:border-[#8B1A1A] hover:shadow-md transition-all flex flex-col"
+          >
+            <div class="w-10 h-10 bg-[#8B1A1A] rounded-xl flex items-center justify-center mb-4 flex-shrink-0">
+              <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <Fragment set:html={s.icon} />
+              </svg>
+            </div>
+            <div class="font-bold text-[#1A1A1A] mb-2 group-hover:text-[#8B1A1A] transition-colors">{s.label}</div>
+            <p class="text-gray-500 text-sm leading-relaxed flex-1">{s.desc}</p>
+            <span class="mt-4 text-[#8B1A1A] text-sm font-semibold group-hover:underline">Saber mais →</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 bg-[#1A1A1A] text-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-2xl lg:text-3xl font-black mb-4">
+        Precisa de estores em {zona.nome}?
+      </h2>
+      <p class="text-gray-400 text-lg mb-8 max-w-2xl mx-auto">
+        Contacte-nos hoje para um orçamento gratuito. Deslocamo-nos a {zona.nome} e arredores de segunda a sábado das 8h às 20h.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/orcamento" class="inline-flex items-center justify-center gap-2 bg-[#8B1A1A] text-white font-bold px-8 py-4 rounded-lg hover:bg-[#7a1717] transition-colors">
+          Pedir Orçamento Grátis
+        </a>
+        <a href="tel:+351923348323" class="inline-flex items-center justify-center gap-2 border-2 border-white text-white font-bold px-8 py-4 rounded-lg hover:bg-white/10 transition-colors">
+          +351 923 348 323
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Layout>
