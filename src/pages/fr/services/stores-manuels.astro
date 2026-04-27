@@ -1,6 +1,7 @@
 ﻿---
 import Layout from '../../../layouts/Layout.astro';
 import ContactForm from '../../../components/ContactForm.astro';
+import ServiceExtras from '../../../components/ServiceExtras.astro';
 import { useTranslations } from '../../../i18n/utils';
 
 const lang = 'fr' as const;
@@ -49,4 +50,5 @@ const t = useTranslations(lang);
       </div>
     </div>
   </section>
+  <ServiceExtras service="manual" lang={lang} />
 </Layout>

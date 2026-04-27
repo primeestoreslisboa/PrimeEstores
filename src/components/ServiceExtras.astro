@@ -1,0 +1,67 @@
+---
+import type { ServiceType, Lang } from '../data/serviceFAQ';
+import { serviceData } from '../data/serviceFAQ';
+
+export interface Props {
+  lang?: Lang;
+  service: ServiceType;
+}
+
+const { lang = 'pt', service } = Astro.props;
+const data = serviceData[service][lang];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: data.faq.map(item => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: { '@type': 'Answer', text: item.a },
+  })),
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+<section class="py-16 lg:py-20 bg-[#F5F5F5]">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16">
+
+      <!-- Pricing -->
+      <div>
+        <h2 class="text-2xl lg:text-3xl font-black text-[#1A1A1A] mb-2">{data.pricingTitle}</h2>
+        <p class="text-gray-600 mb-6 leading-relaxed">{data.pricingIntro}</p>
+        <div class="space-y-3 mb-4">
+          {data.pricing.map(item => (
+            <div class="flex items-center justify-between gap-4 bg-white rounded-xl px-5 py-4 border-l-4 border-[#8B1A1A] shadow-sm">
+              <span class="text-gray-700 text-sm leading-snug">{item.label}</span>
+              <span class="font-bold text-[#8B1A1A] text-sm whitespace-nowrap">{item.value}</span>
+            </div>
+          ))}
+        </div>
+        <p class="text-xs text-gray-500 italic">{data.pricingNote}</p>
+      </div>
+
+      <!-- FAQ -->
+      <div>
+        <h2 class="text-2xl lg:text-3xl font-black text-[#1A1A1A] mb-6">{data.faqTitle}</h2>
+        <div class="space-y-3">
+          {data.faq.map(item => (
+            <details class="group bg-white rounded-xl shadow-sm overflow-hidden">
+              <summary class="flex items-center justify-between gap-3 px-5 py-4 cursor-pointer font-semibold text-[#1A1A1A] text-sm leading-snug list-none select-none hover:bg-gray-50 transition-colors">
+                <span>{item.q}</span>
+                <svg class="w-5 h-5 text-[#8B1A1A] flex-shrink-0 transition-transform duration-200 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                </svg>
+              </summary>
+              <div class="px-5 pb-4 pt-1 text-gray-600 text-sm leading-relaxed border-t border-gray-100">
+                {item.a}
+              </div>
+            </details>
+          ))}
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
