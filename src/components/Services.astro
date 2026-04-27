@@ -1,0 +1,174 @@
+---
+import { useTranslations } from '../i18n/utils';
+import type { Lang } from '../i18n/utils';
+
+interface Props {
+  lang?: Lang;
+}
+
+const { lang = 'pt' } = Astro.props;
+const t = useTranslations(lang);
+
+const langPrefix = lang === 'pt' ? '' : `/${lang}`;
+
+// Service page slugs by language
+const serviceSlug = {
+  electric: lang === 'pt' ? `${langPrefix}/servicos/estores-eletricos` :
+    lang === 'en' ? '/en/services/electric-blinds' :
+    lang === 'fr' ? '/fr/services/stores-electriques' :
+    lang === 'es' ? '/es/servicios/persianas-electricas' :
+    lang === 'de' ? '/de/dienstleistungen/elektrische-jalousien' :
+    '/it/servizi/tende-elettriche',
+  manual: lang === 'pt' ? `${langPrefix}/servicos/estores-manuais` :
+    lang === 'en' ? '/en/services/manual-blinds' :
+    lang === 'fr' ? '/fr/services/stores-manuels' :
+    lang === 'es' ? '/es/servicios/persianas-manuales' :
+    lang === 'de' ? '/de/dienstleistungen/manuelle-jalousien' :
+    '/it/servizi/tende-manuali',
+  repair: lang === 'pt' ? `${langPrefix}/servicos/reparacao-estores` :
+    lang === 'en' ? '/en/services/blind-repair' :
+    lang === 'fr' ? '/fr/services/reparation-stores' :
+    lang === 'es' ? '/es/servicios/reparacion-persianas' :
+    lang === 'de' ? '/de/dienstleistungen/jalousien-reparatur' :
+    '/it/servizi/riparazione-tende',
+};
+
+const quoteHref = lang === 'pt' ? '/orcamento' :
+  lang === 'en' ? '/en/quote' :
+  lang === 'fr' ? '/fr/devis' :
+  lang === 'es' ? '/es/presupuesto' :
+  lang === 'de' ? '/de/angebot' :
+  '/it/preventivo';
+
+const services = [
+  {
+    title: t('services.electric.title'),
+    description: t('services.electric.desc'),
+    href: serviceSlug.electric,
+    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+    </svg>`,
+    features: lang === 'pt'
+      ? ['Comando à distância', 'Compatível com domótica', 'Instalação profissional', 'Garantia 1 ano']
+      : lang === 'en'
+      ? ['Remote control', 'Smart home compatible', 'Professional installation', '1 year warranty']
+      : lang === 'fr'
+      ? ['Télécommande', 'Compatible domotique', 'Installation professionnelle', 'Garantie 1 an']
+      : lang === 'es'
+      ? ['Mando a distancia', 'Compatible con domótica', 'Instalación profesional', 'Garantía 1 año']
+      : lang === 'de'
+      ? ['Fernbedienung', 'Smart-Home-kompatibel', 'Professionelle Installation', '1 Jahr Garantie']
+      : ['Telecomando', 'Compatibile con domotica', 'Installazione professionale', 'Garanzia 1 anno'],
+  },
+  {
+    title: t('services.manual.title'),
+    description: t('services.manual.desc'),
+    href: serviceSlug.manual,
+    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M3 14h18M10 3v18M14 3v18"/>
+    </svg>`,
+    features: lang === 'pt'
+      ? ['Vários modelos e cores', 'Fácil manutenção', 'Económicos', 'Instalação rápida']
+      : lang === 'en'
+      ? ['Various models and colors', 'Easy maintenance', 'Cost-effective', 'Fast installation']
+      : lang === 'fr'
+      ? ['Divers modèles et couleurs', 'Entretien facile', 'Économiques', 'Installation rapide']
+      : lang === 'es'
+      ? ['Varios modelos y colores', 'Fácil mantenimiento', 'Económicos', 'Instalación rápida']
+      : lang === 'de'
+      ? ['Verschiedene Modelle und Farben', 'Einfache Wartung', 'Kostengünstig', 'Schnelle Installation']
+      : ['Vari modelli e colori', 'Facile manutenzione', 'Economici', 'Installazione rapida'],
+  },
+  {
+    title: t('services.repair.title'),
+    description: t('services.repair.desc'),
+    href: serviceSlug.repair,
+    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+    </svg>`,
+    features: lang === 'pt'
+      ? ['Diagnóstico gratuito', 'Reparação urgente', 'Peças originais', 'Técnicos certificados']
+      : lang === 'en'
+      ? ['Free diagnosis', 'Urgent repair', 'Original parts', 'Certified technicians']
+      : lang === 'fr'
+      ? ['Diagnostic gratuit', 'Réparation urgente', 'Pièces d\'origine', 'Techniciens certifiés']
+      : lang === 'es'
+      ? ['Diagnóstico gratuito', 'Reparación urgente', 'Piezas originales', 'Técnicos certificados']
+      : lang === 'de'
+      ? ['Kostenlose Diagnose', 'Notfallreparatur', 'Originalteile', 'Zertifizierte Techniker']
+      : ['Diagnosi gratuita', 'Riparazione urgente', 'Parti originali', 'Tecnici certificati'],
+  },
+];
+---
+
+<section class="py-16 lg:py-24 bg-[#F5F5F5]" aria-labelledby="services-heading">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <!-- Section header -->
+    <div class="text-center mb-12">
+      <span class="inline-block text-[#8B1A1A] text-sm font-semibold uppercase tracking-widest mb-2">{t('services.title')}</span>
+      <h2 id="services-heading" class="text-3xl lg:text-4xl font-black text-[#1A1A1A] mb-4">
+        {t('services.subtitle')}
+      </h2>
+    </div>
+
+    <!-- Services grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+      {services.map((service) => (
+        <article class="bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow overflow-hidden group border border-gray-100">
+          <!-- Top accent border -->
+          <div class="h-1 bg-[#8B1A1A]"></div>
+
+          <div class="p-6 lg:p-8">
+            <!-- Icon -->
+            <div class="inline-flex items-center justify-center w-14 h-14 bg-red-50 text-[#8B1A1A] rounded-xl mb-5 group-hover:bg-[#8B1A1A] group-hover:text-white transition-colors">
+              <Fragment set:html={service.icon} />
+            </div>
+
+            <!-- Content -->
+            <h3 class="text-xl font-bold text-[#1A1A1A] mb-3">{service.title}</h3>
+            <p class="text-gray-500 text-sm leading-relaxed mb-5">{service.description}</p>
+
+            <!-- Features list -->
+            <ul class="space-y-2 mb-6">
+              {service.features.map(feature => (
+                <li class="flex items-center gap-2 text-sm text-gray-600">
+                  <svg class="w-4 h-4 text-[#8B1A1A] flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                  </svg>
+                  {feature}
+                </li>
+              ))}
+            </ul>
+
+            <!-- Link -->
+            <a
+              href={service.href}
+              class="inline-flex items-center gap-1 text-[#8B1A1A] font-semibold text-sm hover:gap-2 transition-all group-hover:underline"
+              aria-label={`${t('services.cta')} ${service.title}`}
+            >
+              {t('services.cta')}
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+              </svg>
+            </a>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <!-- Bottom CTA -->
+    <div class="text-center mt-10">
+      <a
+        href={quoteHref}
+        class="inline-flex items-center gap-2 bg-[#8B1A1A] text-white font-bold px-8 py-3.5 rounded-lg hover:bg-[#A52020] transition-colors text-base"
+      >
+        {t('hero.cta.quote')}
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+        </svg>
+      </a>
+    </div>
+
+  </div>
+</section>

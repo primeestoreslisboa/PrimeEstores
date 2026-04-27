@@ -1,0 +1,153 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import ContactForm from '../../../components/ContactForm.astro';
+
+const lang = 'en' as const;
+---
+
+<Layout
+  title="Electrical Installation in Lisbon | Prime Estores"
+  description="Installation of sockets, switches, light fixtures and LED lighting in Lisbon and Greater Lisbon. Fast service with certified technicians. Free quote."
+  keywords="electrical installation Lisbon, socket installation Lisbon, light fitting Lisbon, LED lighting Lisbon, electrician Lisbon"
+  schemaType="Service"
+  serviceName="Electrical Installation in Lisbon"
+  serviceDescription="Installation of sockets, switches, light fixtures and LED lighting in Lisbon and Greater Lisbon. Certified technicians with 1-year warranty."
+  lang={lang}
+>
+
+  <!-- Page Hero -->
+  <section class="bg-gradient-to-br from-[#1A1A1A] to-[#8B1A1A] text-white py-16 lg:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <nav aria-label="Breadcrumb" class="mb-6">
+        <ol class="flex items-center gap-2 text-sm text-white/60">
+          <li><a href="/en/" class="hover:text-white transition-colors">Home</a></li>
+          <li aria-hidden="true"><span>/</span></li>
+          <li><span class="text-white">Electrical Work</span></li>
+        </ol>
+      </nav>
+      <div class="max-w-3xl">
+        <span class="inline-block bg-white/10 border border-white/20 text-white text-xs font-semibold uppercase tracking-widest px-3 py-1 rounded-full mb-4">Service</span>
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black leading-tight mb-4">
+          Electrical Installation in Lisbon
+        </h1>
+        <p class="text-xl text-white/80 leading-relaxed mb-8">
+          Sockets, switches, light fixtures and LED lighting. Fast service with certified technicians across Greater Lisbon.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-3">
+          <a href="/en/quote" class="inline-flex items-center justify-center gap-2 bg-white text-[#8B1A1A] font-bold px-6 py-3.5 rounded-lg hover:bg-gray-100 transition-colors">
+            Get Free Quote
+          </a>
+          <a href="tel:+351923348323" class="inline-flex items-center justify-center gap-2 border-2 border-white text-white font-bold px-6 py-3.5 rounded-lg hover:bg-white/10 transition-colors">
+            +351 923 348 323
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main content -->
+  <section class="py-16 lg:py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-3 gap-12">
+
+        <!-- Content -->
+        <div class="lg:col-span-2">
+          <h2 class="text-2xl lg:text-3xl font-black text-[#1A1A1A] mb-4">What we do</h2>
+          <p class="text-gray-600 leading-relaxed mb-6">
+            At Prime Estores, we carry out electrical work for homes and businesses across Greater Lisbon. From socket and switch installation to fitting light fixtures and LED lighting systems — we do it all with precision, speed and a warranty included.
+          </p>
+          <p class="text-gray-600 leading-relaxed mb-6">
+            All work is carried out by certified technicians using quality materials and complying with current electrical safety standards. No mess, no damage to walls, no surprises at the end.
+          </p>
+
+          <h2 class="text-2xl font-black text-[#1A1A1A] mb-4 mt-8">What we include</h2>
+          <div class="grid sm:grid-cols-2 gap-4 mb-8">
+            {[
+              { title: 'Socket installation', desc: 'Single, double, triple sockets and USB charging sockets' },
+              { title: 'Switch installation', desc: 'Single, two-way and dimmer switches' },
+              { title: 'Light fixture fitting', desc: 'Ceiling lights, wall sconces and decorative pendants' },
+              { title: 'LED lighting', desc: 'Recessed spotlights, LED strips, LED panels and low-energy fittings' },
+              { title: 'Clean and tidy work', desc: 'No damage to walls or finishes — we leave everything as we found it' },
+              { title: '1-year warranty', desc: 'All electrical work carried out includes a 1-year warranty' },
+            ].map(item => (
+              <div class="flex gap-3 p-4 bg-[#F5F5F5] rounded-xl">
+                <svg class="w-5 h-5 text-[#8B1A1A] flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                </svg>
+                <div>
+                  <div class="font-semibold text-[#1A1A1A] text-sm">{item.title}</div>
+                  <div class="text-gray-500 text-xs mt-0.5">{item.desc}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <h2 class="text-2xl font-black text-[#1A1A1A] mb-4 mt-8">How our process works</h2>
+          <ol class="space-y-4 mb-8">
+            {[
+              { step: '01', title: 'Contact and free quote', desc: 'Get in touch by phone or form. We assess the work and provide a no-obligation quote.' },
+              { step: '02', title: 'On-site assessment', desc: 'For more complex jobs, we visit to assess the existing installation and plan the work.' },
+              { step: '03', title: 'Scheduling', desc: 'We book the most convenient date and time for you. We guarantee punctuality.' },
+              { step: '04', title: 'Professional execution', desc: 'Our technicians carry out the work quickly, cleanly and safely, following all electrical standards.' },
+              { step: '05', title: 'Handover and warranty', desc: 'We test everything before leaving and hand over the service with a 1-year warranty included.' },
+            ].map(item => (
+              <li class="flex gap-4">
+                <div class="flex-shrink-0 w-10 h-10 bg-[#8B1A1A] text-white rounded-full flex items-center justify-center font-black text-sm">
+                  {item.step}
+                </div>
+                <div>
+                  <div class="font-semibold text-[#1A1A1A]">{item.title}</div>
+                  <div class="text-gray-500 text-sm mt-0.5">{item.desc}</div>
+                </div>
+              </li>
+            ))}
+          </ol>
+
+          <h2 class="text-2xl font-black text-[#1A1A1A] mb-4 mt-8">Coverage areas</h2>
+          <p class="text-gray-600 leading-relaxed mb-4">
+            We provide electrical services across <strong>Greater Lisbon</strong>, including: Lisbon (all neighbourhoods), Sintra, Cascais, Oeiras, Almada, Setúbal, Amadora, Loures, Odivelas, Vila Franca de Xira, Mafra, Sesimbra and Palmela.
+          </p>
+          <a href="/en/coverage-areas" class="text-[#8B1A1A] font-semibold hover:underline text-sm">
+            See all areas we cover →
+          </a>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="space-y-6">
+          <ContactForm showTitle={true} lang={lang} />
+          <div class="bg-[#F5F5F5] rounded-2xl p-6">
+            <h3 class="font-bold text-[#1A1A1A] mb-4">Useful information</h3>
+            <div class="space-y-3 text-sm">
+              <div class="flex items-center gap-2">
+                <svg class="w-4 h-4 text-[#8B1A1A]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+                <span class="text-gray-600">Response within 24h</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <svg class="w-4 h-4 text-[#8B1A1A]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                </svg>
+                <span class="text-gray-600">1-year warranty</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <svg class="w-4 h-4 text-[#8B1A1A]" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                </svg>
+                <span class="text-gray-600">100% free quote</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <svg class="w-4 h-4 text-[#8B1A1A]" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                </svg>
+                <span class="text-gray-600">Certified technicians</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</Layout>

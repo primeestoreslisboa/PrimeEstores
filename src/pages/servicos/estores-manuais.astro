@@ -1,0 +1,145 @@
+﻿---
+import Layout from '../../layouts/Layout.astro';
+import ContactForm from '../../components/ContactForm.astro';
+---
+
+<Layout
+  title="Instalação de Estores Manuais em Lisboa | Prime Estores"
+  description="Instalação de estores manuais de qualidade em Lisboa e Grande Lisboa. Vários modelos e cores, instalação rápida e profissional. Orçamento gratuito."
+  keywords="estores manuais Lisboa, instalação estores manuais, estores rolo Lisboa, estores venezianas Lisboa, Grande Prime Estores"
+  schemaType="Service"
+  serviceName="Instalação de Estores Manuais em Lisboa"
+  serviceDescription="Instalação de estores manuais de qualidade em Lisboa e Grande Lisboa. Vários modelos e cores disponíveis."
+>
+
+  <!-- Page Hero -->
+  <section class="bg-gradient-to-br from-[#1A1A1A] to-[#8B1A1A] text-white py-16 lg:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <nav aria-label="Breadcrumb" class="mb-6">
+        <ol class="flex items-center gap-2 text-sm text-white/60">
+          <li><a href="/" class="hover:text-white transition-colors">Início</a></li>
+          <li aria-hidden="true"><span>/</span></li>
+          <li><span class="text-white">Estores Manuais</span></li>
+        </ol>
+      </nav>
+      <div class="max-w-3xl">
+        <span class="inline-block bg-white/10 border border-white/20 text-white text-xs font-semibold uppercase tracking-widest px-3 py-1 rounded-full mb-4">Serviço</span>
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black leading-tight mb-4">
+          Instalação de Estores Manuais em Lisboa
+        </h1>
+        <p class="text-xl text-white/80 leading-relaxed mb-8">
+          Soluções práticas e económicas para qualquer divisão. Instalamos estores manuais de qualidade em toda a Grande Lisboa.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-3">
+          <a href="/orcamento" class="inline-flex items-center justify-center gap-2 bg-white text-[#8B1A1A] font-bold px-6 py-3.5 rounded-lg hover:bg-gray-100 transition-colors">
+            Pedir Orçamento Grátis
+          </a>
+          <a href="tel:+351923348323" class="inline-flex items-center justify-center gap-2 border-2 border-white text-white font-bold px-6 py-3.5 rounded-lg hover:bg-white/10 transition-colors">
+            +351 923 348 323
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main content -->
+  <section class="py-16 lg:py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-3 gap-12">
+
+        <!-- Content -->
+        <div class="lg:col-span-2">
+          <h2 class="text-2xl lg:text-3xl font-black text-[#1A1A1A] mb-4">Estores manuais: qualidade e praticidade</h2>
+          <p class="text-gray-600 leading-relaxed mb-6">
+            Os estores manuais continuam a ser a solução mais popular para controlo de luz e privacidade. São económicos, fáceis de operar e requerem pouca manutenção. Disponíveis numa vasta gama de materiais, tecidos e cores para se adaptarem à decoração de qualquer espaço.
+          </p>
+          <p class="text-gray-600 leading-relaxed mb-6">
+            Na Prime Estores, instalamos estores manuais de alta qualidade em habitações e escritórios em toda a <strong>Grande Lisboa</strong>. Trabalhamos com materiais duráveis e de fácil manutenção, garantindo um resultado esteticamente agradável e funcional.
+          </p>
+
+          <h2 class="text-2xl font-black text-[#1A1A1A] mb-4 mt-8">Tipos de estores manuais que instalamos</h2>
+          <div class="grid sm:grid-cols-2 gap-4 mb-8">
+            {[
+              { title: 'Estores de Rolo', desc: 'Simples, elegantes e fáceis de operar. Disponíveis em tecido opaco, filtrante ou blackout.' },
+              { title: 'Estores Venezianos', desc: 'Controlo preciso da luz e privacidade. Em alumínio ou madeira.' },
+              { title: 'Estores Horizontais', desc: 'Ideais para grandes vãos. Funcionamento suave e silencioso.' },
+              { title: 'Estores Verticais', desc: 'Perfeitos para divisórias ou janelas de grandes dimensões.' },
+              { title: 'Estores Blackout', desc: 'Bloqueio total da luz. Ideais para quartos e home cinema.' },
+              { title: 'Estores de Tela Solar', desc: 'Filtram a luz mantendo a visibilidade exterior. Eficiência energética.' },
+            ].map(item => (
+              <div class="p-4 bg-[#F5F5F5] rounded-xl border-l-4 border-[#8B1A1A]">
+                <div class="font-semibold text-[#1A1A1A] text-sm mb-1">{item.title}</div>
+                <div class="text-gray-500 text-xs">{item.desc}</div>
+              </div>
+            ))}
+          </div>
+
+          <h2 class="text-2xl font-black text-[#1A1A1A] mb-4 mt-8">Vantagens dos estores manuais</h2>
+          <ul class="space-y-3 mb-8">
+            {[
+              'Custo de instalação mais económico comparado com estores elétricos',
+              'Manutenção simples e acessível',
+              'Não dependem de eletricidade — funcionam sempre',
+              'Grande variedade de modelos, cores e materiais',
+              'Instalação rápida, geralmente concluída no mesmo dia',
+              'Durabilidade elevada com os materiais certos',
+              'Fácil de reparar ou substituir peças individuais',
+            ].map(item => (
+              <li class="flex items-start gap-2 text-gray-600 text-sm">
+                <svg class="w-4 h-4 text-[#8B1A1A] flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                </svg>
+                {item}
+              </li>
+            ))}
+          </ul>
+
+          <h2 class="text-2xl font-black text-[#1A1A1A] mb-4 mt-8">Processo de instalação</h2>
+          <ol class="space-y-4 mb-8">
+            {[
+              { step: '01', title: 'Visita e medição gratuitas', desc: 'Deslocamo-nos ao local para medir e avaliar o trabalho, sem qualquer custo.' },
+              { step: '02', title: 'Proposta de orçamento', desc: 'Apresentamos uma proposta detalhada com materiais e preços transparentes.' },
+              { step: '03', title: 'Instalação no dia acordado', desc: 'A nossa equipa chega pontualmente e realiza a instalação com a maior qualidade.' },
+              { step: '04', title: 'Garantia incluída', desc: 'Todos os trabalhos incluem 1 ano de garantia nos materiais e instalação.' },
+            ].map(item => (
+              <li class="flex gap-4">
+                <div class="flex-shrink-0 w-10 h-10 bg-[#8B1A1A] text-white rounded-full flex items-center justify-center font-black text-sm">
+                  {item.step}
+                </div>
+                <div>
+                  <div class="font-semibold text-[#1A1A1A]">{item.title}</div>
+                  <div class="text-gray-500 text-sm mt-0.5">{item.desc}</div>
+                </div>
+              </li>
+            ))}
+          </ol>
+
+          <h2 class="text-2xl font-black text-[#1A1A1A] mb-4 mt-8">Cobertura geográfica</h2>
+          <p class="text-gray-600 leading-relaxed mb-4">
+            Instalamos estores manuais em todo o distrito de Lisboa, incluindo Lisboa, Sintra, Cascais, Oeiras, Almada, Setúbal, Amadora, Loures e municípios adjacentes.
+          </p>
+          <a href="/zonas-que-servimos" class="text-[#8B1A1A] font-semibold hover:underline text-sm">
+            Ver todas as zonas →
+          </a>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="space-y-6">
+          <ContactForm showTitle={true} />
+          <div class="bg-[#8B1A1A] rounded-2xl p-6 text-white">
+            <h3 class="font-bold text-lg mb-3">Comparar opções?</h3>
+            <p class="text-red-100 text-sm mb-4">Tem dúvidas entre estores manuais e elétricos? Falamos consigo e ajudamos a escolher a melhor opção.</p>
+            <a href="tel:+351923348323" class="flex items-center gap-2 bg-white text-[#8B1A1A] font-bold px-4 py-2.5 rounded-lg hover:bg-gray-100 transition-colors text-sm">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+              </svg>
+              +351 923 348 323
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</Layout>

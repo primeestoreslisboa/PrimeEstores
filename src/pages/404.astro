@@ -1,0 +1,71 @@
+﻿---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Página não encontrada | Prime Estores"
+  description="A página que procura não foi encontrada. Visite a nossa página inicial ou contacte-nos para ajuda."
+  noindex={true}
+>
+
+  <section class="py-24 lg:py-32 bg-white">
+    <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+
+      <!-- Big 404 -->
+      <div class="mb-8" aria-hidden="true">
+        <div class="text-8xl lg:text-9xl font-black text-[#8B1A1A] leading-none">404</div>
+        <div class="h-1 w-24 bg-[#8B1A1A] mx-auto mt-4 rounded-full"></div>
+      </div>
+
+      <h1 class="text-2xl lg:text-3xl font-black text-[#1A1A1A] mb-4">
+        Página não encontrada
+      </h1>
+      <p class="text-gray-500 text-lg mb-8 leading-relaxed">
+        A página que procura não existe ou foi movida. Utilize os links abaixo para encontrar o que precisa.
+      </p>
+
+      <!-- Links -->
+      <div class="flex flex-col sm:flex-row gap-3 justify-center mb-12">
+        <a
+          href="/"
+          class="inline-flex items-center justify-center gap-2 bg-[#8B1A1A] text-white font-bold px-6 py-3.5 rounded-lg hover:bg-[#A52020] transition-colors"
+        >
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+          </svg>
+          Voltar ao Início
+        </a>
+        <a
+          href="/orcamento"
+          class="inline-flex items-center justify-center gap-2 border-2 border-[#8B1A1A] text-[#8B1A1A] font-bold px-6 py-3.5 rounded-lg hover:bg-[#8B1A1A] hover:text-white transition-colors"
+        >
+          Pedir Orçamento
+        </a>
+      </div>
+
+      <!-- Useful links -->
+      <div class="bg-[#F5F5F5] rounded-2xl p-6">
+        <h2 class="font-bold text-[#1A1A1A] mb-4 text-sm uppercase tracking-wider">Páginas úteis</h2>
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+          {[
+            { href: '/servicos/estores-eletricos', label: 'Estores Elétricos' },
+            { href: '/servicos/estores-manuais', label: 'Estores Manuais' },
+            { href: '/servicos/reparacao-estores', label: 'Reparação' },
+            { href: '/zonas-que-servimos', label: 'Zonas' },
+            { href: '/contacto', label: 'Contacto' },
+            { href: '/orcamento', label: 'Orçamento' },
+          ].map(link => (
+            <a
+              href={link.href}
+              class="text-center p-3 bg-white rounded-xl text-sm font-medium text-[#1A1A1A] hover:text-[#8B1A1A] hover:bg-red-50 transition-colors border border-gray-100"
+            >
+              {link.label}
+            </a>
+          ))}
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</Layout>

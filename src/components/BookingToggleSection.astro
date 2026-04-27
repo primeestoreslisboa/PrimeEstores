@@ -1,0 +1,89 @@
+---
+import BookingSection from './BookingSection.astro';
+import ContactForm from './ContactForm.astro';
+import { useTranslations } from '../i18n/utils';
+import type { Lang } from '../i18n/utils';
+
+export interface Props {
+  lang?: Lang;
+}
+
+const { lang = 'pt' } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<!-- Option selector cards -->
+<div class="mb-6 grid sm:grid-cols-2 gap-4" role="group" aria-label={t('contact.option1.badge') + ' / ' + t('contact.option2.badge')}>
+  <button
+    id="opt-btn-1"
+    type="button"
+    class="text-left p-5 rounded-2xl border-2 border-[#8B1A1A] bg-white transition-colors focus:outline-none focus:ring-2 focus:ring-[#8B1A1A] focus:ring-offset-2"
+    aria-pressed="true"
+  >
+    <p class="text-xs font-semibold uppercase tracking-wide text-[#8B1A1A] mb-1">{t('contact.option1.badge')}</p>
+    <h2 class="text-lg font-black text-[#1A1A1A]">{t('contact.option1.title')}</h2>
+    <p class="text-sm text-gray-600 mt-1">{t('contact.option1.desc')}</p>
+  </button>
+
+  <button
+    id="opt-btn-2"
+    type="button"
+    class="text-left p-5 rounded-2xl border-2 border-gray-200 bg-white transition-colors focus:outline-none focus:ring-2 focus:ring-[#8B1A1A] focus:ring-offset-2"
+    aria-pressed="false"
+  >
+    <p class="text-xs font-semibold uppercase tracking-wide text-[#8B1A1A] mb-1">{t('contact.option2.badge')}</p>
+    <h2 class="text-lg font-black text-[#1A1A1A]">{t('contact.option2.title')}</h2>
+    <p class="text-sm text-gray-600 mt-1">{t('contact.option2.desc')}</p>
+  </button>
+</div>
+
+<!-- Option 1: Booking -->
+<div id="section-booking">
+  <BookingSection lang={lang} />
+</div>
+
+<!-- Option 2: Email form — hidden by default -->
+<div id="section-email" class="hidden">
+  <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 lg:p-8">
+    <div class="mb-6">
+      <h2 class="text-2xl font-black text-[#1A1A1A] mb-2">{t('contact.email.form.title')}</h2>
+      <p class="text-gray-600 text-sm">{t('contact.email.form.desc')}</p>
+    </div>
+    <ContactForm showTitle={false} compact={true} lang={lang} />
+  </div>
+</div>
+
+<script>
+  const btn1 = document.getElementById('opt-btn-1');
+  const btn2 = document.getElementById('opt-btn-2');
+  const secBooking = document.getElementById('section-booking');
+  const secEmail = document.getElementById('section-email');
+
+  function showOption(n: 1 | 2) {
+    const isOne = n === 1;
+
+    secBooking?.classList.toggle('hidden', !isOne);
+    secEmail?.classList.toggle('hidden', isOne);
+
+    // Active card: bold border
+    btn1?.classList.toggle('border-[#8B1A1A]', isOne);
+    btn1?.classList.toggle('border-gray-200', !isOne);
+    btn1?.setAttribute('aria-pressed', String(isOne));
+
+    btn2?.classList.toggle('border-[#8B1A1A]', !isOne);
+    btn2?.classList.toggle('border-gray-200', isOne);
+    btn2?.setAttribute('aria-pressed', String(!isOne));
+
+    // Scroll to the section smoothly on mobile
+    const target = isOne ? secBooking : secEmail;
+    if (target && window.innerWidth < 1024) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+
+  btn1?.addEventListener('click', () => showOption(1));
+  btn2?.addEventListener('click', () => showOption(2));
+
+  // Default: show option 1
+  showOption(1);
+</script>

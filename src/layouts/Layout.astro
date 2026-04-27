@@ -1,0 +1,132 @@
+---
+import SEO from '../components/SEO.astro';
+import SchemaOrg from '../components/SchemaOrg.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
+import { useTranslations } from '../i18n/utils';
+import type { Lang } from '../i18n/utils';
+import { getEquivalentPath } from '../i18n/routes';
+import type { Lang as RouteLang } from '../i18n/routes';
+
+export interface Props {
+  title: string;
+  description: string;
+  keywords?: string;
+  canonicalURL?: string;
+  ogImage?: string;
+  ogType?: string;
+  noindex?: boolean;
+  schemaType?: 'LocalBusiness' | 'Service' | 'FAQPage' | 'WebPage';
+  serviceName?: string;
+  serviceDescription?: string;
+  faqs?: Array<{ question: string; answer: string }>;
+  lang?: Lang;
+}
+
+const {
+  title,
+  description,
+  keywords,
+  canonicalURL,
+  ogImage,
+  ogType,
+  noindex,
+  schemaType = 'LocalBusiness',
+  serviceName,
+  serviceDescription,
+  faqs,
+  lang = 'pt',
+} = Astro.props;
+
+const t = useTranslations(lang);
+
+// Full BCP-47 codes for html[lang] attribute
+const htmlLangMap: Record<string, string> = {
+  pt: 'pt-PT',
+  en: 'en-GB',
+  fr: 'fr-FR',
+  es: 'es-ES',
+  de: 'de-DE',
+  it: 'it-IT',
+};
+const htmlLang = htmlLangMap[lang] ?? lang;
+
+// Hreflang links — map every equivalent page across all 6 languages
+const baseUrl = 'https://www.primeestores.pt';
+const currentPath = Astro.url.pathname;
+
+const hreflangEntries: { hreflang: string; code: RouteLang }[] = [
+  { hreflang: 'pt-PT', code: 'pt' },
+  { hreflang: 'en-GB', code: 'en' },
+  { hreflang: 'fr-FR', code: 'fr' },
+  { hreflang: 'es-ES', code: 'es' },
+  { hreflang: 'de-DE', code: 'de' },
+  { hreflang: 'it-IT', code: 'it' },
+];
+const ptEquivalent = `${baseUrl}${getEquivalentPath(currentPath, 'pt')}`;
+---
+
+<!doctype html>
+<html lang={htmlLang} class="scroll-smooth">
+  <head>
+    <SEO
+      title={title}
+      description={description}
+      lang={lang}
+      keywords={keywords}
+      canonicalURL={canonicalURL}
+      ogImage={ogImage}
+      ogType={ogType}
+      noindex={noindex}
+    />
+    <!-- Hreflang — multilingual SEO -->
+    {hreflangEntries.map(({ hreflang, code }) => (
+      <link rel="alternate" hreflang={hreflang} href={`${baseUrl}${getEquivalentPath(currentPath, code)}`} />
+    ))}
+    <link rel="alternate" hreflang="x-default" href={ptEquivalent} />
+    <SchemaOrg
+      type={schemaType}
+      serviceName={serviceName}
+      serviceDescription={serviceDescription}
+      faqs={faqs}
+      lang={lang}
+    />
+    <!-- Google tag (gtag.js) — loaded after page is interactive to avoid blocking LCP -->
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-N8X7F9QBXQ');
+      window.addEventListener('load', function() {
+        var s = document.createElement('script');
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-N8X7F9QBXQ';
+        s.async = true;
+        document.head.appendChild(s);
+      });
+    </script>
+    <style is:inline>
+      /* Critical CSS */
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+      html { font-family: 'Inter', system-ui, sans-serif; -webkit-text-size-adjust: 100%; }
+      body { min-height: 100vh; display: flex; flex-direction: column; }
+      main { flex: 1; }
+      img { max-width: 100%; height: auto; }
+    </style>
+  </head>
+  <body class="font-sans text-[#1A1A1A] antialiased">
+    <!-- Skip to main content — visible on keyboard focus only -->
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:px-4 focus:py-2 focus:rounded-lg focus:bg-[#8B1A1A] focus:text-white focus:font-semibold focus:text-sm focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-white"
+    >
+      {t('skip.main')}
+    </a>
+    <Header lang={lang} currentPath={Astro.url.pathname} />
+    <main id="main-content">
+      <slot />
+    </main>
+    <Footer lang={lang} />
+    <WhatsAppButton label={t('whatsapp.label')} />
+  </body>
+</html>

@@ -1,0 +1,59 @@
+﻿---
+import Layout from '../../../layouts/Layout.astro';
+import ContactForm from '../../../components/ContactForm.astro';
+import { useTranslations } from '../../../i18n/utils';
+
+const lang = 'fr' as const;
+const t = useTranslations(lang);
+---
+
+<Layout
+  title="Réparation de Stores à Lisbonne | Prime Estores"
+  description="Réparation urgente de stores électriques et manuels à Lisbonne et Grand Lisbonne. Diagnostic gratuit, techniciens certifiés."
+  schemaType="Service"
+  serviceName="Réparation de Stores à Lisbonne"
+  serviceDescription="Réparation urgente de stores électriques et manuels à Lisbonne et Grand Lisbonne."
+  lang={lang}
+>
+  <section class="bg-gradient-to-br from-[#1A1A1A] to-[#8B1A1A] text-white py-16 lg:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <nav aria-label="Breadcrumb" class="mb-6">
+        <ol class="flex items-center gap-2 text-sm text-white/60">
+          <li><a href="/fr/" class="hover:text-white transition-colors">Accueil</a></li>
+          <li aria-hidden="true"><span>/</span></li>
+          <li><span class="text-white">Réparation de Stores</span></li>
+        </ol>
+      </nav>
+      <div class="max-w-3xl">
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black leading-tight mb-4">{t('service.repair.h1')}</h1>
+        <p class="text-xl text-white/80 leading-relaxed mb-8">Votre store est en panne? Diagnostic gratuit, intervention rapide et pièces d'origine.</p>
+        <div class="flex flex-col sm:flex-row gap-3">
+          <a href="tel:+351923348323" class="inline-flex items-center justify-center gap-2 bg-white text-[#8B1A1A] font-bold px-6 py-3.5 rounded-lg hover:bg-gray-100 transition-colors">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+            Appeler: +351 923 348 323
+          </a>
+          <a href="/fr/devis" class="inline-flex items-center justify-center gap-2 border-2 border-white text-white font-bold px-6 py-3.5 rounded-lg hover:bg-white/10 transition-colors">Demander un Devis</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 lg:py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-3 gap-12">
+        <div class="lg:col-span-2">
+          <h2 class="text-2xl lg:text-3xl font-black text-[#1A1A1A] mb-4">Réparation spécialisée de stores</h2>
+          <p class="text-gray-600 leading-relaxed mb-6">Les stores peuvent tomber en panne pour de multiples raisons: usure du moteur électrique, ressorts cassés, cordes endommagées ou autres problèmes mécaniques. Chez Prime Estores, nous diagnostiquons et réparons tous types de pannes.</p>
+        </div>
+        <div class="space-y-6">
+          <div class="bg-[#8B1A1A] rounded-2xl p-6 text-white">
+            <h3 class="font-black text-xl mb-2">Panne urgente?</h3>
+            <p class="text-red-100 text-sm mb-4">Pour les situations urgentes, appelez directement.</p>
+            <a href="tel:+351923348323" class="flex items-center justify-center gap-2 bg-white text-[#8B1A1A] font-bold px-4 py-3 rounded-lg hover:bg-gray-100 transition-colors text-sm w-full">+351 923 348 323</a>
+          </div>
+          <ContactForm showTitle={true} lang={lang} />
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,100 @@
+﻿---
+import Layout from '../../../layouts/Layout.astro';
+import ContactForm from '../../../components/ContactForm.astro';
+import { useTranslations } from '../../../i18n/utils';
+
+const lang = 'en' as const;
+const t = useTranslations(lang);
+---
+
+<Layout
+  title="Blind Repair in Lisbon | Prime Estores"
+  description="Urgent repair of electric and manual blinds in Lisbon and Greater Lisbon. Free diagnosis, certified technicians, fast intervention. Call now."
+  schemaType="Service"
+  serviceName="Blind Repair in Lisbon"
+  serviceDescription="Urgent repair of electric and manual blinds in Lisbon and Greater Lisbon. Free diagnosis and certified technicians."
+  lang={lang}
+>
+  <section class="bg-gradient-to-br from-[#1A1A1A] to-[#8B1A1A] text-white py-16 lg:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <nav aria-label="Breadcrumb" class="mb-6">
+        <ol class="flex items-center gap-2 text-sm text-white/60">
+          <li><a href="/en/" class="hover:text-white transition-colors">Home</a></li>
+          <li aria-hidden="true"><span>/</span></li>
+          <li><span class="text-white">Blind Repair</span></li>
+        </ol>
+      </nav>
+      <div class="max-w-3xl">
+        <span class="inline-block bg-white/10 border border-white/20 text-white text-xs font-semibold uppercase tracking-widest px-3 py-1 rounded-full mb-4">Urgent Service</span>
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black leading-tight mb-4">{t('service.repair.h1')}</h1>
+        <p class="text-xl text-white/80 leading-relaxed mb-8">Is your blind broken? Free diagnosis, fast intervention and original parts. Specialized technicians at your service.</p>
+        <div class="flex flex-col sm:flex-row gap-3">
+          <a href="tel:+351923348323" class="inline-flex items-center justify-center gap-2 bg-white text-[#8B1A1A] font-bold px-6 py-3.5 rounded-lg hover:bg-gray-100 transition-colors">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+            </svg>
+            Call Now: +351 923 348 323
+          </a>
+          <a href="/en/quote" class="inline-flex items-center justify-center gap-2 border-2 border-white text-white font-bold px-6 py-3.5 rounded-lg hover:bg-white/10 transition-colors">Request Quote Online</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="bg-amber-50 border-y border-amber-200 py-3">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <p class="text-center text-amber-800 text-sm font-medium">
+        <span class="font-bold">Urgent breakdown?</span> Call now on <a href="tel:+351923348323" class="underline font-bold">+351 923 348 323</a> — we try to come the same day.
+      </p>
+    </div>
+  </div>
+
+  <section class="py-16 lg:py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-3 gap-12">
+        <div class="lg:col-span-2">
+          <h2 class="text-2xl lg:text-3xl font-black text-[#1A1A1A] mb-4">Specialized blind repair</h2>
+          <p class="text-gray-600 leading-relaxed mb-6">Blinds can break down for multiple reasons: worn electric motor, broken springs, damaged cords, remote control failure or other mechanical problems. At Prime Estores, we diagnose and repair all types of faults in electric and manual blinds.</p>
+
+          <h2 class="text-2xl font-black text-[#1A1A1A] mb-4 mt-8">Most common faults we repair</h2>
+          <div class="grid sm:grid-cols-2 gap-3 mb-8">
+            {[
+              'Faulty or burnt electric motor',
+              'Stuck or jammed blind',
+              'Remote control not responding',
+              'Broken winding spring',
+              'Damaged cords or strings',
+              'Broken venetian slats',
+              'Locking system failure',
+              'Blind that won\'t go up or down',
+              'Motor with excessive noise',
+              'Programming problems',
+              'Misaligned end-of-travel sensors',
+              'Loose supports and fixings',
+            ].map(fault => (
+              <div class="flex items-center gap-2 p-3 bg-[#F5F5F5] rounded-lg text-sm">
+                <svg class="w-4 h-4 text-[#8B1A1A] flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                </svg>
+                <span class="text-gray-700">{fault}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div class="space-y-6">
+          <div class="bg-[#8B1A1A] rounded-2xl p-6 text-white">
+            <h3 class="font-black text-xl mb-2">Urgent breakdown?</h3>
+            <p class="text-red-100 text-sm mb-4">For urgent situations, call directly. We try to intervene the same day.</p>
+            <a href="tel:+351923348323" class="flex items-center justify-center gap-2 bg-white text-[#8B1A1A] font-bold px-4 py-3 rounded-lg hover:bg-gray-100 transition-colors text-sm w-full">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+              </svg>
+              +351 923 348 323
+            </a>
+          </div>
+          <ContactForm showTitle={true} lang={lang} />
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

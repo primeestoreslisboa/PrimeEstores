@@ -1,0 +1,185 @@
+﻿---
+import { useTranslations } from '../i18n/utils';
+import type { Lang } from '../i18n/utils';
+
+interface Props {
+  lang?: Lang;
+}
+
+const { lang = 'pt' } = Astro.props;
+const t = useTranslations(lang);
+
+const quoteHref = lang === 'pt' ? '/orcamento' :
+  lang === 'en' ? '/en/quote' :
+  lang === 'fr' ? '/fr/devis' :
+  lang === 'es' ? '/es/presupuesto' :
+  lang === 'de' ? '/de/angebot' :
+  '/it/preventivo';
+
+const testimonials = [
+  {
+    name: 'Maria João Ferreira',
+    location: 'Lisboa, Alvalade',
+    rating: 5,
+    text: lang === 'pt'
+      ? 'Excelente serviço! Contactei a Prime Estores para instalar três estores elétricos no meu apartamento em Alvalade. A equipa foi super profissional, chegou à hora marcada e fez um trabalho impecável. Recomendo sem hesitar!'
+      : lang === 'en'
+      ? 'Excellent service! I contacted Prime Estores to install three electric blinds in my apartment. The team was super professional, arrived on time and did impeccable work. I recommend without hesitation!'
+      : lang === 'fr'
+      ? 'Service excellent! J\'ai contacté Prime Estores pour installer trois stores électriques dans mon appartement. L\'équipe était très professionnelle, est arrivée à l\'heure et a fait un travail impeccable. Je recommande sans hésitation!'
+      : lang === 'es'
+      ? '¡Excelente servicio! Contacté a Prime Estores para instalar tres persianas eléctricas en mi apartamento. El equipo fue muy profesional, llegó a tiempo y realizó un trabajo impecable. ¡Recomiendo sin dudarlo!'
+      : lang === 'de' ? 'Ausgezeichneter Service! Ich habe Prime Estores kontaktiert, um drei elektrische Jalousien in meiner Wohnung zu installieren. Das Team war sehr professionell, pünktlich und hat tadellose Arbeit geleistet. Ich empfehle ohne Zögern!'
+      : 'Servizio eccellente! Ho contattato Prime Estores per installare tre tende elettriche nel mio appartamento. Il team è stato molto professionale, puntuale e ha svolto un lavoro impeccabile. Consiglio senza esitazione!',
+    service: lang === 'pt' ? 'Instalação de Estores Elétricos' :
+      lang === 'en' ? 'Electric Blind Installation' :
+      lang === 'fr' ? 'Installation de Stores Électriques' :
+      lang === 'es' ? 'Instalación de Persianas Eléctricas' :
+      lang === 'de' ? 'Elektrische Jalousien Installation' :
+      'Installazione Tende Elettriche',
+    date: lang === 'pt' ? 'Janeiro 2025' : lang === 'de' ? 'Januar 2025' : lang === 'it' ? 'Gennaio 2025' : 'January 2025',
+  },
+  {
+    name: 'Carlos Mendes',
+    location: 'Cascais',
+    rating: 5,
+    text: lang === 'pt'
+      ? 'Precisava de reparar urgentemente um estore que avariou numa sexta-feira à tarde. Liguei à Prime Estores e conseguiram vir no próprio dia. O técnico foi muito simpático e eficiente. Preço muito justo.'
+      : lang === 'en'
+      ? 'I urgently needed to repair a blind that broke on a Friday afternoon. I called Prime Estores and they managed to come the same day. The technician was very friendly and efficient. Very fair price.'
+      : lang === 'fr'
+      ? "J'avais besoin de réparer d'urgence un store tombé en panne un vendredi après-midi. J'ai appelé Prime Estores et ils ont pu venir le jour même. Le technicien était très sympathique et efficace. Prix très juste."
+      : lang === 'es'
+      ? 'Necesitaba reparar urgentemente una persiana que se averió un viernes por la tarde. Llamé a Prime Estores y pudieron venir el mismo día. El técnico fue muy amable y eficiente. Precio muy justo.'
+      : lang === 'de' ? 'Ich musste dringend eine Jalousie reparieren lassen, die an einem Freitagnachmittag kaputt ging. Ich rief Prime Estores an und sie kamen noch am selben Tag. Der Techniker war sehr freundlich und effizient. Sehr fairer Preis.'
+      : 'Avevo urgente bisogno di riparare una tenda che si è guastata un venerdì pomeriggio. Ho chiamato Prime Estores e sono riusciti a venire lo stesso giorno. Il tecnico era molto gentile ed efficiente. Prezzo molto giusto.',
+    service: lang === 'pt' ? 'Reparação de Estore Elétrico' :
+      lang === 'en' ? 'Electric Blind Repair' :
+      lang === 'fr' ? 'Réparation de Store Électrique' :
+      lang === 'es' ? 'Reparación de Persiana Eléctrica' :
+      lang === 'de' ? 'Elektrische Jalousie Reparatur' :
+      'Riparazione Tenda Elettrica',
+    date: lang === 'pt' ? 'Fevereiro 2025' : lang === 'de' ? 'Februar 2025' : lang === 'it' ? 'Febbraio 2025' : 'February 2025',
+  },
+  {
+    name: 'Ana Paula Rodrigues',
+    location: 'Oeiras',
+    rating: 5,
+    text: lang === 'pt'
+      ? 'Instalaram estores manuais em toda a minha vivenda em Oeiras. O atendimento desde o primeiro contacto foi exemplar — orçamento claro, sem surpresas, e com a melhor relação qualidade-preço que encontrei.'
+      : lang === 'en'
+      ? 'They installed manual blinds throughout my villa in Oeiras. The service from the first contact was exemplary — clear quote, no surprises, and the best value for money I found.'
+      : lang === 'fr'
+      ? 'Ils ont installé des stores manuels dans toute ma maison à Oeiras. Le service depuis le premier contact était exemplaire — devis clair, sans surprises, et le meilleur rapport qualité-prix que j\'ai trouvé.'
+      : lang === 'es'
+      ? 'Instalaron persianas manuales en toda mi villa en Oeiras. El servicio desde el primer contacto fue ejemplar — presupuesto claro, sin sorpresas, y la mejor relación calidad-precio que encontré.'
+      : lang === 'de' ? 'Sie installierten manuelle Jalousien in meiner ganzen Villa in Oeiras. Der Service vom ersten Kontakt an war vorbildlich — klares Angebot, keine Überraschungen und das beste Preis-Leistungs-Verhältnis das ich gefunden habe.'
+      : 'Hanno installato tende manuali in tutta la mia villa a Oeiras. Il servizio dal primo contatto è stato esemplare — preventivo chiaro, nessuna sorpresa, e il miglior rapporto qualità-prezzo che ho trovato.',
+    service: lang === 'pt' ? 'Instalação de Estores Manuais' :
+      lang === 'en' ? 'Manual Blind Installation' :
+      lang === 'fr' ? 'Installation de Stores Manuels' :
+      lang === 'es' ? 'Instalación de Persianas Manuales' :
+      lang === 'de' ? 'Manuelle Jalousien Installation' :
+      'Installazione Tende Manuali',
+    date: lang === 'pt' ? 'Março 2025' : lang === 'de' ? 'März 2025' : lang === 'it' ? 'Marzo 2025' : 'March 2025',
+  },
+];
+
+function renderStars(count: number) {
+  return Array.from({ length: 5 }, (_, i) => i < count ? '★' : '☆').join('');
+}
+---
+
+<section class="py-16 lg:py-24 bg-white" aria-labelledby="testimonials-heading">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <div class="text-center mb-12">
+      <span class="inline-block text-[#8B1A1A] text-sm font-semibold uppercase tracking-widest mb-2">
+        {lang === 'pt' ? 'Testemunhos' :
+         lang === 'en' ? 'Testimonials' :
+         lang === 'fr' ? 'Témoignages' :
+         lang === 'es' ? 'Testimonios' :
+         lang === 'de' ? 'Kundenbewertungen' :
+         lang === 'it' ? 'Testimonianze' :
+         'Testemunhos'}
+      </span>
+      <h2 id="testimonials-heading" class="text-3xl lg:text-4xl font-black text-[#1A1A1A] mb-4">
+        {t('testimonials.title')}
+      </h2>
+      <p class="text-gray-500 text-lg">
+        {t('testimonials.subtitle')}
+      </p>
+    </div>
+
+    <!-- Aggregate rating -->
+    <div class="flex items-center justify-center gap-3 mb-10">
+      <div class="text-4xl font-black text-[#1A1A1A]">5.0</div>
+      <div>
+        <div class="text-2xl text-yellow-400 leading-none" aria-label="5 stars">★★★★★</div>
+        <div class="text-sm text-gray-500 mt-0.5">
+          {lang === 'pt' ? 'Baseado em avaliações de clientes' :
+           lang === 'en' ? 'Based on client reviews' :
+           lang === 'fr' ? 'Basé sur les avis des clients' :
+           lang === 'es' ? 'Basado en reseñas de clientes' :
+           lang === 'de' ? 'Basierend auf Kundenbewertungen' :
+           lang === 'it' ? 'Basato sulle recensioni dei clienti' :
+           'Baseado em avaliações de clientes'}
+        </div>
+      </div>
+    </div>
+
+    <!-- Testimonials grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+      {testimonials.map(testimonial => (
+        <article class="bg-[#F5F5F5] rounded-2xl p-6 lg:p-8 flex flex-col">
+          <!-- Stars -->
+          <div class="text-yellow-400 text-xl mb-4" aria-label={`${testimonial.rating} stars`}>
+            {renderStars(testimonial.rating)}
+          </div>
+
+          <!-- Quote -->
+          <blockquote class="flex-grow">
+            <p class="text-gray-700 text-sm leading-relaxed mb-6">
+              "{testimonial.text}"
+            </p>
+          </blockquote>
+
+          <!-- Author -->
+          <footer class="flex items-center gap-3 pt-4 border-t border-gray-200">
+            <div
+              class="w-10 h-10 rounded-full bg-[#8B1A1A] flex items-center justify-center flex-shrink-0 text-white font-bold text-sm"
+              aria-hidden="true"
+            >
+              {testimonial.name.split(' ').map((n: string) => n[0]).slice(0,2).join('')}
+            </div>
+            <div class="min-w-0">
+              <div class="font-semibold text-[#1A1A1A] text-sm">{testimonial.name}</div>
+              <div class="text-xs text-gray-500 truncate">{testimonial.location} &bull; {testimonial.date}</div>
+              <div class="text-xs text-[#8B1A1A] font-medium mt-0.5">{testimonial.service}</div>
+            </div>
+          </footer>
+        </article>
+      ))}
+    </div>
+
+    <!-- Call to action -->
+    <div class="text-center mt-10">
+      <p class="text-gray-500 text-sm mb-4">
+        {lang === 'pt' ? 'Junte-se aos nossos clientes satisfeitos em toda a Grande Lisboa' :
+         lang === 'en' ? 'Join our happy clients across Greater Lisbon' :
+         lang === 'fr' ? 'Rejoignez nos clients satisfaits dans tout le Grand Lisbonne' :
+         lang === 'es' ? 'Únase a nuestros clientes satisfechos en todo el Gran Lisboa' :
+         lang === 'de' ? 'Schließen Sie sich unseren zufriedenen Kunden in ganz Groß-Lissabon an' :
+         lang === 'it' ? 'Unisciti ai nostri clienti soddisfatti in tutta la Grande Lisbona' :
+         'Junte-se aos nossos clientes satisfeitos em toda a Grande Lisboa'}
+      </p>
+      <a
+        href={quoteHref}
+        class="inline-flex items-center gap-2 bg-[#8B1A1A] text-white font-bold px-8 py-3.5 rounded-lg hover:bg-[#A52020] transition-colors text-base"
+      >
+        {t('hero.cta.quote')}
+      </a>
+    </div>
+
+  </div>
+</section>

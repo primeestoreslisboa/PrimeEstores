@@ -1,0 +1,326 @@
+---
+import { useTranslations } from '../i18n/utils';
+import type { Lang } from '../i18n/utils';
+
+export interface Props {
+  showTitle?: boolean;
+  compact?: boolean;
+  lang?: Lang;
+}
+
+const { showTitle = true, compact = false, lang = 'pt' } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<div class={compact ? '' : 'bg-white rounded-2xl shadow-sm border border-gray-100 p-6 lg:p-8'}>
+  {showTitle && (
+    <div class="mb-6">
+      <h2 class="text-2xl font-black text-[#1A1A1A] mb-2">{t('quote.title')}</h2>
+      <p class="text-gray-500 text-sm">{t('quote.subtitle')}</p>
+    </div>
+  )}
+
+  <!-- Success / Error messages — aria-live announces to screen readers without focus change -->
+  <div id="form-success" class="hidden mb-4 p-4 rounded-lg bg-green-50 border border-green-200 text-green-800 text-sm font-medium" role="alert" aria-live="polite">
+    ✓ {lang === 'pt' ? 'Mensagem enviada com sucesso! Entraremos em contacto em breve.' :
+       lang === 'en' ? 'Message sent successfully! We will get in touch soon.' :
+       lang === 'fr' ? 'Message envoyé avec succès ! Nous vous contacterons bientôt.' :
+       lang === 'es' ? '¡Mensaje enviado con éxito! Nos pondremos en contacto pronto.' :
+       lang === 'de' ? 'Nachricht erfolgreich gesendet! Wir werden uns bald melden.' :
+       lang === 'it' ? 'Messaggio inviato con successo! Ti contatteremo presto.' :
+       'Mensagem enviada com sucesso! Entraremos em contacto em breve.'}
+  </div>
+  <div id="form-error" class="hidden mb-4 p-4 rounded-lg bg-red-50 border border-red-200 text-red-800 text-sm font-medium" role="alert" aria-live="assertive">
+    ✗ {lang === 'pt' ? 'Ocorreu um erro. Por favor tente novamente ou contacte-nos pelo telefone.' :
+       lang === 'en' ? 'An error occurred. Please try again or contact us by phone.' :
+       lang === 'fr' ? 'Une erreur est survenue. Veuillez réessayer ou nous contacter par téléphone.' :
+       lang === 'es' ? 'Ha ocurrido un error. Por favor inténtelo de nuevo o contáctenos por teléfono.' :
+       lang === 'de' ? 'Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut oder kontaktieren Sie uns telefonisch.' :
+       lang === 'it' ? 'Si è verificato un errore. Riprova o contattaci per telefono.' :
+       'Ocorreu um erro. Por favor tente novamente ou contacte-nos pelo telefone.'}
+  </div>
+
+  <form
+    id="contact-form"
+    method="POST"
+    action="https://api.web3forms.com/submit"
+    class="space-y-4"
+    data-lang={lang}
+  >
+    <!-- Web3Forms config — obter chave gratuita em https://web3forms.com com primeestoreslisboa@gmail.com -->
+    <input type="hidden" name="access_key" value="3482bc1a-743c-4753-aa39-527edade601b" />
+    <input type="hidden" name="subject" id="form-subject" value="Orçamento | Prime Estores" />
+    <input type="hidden" name="from_name" value="Prime Estores - Website" />
+    <input type="hidden" name="redirect" value="false" />
+    <!-- Honeypot anti-spam -->
+    <input type="checkbox" name="botcheck" class="hidden" style="display:none" aria-hidden="true" />
+
+    <!-- Nome -->
+    <div>
+      <label for="nome" class="block text-sm font-medium text-[#1A1A1A] mb-1.5">
+        {t('form.name')} <span class="text-[#8B1A1A]" aria-hidden="true">*</span>
+      </label>
+      <input
+        type="text"
+        id="nome"
+        name="nome"
+        required
+        autocomplete="name"
+        placeholder={t('form.name')}
+        class="w-full px-4 py-2.5 rounded-lg border border-gray-200 text-[#1A1A1A] placeholder-gray-400 text-sm focus:outline-none focus:ring-2 focus:ring-[#8B1A1A] focus:border-transparent transition-colors"
+        aria-required="true"
+      />
+    </div>
+
+    <!-- Telefone + Email row -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div>
+        <label for="telefone" class="block text-sm font-medium text-[#1A1A1A] mb-1.5">
+          {t('form.phone')} <span class="text-[#8B1A1A]" aria-hidden="true">*</span>
+        </label>
+        <input
+          type="tel"
+          id="telefone"
+          name="telefone"
+          required
+          autocomplete="tel"
+          placeholder="+351 9XX XXX XXX"
+          class="w-full px-4 py-2.5 rounded-lg border border-gray-200 text-[#1A1A1A] placeholder-gray-400 text-sm focus:outline-none focus:ring-2 focus:ring-[#8B1A1A] focus:border-transparent transition-colors"
+          aria-required="true"
+        />
+      </div>
+      <div>
+        <label for="email" class="block text-sm font-medium text-[#1A1A1A] mb-1.5">
+          {t('form.email')} <span class="text-[#8B1A1A]" aria-hidden="true">*</span>
+        </label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          required
+          autocomplete="email"
+          placeholder="email@example.com"
+          class="w-full px-4 py-2.5 rounded-lg border border-gray-200 text-[#1A1A1A] placeholder-gray-400 text-sm focus:outline-none focus:ring-2 focus:ring-[#8B1A1A] focus:border-transparent transition-colors"
+          aria-required="true"
+        />
+      </div>
+    </div>
+
+    <!-- Tipo de serviço -->
+    <div>
+      <label for="servico" class="block text-sm font-medium text-[#1A1A1A] mb-1.5">
+        {t('form.service')} <span class="text-[#8B1A1A]" aria-hidden="true">*</span>
+      </label>
+      <select
+        id="servico"
+        name="servico"
+        required
+        class="w-full px-4 py-2.5 rounded-lg border border-gray-200 text-[#1A1A1A] text-sm focus:outline-none focus:ring-2 focus:ring-[#8B1A1A] focus:border-transparent transition-colors bg-white appearance-none"
+        aria-required="true"
+      >
+        <option value="" disabled selected>{t('form.service')}</option>
+        <option value="estore-eletrico">{t('form.service.electric')}</option>
+        <option value="estore-manual">{t('form.service.manual')}</option>
+        <option value="reparacao">{t('form.service.repair')}</option>
+        <option value="outro">{t('form.service.other')}</option>
+      </select>
+    </div>
+
+    <!-- Mensagem -->
+    <div>
+      <label for="mensagem" class="block text-sm font-medium text-[#1A1A1A] mb-1.5">
+        {t('form.message')}
+      </label>
+      <textarea
+        id="mensagem"
+        name="mensagem"
+        rows={4}
+        placeholder={t('form.message')}
+        class="w-full px-4 py-2.5 rounded-lg border border-gray-200 text-[#1A1A1A] placeholder-gray-400 text-sm focus:outline-none focus:ring-2 focus:ring-[#8B1A1A] focus:border-transparent transition-colors resize-vertical"
+      ></textarea>
+    </div>
+
+    <!-- Privacy notice -->
+    <p class="text-xs text-gray-400 leading-relaxed">
+      {lang === 'pt' ? 'Ao submeter este formulário, concorda com o tratamento dos seus dados pessoais para fins de contacto e elaboração de orçamento.' :
+       lang === 'en' ? 'By submitting this form, you agree to the processing of your personal data for contact and quoting purposes.' :
+       lang === 'fr' ? 'En soumettant ce formulaire, vous acceptez le traitement de vos données personnelles à des fins de contact et de devis.' :
+       lang === 'es' ? 'Al enviar este formulario, acepta el tratamiento de sus datos personales para fines de contacto y presupuesto.' :
+       lang === 'de' ? 'Mit dem Absenden dieses Formulars stimmen Sie der Verarbeitung Ihrer personenbezogenen Daten für Kontakt- und Angebotszwecke zu.' :
+       lang === 'it' ? 'Inviando questo modulo, accetti il trattamento dei tuoi dati personali ai fini del contatto e della preparazione del preventivo.' :
+       'Ao submeter este formulário, concorda com o tratamento dos seus dados pessoais para fins de contacto e elaboração de orçamento.'}
+    </p>
+
+    <!-- Submit -->
+    <button
+      type="submit"
+      id="form-submit-btn"
+      class="w-full flex items-center justify-center gap-2 bg-[#8B1A1A] text-white font-bold py-3.5 px-6 rounded-lg hover:bg-[#A52020] active:bg-[#6B1212] transition-colors text-base disabled:opacity-60 disabled:cursor-not-allowed"
+    >
+      <svg id="submit-icon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+      </svg>
+      <svg id="submit-spinner" class="hidden w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24" aria-hidden="true">
+        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/>
+        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"/>
+      </svg>
+      <span id="submit-text">{t('form.submit')}</span>
+    </button>
+  </form>
+</div>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement | null;
+  if (form) {
+    const lang = form.dataset.lang ?? 'pt';
+
+    // Validation messages per language
+    const msgs: Record<string, Record<string, string>> = {
+      pt: {
+        nameRequired: 'Por favor indique o seu nome.',
+        phoneRequired: 'Por favor indique o seu telefone.',
+        phoneInvalid: 'Número de telefone inválido.',
+        emailRequired: 'Por favor indique o seu email.',
+        emailInvalid: 'Email inválido.',
+        serviceRequired: 'Por favor selecione o tipo de serviço.',
+      },
+      en: {
+        nameRequired: 'Please enter your name.',
+        phoneRequired: 'Please enter your phone number.',
+        phoneInvalid: 'Invalid phone number.',
+        emailRequired: 'Please enter your email address.',
+        emailInvalid: 'Invalid email address.',
+        serviceRequired: 'Please select a service type.',
+      },
+      fr: {
+        nameRequired: 'Veuillez indiquer votre nom.',
+        phoneRequired: 'Veuillez indiquer votre numéro de téléphone.',
+        phoneInvalid: 'Numéro de téléphone invalide.',
+        emailRequired: 'Veuillez indiquer votre adresse e-mail.',
+        emailInvalid: 'Adresse e-mail invalide.',
+        serviceRequired: 'Veuillez sélectionner un type de service.',
+      },
+      es: {
+        nameRequired: 'Por favor indique su nombre.',
+        phoneRequired: 'Por favor indique su número de teléfono.',
+        phoneInvalid: 'Número de teléfono inválido.',
+        emailRequired: 'Por favor indique su correo electrónico.',
+        emailInvalid: 'Correo electrónico inválido.',
+        serviceRequired: 'Por favor seleccione el tipo de servicio.',
+      },
+      de: {
+        nameRequired: 'Bitte geben Sie Ihren Namen an.',
+        phoneRequired: 'Bitte geben Sie Ihre Telefonnummer an.',
+        phoneInvalid: 'Ungültige Telefonnummer.',
+        emailRequired: 'Bitte geben Sie Ihre E-Mail-Adresse an.',
+        emailInvalid: 'Ungültige E-Mail-Adresse.',
+        serviceRequired: 'Bitte wählen Sie einen Servicetyp aus.',
+      },
+      it: {
+        nameRequired: 'Per favore indica il tuo nome.',
+        phoneRequired: 'Per favore indica il tuo numero di telefono.',
+        phoneInvalid: 'Numero di telefono non valido.',
+        emailRequired: 'Per favore indica il tuo indirizzo email.',
+        emailInvalid: 'Indirizzo email non valido.',
+        serviceRequired: 'Per favore seleziona il tipo di servizio.',
+      },
+    };
+    const m = msgs[lang] ?? msgs['pt'];
+
+    // Helper: show field error
+    function setError(name: string, msg: string) {
+      const input = form!.querySelector(`[name="${name}"]`) as HTMLElement;
+      if (!input) return;
+      input.classList.add('border-red-500', 'ring-1', 'ring-red-500');
+      let err = input.parentElement?.querySelector('.field-error') as HTMLElement | null;
+      if (!err) {
+        err = document.createElement('p');
+        err.className = 'field-error text-xs text-red-600 mt-1';
+        err.setAttribute('aria-live', 'polite');
+        input.parentElement?.appendChild(err);
+      }
+      err.textContent = msg;
+    }
+
+    // Helper: clear field error
+    function clearError(name: string) {
+      const input = form!.querySelector(`[name="${name}"]`) as HTMLElement;
+      if (!input) return;
+      input.classList.remove('border-red-500', 'ring-1', 'ring-red-500');
+      input.parentElement?.querySelector('.field-error')?.remove();
+    }
+
+    // Clear errors on input
+    form.querySelectorAll('input, select, textarea').forEach(el => {
+      el.addEventListener('input', () => clearError((el as HTMLInputElement).name));
+      el.addEventListener('change', () => clearError((el as HTMLInputElement).name));
+    });
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = document.getElementById('form-submit-btn') as HTMLButtonElement;
+      const icon = document.getElementById('submit-icon');
+      const spinner = document.getElementById('submit-spinner');
+      const successMsg = document.getElementById('form-success');
+      const errorMsg = document.getElementById('form-error');
+
+      // --- Validation ---
+      const nome = (form.querySelector('[name="nome"]') as HTMLInputElement)?.value?.trim() || '';
+      const telefone = (form.querySelector('[name="telefone"]') as HTMLInputElement)?.value?.trim() || '';
+      const email = (form.querySelector('[name="email"]') as HTMLInputElement)?.value?.trim() || '';
+      const servicoEl = form.querySelector('[name="servico"]') as HTMLSelectElement;
+      const servico = servicoEl?.value || '';
+
+      let valid = true;
+
+      if (!nome) { setError('nome', m.nameRequired); valid = false; }
+      else clearError('nome');
+
+      if (!telefone) { setError('telefone', m.phoneRequired); valid = false; }
+      else if (!/^[\d\s\+\-\(\)]{7,}$/.test(telefone)) { setError('telefone', m.phoneInvalid); valid = false; }
+      else clearError('telefone');
+
+      if (!email) { setError('email', m.emailRequired); valid = false; }
+      else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { setError('email', m.emailInvalid); valid = false; }
+      else clearError('email');
+
+      if (!servico) { setError('servico', m.serviceRequired); valid = false; }
+      else clearError('servico');
+
+      if (!valid) return;
+
+      // Build dynamic subject: Orçamento | Serviço | Nome | Telefone
+      const servicoText = servicoEl?.options[servicoEl.selectedIndex]?.text || servico;
+      const subjectEl = document.getElementById('form-subject') as HTMLInputElement;
+      if (subjectEl) subjectEl.value = `Orçamento | ${servicoText} | ${nome} | ${telefone}`;
+
+      btn.disabled = true;
+      icon?.classList.add('hidden');
+      spinner?.classList.remove('hidden');
+      successMsg?.classList.add('hidden');
+      errorMsg?.classList.add('hidden');
+
+      try {
+        const data = new FormData(form);
+        const response = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          body: data,
+        });
+        const result = await response.json();
+
+        if (result.success) {
+          successMsg?.classList.remove('hidden');
+          form.reset();
+        } else {
+          errorMsg?.classList.remove('hidden');
+        }
+      } catch {
+        errorMsg?.classList.remove('hidden');
+      } finally {
+        btn.disabled = false;
+        icon?.classList.remove('hidden');
+        spinner?.classList.add('hidden');
+      }
+    });
+  }
+</script>

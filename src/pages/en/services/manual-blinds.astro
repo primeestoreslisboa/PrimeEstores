@@ -1,0 +1,71 @@
+﻿---
+import Layout from '../../../layouts/Layout.astro';
+import ContactForm from '../../../components/ContactForm.astro';
+import { useTranslations } from '../../../i18n/utils';
+
+const lang = 'en' as const;
+const t = useTranslations(lang);
+---
+
+<Layout
+  title="Manual Blind Installation & Repair in Lisbon | Prime Estores"
+  description="Quality manual blind installation in Lisbon and Greater Lisbon. Various models and colors, fast and professional installation. Free quote."
+  schemaType="Service"
+  serviceName="Manual Blind Installation in Lisbon"
+  serviceDescription="Quality manual blind installation in Lisbon and Greater Lisbon. Various models and colors available."
+  lang={lang}
+>
+  <section class="bg-gradient-to-br from-[#1A1A1A] to-[#8B1A1A] text-white py-16 lg:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <nav aria-label="Breadcrumb" class="mb-6">
+        <ol class="flex items-center gap-2 text-sm text-white/60">
+          <li><a href="/en/" class="hover:text-white transition-colors">Home</a></li>
+          <li aria-hidden="true"><span>/</span></li>
+          <li><span class="text-white">Manual Blinds</span></li>
+        </ol>
+      </nav>
+      <div class="max-w-3xl">
+        <span class="inline-block bg-white/10 border border-white/20 text-white text-xs font-semibold uppercase tracking-widest px-3 py-1 rounded-full mb-4">Service</span>
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black leading-tight mb-4">{t('service.manual.h1')}</h1>
+        <p class="text-xl text-white/80 leading-relaxed mb-8">Practical and economical solutions for any room. We install quality manual blinds throughout Greater Lisbon.</p>
+        <div class="flex flex-col sm:flex-row gap-3">
+          <a href="/en/quote" class="inline-flex items-center justify-center gap-2 bg-white text-[#8B1A1A] font-bold px-6 py-3.5 rounded-lg hover:bg-gray-100 transition-colors">Get Free Quote</a>
+          <a href="tel:+351923348323" class="inline-flex items-center justify-center gap-2 border-2 border-white text-white font-bold px-6 py-3.5 rounded-lg hover:bg-white/10 transition-colors">+351 923 348 323</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 lg:py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-3 gap-12">
+        <div class="lg:col-span-2">
+          <h2 class="text-2xl lg:text-3xl font-black text-[#1A1A1A] mb-4">Manual blinds: quality and practicality</h2>
+          <p class="text-gray-600 leading-relaxed mb-6">Manual blinds remain the most popular solution for light and privacy control. They are economical, easy to operate and require little maintenance. Available in a wide range of materials, fabrics and colors.</p>
+
+          <h2 class="text-2xl font-black text-[#1A1A1A] mb-4 mt-8">Types of manual blinds we install</h2>
+          <div class="grid sm:grid-cols-2 gap-4 mb-8">
+            {[
+              { title: 'Roller Blinds', desc: 'Simple, elegant and easy to operate. Available in opaque, filtering or blackout fabric.' },
+              { title: 'Venetian Blinds', desc: 'Precise control of light and privacy. In aluminum or wood.' },
+              { title: 'Horizontal Blinds', desc: 'Ideal for large openings. Smooth and silent operation.' },
+              { title: 'Vertical Blinds', desc: 'Perfect for partitions or large windows.' },
+              { title: 'Blackout Blinds', desc: 'Total light blocking. Ideal for bedrooms and home cinema.' },
+              { title: 'Solar Screen Blinds', desc: 'Filter light while maintaining exterior visibility. Energy efficient.' },
+            ].map(item => (
+              <div class="p-4 bg-[#F5F5F5] rounded-xl border-l-4 border-[#8B1A1A]">
+                <div class="font-semibold text-[#1A1A1A] text-sm mb-1">{item.title}</div>
+                <div class="text-gray-500 text-xs">{item.desc}</div>
+              </div>
+            ))}
+          </div>
+
+          <a href="/en/coverage-areas" class="text-[#8B1A1A] font-semibold hover:underline text-sm">See all coverage areas →</a>
+        </div>
+        <div class="space-y-6">
+          <ContactForm showTitle={true} lang={lang} />
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,140 @@
+---
+import { useTranslations } from '../i18n/utils';
+import type { Lang } from '../i18n/utils';
+
+interface Props {
+  lang?: Lang;
+}
+
+const { lang = 'pt' } = Astro.props;
+const t = useTranslations(lang);
+
+const quoteHref = lang === 'pt' ? '/orcamento' :
+  lang === 'en' ? '/en/quote' :
+  lang === 'fr' ? '/fr/devis' :
+  lang === 'es' ? '/es/presupuesto' :
+  lang === 'de' ? '/de/angebot' :
+  '/it/preventivo';
+
+const reasons = [
+  {
+    title: t('why.fast.title'),
+    description: t('why.fast.desc'),
+    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+    </svg>`,
+  },
+  {
+    title: t('why.pro.title'),
+    description: t('why.pro.desc'),
+    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
+    </svg>`,
+  },
+  {
+    title: t('why.warranty.title'),
+    description: t('why.warranty.desc'),
+    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+    </svg>`,
+  },
+  {
+    title: t('why.coverage.title'),
+    description: t('why.coverage.desc'),
+    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+    </svg>`,
+  },
+];
+---
+
+<section class="py-16 lg:py-24 bg-white" aria-labelledby="why-us-heading">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+
+      <!-- Left: Content -->
+      <div>
+        <span class="inline-block text-[#8B1A1A] text-sm font-semibold uppercase tracking-widest mb-2">{t('why.title')}</span>
+        <h2 id="why-us-heading" class="text-3xl lg:text-4xl font-black text-[#1A1A1A] mb-5">
+          {t('why.subtitle')}
+        </h2>
+        <p class="text-gray-500 text-lg leading-relaxed mb-8">
+          {lang === 'pt' ? 'Somos uma empresa familiar com raízes em Lisboa, comprometidos com a qualidade e a satisfação de cada cliente.' :
+           lang === 'en' ? 'We are a family business rooted in Lisbon, committed to quality and the satisfaction of every client.' :
+           lang === 'fr' ? 'Nous sommes une entreprise familiale ancrée à Lisbonne, engagée dans la qualité et la satisfaction de chaque client.' :
+           lang === 'es' ? 'Somos una empresa familiar con raíces en Lisboa, comprometidos con la calidad y la satisfacción de cada cliente.' :
+           lang === 'de' ? 'Wir sind ein Familienunternehmen mit Wurzeln in Lissabon, das sich der Qualität und Zufriedenheit jedes Kunden verpflichtet fühlt.' :
+           lang === 'it' ? 'Siamo un\'azienda familiare con radici a Lisbona, impegnata nella qualità e nella soddisfazione di ogni cliente.' :
+           'Somos uma empresa familiar com raízes em Lisboa, comprometidos com a qualidade e a satisfação de cada cliente.'}
+        </p>
+
+        <!-- Large stats -->
+        <div class="grid grid-cols-3 gap-4 mb-8 p-6 bg-[#F5F5F5] rounded-2xl">
+          <div class="text-center">
+            <div class="text-3xl font-black text-[#8B1A1A]">10+</div>
+            <div class="text-xs text-gray-500 mt-1 leading-tight">
+              {lang === 'pt' ? 'Anos de experiência' :
+               lang === 'en' ? 'Years of experience' :
+               lang === 'fr' ? "Ans d'expérience" :
+               lang === 'es' ? 'Años de experiencia' :
+               lang === 'de' ? 'Jahre Erfahrung' :
+               lang === 'it' ? 'Anni di esperienza' :
+               'Anos de experiência'}
+            </div>
+          </div>
+          <div class="text-center border-x border-gray-200">
+            <div class="text-3xl font-black text-[#8B1A1A]">500+</div>
+            <div class="text-xs text-gray-500 mt-1 leading-tight">
+              {lang === 'pt' ? 'Clientes satisfeitos' :
+               lang === 'en' ? 'Happy clients' :
+               lang === 'fr' ? 'Clients satisfaits' :
+               lang === 'es' ? 'Clientes satisfechos' :
+               lang === 'de' ? 'Zufriedene Kunden' :
+               lang === 'it' ? 'Clienti soddisfatti' :
+               'Clientes satisfeitos'}
+            </div>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl font-black text-[#8B1A1A]">100%</div>
+            <div class="text-xs text-gray-500 mt-1 leading-tight">
+              {lang === 'pt' ? 'Orçamento gratuito' :
+               lang === 'en' ? 'Free quote' :
+               lang === 'fr' ? 'Devis gratuit' :
+               lang === 'es' ? 'Presupuesto gratis' :
+               lang === 'de' ? 'Kostenloser Kostenvoranschlag' :
+               lang === 'it' ? 'Preventivo gratuito' :
+               'Orçamento gratuito'}
+            </div>
+          </div>
+        </div>
+
+        <a
+          href={quoteHref}
+          class="inline-flex items-center gap-2 bg-[#8B1A1A] text-white font-bold px-6 py-3.5 rounded-lg hover:bg-[#A52020] transition-colors"
+        >
+          {t('hero.cta.quote')}
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+          </svg>
+        </a>
+      </div>
+
+      <!-- Right: Reasons grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {reasons.map(reason => (
+          <div class="flex gap-4 p-4 rounded-xl hover:bg-[#F5F5F5] transition-colors">
+            <div class="flex-shrink-0 w-12 h-12 bg-red-50 text-[#8B1A1A] rounded-xl flex items-center justify-center">
+              <Fragment set:html={reason.icon} />
+            </div>
+            <div>
+              <h3 class="font-semibold text-[#1A1A1A] text-sm mb-1">{reason.title}</h3>
+              <p class="text-xs text-gray-500 leading-relaxed">{reason.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+    </div>
+  </div>
+</section>

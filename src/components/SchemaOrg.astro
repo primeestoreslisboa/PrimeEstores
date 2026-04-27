@@ -1,0 +1,158 @@
+﻿---
+export interface Props {
+  type?: 'LocalBusiness' | 'Service' | 'FAQPage' | 'WebPage';
+  serviceName?: string;
+  serviceDescription?: string;
+  faqs?: Array<{ question: string; answer: string }>;
+  pageUrl?: string;
+  lang?: string;
+}
+
+const {
+  type = 'LocalBusiness',
+  serviceName,
+  serviceDescription,
+  faqs,
+  pageUrl = Astro.url.href,
+  lang = 'pt',
+} = Astro.props;
+
+// Breadcrumb labels per language
+const breadcrumbLabels: Record<string, { home: string }> = {
+  pt: { home: 'Início' },
+  en: { home: 'Home' },
+  fr: { home: 'Accueil' },
+  es: { home: 'Inicio' },
+  de: { home: 'Startseite' },
+  it: { home: 'Home' },
+};
+
+// Home URLs derived dynamically from Astro's site config
+const baseUrl = Astro.site ? Astro.site.href.replace(/\/$/, '') : 'https://www.primeestores.pt';
+const homeUrlSuffix: Record<string, string> = {
+  pt: '/',
+  en: '/en/',
+  fr: '/fr/',
+  es: '/es/',
+  de: '/de/',
+  it: '/it/',
+};
+const { home: homeLabel } = breadcrumbLabels[lang] ?? breadcrumbLabels['pt'];
+const homeUrl = `${baseUrl}${homeUrlSuffix[lang] ?? '/'}`;
+
+const localBusinessSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  '@id': `${baseUrl}/#business`,
+  name: 'Prime Estores',
+  description: 'Instalação e reparação de estores elétricos e manuais em Lisboa e Grande Lisboa',
+  url: baseUrl,
+  telephone: '+351923348323',
+  email: 'info@primeestores.pt',
+  logo: `${baseUrl}/favicon.svg`,
+  image: `${baseUrl}/og-image.jpg`,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Lisboa',
+    addressLocality: 'Lisboa',
+    addressRegion: 'Lisboa',
+    postalCode: '1000-001',
+    addressCountry: 'PT',
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 38.7223,
+    longitude: -9.1393,
+  },
+  areaServed: [
+    { '@type': 'City', name: 'Lisboa' },
+    { '@type': 'City', name: 'Sintra' },
+    { '@type': 'City', name: 'Cascais' },
+    { '@type': 'City', name: 'Oeiras' },
+    { '@type': 'City', name: 'Almada' },
+    { '@type': 'City', name: 'Setúbal' },
+    { '@type': 'City', name: 'Amadora' },
+    { '@type': 'City', name: 'Loures' },
+    { '@type': 'City', name: 'Odivelas' },
+    { '@type': 'City', name: 'Vila Franca de Xira' },
+    { '@type': 'City', name: 'Mafra' },
+    { '@type': 'City', name: 'Sesimbra' },
+    { '@type': 'City', name: 'Palmela' },
+  ],
+  priceRange: '€€',
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+      opens: '08:00',
+      closes: '20:00',
+    },
+  ],
+  sameAs: [
+    'https://www.instagram.com/primeestores',
+    'https://www.facebook.com/primeestores',
+    'https://www.linkedin.com/company/primeestores',
+  ],
+};
+
+const serviceSchema = serviceName ? {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: serviceName,
+  description: serviceDescription,
+  provider: {
+    '@type': 'LocalBusiness',
+    name: 'Prime Estores',
+    telephone: '+351923348323',
+    url: 'https://www.primeestores.pt',
+  },
+  areaServed: {
+    '@type': 'State',
+    name: 'Grande Lisboa',
+  },
+  url: pageUrl,
+} : null;
+
+const faqSchema = faqs && faqs.length > 0 ? {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map(faq => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: faq.answer,
+    },
+  })),
+} : null;
+
+// BreadcrumbList — generated automatically for service pages
+const breadcrumbSchema = serviceName ? {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: homeLabel,
+      item: homeUrl,
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: serviceName,
+      item: pageUrl,
+    },
+  ],
+} : null;
+
+const schemas: object[] = [];
+if (type === 'LocalBusiness' || type === 'WebPage') schemas.push(localBusinessSchema);
+if (serviceSchema) schemas.push(serviceSchema);
+if (breadcrumbSchema) schemas.push(breadcrumbSchema);
+if (faqSchema) schemas.push(faqSchema);
+---
+
+{schemas.map(schema => (
+  <script type="application/ld+json" set:html={JSON.stringify(schema, null, 2)} />
+))}

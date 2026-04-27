@@ -1,0 +1,76 @@
+﻿---
+import Layout from '../../layouts/Layout.astro';
+import { useTranslations } from '../../i18n/utils';
+
+const lang = 'de' as const;
+const t = useTranslations(lang);
+
+const zones = [
+  { name: 'Lissabon', slug: 'lissabon', desc: 'Wir bedienen alle Stadtteile und Pfarreien Lissabons, von Alfama und Mouraria bis zum Parque das Nações, Belém und Alvalade.' },
+  { name: 'Sintra', slug: 'sintra', desc: 'Wir decken die gesamte Gemeinde Sintra ab, einschließlich Sintra Vila, Rio de Mouro, Agualva-Cacém und Queluz.' },
+  { name: 'Cascais', slug: 'cascais', desc: 'Wir bedienen die gesamte Gemeinde Cascais, einschließlich Cascais-Zentrum, Estoril, Parede und Carcavelos.' },
+  { name: 'Oeiras', slug: 'oeiras', desc: 'Wir bedienen die gesamte Gemeinde Oeiras, einschließlich Porto Salvo, Barcarena, Carnaxide und Algés.' },
+  { name: 'Almada', slug: 'almada', desc: 'Wir decken Almada und alle seine Ortschaften ab, einschließlich Costa da Caparica, Trafaria und Cacilhas.' },
+  { name: 'Setúbal', slug: 'setubal', desc: 'Wir bedienen die Gemeinde Setúbal und Umgebung, einschließlich Azeitão und São Bernardo.' },
+  { name: 'Amadora', slug: 'amadora', desc: 'Wir decken die gesamte Gemeinde Amadora ab, einschließlich Alfornelos, Brandoa und Damaia.' },
+  { name: 'Loures', slug: 'loures', desc: 'Wir bedienen die Gemeinde Loures, einschließlich Sacavém, Santa Iria de Azóia und Moscavide.' },
+  { name: 'Odivelas', slug: 'odivelas', desc: 'Wir decken die gesamte Gemeinde Odivelas ab, einschließlich Pontinha, Famões und Ramada.' },
+];
+---
+
+<Layout
+  title="Versorgungsgebiete | Prime Estores - Groß-Lissabon"
+  description="Jalousien-Installation und Reparatur in ganz Groß-Lissabon. Kostenloser Kostenvoranschlag."
+  lang={lang}
+>
+  <section class="bg-gradient-to-br from-[#1A1A1A] to-[#8B1A1A] text-white py-16 lg:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <nav aria-label="Breadcrumb" class="mb-6">
+        <ol class="flex items-center gap-2 text-sm text-white/60">
+          <li><a href="/de/" class="hover:text-white transition-colors">Startseite</a></li>
+          <li aria-hidden="true"><span>/</span></li>
+          <li><span class="text-white">Versorgungsgebiete</span></li>
+        </ol>
+      </nav>
+      <div class="max-w-3xl">
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black leading-tight mb-4">{t('zones.title')}</h1>
+        <p class="text-xl text-white/80 leading-relaxed">{t('zones.subtitle')}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 lg:py-20 bg-[#F5F5F5]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {zones.map(zone => (
+          <article id={zone.slug} class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow scroll-mt-24">
+            <div class="flex items-start gap-3 mb-3">
+              <div class="w-8 h-8 bg-[#8B1A1A] rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                </svg>
+              </div>
+              <h3 class="text-xl font-black text-[#1A1A1A]">{zone.name}</h3>
+            </div>
+            <p class="text-gray-600 text-sm leading-relaxed mb-4">{zone.desc}</p>
+            <a href="/de/angebot" class="inline-flex items-center gap-1 text-[#8B1A1A] font-semibold text-sm hover:gap-2 transition-all hover:underline">
+              Angebot für {zone.name} anfordern
+              <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 bg-[#8B1A1A] text-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-black mb-4">Ihr Gebiet nicht dabei?</h2>
+      <p class="text-red-100 text-lg mb-8">Kontaktieren Sie uns zur Verfügbarkeitsprüfung.</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/de/angebot" class="inline-flex items-center justify-center gap-2 bg-white text-[#8B1A1A] font-bold px-8 py-4 rounded-lg hover:bg-gray-100 transition-colors">{t('cta.button')}</a>
+        <a href="tel:+351923348323" class="inline-flex items-center justify-center gap-2 border-2 border-white text-white font-bold px-8 py-4 rounded-lg hover:bg-white/10 transition-colors">+351 923 348 323</a>
+      </div>
+    </div>
+  </section>
+</Layout>

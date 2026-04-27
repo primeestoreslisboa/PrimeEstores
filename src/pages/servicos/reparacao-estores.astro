@@ -1,0 +1,146 @@
+﻿---
+import Layout from '../../layouts/Layout.astro';
+import ContactForm from '../../components/ContactForm.astro';
+---
+
+<Layout
+  title="Reparação de Estores em Lisboa | Prime Estores"
+  description="Reparação urgente de estores elétricos e manuais em Lisboa e Grande Lisboa. Diagnóstico gratuito, técnicos certificados, intervenção rápida. Ligue já."
+  keywords="reparação estores Lisboa, reparação estores elétricos, reparação estores manuais, técnico estores Lisboa, conserto estores Grande Lisboa"
+  schemaType="Service"
+  serviceName="Reparação de Estores Elétricos e Manuais em Lisboa"
+  serviceDescription="Reparação urgente de estores elétricos e manuais em Lisboa e Grande Lisboa. Diagnóstico gratuito e técnicos certificados."
+>
+
+  <!-- Page Hero -->
+  <section class="bg-gradient-to-br from-[#1A1A1A] to-[#8B1A1A] text-white py-16 lg:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <nav aria-label="Breadcrumb" class="mb-6">
+        <ol class="flex items-center gap-2 text-sm text-white/60">
+          <li><a href="/" class="hover:text-white transition-colors">Início</a></li>
+          <li aria-hidden="true"><span>/</span></li>
+          <li><span class="text-white">Reparação de Estores</span></li>
+        </ol>
+      </nav>
+      <div class="max-w-3xl">
+        <span class="inline-block bg-white/10 border border-white/20 text-white text-xs font-semibold uppercase tracking-widest px-3 py-1 rounded-full mb-4">Serviço Urgente</span>
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black leading-tight mb-4">
+          Reparação de Estores em Lisboa e Grande Lisboa
+        </h1>
+        <p class="text-xl text-white/80 leading-relaxed mb-8">
+          O seu estore avariou? Diagnóstico gratuito, intervenção rápida e peças originais. Técnicos especializados ao seu serviço.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-3">
+          <a href="tel:+351923348323" class="inline-flex items-center justify-center gap-2 bg-white text-[#8B1A1A] font-bold px-6 py-3.5 rounded-lg hover:bg-gray-100 transition-colors">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+            </svg>
+            Ligar Agora: +351 923 348 323
+          </a>
+          <a href="/orcamento" class="inline-flex items-center justify-center gap-2 border-2 border-white text-white font-bold px-6 py-3.5 rounded-lg hover:bg-white/10 transition-colors">
+            Pedir Orçamento Online
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Urgency banner -->
+  <div class="bg-amber-50 border-y border-amber-200 py-3">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <p class="text-center text-amber-800 text-sm font-medium">
+        <span class="font-bold">Avaria urgente?</span> Ligue agora para <a href="tel:+351923348323" class="underline font-bold">+351 923 348 323</a> — tentamos deslocar-nos no mesmo dia.
+      </p>
+    </div>
+  </div>
+
+  <!-- Main content -->
+  <section class="py-16 lg:py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-3 gap-12">
+
+        <!-- Content -->
+        <div class="lg:col-span-2">
+          <h2 class="text-2xl lg:text-3xl font-black text-[#1A1A1A] mb-4">Reparação especializada de estores</h2>
+          <p class="text-gray-600 leading-relaxed mb-6">
+            Os estores podem avariar por múltiplas razões: desgaste do motor elétrico, molas partidas, cordas danificadas, telecomandos com falha ou outros problemas mecânicos. Na Prime Estores, diagnosticamos e reparamos todo o tipo de avarias em estores elétricos e manuais.
+          </p>
+          <p class="text-gray-600 leading-relaxed mb-6">
+            O nosso serviço de reparação inclui <strong>diagnóstico gratuito</strong>, orçamento transparente sem surpresas e utilização de peças originais ou de alta qualidade. Trabalhamos com todas as marcas e modelos presentes no mercado português.
+          </p>
+
+          <h2 class="text-2xl font-black text-[#1A1A1A] mb-4 mt-8">Avarias mais comuns que reparamos</h2>
+          <div class="grid sm:grid-cols-2 gap-3 mb-8">
+            {[
+              'Motor elétrico com falha ou queimado',
+              'Estore preso ou travado',
+              'Telecomando sem resposta',
+              'Mola de enrolamento partida',
+              'Cordas ou cordões danificados',
+              'Lâminas venezianas partidas',
+              'Sistema de bloqueio com falha',
+              'Estore que não sobe ou não desce',
+              'Motor com ruído excessivo',
+              'Problemas de programação',
+              'Sensores de fim de curso desregulados',
+              'Suportes e fixações soltos',
+            ].map(avaria => (
+              <div class="flex items-center gap-2 p-3 bg-[#F5F5F5] rounded-lg text-sm">
+                <svg class="w-4 h-4 text-[#8B1A1A] flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                </svg>
+                <span class="text-gray-700">{avaria}</span>
+              </div>
+            ))}
+          </div>
+
+          <h2 class="text-2xl font-black text-[#1A1A1A] mb-4 mt-8">Marcas com que trabalhamos</h2>
+          <div class="flex flex-wrap gap-3 mb-8">
+            {['Somfy', 'Nice', 'Came', 'Becker', 'Velux', 'Roto', 'Bubendorff', 'Portas e Janelas'].map(marca => (
+              <span class="inline-block px-4 py-2 bg-[#F5F5F5] text-[#1A1A1A] font-medium text-sm rounded-lg border border-gray-200">{marca}</span>
+            ))}
+          </div>
+
+          <h2 class="text-2xl font-black text-[#1A1A1A] mb-4 mt-8">Como funciona o serviço de reparação</h2>
+          <ol class="space-y-4 mb-8">
+            {[
+              { step: '01', title: 'Contacto inicial', desc: 'Ligue-nos ou preencha o formulário a descrever a avaria. Tentamos agendar a visita com a maior brevidade possível.' },
+              { step: '02', title: 'Diagnóstico gratuito no local', desc: 'O nosso técnico desloca-se e diagnostica o problema sem qualquer custo. Apresentamos orçamento de reparação.' },
+              { step: '03', title: 'Reparação eficiente', desc: 'Após aprovação do orçamento, realizamos a reparação. Sempre que possível, concluímos na mesma visita.' },
+              { step: '04', title: 'Teste e garantia', desc: 'Testamos o funcionamento completo e asseguramos que tudo funciona corretamente. Garantia incluída.' },
+            ].map(item => (
+              <li class="flex gap-4">
+                <div class="flex-shrink-0 w-10 h-10 bg-[#8B1A1A] text-white rounded-full flex items-center justify-center font-black text-sm">
+                  {item.step}
+                </div>
+                <div>
+                  <div class="font-semibold text-[#1A1A1A]">{item.title}</div>
+                  <div class="text-gray-500 text-sm mt-0.5">{item.desc}</div>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="space-y-6">
+          <!-- Emergency CTA -->
+          <div class="bg-[#8B1A1A] rounded-2xl p-6 text-white">
+            <h3 class="font-black text-xl mb-2">Avaria urgente?</h3>
+            <p class="text-red-100 text-sm mb-4">Para situações urgentes, ligue diretamente. Tentamos intervir no próprio dia.</p>
+            <a href="tel:+351923348323" class="flex items-center justify-center gap-2 bg-white text-[#8B1A1A] font-bold px-4 py-3 rounded-lg hover:bg-gray-100 transition-colors text-sm w-full">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+              </svg>
+              +351 923 348 323
+            </a>
+          </div>
+
+          <ContactForm showTitle={true} />
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</Layout>

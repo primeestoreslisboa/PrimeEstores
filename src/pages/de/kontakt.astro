@@ -1,0 +1,85 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import BookingToggleSection from '../../components/BookingToggleSection.astro';
+import { useTranslations } from '../../i18n/utils';
+
+const lang = 'de' as const;
+const t = useTranslations(lang);
+---
+
+<Layout
+  title="Kontakt | Prime Estores - Lissabon"
+  description="Kontaktieren Sie Prime Estores. Buchen Sie online oder senden Sie eine E-Mail-Anfrage. Verfügbar Montag bis Samstag von 8 bis 20 Uhr."
+  lang={lang}
+>
+  <section class="bg-gradient-to-br from-[#1A1A1A] to-[#8B1A1A] text-white py-12 lg:py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <nav aria-label="Breadcrumb" class="mb-6">
+        <ol class="flex items-center gap-2 text-sm text-white/60">
+          <li><a href="/de/" class="hover:text-white transition-colors">{t('nav.home')}</a></li>
+          <li aria-hidden="true"><span>/</span></li>
+          <li><span class="text-white">{t('contact.title')}</span></li>
+        </ol>
+      </nav>
+      <div class="max-w-2xl">
+        <h1 class="text-3xl sm:text-4xl font-black leading-tight mb-3">{t('contact.title')}</h1>
+        <p class="text-xl text-white/80">{t('contact.hero.subtitle')}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 lg:py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-5 gap-12 items-start">
+        <div class="lg:col-span-2">
+          <h2 class="text-2xl font-black text-[#1A1A1A] mb-6">{t('contact.info.title')}</h2>
+          <div class="space-y-4">
+            <div class="flex gap-4 p-5 bg-[#F5F5F5] rounded-2xl">
+              <div class="w-12 h-12 bg-[#8B1A1A] rounded-xl flex items-center justify-center flex-shrink-0">
+                <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+              </div>
+              <div>
+                <div class="text-xs text-gray-500 uppercase tracking-wider font-semibold mb-1">{t('contact.info.phone')}</div>
+                <a href="tel:+351923348323" class="text-[#1A1A1A] font-bold text-lg hover:text-[#8B1A1A] transition-colors">+351 923 348 323</a>
+                <div class="text-xs text-gray-500 mt-0.5">{t('contact.info.phone.hours')}</div>
+              </div>
+            </div>
+            <div class="flex gap-4 p-5 bg-[#F5F5F5] rounded-2xl">
+              <div class="w-12 h-12 bg-[#8B1A1A] rounded-xl flex items-center justify-center flex-shrink-0">
+                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+              </div>
+              <div>
+                <div class="text-xs text-gray-500 uppercase tracking-wider font-semibold mb-1">Email</div>
+                <a href="mailto:info@primeestores.pt" class="text-[#1A1A1A] font-bold hover:text-[#8B1A1A] transition-colors">info@primeestores.pt</a>
+                <div class="text-xs text-gray-500 mt-0.5">{t('contact.info.email.response')}</div>
+              </div>
+            </div>
+            <div class="flex gap-4 p-5 bg-[#F5F5F5] rounded-2xl">
+              <div class="w-12 h-12 bg-[#8B1A1A] rounded-xl flex items-center justify-center flex-shrink-0">
+                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              </div>
+              <div>
+                <div class="text-xs text-gray-500 uppercase tracking-wider font-semibold mb-1">{t('contact.info.hours.label')}</div>
+                <div class="font-bold text-[#1A1A1A]">{t('contact.info.hours.days')}</div>
+                <div class="text-gray-600 text-sm">{t('contact.info.hours.time')}</div>
+              </div>
+            </div>
+            <div class="flex gap-4 p-5 bg-[#F5F5F5] rounded-2xl">
+              <div class="w-12 h-12 bg-[#8B1A1A] rounded-xl flex items-center justify-center flex-shrink-0">
+                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+              </div>
+              <div>
+                <div class="text-xs text-gray-500 uppercase tracking-wider font-semibold mb-1">{t('contact.info.area')}</div>
+                <div class="font-bold text-[#1A1A1A]">{t('contact.info.area.name')}</div>
+                <a href="/de/versorgungsgebiete" class="text-[#8B1A1A] text-sm hover:underline">{t('contact.info.area.link')}</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="lg:col-span-3">
+          <BookingToggleSection lang={lang} />
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

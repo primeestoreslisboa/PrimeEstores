@@ -1,0 +1,139 @@
+﻿---
+import { useTranslations } from '../i18n/utils';
+import type { Lang } from '../i18n/utils';
+
+export interface Props {
+  title?: string;
+  subtitle?: string;
+  showStats?: boolean;
+  lang?: Lang;
+}
+
+const {
+  showStats = true,
+  lang = 'pt',
+} = Astro.props;
+
+const t = useTranslations(lang);
+const title = Astro.props.title || t('hero.title');
+const subtitle = Astro.props.subtitle || t('hero.subtitle');
+
+const quoteHref = lang === 'pt' ? '/orcamento' :
+  lang === 'en' ? '/en/quote' :
+  lang === 'fr' ? '/fr/devis' :
+  lang === 'es' ? '/es/presupuesto' :
+  lang === 'de' ? '/de/angebot' :
+  '/it/preventivo';
+---
+
+<section
+  class="relative bg-gradient-to-br from-[#1A1A1A] via-[#2D0A0A] to-[#8B1A1A] text-white overflow-hidden"
+  aria-label="Secção principal"
+>
+  <!-- Background pattern -->
+  <div class="absolute inset-0 opacity-5" aria-hidden="true">
+    <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+          <path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" stroke-width="1"/>
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#grid)" />
+    </svg>
+  </div>
+
+  <!-- Decorative element -->
+  <div class="absolute right-0 top-0 w-1/2 h-full opacity-10 overflow-hidden" aria-hidden="true">
+    <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
+      <circle cx="350" cy="50" r="200" fill="#C0392B"/>
+      <circle cx="400" cy="300" r="150" fill="#8B1A1A"/>
+    </svg>
+  </div>
+
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-28">
+    <div class="max-w-3xl">
+
+      <!-- Badge -->
+      <div class="inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-4 py-1.5 mb-6 backdrop-blur-sm">
+        <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+        <span class="text-sm font-medium text-white/90">
+          {lang === 'en' ? 'Available Mon–Sat • 8am–8pm' :
+           lang === 'fr' ? 'Disponible Lun–Sam • 08h–20h' :
+           lang === 'es' ? 'Disponible Lun–Sáb • 08h–20h' :
+           lang === 'de' ? 'Verfügbar Mo–Sa • 8–20 Uhr' :
+           lang === 'it' ? 'Disponibile Lun–Sab • 08h–20h' :
+           'Disponível Seg–Sáb • 08h00–20h00'}
+        </span>
+      </div>
+
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-black leading-tight mb-6 text-white">
+        {title}
+      </h1>
+
+      <p class="text-lg sm:text-xl text-white/80 leading-relaxed mb-8 max-w-2xl">
+        {subtitle}
+      </p>
+
+      <!-- CTAs -->
+      <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-10">
+        <a
+          href={quoteHref}
+          class="inline-flex items-center justify-center gap-2 bg-white text-[#8B1A1A] font-bold text-base px-6 py-3.5 rounded-lg hover:bg-gray-100 transition-colors shadow-lg"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+          </svg>
+          {t('hero.cta.quote')}
+        </a>
+        <a
+          href="tel:+351923348323"
+          class="inline-flex items-center justify-center gap-2 bg-transparent border-2 border-white text-white font-bold text-base px-6 py-3.5 rounded-lg hover:bg-white/10 transition-colors"
+        >
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+          </svg>
+          +351 923 348 323
+        </a>
+      </div>
+
+      {showStats && (
+        <!-- Stats bar -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-8 border-t border-white/20">
+          <div class="text-center sm:text-left">
+            <div class="text-2xl sm:text-3xl font-black text-white">10+</div>
+            <div class="text-xs sm:text-sm text-white/60 mt-0.5">
+            {lang === 'en' ? 'Years of Experience' : lang === 'fr' ? "Ans d'expérience" : lang === 'es' ? 'Años de experiencia' : lang === 'de' ? 'Jahre Erfahrung' : lang === 'it' ? 'Anni di Esperienza' : 'Anos de Experiência'}
+          </div>
+          </div>
+          <div class="text-center sm:text-left">
+            <div class="text-2xl sm:text-3xl font-black text-white">500+</div>
+            <div class="text-xs sm:text-sm text-white/60 mt-0.5">
+              {lang === 'en' ? 'Happy Clients' : lang === 'fr' ? 'Clients Satisfaits' : lang === 'es' ? 'Clientes Satisfechos' : lang === 'de' ? 'Zufriedene Kunden' : lang === 'it' ? 'Clienti Soddisfatti' : 'Clientes Satisfeitos'}
+            </div>
+          </div>
+          <div class="text-center sm:text-left">
+            <div class="text-2xl sm:text-3xl font-black text-white">24h</div>
+            <div class="text-xs sm:text-sm text-white/60 mt-0.5">
+              {lang === 'en' ? 'Guaranteed Response' : lang === 'fr' ? 'Réponse Garantie' : lang === 'es' ? 'Respuesta Garantizada' : lang === 'de' ? 'Garantierte Antwort' : lang === 'it' ? 'Risposta Garantita' : 'Resposta Garantida'}
+            </div>
+          </div>
+          <div class="text-center sm:text-left">
+            <div class="text-2xl sm:text-3xl font-black text-white">
+              {lang === 'de' ? '1 Jahr' : lang === 'it' ? '1 Anno' : lang === 'en' ? '1 Year' : lang === 'fr' ? '1 An' : lang === 'es' ? '1 Año' : '1 Ano'}
+            </div>
+            <div class="text-xs sm:text-sm text-white/60 mt-0.5">
+              {lang === 'en' ? 'Work Warranty' : lang === 'fr' ? 'Garantie Travaux' : lang === 'es' ? 'Garantía Trabajos' : lang === 'de' ? 'Garantie auf Arbeiten' : lang === 'it' ? 'Garanzia Lavori' : 'Garantia nos Trabalhos'}
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  </div>
+
+  <!-- Bottom wave -->
+  <div class="absolute bottom-0 left-0 right-0 overflow-hidden leading-none" aria-hidden="true">
+    <svg viewBox="0 0 1440 40" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" class="w-full h-10 fill-white">
+      <path d="M0,32 C360,0 1080,0 1440,32 L1440,40 L0,40 Z"/>
+    </svg>
+  </div>
+</section>

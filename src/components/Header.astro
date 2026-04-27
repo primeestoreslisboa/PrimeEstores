@@ -1,0 +1,240 @@
+﻿---
+import LanguageSwitcher from './LanguageSwitcher.astro';
+import { useTranslations } from '../i18n/utils';
+import type { Lang } from '../i18n/utils';
+
+interface Props {
+  lang?: Lang;
+  currentPath?: string;
+}
+
+const { lang = 'pt', currentPath: propPath } = Astro.props;
+const t = useTranslations(lang);
+const currentPath = propPath || Astro.url.pathname;
+
+// Build nav links based on lang
+const langPrefix = lang === 'pt' ? '' : `/${lang}`;
+
+const navLinks = [
+  { href: `${langPrefix}/`, label: t('nav.home') },
+  {
+    href: '#',
+    label: t('nav.services'),
+    dropdown: [
+      { href: `${langPrefix}/servicos/estores-eletricos`, label: t('nav.services.electric') },
+      { href: `${langPrefix}/servicos/estores-manuais`, label: t('nav.services.manual') },
+      { href: `${langPrefix}/servicos/reparacao-estores`, label: t('nav.services.repair') },
+      { href: `${langPrefix}/servicos/eletricidade`, label: t('nav.services.electrical') },
+    ],
+  },
+  { href: `${langPrefix}/zonas-que-servimos`, label: t('nav.zones') },
+  { href: `${langPrefix}/orcamento`, label: t('nav.quote') },
+  { href: `${langPrefix}/contacto`, label: t('nav.contact') },
+];
+
+// For non-PT langs, use translated route slugs
+if (lang === 'en') {
+  navLinks[2].href = '/en/coverage-areas';
+  navLinks[3].href = '/en/quote';
+  navLinks[4].href = '/en/contact';
+  navLinks[1].dropdown![0].href = '/en/services/electric-blinds';
+  navLinks[1].dropdown![1].href = '/en/services/manual-blinds';
+  navLinks[1].dropdown![2].href = '/en/services/blind-repair';
+  navLinks[1].dropdown![3].href = '/en/services/electrical-work';
+} else if (lang === 'fr') {
+  navLinks[2].href = '/fr/zones-couvertes';
+  navLinks[3].href = '/fr/devis';
+  navLinks[4].href = '/fr/contact';
+  navLinks[1].dropdown![0].href = '/fr/services/stores-electriques';
+  navLinks[1].dropdown![1].href = '/fr/services/stores-manuels';
+  navLinks[1].dropdown![2].href = '/fr/services/reparation-stores';
+  navLinks[1].dropdown![3].href = '/fr/services/electricite';
+} else if (lang === 'es') {
+  navLinks[2].href = '/es/zonas-cobertura';
+  navLinks[3].href = '/es/presupuesto';
+  navLinks[4].href = '/es/contacto';
+  navLinks[1].dropdown![0].href = '/es/servicios/persianas-electricas';
+  navLinks[1].dropdown![1].href = '/es/servicios/persianas-manuales';
+  navLinks[1].dropdown![2].href = '/es/servicios/reparacion-persianas';
+  navLinks[1].dropdown![3].href = '/es/servicios/electricidad';
+} else if (lang === 'de') {
+  navLinks[2].href = '/de/versorgungsgebiete';
+  navLinks[3].href = '/de/angebot';
+  navLinks[4].href = '/de/kontakt';
+  navLinks[1].dropdown![0].href = '/de/dienstleistungen/elektrische-jalousien';
+  navLinks[1].dropdown![1].href = '/de/dienstleistungen/manuelle-jalousien';
+  navLinks[1].dropdown![2].href = '/de/dienstleistungen/jalousien-reparatur';
+  navLinks[1].dropdown![3].href = '/de/dienstleistungen/elektroinstallation';
+} else if (lang === 'it') {
+  navLinks[2].href = '/it/zone-servite';
+  navLinks[3].href = '/it/preventivo';
+  navLinks[4].href = '/it/contatto';
+  navLinks[1].dropdown![0].href = '/it/servizi/tende-elettriche';
+  navLinks[1].dropdown![1].href = '/it/servizi/tende-manuali';
+  navLinks[1].dropdown![2].href = '/it/servizi/riparazione-tende';
+  navLinks[1].dropdown![3].href = '/it/servizi/impianto-elettrico';
+}
+---
+
+<header class="bg-white shadow-sm sticky top-0 z-50 border-b-2 border-[#8B1A1A]">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16 lg:h-20">
+
+      <!-- Logo -->
+      <a href={lang === 'pt' ? '/' : `/${lang}/`} class="flex flex-col leading-tight group" aria-label="Prime Estores - Página inicial">
+        <div class="flex items-baseline gap-1 whitespace-nowrap">
+          <span class="text-lg sm:text-2xl font-black text-[#8B1A1A] tracking-tight group-hover:text-[#A52020] transition-colors">PRIME</span>
+          <span class="text-lg sm:text-2xl font-black text-[#1A1A1A] tracking-tight">ESTORES</span>
+        </div>
+        <span class="text-xs font-semibold text-[#8B1A1A] tracking-widest uppercase -mt-1">Instalação &amp; Reparação</span>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden lg:flex items-center gap-1" aria-label="Navegação principal">
+        {navLinks.map(link => (
+          link.dropdown ? (
+            <div class="relative group">
+              <button
+                class="flex items-center gap-1 px-3 py-2 text-sm font-medium text-[#1A1A1A] hover:text-[#8B1A1A] transition-colors rounded-md hover:bg-gray-50"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                {link.label}
+                <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              <div class="absolute top-full left-0 mt-1 w-52 bg-white rounded-lg shadow-lg border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                <div class="py-1">
+                  {link.dropdown.map(item => (
+                    <a
+                      href={item.href}
+                      class={`block px-4 py-2.5 text-sm font-medium transition-colors ${
+                        currentPath === item.href
+                          ? 'text-[#8B1A1A] bg-red-50'
+                          : 'text-[#1A1A1A] hover:text-[#8B1A1A] hover:bg-gray-50'
+                      }`}
+                    >
+                      {item.label}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ) : (
+            <a
+              href={link.href}
+              class={`px-3 py-2 text-sm font-medium rounded-md transition-colors ${
+                currentPath === link.href
+                  ? 'text-[#8B1A1A] bg-red-50'
+                  : 'text-[#1A1A1A] hover:text-[#8B1A1A] hover:bg-gray-50'
+              }`}
+            >
+              {link.label}
+            </a>
+          )
+        ))}
+      </nav>
+
+      <!-- Phone CTA + Language Switcher (desktop) -->
+      <div class="hidden lg:flex items-center gap-3">
+        <LanguageSwitcher currentLang={lang} currentPath={currentPath} />
+        <a
+          href="tel:+351923348323"
+          class="flex items-center gap-2 bg-[#8B1A1A] text-white px-4 py-2 rounded-lg font-semibold text-sm hover:bg-[#A52020] transition-colors"
+          aria-label="Ligar para Prime Estores"
+        >
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+          </svg>
+          +351 923 348 323
+        </a>
+      </div>
+
+      <!-- Mobile phone + hamburger -->
+      <div class="flex items-center gap-2 lg:hidden">
+        <LanguageSwitcher currentLang={lang} currentPath={currentPath} />
+        <a
+          href="tel:+351923348323"
+          class="flex items-center justify-center w-10 h-10 bg-[#8B1A1A] text-white rounded-lg hover:bg-[#A52020] transition-colors"
+          aria-label="Ligar para Prime Estores"
+        >
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+          </svg>
+        </a>
+        <button
+          id="mobile-menu-btn"
+          class="flex items-center justify-center w-10 h-10 text-[#1A1A1A] hover:text-[#8B1A1A] transition-colors"
+          aria-label="Abrir menu"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+        >
+          <svg id="menu-icon-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <svg id="menu-icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden lg:hidden border-t border-gray-100 bg-white">
+    <nav class="max-w-7xl mx-auto px-4 py-3 space-y-1" aria-label="Navegação mobile">
+      {navLinks.map(link => (
+        link.dropdown ? (
+          <>
+            <div class="px-3 py-1">
+              <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider">{link.label}</span>
+            </div>
+            {link.dropdown.map(item => (
+              <a
+                href={item.href}
+                class={`block px-5 py-2.5 text-sm font-medium rounded-md transition-colors ${currentPath === item.href ? 'text-[#8B1A1A] bg-red-50' : 'text-[#1A1A1A] hover:text-[#8B1A1A] hover:bg-gray-50'}`}
+              >
+                {item.label}
+              </a>
+            ))}
+          </>
+        ) : (
+          <a
+            href={link.href}
+            class={`block px-3 py-2.5 text-sm font-medium rounded-md transition-colors ${currentPath === link.href ? 'text-[#8B1A1A] bg-red-50' : 'text-[#1A1A1A] hover:text-[#8B1A1A] hover:bg-gray-50'}`}
+          >
+            {link.label}
+          </a>
+        )
+      ))}
+      <div class="pt-2 pb-1">
+        <a
+          href="tel:+351923348323"
+          class="flex items-center justify-center gap-2 bg-[#8B1A1A] text-white px-4 py-3 rounded-lg font-semibold text-sm hover:bg-[#A52020] transition-colors w-full"
+        >
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+          </svg>
+          +351 923 348 323
+        </a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  const iconOpen = document.getElementById('menu-icon-open');
+  const iconClose = document.getElementById('menu-icon-close');
+
+  btn?.addEventListener('click', () => {
+    const isOpen = !menu?.classList.contains('hidden');
+    menu?.classList.toggle('hidden');
+    iconOpen?.classList.toggle('hidden', !isOpen);
+    iconClose?.classList.toggle('hidden', isOpen);
+    btn.setAttribute('aria-expanded', String(!isOpen));
+  });
+</script>

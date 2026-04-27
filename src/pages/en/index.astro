@@ -1,0 +1,129 @@
+﻿---
+import Layout from '../../layouts/Layout.astro';
+import Hero from '../../components/Hero.astro';
+import Services from '../../components/Services.astro';
+import WhyChooseUs from '../../components/WhyChooseUs.astro';
+import FAQ from '../../components/FAQ.astro';
+import GoogleReviews from '../../components/GoogleReviews.astro';
+import ContactForm from '../../components/ContactForm.astro';
+import { useTranslations } from '../../i18n/utils';
+
+const lang = 'en' as const;
+const t = useTranslations(lang);
+
+const faqs = [
+  { question: t('faq.q1'), answer: t('faq.a1') },
+  { question: t('faq.q2'), answer: t('faq.a2') },
+  { question: t('faq.q3'), answer: t('faq.a3') },
+  { question: t('faq.q4'), answer: t('faq.a4') },
+];
+---
+
+<Layout
+  title="Blind Installation & Repair in Lisbon | Prime Estores"
+  description="Specialists in electric and manual blinds in Lisbon and Greater Lisbon. Professional installation, urgent repair and free quotes. Call +351 923 348 323."
+  keywords="electric blinds Lisbon, manual blinds Lisbon, blind repair Lisbon, blind installation Greater Lisbon, motorized blinds"
+  faqs={faqs}
+  lang={lang}
+>
+  <Hero lang={lang} showStats={true} />
+  <Services lang={lang} />
+  <WhyChooseUs lang={lang} />
+  <GoogleReviews lang={lang} />
+  <FAQ faqs={faqs} lang={lang} />
+
+  <!-- Areas served banner -->
+  <section class="py-12 bg-[#1A1A1A] text-white" aria-labelledby="areas-heading-en">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 id="areas-heading-en" class="text-xl font-bold mb-3">We serve all of Greater Lisbon</h2>
+      <p class="text-gray-400 text-sm mb-4">
+        Lisbon &bull; Sintra &bull; Cascais &bull; Oeiras &bull; Almada &bull; Setúbal &bull; Amadora &bull; Loures &bull; Odivelas &bull; Mafra &bull; Sesimbra &bull; Palmela
+      </p>
+      <a href="/en/coverage-areas" class="text-[#C0392B] hover:text-red-400 text-sm font-medium underline">
+        See all coverage areas →
+      </a>
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <section class="py-16 lg:py-20 bg-gradient-to-r from-[#8B1A1A] to-[#C0392B]" aria-labelledby="cta-heading-en">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 id="cta-heading-en" class="text-3xl lg:text-4xl font-black text-white mb-4">
+        {t('cta.title')}
+      </h2>
+      <p class="text-red-100 text-lg mb-8 max-w-2xl mx-auto">
+        {t('cta.subtitle')}
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a
+          href="/en/quote"
+          class="inline-flex items-center justify-center gap-2 bg-white text-[#8B1A1A] font-bold px-8 py-4 rounded-lg hover:bg-gray-100 transition-colors text-base shadow-lg"
+        >
+          {t('cta.button')}
+        </a>
+        <a
+          href="tel:+351923348323"
+          class="inline-flex items-center justify-center gap-2 bg-transparent border-2 border-white text-white font-bold px-8 py-4 rounded-lg hover:bg-white/10 transition-colors text-base"
+        >
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+          </svg>
+          +351 923 348 323
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Form section -->
+  <section class="py-16 lg:py-24 bg-[#F5F5F5]" aria-labelledby="contact-heading-en">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 items-start">
+        <div>
+          <span class="inline-block text-[#8B1A1A] text-sm font-semibold uppercase tracking-widest mb-2">Contact</span>
+          <h2 id="contact-heading-en" class="text-3xl lg:text-4xl font-black text-[#1A1A1A] mb-5">
+            Talk to us today
+          </h2>
+          <p class="text-gray-500 text-lg leading-relaxed mb-8">
+            We are ready to help you with any questions about our electric and manual blind services in Lisbon.
+          </p>
+          <div class="space-y-4">
+            <div class="flex items-start gap-3">
+              <div class="w-10 h-10 bg-[#8B1A1A] rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                </svg>
+              </div>
+              <div>
+                <div class="font-semibold text-[#1A1A1A]">Phone</div>
+                <a href="tel:+351923348323" class="text-gray-500 hover:text-[#8B1A1A] transition-colors">+351 923 348 323</a>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-10 h-10 bg-[#8B1A1A] rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                </svg>
+              </div>
+              <div>
+                <div class="font-semibold text-[#1A1A1A]">Email</div>
+                <a href="mailto:info@primeestores.pt" class="text-gray-500 hover:text-[#8B1A1A] transition-colors">info@primeestores.pt</a>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-10 h-10 bg-[#8B1A1A] rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+              </div>
+              <div>
+                <div class="font-semibold text-[#1A1A1A]">Hours</div>
+                <div class="text-gray-500">Monday to Saturday: 8am – 8pm</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <ContactForm lang={lang} showTitle={false} />
+      </div>
+    </div>
+  </section>
+</Layout>

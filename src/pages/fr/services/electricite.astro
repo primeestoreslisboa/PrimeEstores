@@ -1,0 +1,153 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import ContactForm from '../../../components/ContactForm.astro';
+
+const lang = 'fr' as const;
+---
+
+<Layout
+  title="Installation Électrique à Lisbonne | Prime Estores"
+  description="Installation de prises, interrupteurs, luminaires et éclairage LED à Lisbonne et Grand Lisbonne. Service rapide par des techniciens certifiés. Devis gratuit."
+  keywords="installation électrique Lisbonne, prises Lisbonne, interrupteurs Lisbonne, luminaires Lisbonne, éclairage LED Lisbonne"
+  schemaType="Service"
+  serviceName="Installation Électrique à Lisbonne"
+  serviceDescription="Installation de prises, interrupteurs, luminaires et éclairage LED à Lisbonne et Grand Lisbonne. Techniciens certifiés avec garantie 1 an."
+  lang={lang}
+>
+
+  <!-- Page Hero -->
+  <section class="bg-gradient-to-br from-[#1A1A1A] to-[#8B1A1A] text-white py-16 lg:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <nav aria-label="Breadcrumb" class="mb-6">
+        <ol class="flex items-center gap-2 text-sm text-white/60">
+          <li><a href="/fr/" class="hover:text-white transition-colors">Accueil</a></li>
+          <li aria-hidden="true"><span>/</span></li>
+          <li><span class="text-white">Électricité</span></li>
+        </ol>
+      </nav>
+      <div class="max-w-3xl">
+        <span class="inline-block bg-white/10 border border-white/20 text-white text-xs font-semibold uppercase tracking-widest px-3 py-1 rounded-full mb-4">Service</span>
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black leading-tight mb-4">
+          Installation Électrique à Lisbonne
+        </h1>
+        <p class="text-xl text-white/80 leading-relaxed mb-8">
+          Prises, interrupteurs, luminaires et éclairage LED. Service rapide par des techniciens certifiés dans tout le Grand Lisbonne.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-3">
+          <a href="/fr/devis" class="inline-flex items-center justify-center gap-2 bg-white text-[#8B1A1A] font-bold px-6 py-3.5 rounded-lg hover:bg-gray-100 transition-colors">
+            Demander un Devis Gratuit
+          </a>
+          <a href="tel:+351923348323" class="inline-flex items-center justify-center gap-2 border-2 border-white text-white font-bold px-6 py-3.5 rounded-lg hover:bg-white/10 transition-colors">
+            +351 923 348 323
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main content -->
+  <section class="py-16 lg:py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-3 gap-12">
+
+        <!-- Content -->
+        <div class="lg:col-span-2">
+          <h2 class="text-2xl lg:text-3xl font-black text-[#1A1A1A] mb-4">Ce que nous faisons</h2>
+          <p class="text-gray-600 leading-relaxed mb-6">
+            Chez Prime Estores, nous réalisons des travaux d'électricité pour les habitations et les entreprises dans tout le Grand Lisbonne. De l'installation de prises et d'interrupteurs à la pose de luminaires et de systèmes d'éclairage LED — nous faisons tout avec rigueur, rapidité et garantie incluse.
+          </p>
+          <p class="text-gray-600 leading-relaxed mb-6">
+            Tous les travaux sont réalisés par des techniciens certifiés, avec des matériaux de qualité et dans le respect des normes de sécurité électrique en vigueur. Sans salissures, sans dégâts sur les murs, sans mauvaises surprises.
+          </p>
+
+          <h2 class="text-2xl font-black text-[#1A1A1A] mb-4 mt-8">Ce que nous incluons</h2>
+          <div class="grid sm:grid-cols-2 gap-4 mb-8">
+            {[
+              { title: 'Installation de prises', desc: 'Prises simples, doubles, triples et prises USB intégrées' },
+              { title: 'Installation d\'interrupteurs', desc: 'Interrupteurs simples, va-et-vient et variateurs d\'intensité' },
+              { title: 'Pose de luminaires', desc: 'Plafonniers, appliques murales et suspensions décoratives' },
+              { title: 'Éclairage LED', desc: 'Spots encastrés, rubans LED, panneaux LED et appliques basse consommation' },
+              { title: 'Travail rapide et propre', desc: 'Sans dégâts sur les murs ni les finitions — nous laissons tout comme nous l\'avons trouvé' },
+              { title: 'Garantie 1 an', desc: 'Tous les travaux électriques réalisés sont garantis 1 an' },
+            ].map(item => (
+              <div class="flex gap-3 p-4 bg-[#F5F5F5] rounded-xl">
+                <svg class="w-5 h-5 text-[#8B1A1A] flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                </svg>
+                <div>
+                  <div class="font-semibold text-[#1A1A1A] text-sm">{item.title}</div>
+                  <div class="text-gray-500 text-xs mt-0.5">{item.desc}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <h2 class="text-2xl font-black text-[#1A1A1A] mb-4 mt-8">Comment fonctionne notre processus</h2>
+          <ol class="space-y-4 mb-8">
+            {[
+              { step: '01', title: 'Contact et devis gratuit', desc: 'Contactez-nous par téléphone ou formulaire. Nous évaluons le travail et présentons un devis sans engagement.' },
+              { step: '02', title: 'Évaluation sur place', desc: 'Pour les travaux plus complexes, nous nous déplaçons pour évaluer l\'installation existante et planifier le travail.' },
+              { step: '03', title: 'Planification', desc: 'Nous fixons la date et l\'heure les plus pratiques pour vous. Nous garantissons la ponctualité.' },
+              { step: '04', title: 'Exécution professionnelle', desc: 'Nos techniciens réalisent le travail rapidement, proprement et en toute sécurité, dans le respect des normes électriques.' },
+              { step: '05', title: 'Livraison et garantie', desc: 'Nous testons tout avant de partir et livrons le service avec une garantie d\'1 an incluse.' },
+            ].map(item => (
+              <li class="flex gap-4">
+                <div class="flex-shrink-0 w-10 h-10 bg-[#8B1A1A] text-white rounded-full flex items-center justify-center font-black text-sm">
+                  {item.step}
+                </div>
+                <div>
+                  <div class="font-semibold text-[#1A1A1A]">{item.title}</div>
+                  <div class="text-gray-500 text-sm mt-0.5">{item.desc}</div>
+                </div>
+              </li>
+            ))}
+          </ol>
+
+          <h2 class="text-2xl font-black text-[#1A1A1A] mb-4 mt-8">Zones d'intervention</h2>
+          <p class="text-gray-600 leading-relaxed mb-4">
+            Nous intervenons dans tout le <strong>Grand Lisbonne</strong>, notamment : Lisbonne (tous les quartiers), Sintra, Cascais, Oeiras, Almada, Setúbal, Amadora, Loures, Odivelas, Vila Franca de Xira, Mafra, Sesimbra et Palmela.
+          </p>
+          <a href="/fr/zones-couvertes" class="text-[#8B1A1A] font-semibold hover:underline text-sm">
+            Voir toutes les zones couvertes →
+          </a>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="space-y-6">
+          <ContactForm showTitle={true} lang={lang} />
+          <div class="bg-[#F5F5F5] rounded-2xl p-6">
+            <h3 class="font-bold text-[#1A1A1A] mb-4">Informations utiles</h3>
+            <div class="space-y-3 text-sm">
+              <div class="flex items-center gap-2">
+                <svg class="w-4 h-4 text-[#8B1A1A]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+                <span class="text-gray-600">Réponse en moins de 24h</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <svg class="w-4 h-4 text-[#8B1A1A]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                </svg>
+                <span class="text-gray-600">Garantie 1 an</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <svg class="w-4 h-4 text-[#8B1A1A]" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                </svg>
+                <span class="text-gray-600">Devis 100% gratuit</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <svg class="w-4 h-4 text-[#8B1A1A]" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                </svg>
+                <span class="text-gray-600">Techniciens certifiés</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</Layout>

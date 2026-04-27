@@ -1,0 +1,92 @@
+﻿---
+import Layout from '../../../layouts/Layout.astro';
+import ContactForm from '../../../components/ContactForm.astro';
+import { useTranslations } from '../../../i18n/utils';
+
+const lang = 'it' as const;
+const t = useTranslations(lang);
+---
+
+<Layout
+  title="Tende Elettriche - Installazione e Riparazione a Lisbona | Prime Estores"
+  description="Installazione e riparazione professionale di tende elettriche e motorizzate a Lisbona e Grande Lisbona. Compatibili con telecomando, app o domotica. Preventivo gratuito."
+  schemaType="Service"
+  serviceName="Installazione Tende Elettriche a Lisbona"
+  serviceDescription="Installazione e riparazione professionale di tende elettriche e motorizzate a Lisbona e Grande Lisbona."
+  lang={lang}
+>
+  <section class="bg-gradient-to-br from-[#1A1A1A] to-[#8B1A1A] text-white py-16 lg:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <nav aria-label="Breadcrumb" class="mb-6">
+        <ol class="flex items-center gap-2 text-sm text-white/60">
+          <li><a href="/it/" class="hover:text-white transition-colors">Home</a></li>
+          <li aria-hidden="true"><span>/</span></li>
+          <li><span class="text-white">Tende Elettriche</span></li>
+        </ol>
+      </nav>
+      <div class="max-w-3xl">
+        <span class="inline-block bg-white/10 border border-white/20 text-white text-xs font-semibold uppercase tracking-widest px-3 py-1 rounded-full mb-4">Servizio</span>
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black leading-tight mb-4">{t('service.electric.h1')}</h1>
+        <p class="text-xl text-white/80 leading-relaxed mb-8">Comfort e modernità a portata di dito. Installiamo tende elettriche motorizzate in tutta la Grande Lisbona con qualità garantita.</p>
+        <div class="flex flex-col sm:flex-row gap-3">
+          <a href="/it/preventivo" class="inline-flex items-center justify-center gap-2 bg-white text-[#8B1A1A] font-bold px-6 py-3.5 rounded-lg hover:bg-gray-100 transition-colors">Preventivo Gratuito</a>
+          <a href="tel:+351923348323" class="inline-flex items-center justify-center gap-2 border-2 border-white text-white font-bold px-6 py-3.5 rounded-lg hover:bg-white/10 transition-colors">+351 923 348 323</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 lg:py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-3 gap-12">
+        <div class="lg:col-span-2">
+          <h2 class="text-2xl lg:text-3xl font-black text-[#1A1A1A] mb-4">Cosa sono le tende elettriche?</h2>
+          <p class="text-gray-600 leading-relaxed mb-6">Le tende elettriche, anche dette tende motorizzate, sono sistemi di oscuramento che funzionano tramite un motore elettrico. Vengono controllate con telecomando, interruttore a parete o sistemi domotici, offrendo il massimo comfort senza alcuno sforzo fisico.</p>
+          <p class="text-gray-600 leading-relaxed mb-6">In Prime Estores installiamo tende elettriche dei migliori marchi tra cui <strong>Somfy</strong>, <strong>Nice</strong>, <strong>Came</strong> e <strong>Becker</strong> in abitazioni e aziende di tutta la Grande Lisbona.</p>
+
+          <h2 class="text-2xl font-black text-[#1A1A1A] mb-4 mt-8">Vantaggi delle tende elettriche</h2>
+          <div class="grid sm:grid-cols-2 gap-4 mb-8">
+            {[
+              { title: 'Massimo comfort', desc: 'Controllo remoto senza sforzo fisico' },
+              { title: 'Compatibile con la domotica', desc: 'Integrazione con Google Home, Alexa e altri sistemi' },
+              { title: 'Programmazione automatica', desc: 'Imposta orari di apertura e chiusura automatici' },
+              { title: 'Sicurezza', desc: 'Simula la presenza in casa quando sei assente' },
+              { title: 'Efficienza energetica', desc: 'Riduce l\'ingresso di calore e risparmia sull\'aria condizionata' },
+              { title: 'Durata', desc: 'Motori duraturi con garanzia di 2 anni' },
+            ].map(item => (
+              <div class="flex gap-3 p-4 bg-[#F5F5F5] rounded-xl">
+                <svg class="w-5 h-5 text-[#8B1A1A] flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                </svg>
+                <div>
+                  <div class="font-semibold text-[#1A1A1A] text-sm">{item.title}</div>
+                  <div class="text-gray-500 text-xs mt-0.5">{item.desc}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <h2 class="text-2xl font-black text-[#1A1A1A] mb-4 mt-8">Zone di copertura</h2>
+          <p class="text-gray-600 leading-relaxed mb-4">Installiamo tende elettriche in tutta la <strong>Grande Lisbona</strong>, incluse: Lisbona (tutti i quartieri), Sintra, Cascais, Oeiras, Almada, Setúbal, Amadora, Loures, Odivelas e altro.</p>
+          <a href="/it/zone-servite" class="text-[#8B1A1A] font-semibold hover:underline text-sm">Vedi tutte le zone di copertura →</a>
+        </div>
+        <div class="space-y-6">
+          <ContactForm showTitle={true} lang={lang} />
+          <div class="bg-[#F5F5F5] rounded-2xl p-6">
+            <h3 class="font-bold text-[#1A1A1A] mb-4">Informazioni utili</h3>
+            <div class="space-y-3 text-sm">
+              {['Risposta entro 24h', 'Garanzia 2 anni', 'Preventivo 100% gratuito', 'Tecnici certificati'].map(item => (
+                <div class="flex items-center gap-2">
+                  <svg class="w-4 h-4 text-[#8B1A1A]" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                  </svg>
+                  <span class="text-gray-600">{item}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

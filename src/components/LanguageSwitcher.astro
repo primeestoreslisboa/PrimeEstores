@@ -1,0 +1,55 @@
+---
+import { languages } from '../i18n/utils';
+import { getEquivalentPath } from '../i18n/routes';
+import type { Lang } from '../i18n/routes';
+
+interface Props {
+  currentLang: string;
+  currentPath: string;
+}
+
+const { currentLang, currentPath } = Astro.props;
+
+const flags: Record<string, string> = {
+  pt: '🇵🇹',
+  en: '🇬🇧',
+  fr: '🇫🇷',
+  es: '🇪🇸',
+  de: '🇩🇪',
+  it: '🇮🇹',
+};
+
+// Pre-compute target URLs using the route equivalence map
+const langUrls = Object.fromEntries(
+  Object.keys(languages).map(lang => [
+    lang,
+    getEquivalentPath(currentPath, lang as Lang),
+  ])
+);
+---
+
+<div class="relative group lang-switcher">
+  <button
+    class="flex items-center gap-1 px-3 py-1.5 rounded border border-gray-200 hover:border-[#8B1A1A] transition-colors text-sm font-medium"
+    aria-label="Select language"
+    aria-haspopup="true"
+    aria-expanded="false"
+  >
+    <span>{flags[currentLang]}</span>
+    <span class="uppercase text-xs">{currentLang}</span>
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+    </svg>
+  </button>
+  <div class="absolute right-0 mt-1 w-40 bg-white rounded shadow-lg border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50">
+    {Object.entries(languages).map(([lang, name]) => (
+      <a
+        href={langUrls[lang]}
+        class={`flex items-center gap-2 px-3 py-2 text-sm hover:bg-gray-50 hover:text-[#8B1A1A] transition-colors ${lang === currentLang ? 'text-[#8B1A1A] font-medium bg-gray-50' : 'text-gray-700'}`}
+      >
+        <span>{flags[lang]}</span>
+        <span>{name}</span>
+      </a>
+    ))}
+  </div>
+</div>

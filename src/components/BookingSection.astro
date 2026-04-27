@@ -1,0 +1,398 @@
+---
+import { useTranslations } from '../i18n/utils';
+import type { Lang } from '../i18n/utils';
+
+export interface Props {
+  lang?: Lang;
+}
+
+const { lang = 'pt' } = Astro.props;
+const t = useTranslations(lang);
+
+const configuredEndpoint = (import.meta.env.PUBLIC_AGENDAMENTO_URL || '').trim().replace(/\/$/, '');
+const configuredBase = (import.meta.env.PUBLIC_AGENDAMENTO_API_BASE_URL || '').trim().replace(/\/$/, '');
+const endpoint = configuredEndpoint
+  || (configuredBase ? `${configuredBase}/api/public/agendamento` : '')
+  || 'https://primebussiness.netlify.app/api/public/agendamento';
+
+// Date/time locale mapping for slot display
+const localeMap: Record<string, string> = {
+  pt: 'pt-PT', en: 'en-GB', fr: 'fr-FR', es: 'es-ES', de: 'de-DE', it: 'it-IT',
+};
+const dtLocale = localeMap[lang] ?? 'pt-PT';
+---
+
+<div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 lg:p-8 relative">
+  <div
+    id="booking-overlay"
+    class="hidden absolute inset-0 z-20 bg-white/85 backdrop-blur-[1px] rounded-2xl items-center justify-center"
+    aria-live="polite"
+    aria-busy="true"
+  >
+    <div class="flex items-center gap-3 text-[#1A1A1A] font-semibold">
+      <svg class="w-5 h-5 animate-spin text-[#8B1A1A]" fill="none" viewBox="0 0 24 24" aria-hidden="true">
+        <circle class="opacity-20" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" />
+        <path class="opacity-90" fill="currentColor" d="M12 2a10 10 0 0 1 10 10h-4a6 6 0 0 0-6-6V2z" />
+      </svg>
+      {t('booking.processing')}
+    </div>
+  </div>
+
+  <div class="mb-6">
+    <h2 class="text-2xl font-black text-[#1A1A1A] mb-2">{t('booking.title')}</h2>
+    <p class="text-gray-600 text-sm">{t('booking.subtitle')}</p>
+  </div>
+
+  <div id="booking-feedback" class="hidden mb-4 p-4 rounded-lg text-sm font-medium" role="alert" aria-live="assertive"></div>
+
+  <form id="booking-form" class="space-y-5" novalidate data-endpoint={endpoint} data-lang={lang} data-locale={dtLocale}>
+    <!-- Available slots -->
+    <div>
+      <div class="flex items-center justify-between gap-2 mb-2">
+        <label class="block text-sm font-semibold text-[#1A1A1A]">
+          {t('booking.slots.label')} <span class="text-[#8B1A1A]">*</span>
+        </label>
+        <button type="button" id="refresh-slots" class="text-xs font-semibold text-[#8B1A1A] hover:text-[#A52020] transition-colors">
+          {t('booking.slots.refresh')}
+        </button>
+      </div>
+      <div id="slots-wrapper" class="rounded-xl border border-gray-200 p-3 bg-gray-50 min-h-[130px]">
+        <p id="slots-loading" class="text-sm text-gray-500">{t('booking.slots.loading')}</p>
+        <div id="slots-list" class="hidden space-y-3"></div>
+      </div>
+      <input type="hidden" name="horario_agendado" id="horario_agendado" required />
+      <p id="slot-error" class="hidden text-xs text-red-600 mt-2">{t('booking.slot.error')}</p>
+    </div>
+
+    <!-- Name + Phone -->
+    <div class="grid sm:grid-cols-2 gap-4">
+      <div>
+        <label for="booking-nome" class="block text-sm font-medium text-[#1A1A1A] mb-1.5">
+          {t('booking.field.name')} <span class="text-[#8B1A1A]">*</span>
+        </label>
+        <input type="text" id="booking-nome" name="nome" required
+          class="w-full px-4 py-2.5 rounded-lg border border-gray-200 text-[#1A1A1A] placeholder-gray-400 text-sm focus:outline-none focus:ring-2 focus:ring-[#8B1A1A] focus:border-transparent transition-colors"
+          placeholder={t('booking.field.name.placeholder')} />
+      </div>
+      <div>
+        <label for="booking-telefone" class="block text-sm font-medium text-[#1A1A1A] mb-1.5">
+          {t('booking.field.phone')} <span class="text-[#8B1A1A]">*</span>
+        </label>
+        <input type="tel" id="booking-telefone" name="telefone" required
+          class="w-full px-4 py-2.5 rounded-lg border border-gray-200 text-[#1A1A1A] placeholder-gray-400 text-sm focus:outline-none focus:ring-2 focus:ring-[#8B1A1A] focus:border-transparent transition-colors"
+          placeholder="+351 9XX XXX XXX" />
+      </div>
+    </div>
+
+    <!-- Email + Service -->
+    <div class="grid sm:grid-cols-2 gap-4">
+      <div>
+        <label for="booking-email" class="block text-sm font-medium text-[#1A1A1A] mb-1.5">
+          Email <span class="text-[#8B1A1A]">*</span>
+        </label>
+        <input type="email" id="booking-email" name="email" required
+          class="w-full px-4 py-2.5 rounded-lg border border-gray-200 text-[#1A1A1A] placeholder-gray-400 text-sm focus:outline-none focus:ring-2 focus:ring-[#8B1A1A] focus:border-transparent transition-colors"
+          placeholder="email@exemplo.com" />
+      </div>
+      <div>
+        <label for="booking-servico" class="block text-sm font-medium text-[#1A1A1A] mb-1.5">
+          {t('booking.field.service')} <span class="text-[#8B1A1A]">*</span>
+        </label>
+        <select id="booking-servico" name="servico" required
+          class="w-full px-4 py-2.5 rounded-lg border border-gray-200 text-[#1A1A1A] text-sm focus:outline-none focus:ring-2 focus:ring-[#8B1A1A] focus:border-transparent transition-colors bg-white">
+          <option value="">{t('booking.field.service.select')}</option>
+          <option value="Reparação de estores">{t('booking.service.repair')}</option>
+          <option value="Instalação de estores elétricos">{t('booking.service.electric')}</option>
+          <option value="Instalação de estores manuais">{t('booking.service.manual')}</option>
+          <option value="Serviços elétricos">{t('booking.service.electrical')}</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Postal + Address -->
+    <div class="grid sm:grid-cols-3 gap-4">
+      <div>
+        <label for="booking-postal" class="block text-sm font-medium text-[#1A1A1A] mb-1.5">
+          {t('booking.field.postal')} <span class="text-[#8B1A1A]">*</span>
+        </label>
+        <input type="text" id="booking-postal" name="codigo_postal" required
+          class="w-full px-4 py-2.5 rounded-lg border border-gray-200 text-[#1A1A1A] text-sm focus:outline-none focus:ring-2 focus:ring-[#8B1A1A] focus:border-transparent transition-colors"
+          placeholder="1000-000" />
+      </div>
+      <div class="sm:col-span-2">
+        <label for="booking-morada" class="block text-sm font-medium text-[#1A1A1A] mb-1.5">
+          {t('booking.field.address')} <span class="text-[#8B1A1A]">*</span>
+        </label>
+        <input type="text" id="booking-morada" name="morada" required
+          class="w-full px-4 py-2.5 rounded-lg border border-gray-200 text-[#1A1A1A] text-sm focus:outline-none focus:ring-2 focus:ring-[#8B1A1A] focus:border-transparent transition-colors"
+          placeholder={t('booking.field.address.placeholder')} />
+      </div>
+    </div>
+
+    <!-- District + City -->
+    <div class="grid sm:grid-cols-2 gap-4">
+      <div>
+        <label for="booking-bairro" class="block text-sm font-medium text-[#1A1A1A] mb-1.5">
+          {t('booking.field.district')} <span class="text-[#8B1A1A]">*</span>
+        </label>
+        <input type="text" id="booking-bairro" name="bairro" required
+          class="w-full px-4 py-2.5 rounded-lg border border-gray-200 text-[#1A1A1A] text-sm focus:outline-none focus:ring-2 focus:ring-[#8B1A1A] focus:border-transparent transition-colors"
+          placeholder={t('booking.field.district.placeholder')} />
+      </div>
+      <div>
+        <label for="booking-cidade" class="block text-sm font-medium text-[#1A1A1A] mb-1.5">
+          {t('booking.field.city')} <span class="text-[#8B1A1A]">*</span>
+        </label>
+        <input type="text" id="booking-cidade" name="cidade" required
+          class="w-full px-4 py-2.5 rounded-lg border border-gray-200 text-[#1A1A1A] text-sm focus:outline-none focus:ring-2 focus:ring-[#8B1A1A] focus:border-transparent transition-colors"
+          placeholder={t('booking.field.city.placeholder')} />
+      </div>
+    </div>
+
+    <!-- Description -->
+    <div>
+      <label for="booking-descricao" class="block text-sm font-medium text-[#1A1A1A] mb-1.5">
+        {t('booking.field.description')} <span class="text-[#8B1A1A]">*</span>
+      </label>
+      <textarea id="booking-descricao" name="descricao" rows={4} required
+        class="w-full px-4 py-2.5 rounded-lg border border-gray-200 text-[#1A1A1A] text-sm focus:outline-none focus:ring-2 focus:ring-[#8B1A1A] focus:border-transparent transition-colors resize-vertical"
+        placeholder={t('booking.field.description.placeholder')}></textarea>
+    </div>
+
+    <!-- Consent -->
+    <label class="flex items-start gap-3 text-xs text-gray-500 leading-relaxed cursor-pointer">
+      <input type="checkbox" id="consentimento" required
+        class="mt-0.5 h-4 w-4 rounded border-gray-300 text-[#8B1A1A] focus:ring-[#8B1A1A] flex-shrink-0" />
+      <span>{t('booking.consent')}</span>
+    </label>
+
+    <button type="submit"
+      class="w-full flex items-center justify-center gap-2 bg-[#8B1A1A] text-white font-bold py-3.5 px-6 rounded-lg hover:bg-[#A52020] active:bg-[#6B1212] transition-colors text-base disabled:opacity-60 disabled:cursor-not-allowed">
+      {t('booking.submit')}
+    </button>
+  </form>
+</div>
+
+<script>
+  const form = document.getElementById('booking-form') as HTMLFormElement | null;
+  if (form) {
+    const endpoint = form.dataset.endpoint || '/api/public/agendamento';
+    const dtLocale = form.dataset.locale || 'pt-PT';
+    const slotsLoading = document.getElementById('slots-loading');
+    const slotsList = document.getElementById('slots-list');
+    const selectedInput = document.getElementById('horario_agendado') as HTMLInputElement | null;
+    const slotError = document.getElementById('slot-error');
+    const feedback = document.getElementById('booking-feedback');
+    const overlay = document.getElementById('booking-overlay');
+    const refreshBtn = document.getElementById('refresh-slots') as HTMLButtonElement | null;
+
+    // Read translated messages from data attributes on the slots-loading element
+    const lang = form.dataset.lang ?? 'pt';
+    const msgs: Record<string, Record<string, string>> = {
+      pt: {
+        empty: 'Não existem vagas no momento. Tente novamente mais tarde.',
+        loadError: 'Não foi possível carregar a agenda online neste momento.',
+        slotTaken: 'Este horário acabou de ser reservado. Escolha outro horário.',
+        success: 'Marcação enviada com sucesso. Receberá confirmação em breve.',
+        error: 'Não foi possível concluir a marcação. Tente novamente.',
+      },
+      en: {
+        empty: 'No slots available at the moment. Please try again later.',
+        loadError: 'Could not load the online schedule at this time.',
+        slotTaken: 'This slot was just taken. Please choose another time.',
+        success: 'Booking submitted successfully. You will receive confirmation shortly.',
+        error: 'Could not complete the booking. Please try again.',
+      },
+      fr: {
+        empty: 'Aucun créneau disponible pour le moment. Réessayez plus tard.',
+        loadError: 'Impossible de charger le planning en ligne pour le moment.',
+        slotTaken: "Ce créneau vient d'être réservé. Veuillez en choisir un autre.",
+        success: 'Réservation envoyée avec succès. Vous recevrez une confirmation bientôt.',
+        error: "La réservation n'a pas pu être effectuée. Veuillez réessayer.",
+      },
+      es: {
+        empty: 'No hay horarios disponibles en este momento. Inténtelo de nuevo más tarde.',
+        loadError: 'No se ha podido cargar la agenda en línea en este momento.',
+        slotTaken: 'Este horario acaba de ser reservado. Por favor elija otro.',
+        success: 'Reserva enviada con éxito. Recibirá confirmación en breve.',
+        error: 'No se ha podido completar la reserva. Por favor inténtelo de nuevo.',
+      },
+      de: {
+        empty: 'Aktuell sind keine Termine verfügbar. Bitte versuchen Sie es später erneut.',
+        loadError: 'Der Online-Terminkalender konnte zurzeit nicht geladen werden.',
+        slotTaken: 'Dieser Termin wurde gerade gebucht. Bitte wählen Sie einen anderen.',
+        success: 'Buchung erfolgreich übermittelt. Sie erhalten in Kürze eine Bestätigung.',
+        error: 'Die Buchung konnte nicht abgeschlossen werden. Bitte versuchen Sie es erneut.',
+      },
+      it: {
+        empty: 'Non ci sono appuntamenti disponibili al momento. Riprova più tardi.',
+        loadError: "Impossibile caricare l'agenda online in questo momento.",
+        slotTaken: 'Questo orario è appena stato prenotato. Scegli un altro orario.',
+        success: 'Prenotazione inviata con successo. Riceverai presto una conferma.',
+        error: 'Impossibile completare la prenotazione. Riprova.',
+      },
+    };
+    const m = msgs[lang] ?? msgs['pt'];
+
+    const fmtDate = new Intl.DateTimeFormat(dtLocale, { weekday: 'short', day: '2-digit', month: '2-digit' });
+    const fmtTime = new Intl.DateTimeFormat(dtLocale, { hour: '2-digit', minute: '2-digit' });
+    let currentSelected = '';
+
+    function setOverlay(visible: boolean) {
+      if (!overlay) return;
+      overlay.classList.toggle('hidden', !visible);
+      overlay.classList.toggle('flex', visible);
+    }
+
+    function showFeedback(type: 'ok' | 'error', message: string) {
+      if (!feedback) return;
+      feedback.className = `mb-4 p-4 rounded-lg text-sm font-medium ${
+        type === 'ok'
+          ? 'bg-green-50 border border-green-200 text-green-800'
+          : 'bg-red-50 border border-red-200 text-red-800'
+      }`;
+      feedback.textContent = message;
+      feedback.classList.remove('hidden');
+    }
+
+    function clearFeedback() {
+      feedback?.classList.add('hidden');
+      if (feedback) feedback.textContent = '';
+    }
+
+    function groupSlots(slots: string[]) {
+      return slots.reduce((acc, slot) => {
+        const day = slot.slice(0, 10);
+        (acc[day] ||= []).push(slot);
+        return acc;
+      }, {} as Record<string, string[]>);
+    }
+
+    function selectSlot(slot: string) {
+      currentSelected = slot;
+      if (selectedInput) selectedInput.value = slot;
+      slotError?.classList.add('hidden');
+      document.querySelectorAll<HTMLButtonElement>('[data-slot-btn]').forEach((btn) => {
+        const active = btn.dataset.slot === slot;
+        btn.classList.toggle('bg-[#8B1A1A]', active);
+        btn.classList.toggle('text-white', active);
+        btn.classList.toggle('border-[#8B1A1A]', active);
+        btn.classList.toggle('bg-white', !active);
+        btn.classList.toggle('text-[#1A1A1A]', !active);
+      });
+    }
+
+    function renderSlots(slots: string[]) {
+      if (!slotsList || !slotsLoading) return;
+      slotsLoading.classList.add('hidden');
+      slotsList.classList.remove('hidden');
+      slotsList.innerHTML = '';
+
+      if (!slots.length) {
+        slotsList.innerHTML = `<p class="text-sm text-gray-500">${m.empty}</p>`;
+        return;
+      }
+
+      const grouped = groupSlots(slots);
+      Object.entries(grouped).forEach(([day, daySlots]) => {
+        const date = new Date(`${day}T00:00:00`);
+        const row = document.createElement('div');
+        row.className = 'bg-white border border-gray-200 rounded-lg p-3';
+
+        const title = document.createElement('p');
+        title.className = 'text-xs font-semibold uppercase tracking-wide text-gray-500 mb-2';
+        title.textContent = fmtDate.format(date);
+        row.appendChild(title);
+
+        const grid = document.createElement('div');
+        grid.className = 'flex flex-wrap gap-2';
+
+        daySlots.forEach((slot) => {
+          const dateSlot = new Date(slot);
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.dataset.slotBtn = '1';
+          btn.dataset.slot = slot;
+          btn.className =
+            'px-3 py-1.5 rounded-full border border-gray-300 bg-white text-[#1A1A1A] text-xs font-semibold hover:border-[#8B1A1A] hover:text-[#8B1A1A] transition-colors';
+          btn.textContent = fmtTime.format(dateSlot);
+          btn.addEventListener('click', () => selectSlot(slot));
+          grid.appendChild(btn);
+        });
+
+        row.appendChild(grid);
+        slotsList.appendChild(row);
+      });
+    }
+
+    async function loadSlots(options: { clearFeedback?: boolean } = {}) {
+      if (options.clearFeedback ?? true) clearFeedback();
+      if (!slotsLoading || !slotsList) return;
+      slotsLoading.classList.remove('hidden');
+      slotsList.classList.add('hidden');
+      slotsList.innerHTML = '';
+
+      try {
+        const res = await fetch(`${endpoint}?days=7`);
+        const data = await res.json();
+        if (!res.ok || !Array.isArray(data?.slots)) throw new Error('invalid_slots');
+        renderSlots(data.slots);
+      } catch {
+        slotsLoading.classList.add('hidden');
+        slotsList.classList.remove('hidden');
+        slotsList.innerHTML = `<p class="text-sm text-red-600">${m.loadError}</p>`;
+      }
+    }
+
+    refreshBtn?.addEventListener('click', () => loadSlots());
+    loadSlots();
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      clearFeedback();
+
+      const missingSlot = !selectedInput?.value;
+      if (missingSlot) slotError?.classList.remove('hidden');
+      if (!form.checkValidity() || missingSlot) { form.reportValidity(); return; }
+
+      const submitBtn = form.querySelector('button[type="submit"]') as HTMLButtonElement | null;
+      if (submitBtn) submitBtn.disabled = true;
+      setOverlay(true);
+
+      try {
+        const formData = new FormData(form);
+        const servico = `${formData.get('servico') || ''}`.trim();
+        const descricao = `${formData.get('descricao') || ''}`.trim();
+        const payload = Object.fromEntries(formData.entries());
+        payload.descricao = `${servico} - ${descricao}`;
+        delete payload.consentimento;
+        delete payload.servico;
+
+        const res = await fetch(endpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+        const data = await res.json();
+
+        if (res.status === 409 || data?.error === 'slot_unavailable') {
+          showFeedback('error', m.slotTaken);
+          await loadSlots();
+          return;
+        }
+        if (!res.ok || !data?.ok) throw new Error('booking_error');
+
+        showFeedback('ok', m.success);
+        form.reset();
+        currentSelected = '';
+        if (selectedInput) selectedInput.value = '';
+        await loadSlots({ clearFeedback: false });
+      } catch {
+        showFeedback('error', m.error);
+      } finally {
+        setOverlay(false);
+        if (submitBtn) submitBtn.disabled = false;
+      }
+    });
+  }
+</script>

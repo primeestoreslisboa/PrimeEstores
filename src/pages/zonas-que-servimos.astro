@@ -1,0 +1,174 @@
+﻿---
+import Layout from '../layouts/Layout.astro';
+
+const zonas = [
+  {
+    nome: 'Lisboa',
+    slug: 'lisboa',
+    descricao: 'Servimos todos os bairros e freguesias de Lisboa, desde Alfama e Mouraria ao Parque das Nações, Belém, Alvalade, Areeiro, Lumiar, Benfica e todos os outros. A capital é a nossa zona de atuação principal, com maior disponibilidade de agenda para intervenções rápidas.',
+  },
+  {
+    nome: 'Sintra',
+    slug: 'sintra',
+    descricao: 'Cobrimos todo o concelho de Sintra, incluindo as zonas de Sintra Vila, Rio de Mouro, Agualva-Cacém, Algueirão-Mem Martins, Queluz, Massamá e Belas. Deslocamo-nos a todas as localidades do município para instalação e reparação de estores.',
+  },
+  {
+    nome: 'Cascais',
+    slug: 'cascais',
+    descricao: 'Prestamos serviço em todo o concelho de Cascais, incluindo Cascais centro, Estoril, Parede, Carcavelos, São Domingos de Rana e Alcabideche. Zona com elevada procura de estores elétricos para habitações e moradias.',
+  },
+  {
+    nome: 'Oeiras',
+    slug: 'oeiras',
+    descricao: 'Servimos todo o município de Oeiras, incluindo Oeiras centro, Porto Salvo, Barcarena, Carnaxide, Linda-a-Velha, Algés e Cruz Quebrada. Intervenção rápida em toda a zona ribeirinha de Oeiras.',
+  },
+  {
+    nome: 'Almada',
+    slug: 'almada',
+    descricao: 'Cobrimos Almada e todas as suas localidades, incluindo Costa da Caparica, Trafaria, Cacilhas, Almada Velha, Cova da Piedade e Laranjeiro. Estamos disponíveis para instalações e reparações urgentes na margem sul.',
+  },
+  {
+    nome: 'Setúbal',
+    slug: 'setubal',
+    descricao: 'Prestamos serviço no concelho de Setúbal e arredores, incluindo a cidade de Setúbal e zonas como Azeitão, São Bernardo e Sado. Instalação e reparação de estores elétricos e manuais para habitação e comércio.',
+  },
+  {
+    nome: 'Amadora',
+    slug: 'amadora',
+    descricao: 'Cobrimos todo o município da Amadora, incluindo Alfornelos, Brandoa, Damaia, Falagueira, Mina de Água, Reboleira e Venteira. Zona com alta densidade urbana onde servimos múltiplos clientes semanalmente.',
+  },
+  {
+    nome: 'Loures',
+    slug: 'loures',
+    descricao: 'Servimos o concelho de Loures, incluindo Loures centro, Odivelas (até à separação municipal), Sacavém, Santa Iria de Azóia, Moscavide, Prior Velho e arredores. Rapidez de resposta garantida.',
+  },
+  {
+    nome: 'Odivelas',
+    slug: 'odivelas',
+    descricao: 'Cobrimos todo o município de Odivelas, incluindo Odivelas centro, Pontinha, Famões, Póvoa de Santo Adrião e Ramada. Município com crescente procura de serviços de instalação de estores elétricos.',
+  },
+  {
+    nome: 'Vila Franca de Xira',
+    slug: 'vila-franca-de-xira',
+    descricao: 'Prestamos serviço em Vila Franca de Xira e todo o seu município, incluindo Alverca do Ribatejo, Vialonga, Sobralinho, Forte da Casa e Alhandra. Cobertura completa da margem direita do Tejo.',
+  },
+  {
+    nome: 'Mafra',
+    slug: 'mafra',
+    descricao: 'Cobrimos o concelho de Mafra, incluindo Mafra centro, Ericeira, Malveira, Cheleiros e outras localidades. Zona periférica onde nos deslocamos regularmente para instalações e reparações.',
+  },
+  {
+    nome: 'Sesimbra',
+    slug: 'sesimbra',
+    descricao: 'Servimos Sesimbra e o seu município, incluindo Sesimbra centro, Santana, Cotovia e Quinta do Conde. Zona costeira com elevada procura de estores para proteção solar em segundas habitações.',
+  },
+  {
+    nome: 'Palmela',
+    slug: 'palmela',
+    descricao: 'Cobrimos o município de Palmela, incluindo Palmela centro, Pinhal Novo, Quinta do Anjo e Poceirão. Deslocamo-nos a todas as localidades para serviços de instalação e reparação de estores.',
+  },
+];
+---
+
+<Layout
+  title="Zonas que Servimos | Prime Estores - Grande Lisboa"
+  description="Instalação e reparação de estores em toda a Grande Lisboa: Lisboa, Sintra, Cascais, Oeiras, Almada, Setúbal, Amadora, Loures, Odivelas e mais. Orçamento grátis."
+  keywords="estores Lisboa, estores Sintra, estores Cascais, estores Oeiras, estores Almada, estores Grande Lisboa, reparação estores, instalação estores"
+>
+
+  <!-- Hero -->
+  <section class="bg-gradient-to-br from-[#1A1A1A] to-[#8B1A1A] text-white py-16 lg:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <nav aria-label="Breadcrumb" class="mb-6">
+        <ol class="flex items-center gap-2 text-sm text-white/60">
+          <li><a href="/" class="hover:text-white transition-colors">Início</a></li>
+          <li aria-hidden="true"><span>/</span></li>
+          <li><span class="text-white">Zonas que Servimos</span></li>
+        </ol>
+      </nav>
+      <div class="max-w-3xl">
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black leading-tight mb-4">
+          Zonas que Servimos na Grande Lisboa
+        </h1>
+        <p class="text-xl text-white/80 leading-relaxed mb-6">
+          Cobrimos todos os municípios da Grande Lisboa com serviços de instalação e reparação de estores elétricos e manuais.
+        </p>
+        <div class="flex flex-wrap gap-2">
+          {zonas.slice(0,6).map(zona => (
+            <a href={`#${zona.slug}`} class="bg-white/10 border border-white/20 text-white text-xs font-medium px-3 py-1.5 rounded-full hover:bg-white/20 transition-colors">
+              {zona.nome}
+            </a>
+          ))}
+          <span class="bg-white/10 border border-white/20 text-white/60 text-xs font-medium px-3 py-1.5 rounded-full">
+            +{zonas.length - 6} mais
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Introduction -->
+  <section class="py-12 bg-white border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl">
+        <h2 class="text-2xl font-black text-[#1A1A1A] mb-4">Cobertura total da Grande Lisboa</h2>
+        <p class="text-gray-600 leading-relaxed mb-4">
+          A Prime Estores presta serviços de instalação e reparação de estores elétricos e manuais em toda a <strong>Grande Lisboa</strong> e municípios vizinhos. Contamos com uma equipa de técnicos distribuída pela região para garantir tempos de resposta rápidos.
+        </p>
+        <p class="text-gray-600 leading-relaxed">
+          Para além das zonas listadas, contacte-nos para verificar disponibilidade noutras localidades. Sempre que possível, esforçamo-nos por chegar a qualquer ponto da área metropolitana de Lisboa.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Zones list -->
+  <section class="py-16 lg:py-20 bg-[#F5F5F5]" aria-labelledby="zonas-heading">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 id="zonas-heading" class="sr-only">Municípios onde prestamos serviço</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {zonas.map(zona => (
+          <article id={zona.slug} class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow scroll-mt-24">
+            <div class="flex items-start gap-3 mb-3">
+              <div class="w-8 h-8 bg-[#8B1A1A] rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                </svg>
+              </div>
+              <h3 class="text-xl font-black text-[#1A1A1A]">{zona.nome}</h3>
+            </div>
+            <p class="text-gray-600 text-sm leading-relaxed mb-4">{zona.descricao}</p>
+            <a
+              href="/orcamento"
+              class="inline-flex items-center gap-1 text-[#8B1A1A] font-semibold text-sm hover:gap-2 transition-all hover:underline"
+            >
+              Pedir orçamento em {zona.nome}
+              <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+              </svg>
+            </a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 bg-[#8B1A1A] text-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-black mb-4">Não vê a sua zona?</h2>
+      <p class="text-red-100 text-lg mb-8">
+        Contacte-nos para verificar disponibilidade. Sempre que possível, deslocamo-nos a qualquer ponto da área metropolitana de Lisboa.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/orcamento" class="inline-flex items-center justify-center gap-2 bg-white text-[#8B1A1A] font-bold px-8 py-4 rounded-lg hover:bg-gray-100 transition-colors">
+          Pedir Orçamento Grátis
+        </a>
+        <a href="tel:+351923348323" class="inline-flex items-center justify-center gap-2 border-2 border-white text-white font-bold px-8 py-4 rounded-lg hover:bg-white/10 transition-colors">
+          +351 923 348 323
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Layout>

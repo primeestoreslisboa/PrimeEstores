@@ -1,0 +1,89 @@
+﻿---
+import { ui } from '../i18n/ui';
+
+export interface Props {
+  title: string;
+  description: string;
+  lang?: string;
+  keywords?: string;
+  canonicalURL?: string;
+  ogImage?: string;
+  ogType?: string;
+  noindex?: boolean;
+}
+
+const {
+  title,
+  description,
+  lang = 'pt',
+  canonicalURL = Astro.url.href,
+  ogImage = 'https://www.primeestores.pt/og-image.jpg',
+  ogType = 'website',
+  noindex = false,
+} = Astro.props;
+
+// Keywords: use prop if provided, otherwise fall back to language-specific default
+const langUi = ui[lang as keyof typeof ui] ?? ui['pt'];
+const defaultKeywords = (langUi as Record<string, string>)['seo.keywords'] ?? (ui['pt'] as Record<string, string>)['seo.keywords'];
+const keywords = Astro.props.keywords ?? defaultKeywords;
+
+const siteName = 'Prime Estores';
+
+// Map language code to BCP-47 and Open Graph locale
+const langMeta: Record<string, { bcp47: string; ogLocale: string }> = {
+  pt: { bcp47: 'pt-PT', ogLocale: 'pt_PT' },
+  en: { bcp47: 'en-GB', ogLocale: 'en_GB' },
+  fr: { bcp47: 'fr-FR', ogLocale: 'fr_FR' },
+  es: { bcp47: 'es-ES', ogLocale: 'es_ES' },
+  de: { bcp47: 'de-DE', ogLocale: 'de_DE' },
+  it: { bcp47: 'it-IT', ogLocale: 'it_IT' },
+};
+const { bcp47, ogLocale } = langMeta[lang] ?? langMeta['pt'];
+
+// og:locale:alternate — all other languages
+const altLocales = Object.entries(langMeta)
+  .filter(([code]) => code !== lang)
+  .map(([, meta]) => meta.ogLocale);
+---
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#8B1A1A" />
+
+<!-- Primary Meta Tags -->
+<title>{title}</title>
+<meta name="title" content={title} />
+<meta name="description" content={description} />
+{keywords && <meta name="keywords" content={keywords} />}
+<meta name="author" content={siteName} />
+<meta name="language" content={bcp47} />
+{noindex ? <meta name="robots" content="noindex, nofollow" /> : <meta name="robots" content="index, follow" />}
+
+<!-- Canonical -->
+<link rel="canonical" href={canonicalURL} />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content={ogType} />
+<meta property="og:url" content={canonicalURL} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={ogImage} />
+<meta property="og:site_name" content={siteName} />
+<meta property="og:locale" content={ogLocale} />
+{altLocales.map(alt => <meta property="og:locale:alternate" content={alt} />)}
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content={canonicalURL} />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImage} />
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+<!-- Preconnect for performance -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
