@@ -1,0 +1,210 @@
+﻿Diagnose log at 2026-04-27T14:08:43Z
+
+Executable: C:\Program Files\Git\mingw64\libexec\git-core\git-credential-manager-core.exe
+Version: 2.0.632+478753bbb7
+
+------------
+Diagnostic: Environment
+Skipped: False
+Success: True
+Exception: None
+Log:
+OSType: Windows
+OSVersion: 10.0 (build 26200)
+Reading environment variables... OK
+ Variables:
+PROCESSOR_ARCHITEW6432=AMD64
+DriverData=C:\Windows\System32\Drivers\DriverData
+COMPUTERNAME=LAPTOP-F6R8K344
+CommonProgramFiles(x86)=C:\Program Files (x86)\Common Files
+EFC_11616_3789132940=1
+OneDrive=C:\Users\Edward\OneDrive
+HOMEPATH=\Users\Edward
+SESSIONNAME=Console
+LANG=en_US.UTF-8
+EFC_11616_2283032206=1
+PROCESSOR_REVISION=8c01
+PATHEXT=.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.CPL
+VSCODE_INJECTION=1
+EFC_11616_2397410445=1
+GIT_EXEC_PATH=C:/Program Files/Git/mingw64/libexec/git-core
+TEMP=C:\Users\Edward\AppData\Local\Temp
+EFC_11616_1592913036=1
+MSYSTEM=MINGW64
+TERM=cygwin
+GIT_EDITOR=:
+VSCODE_PYTHON_AUTOACTIVATE_GUARD=1
+COLORTERM=truecolor
+windir=C:\WINDOWS
+USERDOMAIN=LAPTOP-F6R8K344
+EFC_11616_2775293581=1
+TERM_PROGRAM=vscode
+PROCESSOR_LEVEL=6
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 140 Stepping 1, GenuineIntel
+TMPDIR=C:\Users\Edward\AppData\Local\Temp
+VSCODE_GIT_ASKPASS_EXTRA_ARGS=
+TERM_PROGRAM_VERSION=1.117.0
+GIT_ASKPASS=c:\Users\Edward\AppData\Roaming\Code\User\globalStorage\vscode.git\askpass\493597c785d4c5cb\askpass.sh
+ProgramFiles(x86)=C:\Program Files (x86)
+PUBLIC=C:\Users\Public
+NUMBER_OF_PROCESSORS=8
+FPS_BROWSER_USER_PROFILE_STRING=Default
+CommonProgramFiles=C:\Program Files (x86)\Common Files
+NODE_OPTIONS=
+GIT_MERGE_AUTOEDIT=no
+VSCODE_GIT_IPC_HANDLE=\\.\pipe\vscode-git-1c97431873-sock
+CHROME_CRASHPAD_PIPE_NAME=\\.\pipe\crashpad_26520_JKGDITJXVGZAYAGU
+VSCODE_GIT_ASKPASS_MAIN=c:\Users\Edward\AppData\Roaming\Code\User\globalStorage\vscode.git\askpass\493597c785d4c5cb\askpass-main.js
+PLINK_PROTOCOL=ssh
+ProgramData=C:\ProgramData
+ProgramW6432=C:\Program Files
+GIT_PAGER=cat
+ProgramFiles=C:\Program Files (x86)
+EFC_11616_1262719628=1
+VSCODE_GIT_ASKPASS_NODE=C:\Users\Edward\AppData\Local\Programs\Microsoft VS Code\Code.exe
+SystemRoot=C:\WINDOWS
+HOME=C:\Users\Edward
+SystemDrive=C:
+LOCALAPPDATA=C:\Users\Edward\AppData\Local
+CommonProgramW6432=C:\Program Files\Common Files
+ZES_ENABLE_SYSMAN=1
+LOGONSERVER=\\LAPTOP-F6R8K344
+USERPROFILE=C:\Users\Edward
+USERDOMAIN_ROAMINGPROFILE=LAPTOP-F6R8K344
+APPDATA=C:\Users\Edward\AppData\Roaming
+HOMEDRIVE=C:
+PSModulePath=C:\Users\Edward\Documents\WindowsPowerShell\Modules;C:\Program Files\WindowsPowerShell\Modules;C:\WINDOWS\system32\WindowsPowerShell\v1.0\Modules
+USERNAME=Edward
+FPS_BROWSER_APP_PROFILE_STRING=Internet Explorer
+PROCESSOR_ARCHITECTURE=x86
+OS=Windows_NT
+ComSpec=C:\WINDOWS\system32\cmd.exe
+Path=C:/Program Files/Git/mingw64/libexec/git-core;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\Edward\bin;c:\Users\Edward\AppData\Roaming\Code\User\globalStorage\github.copilot-chat\debugCommand;c:\Users\Edward\AppData\Roaming\Code\User\globalStorage\github.copilot-chat\copilotCli;C:\Users\Edward\AppData\Local\Programs\Microsoft VS Code;C:\Program Files (x86)\Common Files\Oracle\Java\java8path;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files\Microsoft SDKs\Azure\CLI2\wbin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files\Azure Data Studio\bin;C:\Program Files\Git\cmd;C:\Program Files\dotnet\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\Microsoft SQL Server\160\DTS\Binn\;C:\Program Files\nodejs\;C:\Program Files\Microsoft SQL Server\170\Tools\Binn\;C:\Program Files (x86)\Windows Kits\10\Windows Performance Toolkit\;C:\Users\Edward\AppData\Local\Microsoft\WindowsApps;C:\Users\Edward\.dotnet\tools;C:\Users\Edward\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files\Azure Data Studio\bin;C:\Users\Edward\AppData\Roaming\npm;C:\Users\Edward\AppData\Local\Programs\Antigravity\bin
+TMP=C:\Users\Edward\AppData\Local\Temp
+OneDriveConsumer=C:\Users\Edward\OneDrive
+ALLUSERSPROFILE=C:\ProgramData
+
+
+------------
+Diagnostic: File system
+Skipped: False
+Success: True
+Exception: None
+Log:
+Temporary directory is 'C:\Users\Edward\AppData\Local\Temp\'...
+Checking basic file I/O...
+Writing to temporary file 'C:\Users\Edward\AppData\Local\Temp\db014d5283942201a02f18af'... OK
+Reading from temporary file 'C:\Users\Edward\AppData\Local\Temp\db014d5283942201a02f18af'... OK
+Deleting temporary file 'C:\Users\Edward\AppData\Local\Temp\db014d5283942201a02f18af'... OK
+Testing IFileSystem instance...
+UserHomePath: C:\Users\Edward
+UserDataDirectoryPath: C:\Users\Edward\.gcm
+GetCurrentDirectory(): C:\Users\Edward\source\repos\Prime
+
+------------
+Diagnostic: Networking
+Skipped: False
+Success: True
+Exception: None
+Log:
+Checking basic networking and HTTP stack...
+Creating HTTP client... OK
+IsNetworkAvailable: True
+Sending HEAD request to http://example.com... OK
+Sending HEAD request to https://example.com... OK
+Acquiring free TCP port... OK
+Testing local HTTP loopback connections...
+Creating new HTTP listener for http://localhost:58601/... OK
+Waiting for loopback connection... OK
+Writing response... OK
+Waiting for response data... OK
+Loopback connection data OK
+Testing with IHttpClientFactory created HTTP client...
+Creating HTTP client... OK
+IsNetworkAvailable: True
+Sending HEAD request to http://example.com... OK
+Sending HEAD request to https://example.com... OK
+Acquiring free TCP port... OK
+Testing local HTTP loopback connections...
+Creating new HTTP listener for http://localhost:53710/... OK
+Waiting for loopback connection... OK
+Writing response... OK
+Waiting for response data... OK
+Loopback connection data OK
+
+------------
+Diagnostic: Git
+Skipped: False
+Success: True
+Exception: None
+Log:
+Getting Git version... OK
+Git version is '2.35.1.windows.2'
+Locating current repository... OK
+Git repository at 'C:/Users/Edward/source/repos/Prime/.git'
+Listing all Git configuration... OK
+Git configuration:
+file:C:/Program Files/Git/etc/gitconfig	diff.astextplain.textconv=astextplain
+file:C:/Program Files/Git/etc/gitconfig	filter.lfs.clean=git-lfs clean -- %f
+file:C:/Program Files/Git/etc/gitconfig	filter.lfs.smudge=git-lfs smudge -- %f
+file:C:/Program Files/Git/etc/gitconfig	filter.lfs.process=git-lfs filter-process
+file:C:/Program Files/Git/etc/gitconfig	filter.lfs.required=true
+file:C:/Program Files/Git/etc/gitconfig	http.sslbackend=openssl
+file:C:/Program Files/Git/etc/gitconfig	http.sslcainfo=C:/Program Files/Git/mingw64/ssl/certs/ca-bundle.crt
+file:C:/Program Files/Git/etc/gitconfig	core.autocrlf=true
+file:C:/Program Files/Git/etc/gitconfig	core.fscache=true
+file:C:/Program Files/Git/etc/gitconfig	core.symlinks=false
+file:C:/Program Files/Git/etc/gitconfig	pull.rebase=false
+file:C:/Program Files/Git/etc/gitconfig	credential.helper=manager-core
+file:C:/Program Files/Git/etc/gitconfig	credential.https://dev.azure.com.usehttppath=true
+file:C:/Program Files/Git/etc/gitconfig	init.defaultbranch=master
+file:C:/Users/Edward/.gitconfig	user.email=edward.silva@mixmove.pt
+file:C:/Users/Edward/.gitconfig	user.name=edwardcarvalho
+file:C:/Users/Edward/.gitconfig	credential.https://qa-mixmove-keys-fe.scm.azurewebsites.net.provider=generic
+file:C:/Users/Edward/.gitconfig	credential.https://qa-mixmove-node-middleware.scm.azurewebsites.net.provider=generic
+file:C:/Users/Edward/.gitconfig	credential.helper=manager-core
+file:.git/config	core.repositoryformatversion=0
+file:.git/config	core.filemode=false
+file:.git/config	core.bare=false
+file:.git/config	core.logallrefupdates=true
+file:.git/config	core.symlinks=false
+file:.git/config	core.ignorecase=true
+file:.git/config	remote.origin.url=https://github.com/primeestoreslisboa/PrimeEstores.git
+file:.git/config	remote.origin.fetch=+refs/heads/*:refs/remotes/origin/*
+
+
+------------
+Diagnostic: Credential storage
+Skipped: False
+Success: True
+Exception: None
+Log:
+ICredentialStore instance is of type: CredentialStore
+Writing test credential... OK
+Reading test credential... OK
+Deleting test credential... OK
+
+------------
+Diagnostic: Microsoft authentication (AAD/MSA)
+Skipped: False
+Success: True
+Exception: None
+Log:
+Broker not supported.
+Flow type is: Auto
+Gathering MSAL token cache data... OK
+CacheDirectory: C:\Users\Edward\AppData\Local\.IdentityService
+CacheFileName: msal.cache
+CacheFilePath: C:\Users\Edward\AppData\Local\.IdentityService\msal.cache
+Creating cache helper... OK
+Verifying MSAL token cache persistence... OK
+
+------------
+Diagnostic: GitHub API
+Skipped: False
+Success: True
+Exception: None
+Log:
+Using 'https://github.com/' as API target.
+Querying '/meta' endpoint... OK
+
