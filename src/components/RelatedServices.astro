@@ -1,0 +1,90 @@
+---
+export type ServiceType = 'electric' | 'manual' | 'repair' | 'electrical';
+export type Lang = 'pt' | 'en' | 'fr' | 'es' | 'de' | 'it';
+
+export interface Props {
+  lang?: Lang;
+  current: ServiceType;
+}
+
+const { lang = 'pt', current } = Astro.props;
+
+interface ServiceLink {
+  label: string;
+  desc: string;
+  href: string;
+  icon: string;
+}
+
+const allServices: Record<Lang, Record<ServiceType, ServiceLink>> = {
+  pt: {
+    electric:   { label: 'Estores Elétricos',  desc: 'Instalação de sistemas motorizados com comando à distância.',      href: '/servicos/estores-eletricos',  icon: '⚡' },
+    manual:     { label: 'Estores Manuais',     desc: 'Instalação de estores de enrolar e rolo manuais.',                 href: '/servicos/estores-manuais',    icon: '🪟' },
+    repair:     { label: 'Reparação',           desc: 'Reparação urgente de qualquer tipo de estore.',                    href: '/servicos/reparacao-estores',  icon: '🔧' },
+    electrical: { label: 'Eletricidade',        desc: 'Instalação e reparação de circuitos elétricos.',                   href: '/servicos/eletricidade',       icon: '🔌' },
+  },
+  en: {
+    electric:   { label: 'Electric Blinds',     desc: 'Installation of motorized systems with remote control.',           href: '/en/services/electric-blinds',      icon: '⚡' },
+    manual:     { label: 'Manual Blinds',        desc: 'Installation of roller and manual blinds.',                        href: '/en/services/manual-blinds',        icon: '🪟' },
+    repair:     { label: 'Blind Repair',         desc: 'Urgent repair for any type of blind.',                             href: '/en/services/blind-repair',         icon: '🔧' },
+    electrical: { label: 'Electrical Work',      desc: 'Installation and repair of electrical circuits.',                  href: '/en/services/electrical-work',      icon: '🔌' },
+  },
+  fr: {
+    electric:   { label: 'Stores Électriques',  desc: 'Installation de systèmes motorisés avec télécommande.',            href: '/fr/services/stores-electriques',   icon: '⚡' },
+    manual:     { label: 'Stores Manuels',       desc: 'Installation de stores enrouleurs et manuels.',                    href: '/fr/services/stores-manuels',       icon: '🪟' },
+    repair:     { label: 'Réparation',           desc: 'Réparation urgente de tout type de store.',                        href: '/fr/services/reparation-stores',    icon: '🔧' },
+    electrical: { label: 'Électricité',          desc: 'Installation et réparation de circuits électriques.',              href: '/fr/services/electricite',          icon: '🔌' },
+  },
+  es: {
+    electric:   { label: 'Persianas Eléctricas',desc: 'Instalación de sistemas motorizados con mando a distancia.',       href: '/es/servicios/persianas-electricas',  icon: '⚡' },
+    manual:     { label: 'Persianas Manuales',   desc: 'Instalación de persianas enrollables y manuales.',                 href: '/es/servicios/persianas-manuales',    icon: '🪟' },
+    repair:     { label: 'Reparación',           desc: 'Reparación urgente de cualquier tipo de persiana.',                href: '/es/servicios/reparacion-persianas', icon: '🔧' },
+    electrical: { label: 'Electricidad',         desc: 'Instalación y reparación de circuitos eléctricos.',               href: '/es/servicios/electricidad',         icon: '🔌' },
+  },
+  de: {
+    electric:   { label: 'Elektr. Jalousien',   desc: 'Installation motorisierter Systeme mit Fernbedienung.',            href: '/de/dienstleistungen/elektrische-jalousien',  icon: '⚡' },
+    manual:     { label: 'Manuelle Jalousien',   desc: 'Installation von Rollo- und Manualjalousien.',                    href: '/de/dienstleistungen/manuelle-jalousien',     icon: '🪟' },
+    repair:     { label: 'Reparatur',            desc: 'Schnelle Reparatur jeder Art von Jalousie.',                      href: '/de/dienstleistungen/jalousien-reparatur',    icon: '🔧' },
+    electrical: { label: 'Elektroinstallation', desc: 'Installation und Reparatur elektrischer Leitungen.',              href: '/de/dienstleistungen/elektroinstallation',    icon: '🔌' },
+  },
+  it: {
+    electric:   { label: 'Tende Elettriche',    desc: 'Installazione di sistemi motorizzati con telecomando.',            href: '/it/servizi/tende-elettriche',     icon: '⚡' },
+    manual:     { label: 'Tende Manuali',        desc: 'Installazione di tende a rullo e manuali.',                       href: '/it/servizi/tende-manuali',        icon: '🪟' },
+    repair:     { label: 'Riparazione',          desc: 'Riparazione urgente di qualsiasi tipo di tenda.',                 href: '/it/servizi/riparazione-tende',    icon: '🔧' },
+    electrical: { label: 'Impianto Elettrico',  desc: 'Installazione e riparazione di circuiti elettrici.',              href: '/it/servizi/impianto-elettrico',   icon: '🔌' },
+  },
+};
+
+const headings: Record<Lang, string> = {
+  pt: 'Outros serviços',
+  en: 'Other services',
+  fr: 'Autres services',
+  es: 'Otros servicios',
+  de: 'Weitere Leistungen',
+  it: 'Altri servizi',
+};
+
+const related = (Object.keys(allServices[lang]) as ServiceType[])
+  .filter(s => s !== current)
+  .map(s => allServices[lang][s]);
+---
+
+<section class="py-12 bg-white border-t border-gray-100">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="text-lg font-black text-[#1A1A1A] uppercase tracking-widest mb-6">{headings[lang]}</h2>
+    <div class="grid sm:grid-cols-3 gap-4">
+      {related.map(s => (
+        <a
+          href={s.href}
+          class="group flex items-start gap-4 p-5 rounded-xl border border-gray-200 hover:border-[#8B1A1A] hover:shadow-sm transition-all"
+        >
+          <span class="text-2xl flex-shrink-0 leading-none mt-0.5" aria-hidden="true">{s.icon}</span>
+          <div>
+            <div class="font-bold text-[#1A1A1A] text-sm group-hover:text-[#8B1A1A] transition-colors">{s.label}</div>
+            <div class="text-gray-500 text-xs mt-1 leading-snug">{s.desc}</div>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
