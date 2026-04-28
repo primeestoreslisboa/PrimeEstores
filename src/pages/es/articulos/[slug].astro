@@ -1,0 +1,116 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { getCollection, getEntry } from 'astro:content';
+
+const lang = 'es' as const;
+
+export async function getStaticPaths() {
+  const posts = await getCollection('artigos-es');
+  return posts.map(post => ({ params: { slug: post.slug } }));
+}
+
+const { slug } = Astro.params;
+const post = await getEntry('artigos-es', slug!);
+if (!post) return Astro.redirect('/es/articulos/');
+
+const { Content } = await post.render();
+
+const baseUrl = 'https://www.primeestores.pt';
+const pageUrl = `${baseUrl}/es/articulos/${post.slug}/`;
+
+function formatDate(date: Date) {
+  return date.toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' });
+}
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: post.data.title,
+  description: post.data.description,
+  datePublished: post.data.pubDate.toISOString(),
+  dateModified: post.data.pubDate.toISOString(),
+  author: { '@type': 'Organization', name: 'Prime Estores', url: baseUrl },
+  publisher: { '@type': 'Organization', name: 'Prime Estores', url: baseUrl, logo: { '@type': 'ImageObject', url: `${baseUrl}/og-image.jpg` } },
+  image: `${baseUrl}${post.data.image}`,
+  url: pageUrl,
+  mainEntityOfPage: { '@type': 'WebPage', '@id': pageUrl },
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Inicio', item: `${baseUrl}/es/` },
+    { '@type': 'ListItem', position: 2, name: 'Artículos', item: `${baseUrl}/es/articulos/` },
+    { '@type': 'ListItem', position: 3, name: post.data.title, item: pageUrl },
+  ],
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+<script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+
+<Layout title={post.data.title} description={post.data.description} keywords={post.data.keywords} canonicalURL={pageUrl} ogType="article" ogImage={`${baseUrl}${post.data.image}`} lang={lang}>
+
+  <section class="bg-gradient-to-br from-[#1A1A1A] to-[#8B1A1A] text-white py-14 lg:py-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <nav aria-label="Ruta de navegación" class="mb-6">
+        <ol class="flex items-center gap-2 text-sm text-white/60">
+          <li><a href="/es/" class="hover:text-white transition-colors">Inicio</a></li>
+          <li aria-hidden="true"><span>/</span></li>
+          <li><a href="/es/articulos/" class="hover:text-white transition-colors">Artículos</a></li>
+          <li aria-hidden="true"><span>/</span></li>
+          <li><span class="text-white/80 truncate max-w-xs">{post.data.title}</span></li>
+        </ol>
+      </nav>
+      <div class="flex items-center gap-4 mb-5 text-sm text-white/60">
+        <time datetime={post.data.pubDate.toISOString()}>{formatDate(post.data.pubDate)}</time>
+        {post.data.readingTime && <span>· {post.data.readingTime} min de lectura</span>}
+      </div>
+      <h1 class="text-2xl sm:text-3xl lg:text-4xl font-black leading-tight">{post.data.title}</h1>
+    </div>
+  </section>
+
+  <section class="py-12 lg:py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-[1fr_300px] gap-12 items-start">
+        <article class="prose prose-lg max-w-none prose-headings:font-black prose-headings:text-[#1A1A1A] prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-4 prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-3 prose-p:text-gray-600 prose-p:leading-relaxed prose-a:text-[#8B1A1A] prose-a:font-semibold prose-a:no-underline hover:prose-a:underline prose-strong:text-[#1A1A1A] prose-ul:text-gray-600 prose-ol:text-gray-600 prose-li:marker:text-[#8B1A1A] prose-table:text-sm prose-th:bg-[#F5F5F5] prose-th:text-[#1A1A1A] prose-th:font-bold prose-td:text-gray-600 prose-hr:border-gray-200 prose-blockquote:border-[#8B1A1A] prose-blockquote:text-gray-600">
+          <Content />
+        </article>
+        <aside class="space-y-6 lg:sticky lg:top-8">
+          <div class="bg-[#8B1A1A] rounded-2xl p-6 text-white">
+            <h2 class="font-black text-lg mb-2 leading-snug">¿Necesita ayuda con sus persianas?</h2>
+            <p class="text-red-100 text-sm mb-5 leading-relaxed">Presupuesto gratuito en todo el Gran Lisboa. Respuesta en menos de 24h.</p>
+            <a href="/es/presupuesto" class="block w-full text-center bg-white text-[#8B1A1A] font-bold px-4 py-3 rounded-lg hover:bg-gray-100 transition-colors mb-3">Pedir presupuesto</a>
+            <a href="tel:+351923348323" class="block w-full text-center border-2 border-white text-white font-bold px-4 py-3 rounded-lg hover:bg-white/10 transition-colors text-sm">+351 923 348 323</a>
+          </div>
+          <div class="bg-[#F5F5F5] rounded-2xl p-6">
+            <h3 class="font-bold text-[#1A1A1A] mb-4 text-sm uppercase tracking-wide">Nuestros servicios</h3>
+            <div class="space-y-2 text-sm">
+              {[
+                { label: 'Persianas eléctricas', href: '/es/servicios/persianas-electricas' },
+                { label: 'Persianas manuales', href: '/es/servicios/persianas-manuales' },
+                { label: 'Reparación de persianas', href: '/es/servicios/reparacion-persianas' },
+                { label: 'Electricidad', href: '/es/servicios/electricidad' },
+              ].map(s => (
+                <a href={s.href} class="flex items-center gap-2 text-gray-600 hover:text-[#8B1A1A] transition-colors py-1">
+                  <svg class="w-3.5 h-3.5 text-[#8B1A1A] flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
+                  </svg>
+                  {s.label}
+                </a>
+              ))}
+            </div>
+          </div>
+          <a href="/es/articulos/" class="flex items-center gap-2 text-sm text-gray-500 hover:text-[#8B1A1A] transition-colors font-medium">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+            </svg>
+            Todos los artículos
+          </a>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+</Layout>

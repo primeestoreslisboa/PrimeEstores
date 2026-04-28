@@ -1,0 +1,101 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const lang = 'en' as const;
+
+const posts = (await getCollection('artigos-en')).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+function formatDate(date: Date) {
+  return date.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+}
+---
+
+<Layout
+  title="Articles — Prime Estores Guides & Tips on Electric Blinds"
+  description="Practical articles on electric and manual blinds: prices, installation, maintenance, smart home and much more. The reference guide for installing blinds in Lisbon."
+  keywords="electric blind articles, blind guides, blind tips Lisbon, motorized blind articles"
+  lang={lang}
+>
+
+  <!-- Hero -->
+  <section class="bg-gradient-to-br from-[#1A1A1A] to-[#8B1A1A] text-white py-16 lg:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <nav aria-label="Breadcrumb" class="mb-6">
+        <ol class="flex items-center gap-2 text-sm text-white/60">
+          <li><a href="/en/" class="hover:text-white transition-colors">Home</a></li>
+          <li aria-hidden="true"><span>/</span></li>
+          <li><span class="text-white">Articles</span></li>
+        </ol>
+      </nav>
+      <div class="max-w-2xl">
+        <span class="inline-block bg-white/10 border border-white/20 text-white text-xs font-semibold uppercase tracking-widest px-3 py-1 rounded-full mb-4">Guides & Tips</span>
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black leading-tight mb-4">
+          Prime Estores Articles
+        </h1>
+        <p class="text-xl text-white/80 leading-relaxed">
+          Practical articles on electric blinds, manual blinds, motorization, smart home and maintenance — written by specialists with years of experience in Lisbon.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Posts grid -->
+  <section class="py-16 lg:py-20 bg-[#F5F5F5]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {posts.map(post => (
+          <article class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-md transition-shadow flex flex-col">
+            <div class="p-6 flex flex-col flex-1">
+              <div class="flex items-center gap-3 mb-4">
+                <time
+                  datetime={post.data.pubDate.toISOString()}
+                  class="text-xs text-gray-400 font-medium"
+                >
+                  {formatDate(post.data.pubDate)}
+                </time>
+                {post.data.readingTime && (
+                  <span class="text-xs text-gray-400">· {post.data.readingTime} min read</span>
+                )}
+              </div>
+              <h2 class="text-lg font-black text-[#1A1A1A] leading-snug mb-3 hover:text-[#8B1A1A] transition-colors">
+                <a href={`/en/articles/${post.slug}/`}>{post.data.title}</a>
+              </h2>
+              <p class="text-gray-500 text-sm leading-relaxed flex-1 mb-5">
+                {post.data.description}
+              </p>
+              <a
+                href={`/en/articles/${post.slug}/`}
+                class="inline-flex items-center gap-1 text-[#8B1A1A] font-semibold text-sm hover:gap-2 transition-all hover:underline"
+              >
+                Read article
+                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 bg-white border-t border-gray-100">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-2xl font-black text-[#1A1A1A] mb-3">Ready to install?</h2>
+      <p class="text-gray-500 mb-6">Get a free, no-obligation quote. We cover all of Greater Lisbon.</p>
+      <div class="flex flex-col sm:flex-row gap-3 justify-center">
+        <a href="/en/quote" class="inline-flex items-center justify-center gap-2 bg-[#8B1A1A] text-white font-bold px-6 py-3.5 rounded-lg hover:bg-[#7a1717] transition-colors">
+          Get Free Quote
+        </a>
+        <a href="tel:+351923348323" class="inline-flex items-center justify-center gap-2 border-2 border-[#8B1A1A] text-[#8B1A1A] font-bold px-6 py-3.5 rounded-lg hover:bg-[#8B1A1A] hover:text-white transition-colors">
+          +351 923 348 323
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Layout>

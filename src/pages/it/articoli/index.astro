@@ -1,0 +1,88 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const lang = 'it' as const;
+
+const posts = (await getCollection('artigos-it')).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+function formatDate(date: Date) {
+  return date.toLocaleDateString('it-IT', { day: 'numeric', month: 'long', year: 'numeric' });
+}
+---
+
+<Layout
+  title="Articoli Prime Estores — Guide e Consigli sulle Tende Elettriche"
+  description="Articoli pratici su tende elettriche e manuali: prezzi, installazione, manutenzione, domotica e molto altro. La guida di riferimento per installare tende a Lisbona."
+  keywords="articoli tende elettriche, guide tende, consigli tende Lisbona, articoli tende motorizzate"
+  lang={lang}
+>
+
+  <section class="bg-gradient-to-br from-[#1A1A1A] to-[#8B1A1A] text-white py-16 lg:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <nav aria-label="Percorso di navigazione" class="mb-6">
+        <ol class="flex items-center gap-2 text-sm text-white/60">
+          <li><a href="/it/" class="hover:text-white transition-colors">Home</a></li>
+          <li aria-hidden="true"><span>/</span></li>
+          <li><span class="text-white">Articoli</span></li>
+        </ol>
+      </nav>
+      <div class="max-w-2xl">
+        <span class="inline-block bg-white/10 border border-white/20 text-white text-xs font-semibold uppercase tracking-widest px-3 py-1 rounded-full mb-4">Guide & Consigli</span>
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black leading-tight mb-4">Articoli Prime Estores</h1>
+        <p class="text-xl text-white/80 leading-relaxed">
+          Articoli pratici su tende elettriche, manuali, motorizzazione, domotica e manutenzione — scritti da specialisti con anni di esperienza a Lisbona.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 lg:py-20 bg-[#F5F5F5]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {posts.map(post => (
+          <article class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-md transition-shadow flex flex-col">
+            <div class="p-6 flex flex-col flex-1">
+              <div class="flex items-center gap-3 mb-4">
+                <time datetime={post.data.pubDate.toISOString()} class="text-xs text-gray-400 font-medium">
+                  {formatDate(post.data.pubDate)}
+                </time>
+                {post.data.readingTime && (
+                  <span class="text-xs text-gray-400">· {post.data.readingTime} min di lettura</span>
+                )}
+              </div>
+              <h2 class="text-lg font-black text-[#1A1A1A] leading-snug mb-3 hover:text-[#8B1A1A] transition-colors">
+                <a href={`/it/articoli/${post.slug}/`}>{post.data.title}</a>
+              </h2>
+              <p class="text-gray-500 text-sm leading-relaxed flex-1 mb-5">{post.data.description}</p>
+              <a href={`/it/articoli/${post.slug}/`} class="inline-flex items-center gap-1 text-[#8B1A1A] font-semibold text-sm hover:gap-2 transition-all hover:underline">
+                Leggi articolo
+                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 bg-white border-t border-gray-100">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-2xl font-black text-[#1A1A1A] mb-3">Pronti per l'installazione?</h2>
+      <p class="text-gray-500 mb-6">Richiedete un preventivo gratuito e senza impegno. Copriamo tutta la Grande Lisbona.</p>
+      <div class="flex flex-col sm:flex-row gap-3 justify-center">
+        <a href="/it/preventivo" class="inline-flex items-center justify-center gap-2 bg-[#8B1A1A] text-white font-bold px-6 py-3.5 rounded-lg hover:bg-[#7a1717] transition-colors">
+          Preventivo Gratuito
+        </a>
+        <a href="tel:+351923348323" class="inline-flex items-center justify-center gap-2 border-2 border-[#8B1A1A] text-[#8B1A1A] font-bold px-6 py-3.5 rounded-lg hover:bg-[#8B1A1A] hover:text-white transition-colors">
+          +351 923 348 323
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Layout>
