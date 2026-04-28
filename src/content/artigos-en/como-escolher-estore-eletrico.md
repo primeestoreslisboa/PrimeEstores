@@ -1,7 +1,7 @@
----
+﻿---
 title: "How to Choose an Electric Blind: Complete Guide 2025"
 description: "Everything you need to know to choose the right electric blind: motor type, protocol, fabric, smart home compatibility, and what to ask your installer."
-pubDate: 2025-03-18
+pubDate: 2026-03-10
 keywords: "how to choose electric blind, best motorised blind, electric blind guide, electric roller blind, motorised venetian blind"
 readingTime: 7
 image: /og-image.jpg

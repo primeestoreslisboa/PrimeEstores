@@ -1,7 +1,7 @@
----
+﻿---
 title: "Quanto Custa Instalar Estores Elétricos em Lisboa? Preços 2025"
 description: "Guia completo de preços para instalação de estores elétricos em Lisboa. Saiba quanto custa um motor elétrico e o que influencia o preço final."
-pubDate: 2025-03-10
+pubDate: 2026-02-24
 keywords: "quanto custa estore elétrico Lisboa, preço instalação estore elétrico, custo motor estore Lisboa, orçamento estore motorizado"
 readingTime: 6
 ---

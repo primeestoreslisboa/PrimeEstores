@@ -1,7 +1,7 @@
 ﻿---
 title: "Kosten für die Installation elektrischer Jalousien in Lissabon 2025"
 description: "Aktuelle Preisübersicht für elektrische Jalousien in Lissabon: Motoren, Verkabelung, Smart-Home-Extras und ein realistisches Budget für eine 4-Zimmer-Wohnung."
-pubDate: 2025-03-10
+pubDate: 2026-02-24
 keywords: "elektrische Jalousien Kosten, Jalousien Installation Lissabon, Rollläden Motor Preis, Motorisierung Jalousien 2025, Smart Home Jalousien Portugal"
 readingTime: 6
 image: /og-image.jpg
@@ -102,7 +102,7 @@ Die genauen Kosten für Ihr Projekt lassen sich nur mit einer Besichtigung vor O
 .Value; $inner = [regex]::Matches($m, '"([^"]*)"') | ForEach-Object { ---
 title: "Kosten für die Installation elektrischer Jalousien in Lissabon 2025"
 description: "Aktuelle Preisübersicht für elektrische Jalousien in Lissabon: Motoren, Verkabelung, Smart-Home-Extras und ein realistisches Budget für eine 4-Zimmer-Wohnung."
-pubDate: 2025-03-10
+pubDate: 2026-02-24
 keywords: "elektrische Jalousien Kosten, Jalousien Installation Lissabon, Rollläden Motor Preis, Motorisierung Jalousien 2025, Smart Home Jalousien Portugal"
 readingTime: 6
 image: /og-image.jpg

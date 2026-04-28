@@ -1,7 +1,7 @@
 ﻿---
 title: "Combien coûte l'installation de stores électriques à Lisbonne en 2025 ?"
 description: "Prix détaillés, tableaux tarifaires et exemples concrets pour l'installation de stores électriques à Lisbonne. Moteurs, câblage, domotique et devis gratuit."
-pubDate: 2025-03-10
+pubDate: 2026-02-24
 keywords: "store électrique prix Lisbonne, coût installation store motorisé, tarif store électrique 2025, devis store électrique Lisbonne, prix moteur store"
 readingTime: 6
 image: /og-image.jpg
@@ -137,7 +137,7 @@ Ne sacrifiez pas la qualité du moteur pour économiser à court terme. Un bon m
 .Value; $inner = [regex]::Matches($m, '"([^"]*)"') | ForEach-Object { ---
 title: "Combien coûte l'installation de stores électriques à Lisbonne en 2025 ?"
 description: "Prix détaillés, tableaux tarifaires et exemples concrets pour l'installation de stores électriques à Lisbonne. Moteurs, câblage, domotique et devis gratuit."
-pubDate: 2025-03-10
+pubDate: 2026-02-24
 keywords: "store électrique prix Lisbonne, coût installation store motorisé, tarif store électrique 2025, devis store électrique Lisbonne, prix moteur store"
 readingTime: 6
 image: /og-image.jpg

@@ -1,7 +1,7 @@
 ﻿---
 title: "Installare tende elettriche in appartamento: tutto quello che devi sapere"
 description: "Guida completa per installare tende elettriche in appartamento: autorizzazione del condominio, cablaggio, tipi di motore e cosa aspettarsi dall'installazione. Lisbona e Grande Lisbona."
-pubDate: 2025-04-10
+pubDate: 2026-04-25
 keywords: "installare tenda elettrica appartamento, tenda elettrica condominio, tenda motorizzata appartamento, autorizzazione tenda appartamento"
 readingTime: 6
 image: /og-image.jpg

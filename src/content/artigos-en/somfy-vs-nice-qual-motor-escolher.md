@@ -1,7 +1,7 @@
----
+﻿---
 title: "How to Choose the Right Motor for Electric Blinds: Complete Guide"
 description: "A practical guide to choosing the right motor for electric blinds — type, protocol, noise, smart home integration, and what to avoid. Everything you need to know before installing."
-pubDate: 2025-04-02
+pubDate: 2026-04-14
 keywords: "best electric blind motor, tubular blind motor, electric blind smart home, quiet blind motor, choose blind motor Lisbon"
 readingTime: 6
 image: /og-image.jpg

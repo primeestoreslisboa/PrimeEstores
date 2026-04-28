@@ -1,7 +1,7 @@
 ﻿---
 title: "Persianas eléctricas vs. manuales: ¿cuál elegir para su casa?"
 description: "Comparativa completa entre persianas eléctricas y manuales: comodidad, coste, durabilidad y cuándo compensa motorizar. Guía para quien está decidiendo en 2025."
-pubDate: 2025-02-10
+pubDate: 2026-01-12
 keywords: "persianas eléctricas vs manuales, diferencia persiana eléctrica manual, vale la pena persiana eléctrica, motorizar persiana manual, persiana motorizada Lisboa"
 readingTime: 5
 image: /og-image.jpg

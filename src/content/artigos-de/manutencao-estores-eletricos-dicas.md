@@ -1,7 +1,7 @@
 ﻿---
 title: "Wartung elektrischer Rollos: 8 Tipps für eine längere Lebensdauer"
 description: "Wie Sie Ihre elektrischen Rollos länger in gutem Zustand halten. Reinigung, Schmierung, regelmäßige Überprüfungen und wann Sie einen Techniker zur Wartung rufen sollten."
-pubDate: 2025-01-28
+pubDate: 2025-12-23
 keywords: "Wartung elektrische Rollos, elektrisches Rollo reinigen, Rolloführungen schmieren, Lebensdauer Rollomotor, Wartung motorisiertes Rollo"
 readingTime: 5
 image: /og-image.jpg

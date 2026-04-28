@@ -1,7 +1,7 @@
----
+﻿---
 title: "Manutenção de Estores Elétricos: 8 Dicas para Prolongar a Vida Útil"
 description: "Como manter os seus estores elétricos em bom estado por mais tempo. Limpeza, lubrificação, verificações periódicas e quando chamar um técnico para manutenção."
-pubDate: 2025-01-28
+pubDate: 2025-12-23
 keywords: "manutenção estores elétricos, limpar estore elétrico, lubrificar guias estore, vida útil motor estore, manutenção estore motorizado"
 readingTime: 5
 ---

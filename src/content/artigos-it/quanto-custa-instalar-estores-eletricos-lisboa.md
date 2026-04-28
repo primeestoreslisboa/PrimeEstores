@@ -1,7 +1,7 @@
 ﻿---
 title: "Quanto costa installare tende elettriche a Lisbona nel 2025"
 description: "Prezzi aggiornati per l'installazione di tende elettriche a Lisbona: tabelle dettagliate per tipo di motore, cablaggio, accessori e esempio di budget reale per un appartamento con 4 finestre."
-pubDate: 2025-03-10
+pubDate: 2026-02-24
 keywords: "tende elettriche prezzo, installazione tende motorizzate Lisbona, costo motore tenda, preventivo tende elettriche, tende motorizzate 2025"
 readingTime: 6
 image: /og-image.jpg
@@ -95,7 +95,7 @@ Offriamo sopralluoghi gratuiti in tutta l'area metropolitana di Lisbona, inclusi
 .Value; $inner = [regex]::Matches($m, '"([^"]*)"') | ForEach-Object { ---
 title: "Quanto costa installare tende elettriche a Lisbona nel 2025"
 description: "Prezzi aggiornati per l'installazione di tende elettriche a Lisbona: tabelle dettagliate per tipo di motore, cablaggio, accessori e esempio di budget reale per un appartamento con 4 finestre."
-pubDate: 2025-03-10
+pubDate: 2026-02-24
 keywords: "tende elettriche prezzo, installazione tende motorizzate Lisbona, costo motore tenda, preventivo tende elettriche, tende motorizzate 2025"
 readingTime: 6
 image: /og-image.jpg

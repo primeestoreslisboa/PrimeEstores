@@ -1,7 +1,7 @@
 ﻿---
 title: "Store électrique en panne : que faire ? Guide de diagnostic étape par étape"
 description: "Votre store électrique ne répond plus ? Suivez ce guide de diagnostic en 5 étapes avant d'appeler un technicien. Pannes courantes, solutions et conseils pratiques."
-pubDate: 2025-02-20
+pubDate: 2026-01-27
 keywords: "store électrique panne, store motorisé ne répond pas, dépannage store électrique, store électrique bloqué, fin de course store électrique"
 readingTime: 5
 image: /og-image.jpg
@@ -138,7 +138,7 @@ Si le problème persiste, nous sommes disponibles pour un diagnostic sur place d
 .Value; $inner = [regex]::Matches($m, '"([^"]*)"') | ForEach-Object { ---
 title: "Store électrique en panne : que faire ? Guide de diagnostic étape par étape"
 description: "Votre store électrique ne répond plus ? Suivez ce guide de diagnostic en 5 étapes avant d'appeler un technicien. Pannes courantes, solutions et conseils pratiques."
-pubDate: 2025-02-20
+pubDate: 2026-01-27
 keywords: "store électrique panne, store motorisé ne répond pas, dépannage store électrique, store électrique bloqué, fin de course store électrique"
 readingTime: 5
 image: /og-image.jpg

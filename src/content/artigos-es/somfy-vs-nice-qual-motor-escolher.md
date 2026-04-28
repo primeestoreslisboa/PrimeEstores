@@ -1,7 +1,7 @@
 ﻿---
 title: "Cómo elegir el motor correcto para sus estores eléctricos"
 description: "Guía práctica para elegir el motor de estore eléctrico adecuado según calidad, uso y presupuesto. Comparativa de gamas, protocolos de radio y compatibilidad domótica."
-pubDate: 2025-04-02
+pubDate: 2026-04-14
 keywords: "motor estore eléctrico, motor tubular estore, elegir motor persiana motorizada, motor radio bidireccional, motor estore domótica, calidad motor estore"
 readingTime: 6
 image: /og-image.jpg
@@ -140,7 +140,7 @@ La elección correcta del motor depende de tres variables principales: el uso y 
 .Value; $inner = [regex]::Matches($m, '"([^"]*)"') | ForEach-Object { ---
 title: "Cómo elegir el motor correcto para sus estores eléctricos"
 description: "Guía práctica para elegir el motor de estore eléctrico adecuado según calidad, uso y presupuesto. Comparativa de gamas, protocolos de radio y compatibilidad domótica."
-pubDate: 2025-04-02
+pubDate: 2026-04-14
 keywords: "motor estore eléctrico, motor tubular estore, elegir motor persiana motorizada, motor radio bidireccional, motor estore domótica, calidad motor estore"
 readingTime: 6
 image: /og-image.jpg

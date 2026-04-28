@@ -1,7 +1,7 @@
 ﻿---
 title: "Instalar persianas eléctricas en un apartamento: todo lo que necesita saber"
 description: "Guía completa para instalar persianas eléctricas en apartamento: autorización de comunidad, cableado, tipos de motor y qué esperar de la instalación. Lisboa y Gran Lisboa."
-pubDate: 2025-04-10
+pubDate: 2026-04-25
 keywords: "instalar persiana eléctrica apartamento, persiana eléctrica comunidad, persiana motorizada apartamento, licencia persiana apartamento"
 readingTime: 6
 image: /og-image.jpg

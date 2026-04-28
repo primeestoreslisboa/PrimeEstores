@@ -1,7 +1,7 @@
 ﻿---
 title: "Comment choisir le bon moteur pour votre store électrique"
 description: "Guide complet pour choisir un moteur de store électrique : gammes, protocoles radio, compatibilité domotique et questions à poser à votre installateur."
-pubDate: 2025-04-02
+pubDate: 2026-04-14
 keywords: "choisir moteur store électrique, moteur store tubulaire, protocole bidirectionnel store, moteur store domotique, gamme moteur store qualité"
 readingTime: 6
 image: /og-image.jpg
@@ -124,7 +124,7 @@ Avec les bons moteurs et une installation professionnelle, vos stores électriqu
 .Value; $inner = [regex]::Matches($m, '"([^"]*)"') | ForEach-Object { ---
 title: "Comment choisir le bon moteur pour votre store électrique"
 description: "Guide complet pour choisir un moteur de store électrique : gammes, protocoles radio, compatibilité domotique et questions à poser à votre installateur."
-pubDate: 2025-04-02
+pubDate: 2026-04-14
 keywords: "choisir moteur store électrique, moteur store tubulaire, protocole bidirectionnel store, moteur store domotique, gamme moteur store qualité"
 readingTime: 6
 image: /og-image.jpg

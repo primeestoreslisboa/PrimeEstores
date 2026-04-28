@@ -1,7 +1,7 @@
----
+﻿---
 title: "How Much Does It Cost to Install Electric Blinds in Lisbon? 2025 Prices"
 description: "Complete pricing guide for electric blind installation in Lisbon. Find out how much an electric motor costs and what influences the final price."
-pubDate: 2025-03-10
+pubDate: 2026-02-24
 keywords: "cost of electric blinds Lisbon, electric blind installation price, blind motor cost Lisbon, motorised blind quote"
 readingTime: 6
 image: /og-image.jpg

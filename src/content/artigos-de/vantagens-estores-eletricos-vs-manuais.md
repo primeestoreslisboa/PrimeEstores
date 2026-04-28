@@ -1,7 +1,7 @@
 ﻿---
 title: "Elektrische vs. manuelle Jalousien: Ein ehrlicher Vergleich"
 description: "Elektrische und manuelle Jalousien im direkten Vergleich: Komfort, Kosten, Langlebigkeit, Energieeffizienz und wann sich die Motorisierung wirklich lohnt."
-pubDate: 2025-02-10
+pubDate: 2026-01-12
 keywords: "elektrische Jalousien Vorteile, elektrisch vs manuell Jalousien, Motorisierung lohnt sich, Jalousien Vergleich, manuelle Rollläden"
 readingTime: 5
 image: /og-image.jpg
@@ -107,7 +107,7 @@ Das Beste aus beiden Welten? Nachrüsten: Behalten Sie Ihre vorhandenen Jalousie
 .Value; $inner = [regex]::Matches($m, '"([^"]*)"') | ForEach-Object { ---
 title: "Elektrische vs. manuelle Jalousien: Ein ehrlicher Vergleich"
 description: "Elektrische und manuelle Jalousien im direkten Vergleich: Komfort, Kosten, Langlebigkeit, Energieeffizienz und wann sich die Motorisierung wirklich lohnt."
-pubDate: 2025-02-10
+pubDate: 2026-01-12
 keywords: "elektrische Jalousien Vorteile, elektrisch vs manuell Jalousien, Motorisierung lohnt sich, Jalousien Vergleich, manuelle Rollläden"
 readingTime: 5
 image: /og-image.jpg

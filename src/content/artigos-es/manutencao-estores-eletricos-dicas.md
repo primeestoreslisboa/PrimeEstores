@@ -1,7 +1,7 @@
 ﻿---
 title: "Mantenimiento de persianas eléctricas: 8 consejos para prolongar la vida útil"
 description: "Cómo mantener sus persianas eléctricas en buen estado por más tiempo. Limpieza, lubricación, verificaciones periódicas y cuándo llamar a un técnico para mantenimiento."
-pubDate: 2025-01-28
+pubDate: 2025-12-23
 keywords: "mantenimiento persianas eléctricas, limpiar persiana eléctrica, lubricar guías persiana, vida útil motor persiana, mantenimiento persiana motorizada"
 readingTime: 5
 image: /og-image.jpg

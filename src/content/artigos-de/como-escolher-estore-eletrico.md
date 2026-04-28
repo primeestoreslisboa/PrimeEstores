@@ -1,7 +1,7 @@
 ﻿---
 title: "Wie wählt man die richtige elektrische Jalousie? Ein vollständiger Ratgeber"
 description: "Von Jalousieart und Motortyp über Protokoll und Smart-Home-Kompatibilität bis hin zur Stoffwahl: Alles, was Sie vor dem Kauf elektrischer Jalousien wissen müssen."
-pubDate: 2025-03-18
+pubDate: 2026-03-10
 keywords: "elektrische Jalousie auswählen, Jalousien Ratgeber, Motorjalousie Typen, Smart Home Rollläden, Stoff Jalousien Auswahl"
 readingTime: 7
 image: /og-image.jpg
@@ -129,7 +129,7 @@ Eine durchdachte Entscheidung zahlt sich langfristig aus. Lassen Sie sich vor Or
 .Value; $inner = [regex]::Matches($m, '"([^"]*)"') | ForEach-Object { ---
 title: "Wie wählt man die richtige elektrische Jalousie? Ein vollständiger Ratgeber"
 description: "Von Jalousieart und Motortyp über Protokoll und Smart-Home-Kompatibilität bis hin zur Stoffwahl: Alles, was Sie vor dem Kauf elektrischer Jalousien wissen müssen."
-pubDate: 2025-03-18
+pubDate: 2026-03-10
 keywords: "elektrische Jalousie auswählen, Jalousien Ratgeber, Motorjalousie Typen, Smart Home Rollläden, Stoff Jalousien Auswahl"
 readingTime: 7
 image: /og-image.jpg

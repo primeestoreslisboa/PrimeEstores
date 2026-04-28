@@ -1,7 +1,7 @@
 ﻿---
 title: "Elektrische Rollos in einer Wohnung installieren: Alles was Sie wissen müssen"
 description: "Vollständiger Leitfaden zur Installation elektrischer Rollos in einer Wohnung: Genehmigung der Eigentümergemeinschaft, Verkabelung, Motortypen und was während der Installation passiert."
-pubDate: 2025-04-10
+pubDate: 2026-04-25
 keywords: "elektrisches Rollo Wohnung installieren, elektrisches Rollo Eigentümergemeinschaft, motorisiertes Rollo Wohnung, Genehmigung Rollo Wohnung"
 readingTime: 6
 image: /og-image.jpg

@@ -1,7 +1,7 @@
----
+﻿---
 title: "Como Escolher um Estore Elétrico: Guia Completo 2025"
 description: "Tudo o que precisa de saber para escolher o estore elétrico certo: tipo de motor, protocolo, tecido, compatibilidade com domótica e o que perguntar ao instalador."
-pubDate: 2025-03-18
+pubDate: 2026-03-10
 keywords: "como escolher estore elétrico, melhor estore motorizado, guia estore elétrico, estore rolo elétrico, estore veneziana motorizado"
 readingTime: 7
 ---

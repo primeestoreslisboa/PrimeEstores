@@ -1,7 +1,7 @@
 ﻿---
 title: "Estore eléctrico averiado: qué hacer paso a paso"
 description: "Guía de diagnóstico para estores eléctricos averiados. Aprenda a identificar el problema y solucionarlo antes de llamar al técnico: alimentación, mando, límites, obstrucción y más."
-pubDate: 2025-02-20
+pubDate: 2026-01-27
 keywords: "estore eléctrico averiado, persiana motorizada no funciona, estore eléctrico reparar, motor estore avería, estore no sube no baja, diagnóstico estore eléctrico"
 readingTime: 5
 image: /og-image.jpg
@@ -118,7 +118,7 @@ Si necesita asistencia técnica para su estore en Lisboa o en el área metropoli
 .Value; $inner = [regex]::Matches($m, '"([^"]*)"') | ForEach-Object { ---
 title: "Estore eléctrico averiado: qué hacer paso a paso"
 description: "Guía de diagnóstico para estores eléctricos averiados. Aprenda a identificar el problema y solucionarlo antes de llamar al técnico: alimentación, mando, límites, obstrucción y más."
-pubDate: 2025-02-20
+pubDate: 2026-01-27
 keywords: "estore eléctrico averiado, persiana motorizada no funciona, estore eléctrico reparar, motor estore avería, estore no sube no baja, diagnóstico estore eléctrico"
 readingTime: 5
 image: /og-image.jpg

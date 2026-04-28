@@ -1,7 +1,7 @@
 ﻿---
 title: "Tende elettriche vs tende manuali: quale scegliere?"
 description: "Confronto completo tra tende elettriche e tende manuali: comfort, costi, efficienza energetica, sicurezza e accessibilità. Scopri quando conviene motorizzare e quando le tende manuali sono sufficienti."
-pubDate: 2025-02-10
+pubDate: 2026-01-12
 keywords: "tende elettriche vs manuali, motorizzare tende, vantaggi tende motorizzate, confronto tende, tende elettriche convenienza"
 readingTime: 5
 image: /og-image.jpg
@@ -92,7 +92,7 @@ Le tende elettriche rappresentano un investimento iniziale maggiore, ma offrono 
 .Value; $inner = [regex]::Matches($m, '"([^"]*)"') | ForEach-Object { ---
 title: "Tende elettriche vs tende manuali: quale scegliere?"
 description: "Confronto completo tra tende elettriche e tende manuali: comfort, costi, efficienza energetica, sicurezza e accessibilità. Scopri quando conviene motorizzare e quando le tende manuali sono sufficienti."
-pubDate: 2025-02-10
+pubDate: 2026-01-12
 keywords: "tende elettriche vs manuali, motorizzare tende, vantaggi tende motorizzate, confronto tende, tende elettriche convenienza"
 readingTime: 5
 image: /og-image.jpg

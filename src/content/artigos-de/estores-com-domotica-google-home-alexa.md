@@ -1,7 +1,7 @@
 ﻿---
 title: "Elektrische Jalousien mit Smart Home: Google Home, Alexa & Apple HomeKit"
 description: "Wie Sie elektrische Jalousien in Google Home, Amazon Alexa oder Apple HomeKit einbinden, welche Komponenten nötig sind und was die Komplettlösung kostet."
-pubDate: 2025-03-25
+pubDate: 2026-03-24
 keywords: "Smart Home Jalousien, Google Home Rollläden, Alexa Jalousien steuern, Apple HomeKit Jalousien, Hausautomation Jalousien Lissabon"
 readingTime: 7
 image: /og-image.jpg
@@ -131,7 +131,7 @@ Lassen Sie sich von unseren Experten beraten und erhalten Sie ein maßgeschneide
 .Value; $inner = [regex]::Matches($m, '"([^"]*)"') | ForEach-Object { ---
 title: "Elektrische Jalousien mit Smart Home: Google Home, Alexa & Apple HomeKit"
 description: "Wie Sie elektrische Jalousien in Google Home, Amazon Alexa oder Apple HomeKit einbinden, welche Komponenten nötig sind und was die Komplettlösung kostet."
-pubDate: 2025-03-25
+pubDate: 2026-03-24
 keywords: "Smart Home Jalousien, Google Home Rollläden, Alexa Jalousien steuern, Apple HomeKit Jalousien, Hausautomation Jalousien Lissabon"
 readingTime: 7
 image: /og-image.jpg

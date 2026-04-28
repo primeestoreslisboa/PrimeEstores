@@ -1,7 +1,7 @@
 ﻿---
 title: "Come scegliere il motore giusto per le tende: guida alle fasce di qualità"
 description: "Guida pratica per orientarsi tra le fasce di qualità dei motori per tende motorizzate: base, medio e alta gamma. Tipi di motore, protocolli radio e consigli per fare la scelta giusta."
-pubDate: 2025-04-02
+pubDate: 2026-04-14
 keywords: "motore tenda elettrica, scegliere motore tenda, motore tubolare qualità, motore batteria tenda, tende motorizzate fascia alta"
 readingTime: 6
 image: /og-image.jpg
@@ -92,7 +92,7 @@ Una consulenza professionale prima dell'acquisto può farti risparmiare tempo, d
 .Value; $inner = [regex]::Matches($m, '"([^"]*)"') | ForEach-Object { ---
 title: "Come scegliere il motore giusto per le tende: guida alle fasce di qualità"
 description: "Guida pratica per orientarsi tra le fasce di qualità dei motori per tende motorizzate: base, medio e alta gamma. Tipi di motore, protocolli radio e consigli per fare la scelta giusta."
-pubDate: 2025-04-02
+pubDate: 2026-04-14
 keywords: "motore tenda elettrica, scegliere motore tenda, motore tubolare qualità, motore batteria tenda, tende motorizzate fascia alta"
 readingTime: 6
 image: /og-image.jpg

@@ -1,7 +1,7 @@
 ﻿---
 title: "Estores eléctricos con domótica: Google Home, Alexa y HomeKit"
 description: "Guía completa para integrar estores eléctricos en sistemas de hogar inteligente. Cómo conectarlos a Google Home, Amazon Alexa y Apple HomeKit, automatizaciones útiles y costes reales."
-pubDate: 2025-03-25
+pubDate: 2026-03-24
 keywords: "estores eléctricos domótica, estore Google Home, estore Amazon Alexa, estore Apple HomeKit, persiana motorizada hogar inteligente, automatización estores"
 readingTime: 7
 image: /og-image.jpg
@@ -159,7 +159,7 @@ Si quiere saber qué solución de domótica encaja mejor en su vivienda de Lisbo
 .Value; $inner = [regex]::Matches($m, '"([^"]*)"') | ForEach-Object { ---
 title: "Estores eléctricos con domótica: Google Home, Alexa y HomeKit"
 description: "Guía completa para integrar estores eléctricos en sistemas de hogar inteligente. Cómo conectarlos a Google Home, Amazon Alexa y Apple HomeKit, automatizaciones útiles y costes reales."
-pubDate: 2025-03-25
+pubDate: 2026-03-24
 keywords: "estores eléctricos domótica, estore Google Home, estore Amazon Alexa, estore Apple HomeKit, persiana motorizada hogar inteligente, automatización estores"
 readingTime: 7
 image: /og-image.jpg

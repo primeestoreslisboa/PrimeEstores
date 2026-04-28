@@ -1,7 +1,7 @@
----
+﻿---
 title: "Electric Blind Maintenance: 8 Tips to Extend Service Life"
 description: "How to keep your electric blinds in good condition for longer. Cleaning, lubrication, and periodic checks."
-pubDate: 2025-01-28
+pubDate: 2025-12-23
 keywords: "electric blind maintenance, cleaning electric blind, blind motor service life"
 readingTime: 5
 image: /og-image.jpg

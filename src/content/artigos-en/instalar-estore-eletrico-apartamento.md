@@ -1,7 +1,7 @@
----
+﻿---
 title: "Installing Electric Blinds in a Flat: Everything You Need to Know"
 description: "A complete guide to installing electric blinds in a flat: residents' association approval, cabling, types of motor."
-pubDate: 2025-04-10
+pubDate: 2026-04-25
 keywords: "install electric blind flat, electric blind residents association, motorised blind flat Lisbon"
 readingTime: 6
 image: /og-image.jpg

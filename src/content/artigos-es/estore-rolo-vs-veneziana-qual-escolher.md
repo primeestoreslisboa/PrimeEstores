@@ -1,7 +1,7 @@
 ﻿---
 title: "Persiana de rodillo vs. persiana veneciana: ¿cuál elegir para cada habitación?"
 description: "Comparativa completa entre persiana de rodillo y persiana veneciana: privacidad, control de luz, limpieza, precio y cuál es la mejor para salón, dormitorio, oficina o baño."
-pubDate: 2025-03-05
+pubDate: 2026-02-10
 keywords: "persiana rodillo vs veneciana, diferencia persiana rodillo veneciana, mejor persiana dormitorio, persiana salón, veneciana aluminio, persiana rodillo opaca"
 readingTime: 5
 image: /og-image.jpg

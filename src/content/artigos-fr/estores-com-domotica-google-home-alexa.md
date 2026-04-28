@@ -1,7 +1,7 @@
 ﻿---
 title: "Stores électriques et domotique : Google Home, Alexa et HomeKit"
 description: "Comment intégrer vos stores électriques à Google Home, Amazon Alexa ou Apple HomeKit. Guide complet : hub, protocoles, automatisations et budget pour Lisbonne."
-pubDate: 2025-03-25
+pubDate: 2026-03-24
 keywords: "store électrique domotique, store Google Home, store Alexa, store HomeKit, automatisation store électrique"
 readingTime: 7
 image: /og-image.jpg
@@ -156,7 +156,7 @@ La domotique pour les stores est une technologie mature et fiable en 2025. Avec 
 .Value; $inner = [regex]::Matches($m, '"([^"]*)"') | ForEach-Object { ---
 title: "Stores électriques et domotique : Google Home, Alexa et HomeKit"
 description: "Comment intégrer vos stores électriques à Google Home, Amazon Alexa ou Apple HomeKit. Guide complet : hub, protocoles, automatisations et budget pour Lisbonne."
-pubDate: 2025-03-25
+pubDate: 2026-03-24
 keywords: "store électrique domotique, store Google Home, store Alexa, store HomeKit, automatisation store électrique"
 readingTime: 7
 image: /og-image.jpg

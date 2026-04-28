@@ -1,7 +1,7 @@
----
+﻿---
 title: "Electric Blinds with Smart Home: Google Home, Alexa, and Apple HomeKit"
 description: "How to integrate electric blinds with Google Home, Amazon Alexa, and Apple HomeKit."
-pubDate: 2025-03-25
+pubDate: 2026-03-24
 keywords: "electric blinds smart home, blind Google Home, blind Alexa, blind Apple HomeKit"
 readingTime: 7
 image: /og-image.jpg

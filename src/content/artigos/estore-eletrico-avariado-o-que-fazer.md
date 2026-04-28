@@ -1,7 +1,7 @@
----
+﻿---
 title: "Estore Elétrico Avariado: O Que Fazer? Guia de Diagnóstico"
 description: "O seu estore elétrico parou de funcionar? Aprenda a diagnosticar as avarias mais comuns antes de chamar um técnico — e quando é mesmo necessário chamar."
-pubDate: 2025-02-20
+pubDate: 2026-01-27
 keywords: "estore elétrico avariado, estore motorizado não funciona, reparação estore elétrico Lisboa, motor estore avaria, telecomando estore não funciona"
 readingTime: 5
 ---

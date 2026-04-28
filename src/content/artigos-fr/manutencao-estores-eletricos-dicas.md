@@ -1,7 +1,7 @@
 ﻿---
 title: "Entretien des stores électriques : 8 conseils pour prolonger la durée de vie"
 description: "Comment maintenir vos stores électriques en bon état plus longtemps. Nettoyage, lubrification, vérifications périodiques et quand appeler un technicien pour la maintenance."
-pubDate: 2025-01-28
+pubDate: 2025-12-23
 keywords: "entretien stores électriques, nettoyer store électrique, lubrifier guides store, durée de vie moteur store, maintenance store motorisé"
 readingTime: 5
 image: /og-image.jpg

@@ -1,7 +1,7 @@
 ﻿---
 title: "Wie wählt man den richtigen Motor für elektrische Jalousien?"
 description: "Ein herstellerneutraler Leitfaden zur Motorwahl für Jalousien: Qualitätsstufen, Typen, Protokolle und die entscheidenden Kriterien für Ihre Situation."
-pubDate: 2025-04-02
+pubDate: 2026-04-14
 keywords: "Jalousien Motor auswählen, Tubenmotor Qualität, bidirektionaler Motor, Motorisierung Rollläden, Smart Home Jalousienmotor"
 readingTime: 6
 image: /og-image.jpg
@@ -125,7 +125,7 @@ Die Wahl des richtigen Motors ist eine Entscheidung für viele Jahre. Nehmen Sie
 .Value; $inner = [regex]::Matches($m, '"([^"]*)"') | ForEach-Object { ---
 title: "Wie wählt man den richtigen Motor für elektrische Jalousien?"
 description: "Ein herstellerneutraler Leitfaden zur Motorwahl für Jalousien: Qualitätsstufen, Typen, Protokolle und die entscheidenden Kriterien für Ihre Situation."
-pubDate: 2025-04-02
+pubDate: 2026-04-14
 keywords: "Jalousien Motor auswählen, Tubenmotor Qualität, bidirektionaler Motor, Motorisierung Rollläden, Smart Home Jalousienmotor"
 readingTime: 6
 image: /og-image.jpg

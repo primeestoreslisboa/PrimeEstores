@@ -1,7 +1,7 @@
 ﻿---
 title: "Stores électriques vs stores manuels : comparatif complet"
 description: "Confort, coût, efficacité énergétique, sécurité — comparatif détaillé entre stores électriques et stores manuels pour vous aider à choisir. Avec tableaux et exemples."
-pubDate: 2025-02-10
+pubDate: 2026-01-12
 keywords: "store électrique vs manuel, avantages store motorisé, comparatif store électrique, store manuel ou électrique, motoriser store manuel"
 readingTime: 5
 image: /og-image.jpg
@@ -123,7 +123,7 @@ Il n'existe pas de réponse universelle. Voici les principes à retenir :
 .Value; $inner = [regex]::Matches($m, '"([^"]*)"') | ForEach-Object { ---
 title: "Stores électriques vs stores manuels : comparatif complet"
 description: "Confort, coût, efficacité énergétique, sécurité — comparatif détaillé entre stores électriques et stores manuels pour vous aider à choisir. Avec tableaux et exemples."
-pubDate: 2025-02-10
+pubDate: 2026-01-12
 keywords: "store électrique vs manuel, avantages store motorisé, comparatif store électrique, store manuel ou électrique, motoriser store manuel"
 readingTime: 5
 image: /og-image.jpg

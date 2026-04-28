@@ -1,7 +1,7 @@
----
+﻿---
 title: "Como Escolher o Motor Certo para Estores Elétricos: Guia 2025"
 description: "Guia completo para escolher o motor de estore elétrico ideal: tipo de motor, protocolo, compatibilidade com domótica, silêncio e o que perguntar ao instalador."
-pubDate: 2025-04-02
+pubDate: 2026-04-07
 keywords: "melhor motor estore elétrico, motor tubular estore, estore elétrico domótica, motor estore silencioso, escolher motor estore Lisboa"
 readingTime: 6
 ---

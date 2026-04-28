@@ -1,7 +1,7 @@
 ﻿---
 title: "Elektrische Jalousie defekt – Was tun? Schritt-für-Schritt-Fehlersuche"
 description: "Elektrische Jalousie reagiert nicht mehr? Diese Anleitung führt Sie durch fünf Prüfschritte, erklärt wann Sie einen Techniker rufen sollten und wann ein Austausch sinnvoll ist."
-pubDate: 2025-02-20
+pubDate: 2026-01-27
 keywords: "elektrische Jalousie defekt, Jalousie reagiert nicht, Rollläden reparieren, Motorjalousie Fehler, Jalousie Fehlersuche"
 readingTime: 5
 image: /og-image.jpg
@@ -119,7 +119,7 @@ Wenn Sie sich nicht sicher sind oder das Problem weiterhin besteht, kontaktieren
 .Value; $inner = [regex]::Matches($m, '"([^"]*)"') | ForEach-Object { ---
 title: "Elektrische Jalousie defekt – Was tun? Schritt-für-Schritt-Fehlersuche"
 description: "Elektrische Jalousie reagiert nicht mehr? Diese Anleitung führt Sie durch fünf Prüfschritte, erklärt wann Sie einen Techniker rufen sollten und wann ein Austausch sinnvoll ist."
-pubDate: 2025-02-20
+pubDate: 2026-01-27
 keywords: "elektrische Jalousie defekt, Jalousie reagiert nicht, Rollläden reparieren, Motorjalousie Fehler, Jalousie Fehlersuche"
 readingTime: 5
 image: /og-image.jpg

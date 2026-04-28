@@ -1,7 +1,7 @@
 ﻿---
 title: "Come scegliere il motore giusto per tende elettriche: guida 2025"
 description: "Guida completa per scegliere il motore ideale per tende elettriche: tipo di motore, protocollo, compatibilità domotica, silenziosità e domande da fare all'installatore."
-pubDate: 2025-04-02
+pubDate: 2026-04-07
 keywords: "miglior motore tenda elettrica, motore tubolare tenda, tenda elettrica domotica, motore tenda silenzioso, scegliere motore tenda"
 readingTime: 6
 image: /og-image.jpg

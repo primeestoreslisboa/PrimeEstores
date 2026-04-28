@@ -1,7 +1,7 @@
 ﻿---
 title: "Tenda elettrica guasta: cosa fare prima di chiamare un tecnico"
 description: "Guida diagnostica passo per passo per risolvere i problemi più comuni delle tende elettriche: alimentazione, telecomando, fine-corsa, protezione termica e ostacoli meccanici."
-pubDate: 2025-02-20
+pubDate: 2026-01-27
 keywords: "tenda elettrica guasta, problema motore tenda, tenda motorizzata non funziona, riparare tenda elettrica, fine-corsa tenda"
 readingTime: 5
 image: /og-image.jpg
@@ -95,7 +95,7 @@ In molti casi una diagnosi professionale — che spesso è gratuita o a costo co
 .Value; $inner = [regex]::Matches($m, '"([^"]*)"') | ForEach-Object { ---
 title: "Tenda elettrica guasta: cosa fare prima di chiamare un tecnico"
 description: "Guida diagnostica passo per passo per risolvere i problemi più comuni delle tende elettriche: alimentazione, telecomando, fine-corsa, protezione termica e ostacoli meccanici."
-pubDate: 2025-02-20
+pubDate: 2026-01-27
 keywords: "tenda elettrica guasta, problema motore tenda, tenda motorizzata non funziona, riparare tenda elettrica, fine-corsa tenda"
 readingTime: 5
 image: /og-image.jpg

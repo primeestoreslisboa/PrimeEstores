@@ -1,7 +1,7 @@
----
+﻿---
 title: "Electric Blind Not Working: What to Do? Diagnostic Guide"
 description: "Has your electric blind stopped working? Learn how to diagnose the most common faults before calling a technician."
-pubDate: 2025-02-20
+pubDate: 2026-01-27
 keywords: "electric blind broken, motorised blind not working, electric blind repair Lisbon, blind motor fault"
 readingTime: 5
 image: /og-image.jpg

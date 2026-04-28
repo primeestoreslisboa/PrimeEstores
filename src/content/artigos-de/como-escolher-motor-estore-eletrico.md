@@ -1,7 +1,7 @@
 ﻿---
 title: "Den richtigen Motor für elektrische Rollos wählen: Ratgeber 2025"
 description: "Vollständiger Leitfaden zur Wahl des idealen Rollomotors: Motortyp, Protokoll, Smart-Home-Kompatibilität, Geräuschpegel und Fragen an den Installateur."
-pubDate: 2025-04-02
+pubDate: 2026-04-07
 keywords: "bester Motor elektrisches Rollo, Rohrmotor Rollo, elektrisches Rollo Smart Home, leiser Rollomotor, Rollomotor wählen"
 readingTime: 6
 image: /og-image.jpg

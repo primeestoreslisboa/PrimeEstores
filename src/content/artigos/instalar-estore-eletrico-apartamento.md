@@ -1,7 +1,7 @@
----
+﻿---
 title: "Instalar Estores Elétricos em Apartamento: Tudo o Que Precisa de Saber"
 description: "Guia completo para instalar estores elétricos em apartamento: autorização de condomínio, cablagem, tipos de motor e o que esperar da instalação. Lisboa e Grande Lisboa."
-pubDate: 2025-04-10
+pubDate: 2026-04-25
 keywords: "instalar estore elétrico apartamento, estore elétrico condomínio, estore motorizado apartamento Lisboa, licença estore apartamento"
 readingTime: 6
 ---

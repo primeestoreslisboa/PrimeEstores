@@ -1,7 +1,7 @@
 ﻿---
 title: "Installer des stores électriques en appartement : tout ce que vous devez savoir"
 description: "Guide complet pour installer des stores électriques en appartement : autorisation de copropriété, câblage, types de moteur et ce que vous devez attendre de l'installation. Lisbonne et Grand Lisbonne."
-pubDate: 2025-04-10
+pubDate: 2026-04-25
 keywords: "installer store électrique appartement, store électrique copropriété, store motorisé appartement, autorisation store appartement"
 readingTime: 6
 image: /og-image.jpg

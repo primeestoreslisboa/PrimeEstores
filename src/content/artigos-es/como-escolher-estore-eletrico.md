@@ -1,7 +1,7 @@
 ﻿---
 title: "Cómo elegir el estore eléctrico adecuado: guía completa"
 description: "Guía completa para elegir el estore eléctrico ideal: tipos de estore, calidades de motor, tejidos, compatibilidad con domótica y preguntas clave que debe hacer al instalador."
-pubDate: 2025-03-18
+pubDate: 2026-03-10
 keywords: "elegir estore eléctrico, tipos de estores motorizados, motor estore tubular, tejido estore blackout, estore solar screen, guía estores eléctricos"
 readingTime: 7
 image: /og-image.jpg
@@ -157,7 +157,7 @@ Si tiene dudas sobre cuál es la mejor opción para su vivienda u oficina en Lis
 .Value; $inner = [regex]::Matches($m, '"([^"]*)"') | ForEach-Object { ---
 title: "Cómo elegir el estore eléctrico adecuado: guía completa"
 description: "Guía completa para elegir el estore eléctrico ideal: tipos de estore, calidades de motor, tejidos, compatibilidad con domótica y preguntas clave que debe hacer al instalador."
-pubDate: 2025-03-18
+pubDate: 2026-03-10
 keywords: "elegir estore eléctrico, tipos de estores motorizados, motor estore tubular, tejido estore blackout, estore solar screen, guía estores eléctricos"
 readingTime: 7
 image: /og-image.jpg

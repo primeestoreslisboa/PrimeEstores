@@ -1,7 +1,7 @@
----
+﻿---
 title: "Estores Elétricos com Domótica: Google Home, Alexa e Apple HomeKit"
 description: "Como integrar estores elétricos com Google Home, Amazon Alexa e Apple HomeKit. Guia prático de compatibilidade, protocolos e equipamentos necessários em 2025."
-pubDate: 2025-03-25
+pubDate: 2026-03-24
 keywords: "estores elétricos domótica, estore Google Home, estore Alexa, estore Apple HomeKit, estores casa inteligente Lisboa"
 readingTime: 7
 ---

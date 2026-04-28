@@ -1,7 +1,7 @@
 ﻿---
 title: "Comment choisir le bon moteur pour stores électriques : guide 2025"
 description: "Guide complet pour choisir le moteur de store électrique idéal : type de moteur, protocole, compatibilité domotique, silence et questions à poser à l'installateur."
-pubDate: 2025-04-02
+pubDate: 2026-04-07
 keywords: "meilleur moteur store électrique, moteur tubulaire store, store électrique domotique, moteur store silencieux, choisir moteur store"
 readingTime: 6
 image: /og-image.jpg

@@ -1,7 +1,7 @@
----
+﻿---
 title: "Estores Elétricos vs. Manuais: Qual Escolher para a Sua Casa?"
 description: "Comparação completa entre estores elétricos e manuais: conforto, custo, durabilidade e quando compensa motorizar. Guia para quem está a decidir em 2025."
-pubDate: 2025-02-10
+pubDate: 2026-01-12
 keywords: "estores elétricos vs manuais, diferença estore elétrico manual, vale a pena estore elétrico, motorizar estore manual, estore motorizado Lisboa"
 readingTime: 5
 ---

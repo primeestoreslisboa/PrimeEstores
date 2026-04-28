@@ -1,7 +1,7 @@
 ﻿---
 title: "Comment choisir le bon store électrique : guide complet"
 description: "Type de store, moteur, protocole radio, tissu, domotique — tout ce qu'il faut savoir avant d'acheter un store électrique. Guide pratique pour particuliers."
-pubDate: 2025-03-18
+pubDate: 2026-03-10
 keywords: "choisir store électrique, guide store motorisé, type de store électrique, moteur store tubulaire, store domotique compatible"
 readingTime: 7
 image: /og-image.jpg
@@ -140,7 +140,7 @@ Un installateur professionnel vous guidera dans chacun de ces choix lors d'une v
 .Value; $inner = [regex]::Matches($m, '"([^"]*)"') | ForEach-Object { ---
 title: "Comment choisir le bon store électrique : guide complet"
 description: "Type de store, moteur, protocole radio, tissu, domotique — tout ce qu'il faut savoir avant d'acheter un store électrique. Guide pratique pour particuliers."
-pubDate: 2025-03-18
+pubDate: 2026-03-10
 keywords: "choisir store électrique, guide store motorisé, type de store électrique, moteur store tubulaire, store domotique compatible"
 readingTime: 7
 image: /og-image.jpg

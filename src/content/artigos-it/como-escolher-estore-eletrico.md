@@ -1,7 +1,7 @@
 ﻿---
 title: "Come scegliere la tenda elettrica giusta: guida completa"
 description: "Guida completa per orientarsi tra tipi di tende elettriche, motori, protocolli radio, tessuti e compatibilità domotica. Tutto quello che devi sapere prima di acquistare."
-pubDate: 2025-03-18
+pubDate: 2026-03-10
 keywords: "come scegliere tenda elettrica, guida tende motorizzate, tipi di motore tenda, tessuto tenda oscurante, tende elettriche domotica"
 readingTime: 7
 image: /og-image.jpg
@@ -102,7 +102,7 @@ Hai ancora dubbi? Un sopralluogo gratuito è il modo più rapido per avere rispo
 .Value; $inner = [regex]::Matches($m, '"([^"]*)"') | ForEach-Object { ---
 title: "Come scegliere la tenda elettrica giusta: guida completa"
 description: "Guida completa per orientarsi tra tipi di tende elettriche, motori, protocolli radio, tessuti e compatibilità domotica. Tutto quello che devi sapere prima di acquistare."
-pubDate: 2025-03-18
+pubDate: 2026-03-10
 keywords: "come scegliere tenda elettrica, guida tende motorizzate, tipi di motore tenda, tessuto tenda oscurante, tende elettriche domotica"
 readingTime: 7
 image: /og-image.jpg

@@ -1,7 +1,7 @@
 ﻿---
 title: "Manutenzione delle tende elettriche: 8 consigli per prolungare la durata"
 description: "Come mantenere le vostre tende elettriche in buono stato più a lungo. Pulizia, lubrificazione, verifiche periodiche e quando chiamare un tecnico per la manutenzione."
-pubDate: 2025-01-28
+pubDate: 2025-12-23
 keywords: "manutenzione tende elettriche, pulire tenda elettrica, lubrificare guide tenda, durata motore tenda, manutenzione tenda motorizzata"
 readingTime: 5
 image: /og-image.jpg

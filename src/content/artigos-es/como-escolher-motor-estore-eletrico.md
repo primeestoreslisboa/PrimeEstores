@@ -1,7 +1,7 @@
 ﻿---
 title: "Cómo elegir el motor correcto para persianas eléctricas: guía 2025"
 description: "Guía completa para elegir el motor de persiana eléctrica ideal: tipo de motor, protocolo, compatibilidad con domótica, silencio y qué preguntar al instalador."
-pubDate: 2025-04-02
+pubDate: 2026-04-07
 keywords: "mejor motor persiana eléctrica, motor tubular persiana, persiana eléctrica domótica, motor persiana silencioso, elegir motor persiana"
 readingTime: 6
 image: /og-image.jpg

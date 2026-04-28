@@ -1,7 +1,7 @@
----
+﻿---
 title: "Electric Blinds vs. Manual Blinds: Which Should You Choose for Your Home?"
 description: "A complete comparison of electric and manual blinds: comfort, cost, durability, and when it is worth motorising."
-pubDate: 2025-02-10
+pubDate: 2026-01-12
 keywords: "electric blinds vs manual blinds, difference electric manual blind, is an electric blind worth it"
 readingTime: 5
 image: /og-image.jpg

@@ -1,7 +1,7 @@
 ﻿---
 title: "Tende elettriche e domotica: integrazione con Google Home, Alexa e HomeKit"
 description: "Guida completa all'integrazione delle tende motorizzate con Google Home, Amazon Alexa e Apple HomeKit. Componenti necessari, costi, automazioni utili e FAQ."
-pubDate: 2025-03-25
+pubDate: 2026-03-24
 keywords: "tende elettriche domotica, tende Google Home, tende Alexa, tende Apple HomeKit, automazione tende motorizzate"
 readingTime: 7
 image: /og-image.jpg
@@ -120,7 +120,7 @@ Dipende dall'hub scelto. La maggior parte supporta da 10 a 50+ dispositivi, più
 .Value; $inner = [regex]::Matches($m, '"([^"]*)"') | ForEach-Object { ---
 title: "Tende elettriche e domotica: integrazione con Google Home, Alexa e HomeKit"
 description: "Guida completa all'integrazione delle tende motorizzate con Google Home, Amazon Alexa e Apple HomeKit. Componenti necessari, costi, automazioni utili e FAQ."
-pubDate: 2025-03-25
+pubDate: 2026-03-24
 keywords: "tende elettriche domotica, tende Google Home, tende Alexa, tende Apple HomeKit, automazione tende motorizzate"
 readingTime: 7
 image: /og-image.jpg
