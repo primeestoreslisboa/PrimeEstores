@@ -1,4 +1,4 @@
----
+﻿---
 import Layout from '../../../layouts/Layout.astro';
 import { getCollection, getEntry } from 'astro:content';
 
@@ -64,7 +64,16 @@ const breadcrumbSchema = {
   ogImage={`${baseUrl}${post.data.image}`}
   lang={lang}
 >
-
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8340172955044180" crossorigin="anonymous"></script>
+  <ins class="adsbygoogle"
+       style="display:block; text-align:center;"
+       data-ad-layout="in-article"
+       data-ad-format="fluid"
+       data-ad-client="ca-pub-8340172955044180"
+       data-ad-slot="7677698123"></ins>
+  <script is:inline>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
   <!-- Hero -->
   <section class="bg-gradient-to-br from-[#1A1A1A] to-[#8B1A1A] text-white py-14 lg:py-16">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -82,7 +91,7 @@ const breadcrumbSchema = {
           {formatDate(post.data.pubDate)}
         </time>
         {post.data.readingTime && (
-          <span>· {post.data.readingTime} min read</span>
+          <span>Â· {post.data.readingTime} min read</span>
         )}
       </div>
       <h1 class="text-2xl sm:text-3xl lg:text-4xl font-black leading-tight">
@@ -157,3 +166,4 @@ const breadcrumbSchema = {
   </section>
 
 </Layout>
+

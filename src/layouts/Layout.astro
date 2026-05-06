@@ -65,9 +65,6 @@ const hreflangEntries: { hreflang: string; code: RouteLang }[] = [
   { hreflang: 'it-IT', code: 'it' },
 ];
 const ptEquivalent = `${baseUrl}${getEquivalentPath(currentPath, 'pt')}`;
-const normalizedPath = currentPath.replace(/^\/+/, '');
-const articlePrefixes = ['artigos', 'en/articles', 'fr/articles', 'es/articulos', 'de/artikel', 'it/articoli'];
-const isArticlePage = articlePrefixes.some((prefix) => normalizedPath === prefix || normalizedPath.startsWith(prefix + '/'));
 ---
 
 <!doctype html>
@@ -95,13 +92,6 @@ const isArticlePage = articlePrefixes.some((prefix) => normalizedPath === prefix
       faqs={faqs}
       lang={lang}
     />
-    {isArticlePage && (
-      <script
-        async
-        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8340172955044180"
-        crossorigin="anonymous"
-      ></script>
-    )}
     <!-- Google tag (gtag.js) â€” loaded after page is interactive to avoid blocking LCP -->
     <script is:inline>
       window.dataLayer = window.dataLayer || [];

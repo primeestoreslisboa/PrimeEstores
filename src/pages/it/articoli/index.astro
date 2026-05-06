@@ -1,4 +1,4 @@
----
+﻿---
 import Layout from '../../../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
 
@@ -14,12 +14,21 @@ function formatDate(date: Date) {
 ---
 
 <Layout
-  title="Articoli Prime Estores — Guide e Consigli sulle Tende Elettriche"
+  title="Articoli Prime Estores â€” Guide e Consigli sulle Tende Elettriche"
   description="Articoli pratici su tende elettriche e manuali: prezzi, installazione, manutenzione, domotica e molto altro. La guida di riferimento per installare tende a Lisbona."
   keywords="articoli tende elettriche, guide tende, consigli tende Lisbona, articoli tende motorizzate"
   lang={lang}
 >
-
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8340172955044180" crossorigin="anonymous"></script>
+  <ins class="adsbygoogle"
+       style="display:block; text-align:center;"
+       data-ad-layout="in-article"
+       data-ad-format="fluid"
+       data-ad-client="ca-pub-8340172955044180"
+       data-ad-slot="7677698123"></ins>
+  <script is:inline>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
   <section class="bg-gradient-to-br from-[#1A1A1A] to-[#8B1A1A] text-white py-16 lg:py-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <nav aria-label="Percorso di navigazione" class="mb-6">
@@ -33,7 +42,7 @@ function formatDate(date: Date) {
         <span class="inline-block bg-white/10 border border-white/20 text-white text-xs font-semibold uppercase tracking-widest px-3 py-1 rounded-full mb-4">Guide & Consigli</span>
         <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black leading-tight mb-4">Articoli Prime Estores</h1>
         <p class="text-xl text-white/80 leading-relaxed">
-          Articoli pratici su tende elettriche, manuali, motorizzazione, domotica e manutenzione — scritti da specialisti con anni di esperienza a Lisbona.
+          Articoli pratici su tende elettriche, manuali, motorizzazione, domotica e manutenzione â€” scritti da specialisti con anni di esperienza a Lisbona.
         </p>
       </div>
     </div>
@@ -50,7 +59,7 @@ function formatDate(date: Date) {
                   {formatDate(post.data.pubDate)}
                 </time>
                 {post.data.readingTime && (
-                  <span class="text-xs text-gray-400">· {post.data.readingTime} min di lettura</span>
+                  <span class="text-xs text-gray-400">Â· {post.data.readingTime} min di lettura</span>
                 )}
               </div>
               <h2 class="text-lg font-black text-[#1A1A1A] leading-snug mb-3 hover:text-[#8B1A1A] transition-colors">
@@ -86,3 +95,4 @@ function formatDate(date: Date) {
   </section>
 
 </Layout>
+
