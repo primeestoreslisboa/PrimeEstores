@@ -145,9 +145,9 @@ const socialLinks = [
             <span class="text-lg sm:text-2xl font-black text-[#C0392B] tracking-tight">PRIME</span>
             <span class="text-lg sm:text-2xl font-black text-white tracking-tight">ESTORES</span>
           </div>
-          <span class="text-xs font-semibold text-[#C0392B] tracking-widest uppercase -mt-1">Instalação &amp; Reparação</span>
+          <span class="text-xs font-semibold text-red-400 tracking-widest uppercase -mt-1">Instalação &amp; Reparação</span>
         </a>
-        <p class="text-gray-400 text-sm leading-relaxed mb-4">{desc}</p>
+        <p class="text-gray-300 text-sm leading-relaxed mb-4">{desc}</p>
         <div class="space-y-2">
           <a href="tel:+351923348323" class="flex items-center gap-2 text-white hover:text-[#C0392B] transition-colors text-sm font-medium">
             <svg class="w-4 h-4 text-[#C0392B]" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -166,7 +166,7 @@ const socialLinks = [
           <svg class="w-4 h-4 text-[#C0392B] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
           </svg>
-          <div class="text-sm text-gray-400">
+          <div class="text-sm text-gray-300">
             <div class="text-white font-medium mb-0.5">{hoursLabel}</div>
             {hoursValue}
           </div>
@@ -180,7 +180,7 @@ const socialLinks = [
               target="_blank"
               rel="noopener noreferrer"
               aria-label={social.name}
-              class="w-9 h-9 rounded-full bg-white/10 hover:bg-[#C0392B] flex items-center justify-center text-gray-400 hover:text-white transition-colors"
+              class="w-9 h-9 rounded-full bg-white/10 hover:bg-[#C0392B] flex items-center justify-center text-gray-300 hover:text-white transition-colors"
               set:html={social.icon}
             />
           ))}
@@ -210,19 +210,19 @@ const socialLinks = [
         <h3 class="text-white font-semibold text-sm uppercase tracking-wider mb-4">{t('footer.services')}</h3>
         <ul class="space-y-2">
           <li>
-            <a href={links.electric} class="text-gray-400 hover:text-white transition-colors text-sm">{t('nav.services.electric')}</a>
+            <a href={links.electric} class="text-gray-300 hover:text-white transition-colors text-sm">{t('nav.services.electric')}</a>
           </li>
           <li>
-            <a href={links.manual} class="text-gray-400 hover:text-white transition-colors text-sm">{t('nav.services.manual')}</a>
+            <a href={links.manual} class="text-gray-300 hover:text-white transition-colors text-sm">{t('nav.services.manual')}</a>
           </li>
           <li>
-            <a href={links.repair} class="text-gray-400 hover:text-white transition-colors text-sm">{t('nav.services.repair')}</a>
+            <a href={links.repair} class="text-gray-300 hover:text-white transition-colors text-sm">{t('nav.services.repair')}</a>
           </li>
           <li>
-            <a href={links.quote} class="text-gray-400 hover:text-white transition-colors text-sm">{t('nav.quote')}</a>
+            <a href={links.quote} class="text-gray-300 hover:text-white transition-colors text-sm">{t('nav.quote')}</a>
           </li>
           <li>
-            <a href={links.contact} class="text-gray-400 hover:text-white transition-colors text-sm">{t('nav.contact')}</a>
+            <a href={links.contact} class="text-gray-300 hover:text-white transition-colors text-sm">{t('nav.contact')}</a>
           </li>
         </ul>
       </div>
@@ -235,7 +235,7 @@ const socialLinks = [
         <ul class="space-y-2">
           {['Lisboa', 'Sintra', 'Cascais', 'Oeiras', 'Almada', 'Setúbal', 'Amadora', 'Loures', 'Odivelas', 'Mafra'].map(zona => (
             <li>
-              <a href={links.zones} class="text-gray-400 hover:text-white transition-colors text-sm">{zona}</a>
+              <a href={links.zones} class="text-gray-300 hover:text-white transition-colors text-sm">{zona}</a>
             </li>
           ))}
         </ul>
@@ -246,16 +246,16 @@ const socialLinks = [
         <h3 class="text-white font-semibold text-sm uppercase tracking-wider mb-4">{infoLabel}</h3>
         <ul class="space-y-2 mb-6">
           <li>
-            <a href={links.home} class="text-gray-400 hover:text-white transition-colors text-sm">{t('nav.home')}</a>
+            <a href={links.home} class="text-gray-300 hover:text-white transition-colors text-sm">{t('nav.home')}</a>
           </li>
           <li>
-            <a href={links.zones} class="text-gray-400 hover:text-white transition-colors text-sm">{t('footer.zones')}</a>
+            <a href={links.zones} class="text-gray-300 hover:text-white transition-colors text-sm">{t('footer.zones')}</a>
           </li>
           <li>
-            <a href={links.quote} class="text-gray-400 hover:text-white transition-colors text-sm">{t('nav.quote')}</a>
+            <a href={links.quote} class="text-gray-300 hover:text-white transition-colors text-sm">{t('nav.quote')}</a>
           </li>
           <li>
-            <a href={links.contact} class="text-gray-400 hover:text-white transition-colors text-sm">{t('nav.contact')}</a>
+            <a href={links.contact} class="text-gray-300 hover:text-white transition-colors text-sm">{t('nav.contact')}</a>
           </li>
         </ul>
 
@@ -276,10 +276,10 @@ const socialLinks = [
 
     <!-- Bottom bar -->
     <div class="border-t border-gray-800 mt-10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
-      <p class="text-gray-500 text-sm">
+      <p class="text-gray-300 text-sm">
         &copy; {currentYear} Prime Estores. {rightsText}
       </p>
-      <p class="text-gray-600 text-xs">
+      <p class="text-gray-300 text-xs">
         Lisboa, Portugal &bull; NIF: 123 456 789
       </p>
     </div>
