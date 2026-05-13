@@ -99,10 +99,12 @@ const ptEquivalent = `${baseUrl}${getEquivalentPath(currentPath, 'pt')}`;
       gtag('js', new Date());
       gtag('config', 'G-N8X7F9QBXQ');
       window.addEventListener('load', function() {
-        var s = document.createElement('script');
-        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-N8X7F9QBXQ';
-        s.async = true;
-        document.head.appendChild(s);
+        setTimeout(function() {
+          var s = document.createElement('script');
+          s.src = 'https://www.googletagmanager.com/gtag/js?id=G-N8X7F9QBXQ';
+          s.async = true;
+          document.head.appendChild(s);
+        }, 3000);
       });
     </script>
     <style is:inline>
@@ -115,6 +117,7 @@ const ptEquivalent = `${baseUrl}${getEquivalentPath(currentPath, 'pt')}`;
     </style>
   </head>
   <body class="font-sans text-[#1A1A1A] antialiased">
+    <!--email_off-->
     <!-- Skip to main content â€” visible on keyboard focus only -->
     <a
       href="#main-content"
@@ -128,6 +131,7 @@ const ptEquivalent = `${baseUrl}${getEquivalentPath(currentPath, 'pt')}`;
     </main>
     <Footer lang={lang} />
     <WhatsAppButton label={t('whatsapp.label')} />
+    <!--/email_off-->
   </body>
 </html>
 

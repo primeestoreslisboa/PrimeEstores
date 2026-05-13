@@ -31,6 +31,9 @@ function getChangefreq(url) {
 // https://astro.build/config
 export default defineConfig({
   site: 'https://www.primeestores.pt',
+  build: {
+    inlineStylesheets: 'always',
+  },
   integrations: [
     tailwind(),
     sitemap({

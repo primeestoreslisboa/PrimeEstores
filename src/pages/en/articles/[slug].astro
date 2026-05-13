@@ -78,7 +78,7 @@ const breadcrumbSchema = {
   <section class="bg-gradient-to-br from-[#1A1A1A] to-[#8B1A1A] text-white py-14 lg:py-16">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <nav aria-label="Breadcrumb" class="mb-6">
-        <ol class="flex items-center gap-2 text-sm text-white/60">
+        <ol class="flex items-center gap-2 text-sm text-white/80">
           <li><a href="/en/" class="hover:text-white transition-colors">Home</a></li>
           <li aria-hidden="true"><span>/</span></li>
           <li><a href="/en/articles/" class="hover:text-white transition-colors">Articles</a></li>
@@ -86,7 +86,7 @@ const breadcrumbSchema = {
           <li><span class="text-white/80 truncate max-w-xs">{post.data.title}</span></li>
         </ol>
       </nav>
-      <div class="flex items-center gap-4 mb-5 text-sm text-white/60">
+      <div class="flex items-center gap-4 mb-5 text-sm text-white/80">
         <time datetime={post.data.pubDate.toISOString()}>
           {formatDate(post.data.pubDate)}
         </time>
