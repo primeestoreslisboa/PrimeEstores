@@ -260,12 +260,19 @@ const dtLocale = localeMap[lang] ?? 'pt-PT';
       if (feedback) feedback.textContent = '';
     }
 
-    function groupSlots(slots: string[]) {
-      return slots.reduce((acc, slot) => {
-        const day = slot.slice(0, 10);
-        (acc[day] ||= []).push(slot);
+    interface SlotRange {
+      value: string;
+      start: string;
+      end: string;
+      label: string;
+    }
+
+    function groupSlotRanges(ranges: SlotRange[]) {
+      return ranges.reduce((acc, range) => {
+        const day = range.value.slice(0, 10);
+        (acc[day] ||= []).push(range);
         return acc;
-      }, {} as Record<string, string[]>);
+      }, {} as Record<string, SlotRange[]>);
     }
 
     function selectSlot(slot: string) {
@@ -282,19 +289,19 @@ const dtLocale = localeMap[lang] ?? 'pt-PT';
       });
     }
 
-    function renderSlots(slots: string[]) {
+    function renderSlots(ranges: SlotRange[]) {
       if (!slotsList || !slotsLoading) return;
       slotsLoading.classList.add('hidden');
       slotsList.classList.remove('hidden');
       slotsList.innerHTML = '';
 
-      if (!slots.length) {
+      if (!ranges.length) {
         slotsList.innerHTML = `<p class="text-sm text-gray-500">${m.empty}</p>`;
         return;
       }
 
-      const grouped = groupSlots(slots);
-      Object.entries(grouped).forEach(([day, daySlots]) => {
+      const grouped = groupSlotRanges(ranges);
+      Object.entries(grouped).forEach(([day, dayRanges]) => {
         const date = new Date(`${day}T00:00:00`);
         const row = document.createElement('div');
         row.className = 'bg-white border border-gray-200 rounded-lg p-3';
@@ -307,16 +314,15 @@ const dtLocale = localeMap[lang] ?? 'pt-PT';
         const grid = document.createElement('div');
         grid.className = 'flex flex-wrap gap-2';
 
-        daySlots.forEach((slot) => {
-          const dateSlot = new Date(slot);
+        dayRanges.forEach((range) => {
           const btn = document.createElement('button');
           btn.type = 'button';
           btn.dataset.slotBtn = '1';
-          btn.dataset.slot = slot;
+          btn.dataset.slot = range.value;
           btn.className =
             'px-3 py-1.5 rounded-full border border-gray-300 bg-white text-[#1A1A1A] text-xs font-semibold hover:border-[#8B1A1A] hover:text-[#8B1A1A] transition-colors';
-          btn.textContent = fmtTime.format(dateSlot);
-          btn.addEventListener('click', () => selectSlot(slot));
+          btn.textContent = range.label;
+          btn.addEventListener('click', () => selectSlot(range.value));
           grid.appendChild(btn);
         });
 
@@ -335,8 +341,8 @@ const dtLocale = localeMap[lang] ?? 'pt-PT';
       try {
         const res = await fetch(`${endpoint}?days=7`);
         const data = await res.json();
-        if (!res.ok || !Array.isArray(data?.slots)) throw new Error('invalid_slots');
-        renderSlots(data.slots);
+        if (!res.ok || !Array.isArray(data?.slotRanges)) throw new Error('invalid_slots');
+        renderSlots(data.slotRanges);
       } catch {
         slotsLoading.classList.add('hidden');
         slotsList.classList.remove('hidden');
