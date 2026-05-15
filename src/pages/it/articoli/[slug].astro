@@ -51,16 +51,6 @@ const breadcrumbSchema = {
 <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
 
 <Layout title={post.data.title} description={post.data.description} keywords={post.data.keywords} canonicalURL={pageUrl} ogType="article" ogImage={`${baseUrl}${post.data.image}`} lang={lang}>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8340172955044180" crossorigin="anonymous"></script>
-  <ins class="adsbygoogle"
-       style="display:block; text-align:center;"
-       data-ad-layout="in-article"
-       data-ad-format="fluid"
-       data-ad-client="ca-pub-8340172955044180"
-       data-ad-slot="7677698123"></ins>
-  <script is:inline>
-       (adsbygoogle = window.adsbygoogle || []).push({});
-  </script>
   <section class="bg-gradient-to-br from-[#1A1A1A] to-[#8B1A1A] text-white py-14 lg:py-16">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <nav aria-label="Percorso di navigazione" class="mb-6">
@@ -74,7 +64,7 @@ const breadcrumbSchema = {
       </nav>
       <div class="flex items-center gap-4 mb-5 text-sm text-white/80">
         <time datetime={post.data.pubDate.toISOString()}>{formatDate(post.data.pubDate)}</time>
-        {post.data.readingTime && <span>Â· {post.data.readingTime} min di lettura</span>}
+        {post.data.readingTime && <span>· {post.data.readingTime} min di lettura</span>}
       </div>
       <h1 class="text-2xl sm:text-3xl lg:text-4xl font-black leading-tight">{post.data.title}</h1>
     </div>
@@ -85,6 +75,20 @@ const breadcrumbSchema = {
       <div class="grid lg:grid-cols-[1fr_300px] gap-12 items-start">
         <article class="prose prose-lg max-w-none prose-headings:font-black prose-headings:text-[#1A1A1A] prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-4 prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-3 prose-p:text-gray-600 prose-p:leading-relaxed prose-a:text-[#8B1A1A] prose-a:font-semibold prose-a:no-underline hover:prose-a:underline prose-strong:text-[#1A1A1A] prose-ul:text-gray-600 prose-ol:text-gray-600 prose-li:marker:text-[#8B1A1A] prose-table:text-sm prose-th:bg-[#F5F5F5] prose-th:text-[#1A1A1A] prose-th:font-bold prose-td:text-gray-600 prose-hr:border-gray-200 prose-blockquote:border-[#8B1A1A] prose-blockquote:text-gray-600">
           <Content />
+
+          <!-- In-article ad - placed after article body -->
+          <div class="my-8">
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8340172955044180" crossorigin="anonymous"></script>
+            <ins class="adsbygoogle"
+                 style="display:block; text-align:center;"
+                 data-ad-layout="in-article"
+                 data-ad-format="fluid"
+                 data-ad-client="ca-pub-8340172955044180"
+                 data-ad-slot="7677698123"></ins>
+            <script is:inline>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+          </div>
         </article>
         <aside class="space-y-6 lg:sticky lg:top-8">
           <div class="bg-[#8B1A1A] rounded-2xl p-6 text-white">

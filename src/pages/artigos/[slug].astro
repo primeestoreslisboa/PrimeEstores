@@ -65,16 +65,6 @@ const breadcrumbSchema = {
   ogType="article"
   ogImage={`${baseUrl}${post.data.image}`}
 >
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8340172955044180" crossorigin="anonymous"></script>
-  <ins class="adsbygoogle"
-       style="display:block; text-align:center;"
-       data-ad-layout="in-article"
-       data-ad-format="fluid"
-       data-ad-client="ca-pub-8340172955044180"
-       data-ad-slot="7677698123"></ins>
-  <script is:inline>
-       (adsbygoogle = window.adsbygoogle || []).push({});
-  </script>
   <!-- Hero -->
   <section class="bg-gradient-to-br from-[#1A1A1A] to-[#8B1A1A] text-white py-14 lg:py-16">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -122,6 +112,20 @@ const breadcrumbSchema = {
           prose-hr:border-gray-200
           prose-blockquote:border-[#8B1A1A] prose-blockquote:text-gray-600">
           <Content />
+
+          <!-- In-article ad — placed after article body -->
+          <div class="my-8">
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8340172955044180" crossorigin="anonymous"></script>
+            <ins class="adsbygoogle"
+                 style="display:block; text-align:center;"
+                 data-ad-layout="in-article"
+                 data-ad-format="fluid"
+                 data-ad-client="ca-pub-8340172955044180"
+                 data-ad-slot="7677698123"></ins>
+            <script is:inline>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+          </div>
         </article>
 
         <!-- Sidebar -->
