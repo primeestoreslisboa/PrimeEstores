@@ -10,6 +10,7 @@ export const routeMap: Record<Lang, string>[] = [
   { pt: '/servicos/estores-manuais',       en: '/en/services/manual-blinds',                fr: '/fr/services/stores-manuels',               es: '/es/servicios/persianas-manuales',           de: '/de/dienstleistungen/manuelle-jalousien',         it: '/it/servizi/tende-manuali'      },
   { pt: '/servicos/reparacao-estores',     en: '/en/services/blind-repair',                 fr: '/fr/services/reparation-stores',            es: '/es/servicios/reparacion-persianas',         de: '/de/dienstleistungen/jalousien-reparatur',        it: '/it/servizi/riparazione-tende'  },
   { pt: '/servicos/eletricidade',          en: '/en/services/electrical-work',              fr: '/fr/services/electricite',                  es: '/es/servicios/electricidad',                de: '/de/dienstleistungen/elektroinstallation',        it: '/it/servizi/impianto-elettrico' },
+  { pt: '/politica-privacidade',           en: '/en/privacy-policy',                        fr: '/fr/politique-confidentialite',             es: '/es/politica-privacidad',                    de: '/de/datenschutz',                                 it: '/it/informativa-privacy'        },
 ];
 
 /**

@@ -4,6 +4,7 @@ import SchemaOrg from '../components/SchemaOrg.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import WhatsAppButton from '../components/WhatsAppButton.astro';
+import CookieBanner from '../components/CookieBanner.astro';
 import { useTranslations } from '../i18n/utils';
 import type { Lang } from '../i18n/utils';
 import { getEquivalentPath } from '../i18n/routes';
@@ -131,6 +132,7 @@ const ptEquivalent = `${baseUrl}${getEquivalentPath(currentPath, 'pt')}`;
     </main>
     <Footer lang={lang} />
     <WhatsAppButton label={t('whatsapp.label')} />
+    <CookieBanner lang={lang} />
     <!--/email_off-->
   </body>
 </html>

@@ -1,0 +1,112 @@
+---
+import type { Lang } from '../i18n/utils';
+
+interface Props {
+  lang?: Lang;
+}
+
+const { lang = 'pt' } = Astro.props;
+
+const privacyLink =
+  lang === 'en' ? '/en/privacy-policy' :
+  lang === 'fr' ? '/fr/politique-confidentialite' :
+  lang === 'es' ? '/es/politica-privacidad' :
+  lang === 'de' ? '/de/datenschutz' :
+  lang === 'it' ? '/it/informativa-privacy' :
+  '/politica-privacidade';
+
+const texts = {
+  pt: {
+    message: 'Utilizamos cookies para melhorar a sua experiência e apresentar anúncios relevantes. Ao continuar a navegar, aceita o uso de cookies.',
+    learnMore: 'Saiba mais',
+    accept: 'Aceitar',
+    reject: 'Rejeitar',
+  },
+  en: {
+    message: 'We use cookies to improve your experience and show relevant ads. By continuing to browse, you agree to the use of cookies.',
+    learnMore: 'Learn more',
+    accept: 'Accept',
+    reject: 'Reject',
+  },
+  fr: {
+    message: 'Nous utilisons des cookies pour améliorer votre expérience et afficher des annonces pertinentes. En continuant à naviguer, vous acceptez l\'utilisation des cookies.',
+    learnMore: 'En savoir plus',
+    accept: 'Accepter',
+    reject: 'Refuser',
+  },
+  es: {
+    message: 'Utilizamos cookies para mejorar su experiencia y mostrar anuncios relevantes. Al continuar navegando, acepta el uso de cookies.',
+    learnMore: 'Más información',
+    accept: 'Aceptar',
+    reject: 'Rechazar',
+  },
+  de: {
+    message: 'Wir verwenden Cookies, um Ihre Erfahrung zu verbessern und relevante Werbung anzuzeigen. Wenn Sie weiter surfen, stimmen Sie der Verwendung von Cookies zu.',
+    learnMore: 'Mehr erfahren',
+    accept: 'Akzeptieren',
+    reject: 'Ablehnen',
+  },
+  it: {
+    message: 'Utilizziamo cookie per migliorare la tua esperienza e mostrare annunci pertinenti. Continuando a navigare, accetti l\'utilizzo dei cookie.',
+    learnMore: 'Scopri di più',
+    accept: 'Accetta',
+    reject: 'Rifiuta',
+  },
+};
+
+const t = texts[lang] ?? texts.pt;
+---
+
+<div
+  id="cookie-banner"
+  role="dialog"
+  aria-label="Cookie consent"
+  class="fixed bottom-0 left-0 right-0 z-[9998] bg-[#1A1A1A] text-white shadow-2xl hidden"
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row items-start sm:items-center gap-4">
+    <p class="text-sm text-gray-300 flex-1">
+      {t.message}
+      {' '}
+      <a href={privacyLink} class="underline text-white hover:text-gray-300 transition-colors whitespace-nowrap">{t.learnMore}</a>.
+    </p>
+    <div class="flex gap-3 shrink-0">
+      <button
+        id="cookie-reject"
+        class="px-4 py-2 text-sm border border-gray-500 text-gray-300 hover:border-white hover:text-white rounded-lg transition-colors"
+      >
+        {t.reject}
+      </button>
+      <button
+        id="cookie-accept"
+        class="px-4 py-2 text-sm bg-[#8B1A1A] hover:bg-[#a01f1f] text-white rounded-lg transition-colors font-semibold"
+      >
+        {t.accept}
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const banner = document.getElementById('cookie-banner');
+  const acceptBtn = document.getElementById('cookie-accept');
+  const rejectBtn = document.getElementById('cookie-reject');
+  const COOKIE_KEY = 'cookie_consent';
+
+  function hideBanner() {
+    if (banner) banner.classList.add('hidden');
+  }
+
+  if (!localStorage.getItem(COOKIE_KEY)) {
+    if (banner) banner.classList.remove('hidden');
+  }
+
+  acceptBtn?.addEventListener('click', () => {
+    localStorage.setItem(COOKIE_KEY, 'accepted');
+    hideBanner();
+  });
+
+  rejectBtn?.addEventListener('click', () => {
+    localStorage.setItem(COOKIE_KEY, 'rejected');
+    hideBanner();
+  });
+</script>
