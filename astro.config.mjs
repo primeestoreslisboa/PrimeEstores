@@ -8,15 +8,15 @@ const LAST_MOD = new Date();
 /** @param {string} url */
 function getPriority(url) {
   const path = url.replace('https://primeestores.pt', '').replace(/\/$/, '');
-  // Home pages â€” mÃ¡xima prioridade
+  // Home pages — máxima prioridade
   if (path === '' || path === '/en' || path === '/fr' || path === '/es' || path === '/de' || path === '/it') return 1.0;
-  // PÃ¡ginas de serviÃ§o â€” capturam trÃ¡fego orgÃ¢nico ("reparaÃ§Ã£o estores Lisboa")
+  // Páginas de serviço — capturam tráfego orgânico ("reparação estores Lisboa")
   if (path.includes('servico') || path.includes('service') || path.includes('dienst') || path.includes('servizi') || path.includes('servic')) return 0.9;
-  // OrÃ§amento e contacto â€” pÃ¡ginas de conversÃ£o
+  // Orçamento e contacto — páginas de conversão
   if (path.includes('orcamento') || path.includes('quote') || path.includes('devis') ||
       path.includes('presupuesto') || path.includes('angebot') || path.includes('preventivo')) return 0.8;
   if (path.includes('contacto') || path.includes('contact') || path.includes('kontakt') || path.includes('contatto')) return 0.8;
-  // Zonas â€” SEO local secundÃ¡rio
+  // Zonas — SEO local secundário
   if (path.includes('zona') || path.includes('zone') || path.includes('coverage') || path.includes('versorgung')) return 0.7;
   return 0.6;
 }

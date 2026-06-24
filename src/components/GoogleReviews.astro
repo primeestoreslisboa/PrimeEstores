@@ -93,6 +93,12 @@ const l = labels[lang] ?? labels['pt'];
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   "name": "Prime Estores",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Lisboa",
+    "addressRegion": "Lisboa",
+    "addressCountry": "PT"
+  },
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": rating.toFixed(1),

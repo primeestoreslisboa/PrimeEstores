@@ -1,4 +1,4 @@
----
+﻿---
 export interface Props {
   type?: 'LocalBusiness' | 'Service' | 'FAQPage' | 'WebPage';
   serviceName?: string;
@@ -104,6 +104,12 @@ const serviceSchema = serviceName ? {
     name: 'Prime Estores',
     telephone: '+351923348323',
     url: 'https://primeestores.pt',
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Lisboa',
+      addressRegion: 'Lisboa',
+      addressCountry: 'PT',
+    },
   },
   areaServed: {
     '@type': 'State',
