@@ -87,10 +87,10 @@ const selfCanonical = canonicalURL ?? Astro.url.href;
       noindex={noindex}
     />
     <!-- Hreflang â€” multilingual SEO -->
-    {cluster && hreflangEntries.map(({ hreflang, code }) => (
+    {cluster && hreflangEntries.filter(({ code }) => cluster[code]).map(({ hreflang, code }) => (
       <link rel="alternate" hreflang={hreflang} href={`${baseUrl}${cluster[code]}`} />
     ))}
-    {cluster && <link rel="alternate" hreflang="x-default" href={`${baseUrl}${cluster.pt}`} />}
+    {cluster && <link rel="alternate" hreflang="x-default" href={`${baseUrl}${cluster.pt ?? cluster.en ?? Object.values(cluster)[0]}`} />}
     {!cluster && <link rel="alternate" hreflang={htmlLang} href={selfCanonical} />}
     {!cluster && <link rel="alternate" hreflang="x-default" href={selfCanonical} />}
     <SchemaOrg
