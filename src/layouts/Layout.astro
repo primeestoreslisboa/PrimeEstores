@@ -7,7 +7,7 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
 import CookieBanner from '../components/CookieBanner.astro';
 import { useTranslations } from '../i18n/utils';
 import type { Lang } from '../i18n/utils';
-import { getEquivalentPath } from '../i18n/routes';
+import { findCluster } from '../i18n/routes';
 import type { Lang as RouteLang } from '../i18n/routes';
 
 export interface Props {
@@ -65,7 +65,12 @@ const hreflangEntries: { hreflang: string; code: RouteLang }[] = [
   { hreflang: 'de-DE', code: 'de' },
   { hreflang: 'it-IT', code: 'it' },
 ];
-const ptEquivalent = `${baseUrl}${getEquivalentPath(currentPath, 'pt')}`;
+
+// Only pages that belong to a translation cluster advertise the full 6-language
+// set. Standalone pages (articles, /sobre/, /zonas/[zona]/) emit a single
+// self-referencing hreflang so it never conflicts with rel=canonical.
+const cluster = findCluster(currentPath);
+const selfCanonical = canonicalURL ?? Astro.url.href;
 ---
 
 <!doctype html>
@@ -82,10 +87,12 @@ const ptEquivalent = `${baseUrl}${getEquivalentPath(currentPath, 'pt')}`;
       noindex={noindex}
     />
     <!-- Hreflang â€” multilingual SEO -->
-    {hreflangEntries.map(({ hreflang, code }) => (
-      <link rel="alternate" hreflang={hreflang} href={`${baseUrl}${getEquivalentPath(currentPath, code)}`} />
+    {cluster && hreflangEntries.map(({ hreflang, code }) => (
+      <link rel="alternate" hreflang={hreflang} href={`${baseUrl}${cluster[code]}`} />
     ))}
-    <link rel="alternate" hreflang="x-default" href={ptEquivalent} />
+    {cluster && <link rel="alternate" hreflang="x-default" href={`${baseUrl}${cluster.pt}`} />}
+    {!cluster && <link rel="alternate" hreflang={htmlLang} href={selfCanonical} />}
+    {!cluster && <link rel="alternate" hreflang="x-default" href={selfCanonical} />}
     <SchemaOrg
       type={schemaType}
       serviceName={serviceName}

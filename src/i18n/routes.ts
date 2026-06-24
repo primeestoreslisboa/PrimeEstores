@@ -11,7 +11,26 @@ export const routeMap: Record<Lang, string>[] = [
   { pt: '/servicos/reparacao-estores/',    en: '/en/services/blind-repair/',                fr: '/fr/services/reparation-stores/',           es: '/es/servicios/reparacion-persianas/',        de: '/de/dienstleistungen/jalousien-reparatur/',       it: '/it/servizi/riparazione-tende/'  },
   { pt: '/servicos/eletricidade/',         en: '/en/services/electrical-work/',             fr: '/fr/services/electricite/',                 es: '/es/servicios/electricidad/',                de: '/de/dienstleistungen/elektroinstallation/',       it: '/it/servizi/impianto-elettrico/' },
   { pt: '/politica-privacidade/',          en: '/en/privacy-policy/',                       fr: '/fr/politique-confidentialite/',            es: '/es/politica-privacidad/',                   de: '/de/datenschutz/',                                it: '/it/informativa-privacy/'        },
+  { pt: '/artigos/',                       en: '/en/articles/',                             fr: '/fr/articles/',                             es: '/es/articulos/',                             de: '/de/artikel/',                                    it: '/it/articoli/'                   },
 ];
+
+const normalizePath = (p: string) => (p.endsWith('/') && p.length > 1 ? p.slice(0, -1) : p);
+
+/**
+ * Returns the routeMap group (cluster of equivalent URLs across the 6 languages)
+ * that `currentPath` belongs to, or null if the page is not part of any cluster.
+ * Pages outside any cluster (e.g. articles, /sobre/, /zonas/[zona]/) must emit
+ * only a self-referencing hreflang, never the home fallback.
+ */
+export function findCluster(currentPath: string): Record<Lang, string> | null {
+  const normalized = normalizePath(currentPath);
+  for (const group of routeMap) {
+    if ((Object.values(group) as string[]).some(p => normalizePath(p) === normalized)) {
+      return group;
+    }
+  }
+  return null;
+}
 
 /**
  * Given the current URL path and a target language, returns the equivalent page URL.
