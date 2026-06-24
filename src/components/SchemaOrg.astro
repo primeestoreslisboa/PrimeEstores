@@ -1,4 +1,4 @@
-﻿---
+---
 export interface Props {
   type?: 'LocalBusiness' | 'Service' | 'FAQPage' | 'WebPage';
   serviceName?: string;
@@ -28,7 +28,7 @@ const breadcrumbLabels: Record<string, { home: string }> = {
 };
 
 // Home URLs derived dynamically from Astro's site config
-const baseUrl = Astro.site ? Astro.site.href.replace(/\/$/, '') : 'https://www.primeestores.pt';
+const baseUrl = Astro.site ? Astro.site.href.replace(/\/$/, '') : 'https://primeestores.pt';
 const homeUrlSuffix: Record<string, string> = {
   pt: '/',
   en: '/en/',
@@ -103,7 +103,7 @@ const serviceSchema = serviceName ? {
     '@type': 'LocalBusiness',
     name: 'Prime Estores',
     telephone: '+351923348323',
-    url: 'https://www.primeestores.pt',
+    url: 'https://primeestores.pt',
   },
   areaServed: {
     '@type': 'State',

@@ -11,32 +11,32 @@ const zona = zonaBySlug[slug!];
 
 const servicos = [
   {
-    label: 'Estores Elétricos',
-    desc: 'Instalação de estores motorizados com telecomando, app ou domótica.',
+    label: 'Estores ElÃ©tricos',
+    desc: 'InstalaÃ§Ã£o de estores motorizados com telecomando, app ou domÃ³tica.',
     href: '/servicos/estores-eletricos',
     icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>`,
   },
   {
     label: 'Estores Manuais',
-    desc: 'Instalação de estores de enrolar, rolo e veneziana manuais.',
+    desc: 'InstalaÃ§Ã£o de estores de enrolar, rolo e veneziana manuais.',
     href: '/servicos/estores-manuais',
     icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7"/>`,
   },
   {
-    label: 'Reparação de Estores',
-    desc: 'Reparação urgente de qualquer tipo de estore — elétrico ou manual.',
+    label: 'ReparaÃ§Ã£o de Estores',
+    desc: 'ReparaÃ§Ã£o urgente de qualquer tipo de estore â€” elÃ©trico ou manual.',
     href: '/servicos/reparacao-estores',
     icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>`,
   },
   {
     label: 'Eletricidade',
-    desc: 'Instalação e reparação de circuitos elétricos para estores e não só.',
+    desc: 'InstalaÃ§Ã£o e reparaÃ§Ã£o de circuitos elÃ©tricos para estores e nÃ£o sÃ³.',
     href: '/servicos/eletricidade',
     icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"/>`,
   },
 ];
 
-const baseUrl = 'https://www.primeestores.pt';
+const baseUrl = 'https://primeestores.pt';
 const pageUrl = `${baseUrl}/zonas/${zona.slug}/`;
 
 const schemaLocalBusiness = {
@@ -50,7 +50,7 @@ const schemaLocalBusiness = {
   image: `${baseUrl}/og-image.jpg`,
   areaServed: { '@type': 'City', name: zona.nome },
   geo: { '@type': 'GeoCoordinates', latitude: zona.geo.lat, longitude: zona.geo.lng },
-  priceRange: '€€',
+  priceRange: 'â‚¬â‚¬',
   openingHoursSpecification: [{
     '@type': 'OpeningHoursSpecification',
     dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
@@ -63,7 +63,7 @@ const schemaBreadcrumb = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Início', item: `${baseUrl}/` },
+    { '@type': 'ListItem', position: 1, name: 'InÃ­cio', item: `${baseUrl}/` },
     { '@type': 'ListItem', position: 2, name: 'Zonas', item: `${baseUrl}/zonas-que-servimos/` },
     { '@type': 'ListItem', position: 3, name: zona.nome, item: pageUrl },
   ],
@@ -85,7 +85,7 @@ const schemaBreadcrumb = {
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <nav aria-label="Breadcrumb" class="mb-6">
         <ol class="flex items-center gap-2 text-sm text-white/80">
-          <li><a href="/" class="hover:text-white transition-colors">Início</a></li>
+          <li><a href="/" class="hover:text-white transition-colors">InÃ­cio</a></li>
           <li aria-hidden="true"><span>/</span></li>
           <li><a href="/zonas-que-servimos" class="hover:text-white transition-colors">Zonas</a></li>
           <li aria-hidden="true"><span>/</span></li>
@@ -93,16 +93,16 @@ const schemaBreadcrumb = {
         </ol>
       </nav>
       <div class="max-w-3xl">
-        <span class="inline-block bg-white/10 border border-white/20 text-white text-xs font-semibold uppercase tracking-widest px-3 py-1 rounded-full mb-4">Zona de Serviço</span>
+        <span class="inline-block bg-white/10 border border-white/20 text-white text-xs font-semibold uppercase tracking-widest px-3 py-1 rounded-full mb-4">Zona de ServiÃ§o</span>
         <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black leading-tight mb-4">
-          Estores em {zona.nome}<br class="hidden sm:block" /> — Instalação e Reparação
+          Estores em {zona.nome}<br class="hidden sm:block" /> â€” InstalaÃ§Ã£o e ReparaÃ§Ã£o
         </h1>
         <p class="text-xl text-white/80 leading-relaxed mb-8">
           {zona.intro}
         </p>
         <div class="flex flex-col sm:flex-row gap-3">
           <a href="/orcamento" class="inline-flex items-center justify-center gap-2 bg-white text-[#8B1A1A] font-bold px-6 py-3.5 rounded-lg hover:bg-gray-100 transition-colors">
-            Pedir Orçamento Grátis
+            Pedir OrÃ§amento GrÃ¡tis
           </a>
           <a href="tel:+351923348323" class="inline-flex items-center justify-center gap-2 border-2 border-white text-white font-bold px-6 py-3.5 rounded-lg hover:bg-white/10 transition-colors">
             +351 923 348 323
@@ -121,7 +121,7 @@ const schemaBreadcrumb = {
         <div class="lg:col-span-2 space-y-8">
           <div>
             <h2 class="text-2xl lg:text-3xl font-black text-[#1A1A1A] mb-4">
-              Serviços de estores em {zona.nome}
+              ServiÃ§os de estores em {zona.nome}
             </h2>
             <p class="text-gray-600 leading-relaxed mb-4">{zona.intro}</p>
             <p class="text-gray-600 leading-relaxed">{zona.detail}</p>
@@ -148,10 +148,10 @@ const schemaBreadcrumb = {
             </h2>
             <div class="grid sm:grid-cols-2 gap-4">
               {[
-                { title: 'Resposta rápida', desc: `Técnicos disponíveis em ${zona.nome} de 2ª a sábado, 8h–20h.` },
-                { title: 'Orçamento gratuito', desc: 'Deslocamo-nos para avaliar o trabalho sem qualquer custo.' },
-                { title: 'Técnicos certificados', desc: 'Instaladores experientes com formação técnica certificada em sistemas de estores elétricos e domótica.' },
-                { title: 'Garantia de 1 ano', desc: 'Todos os trabalhos de instalação têm garantia mínima de 1 ano.' },
+                { title: 'Resposta rÃ¡pida', desc: `TÃ©cnicos disponÃ­veis em ${zona.nome} de 2Âª a sÃ¡bado, 8hâ€“20h.` },
+                { title: 'OrÃ§amento gratuito', desc: 'Deslocamo-nos para avaliar o trabalho sem qualquer custo.' },
+                { title: 'TÃ©cnicos certificados', desc: 'Instaladores experientes com formaÃ§Ã£o tÃ©cnica certificada em sistemas de estores elÃ©tricos e domÃ³tica.' },
+                { title: 'Garantia de 1 ano', desc: 'Todos os trabalhos de instalaÃ§Ã£o tÃªm garantia mÃ­nima de 1 ano.' },
               ].map(item => (
                 <div class="flex gap-3 p-4 bg-[#F5F5F5] rounded-xl">
                   <svg class="w-5 h-5 text-[#8B1A1A] flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
@@ -171,10 +171,10 @@ const schemaBreadcrumb = {
         <div class="space-y-6">
           <!-- Contact box -->
           <div class="bg-[#8B1A1A] rounded-2xl p-6 text-white">
-            <h3 class="font-black text-lg mb-2">Pedir orçamento em {zona.nome}</h3>
-            <p class="text-red-100 text-sm mb-5 leading-relaxed">Contacte-nos agora para um orçamento gratuito e sem compromisso.</p>
+            <h3 class="font-black text-lg mb-2">Pedir orÃ§amento em {zona.nome}</h3>
+            <p class="text-red-100 text-sm mb-5 leading-relaxed">Contacte-nos agora para um orÃ§amento gratuito e sem compromisso.</p>
             <a href="/orcamento" class="block w-full text-center bg-white text-[#8B1A1A] font-bold px-4 py-3 rounded-lg hover:bg-gray-100 transition-colors mb-3">
-              Formulário de orçamento
+              FormulÃ¡rio de orÃ§amento
             </a>
             <a href="tel:+351923348323" class="block w-full text-center border-2 border-white text-white font-bold px-4 py-3 rounded-lg hover:bg-white/10 transition-colors text-sm">
               +351 923 348 323
@@ -182,14 +182,14 @@ const schemaBreadcrumb = {
           </div>
           <!-- Info -->
           <div class="bg-[#F5F5F5] rounded-2xl p-6">
-            <h3 class="font-bold text-[#1A1A1A] mb-4 text-sm uppercase tracking-wide">Informações</h3>
+            <h3 class="font-bold text-[#1A1A1A] mb-4 text-sm uppercase tracking-wide">InformaÃ§Ãµes</h3>
             <div class="space-y-3 text-sm">
               {[
                 'Resposta em menos de 24h',
                 'Garantia de 1 ano',
-                'Orçamento 100% gratuito',
-                'Técnicos certificados',
-                'Seg – Sáb: 8h00 – 20h00',
+                'OrÃ§amento 100% gratuito',
+                'TÃ©cnicos certificados',
+                'Seg â€“ SÃ¡b: 8h00 â€“ 20h00',
               ].map(item => (
                 <div class="flex items-center gap-2">
                   <svg class="w-4 h-4 text-[#8B1A1A] flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
@@ -204,7 +204,7 @@ const schemaBreadcrumb = {
           <div class="bg-white rounded-2xl p-6 border border-gray-100">
             <h3 class="font-bold text-[#1A1A1A] mb-3 text-sm uppercase tracking-wide">Outras zonas</h3>
             <a href="/zonas-que-servimos" class="text-[#8B1A1A] text-sm font-semibold hover:underline">
-              Ver todas as zonas →
+              Ver todas as zonas â†’
             </a>
           </div>
         </div>
@@ -217,7 +217,7 @@ const schemaBreadcrumb = {
   <section class="py-16 bg-[#F5F5F5]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <h2 class="text-2xl lg:text-3xl font-black text-[#1A1A1A] mb-8 text-center">
-        Os nossos serviços em {zona.nome}
+        Os nossos serviÃ§os em {zona.nome}
       </h2>
       <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {servicos.map(s => (
@@ -232,7 +232,7 @@ const schemaBreadcrumb = {
             </div>
             <div class="font-bold text-[#1A1A1A] mb-2 group-hover:text-[#8B1A1A] transition-colors">{s.label}</div>
             <p class="text-gray-500 text-sm leading-relaxed flex-1">{s.desc}</p>
-            <span class="mt-4 text-[#8B1A1A] text-sm font-semibold group-hover:underline">Saber mais →</span>
+            <span class="mt-4 text-[#8B1A1A] text-sm font-semibold group-hover:underline">Saber mais â†’</span>
           </a>
         ))}
       </div>
@@ -246,11 +246,11 @@ const schemaBreadcrumb = {
         Precisa de estores em {zona.nome}?
       </h2>
       <p class="text-gray-400 text-lg mb-8 max-w-2xl mx-auto">
-        Contacte-nos hoje para um orçamento gratuito. Deslocamo-nos a {zona.nome} e arredores de segunda a sábado das 8h às 20h.
+        Contacte-nos hoje para um orÃ§amento gratuito. Deslocamo-nos a {zona.nome} e arredores de segunda a sÃ¡bado das 8h Ã s 20h.
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
         <a href="/orcamento" class="inline-flex items-center justify-center gap-2 bg-[#8B1A1A] text-white font-bold px-8 py-4 rounded-lg hover:bg-[#7a1717] transition-colors">
-          Pedir Orçamento Grátis
+          Pedir OrÃ§amento GrÃ¡tis
         </a>
         <a href="tel:+351923348323" class="inline-flex items-center justify-center gap-2 border-2 border-white text-white font-bold px-8 py-4 rounded-lg hover:bg-white/10 transition-colors">
           +351 923 348 323

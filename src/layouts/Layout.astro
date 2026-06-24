@@ -1,4 +1,4 @@
-﻿---
+---
 import SEO from '../components/SEO.astro';
 import SchemaOrg from '../components/SchemaOrg.astro';
 import Header from '../components/Header.astro';
@@ -54,7 +54,7 @@ const htmlLangMap: Record<string, string> = {
 const htmlLang = htmlLangMap[lang] ?? lang;
 
 // Hreflang links â€” map every equivalent page across all 6 languages
-const baseUrl = 'https://www.primeestores.pt';
+const baseUrl = 'https://primeestores.pt';
 const currentPath = Astro.url.pathname;
 
 const hreflangEntries: { hreflang: string; code: RouteLang }[] = [

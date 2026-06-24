@@ -1,4 +1,4 @@
-﻿---
+---
 import Layout from '../../../layouts/Layout.astro';
 import { getCollection, getEntry } from 'astro:content';
 
@@ -15,7 +15,7 @@ if (!post) return Astro.redirect('/de/artikel/');
 
 const { Content } = await post.render();
 
-const baseUrl = 'https://www.primeestores.pt';
+const baseUrl = 'https://primeestores.pt';
 const pageUrl = `${baseUrl}/de/artikel/${post.slug}/`;
 
 function formatDate(date: Date) {
