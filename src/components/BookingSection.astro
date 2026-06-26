@@ -13,7 +13,7 @@ const configuredEndpoint = (import.meta.env.PUBLIC_AGENDAMENTO_URL || '').trim()
 const configuredBase = (import.meta.env.PUBLIC_AGENDAMENTO_API_BASE_URL || '').trim().replace(/\/$/, '');
 const endpoint = configuredEndpoint
   || (configuredBase ? `${configuredBase}/api/public/agendamento` : '')
-  || 'https://primebussiness.netlify.app/api/public/agendamento';
+  || 'https://prime-business.netlify.app/api/public/agendamento';
 
 // Date/time locale mapping for slot display
 const localeMap: Record<string, string> = {
