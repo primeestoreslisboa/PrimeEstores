@@ -1,0 +1,232 @@
+---
+import type { Lang } from '../i18n/utils';
+
+export type PageKind = 'contact' | 'quote' | 'coverage';
+
+export interface Props {
+  lang?: Lang;
+  page: PageKind;
+}
+
+const { lang = 'pt', page } = Astro.props;
+
+interface Block {
+  heading: string;
+  intro: string;
+  faqs: { q: string; a: string }[];
+}
+
+// Localized, page-specific intro + mini-FAQ. Kept concise and genuinely useful
+// (no filler): answers real questions visitors have on these pages.
+const content: Record<PageKind, Record<Lang, Block>> = {
+  contact: {
+    pt: {
+      heading: 'Como podemos ajudar',
+      intro: 'Pode contactar a Prime Estores por telefone, email ou marcação online. Respondemos a todos os pedidos em menos de 24 horas nos dias úteis e o orçamento é sempre gratuito, sem qualquer compromisso.',
+      faqs: [
+        { q: 'Em quanto tempo respondem?', a: 'Respondemos a chamadas, emails e marcações em menos de 24 horas nos dias úteis. Para reparações urgentes, tente ligar diretamente para uma resposta mais rápida.' },
+        { q: 'A visita e o orçamento têm custo?', a: 'Não. O orçamento é 100% gratuito e não cobramos deslocação dentro da Grande Lisboa.' },
+        { q: 'Que zonas cobrem?', a: 'Cobrimos toda a Grande Lisboa — Lisboa, Sintra, Cascais, Oeiras, Almada, Setúbal e concelhos vizinhos. Contacte-nos para confirmar a sua zona.' },
+      ],
+    },
+    en: {
+      heading: 'How we can help',
+      intro: 'You can reach Prime Estores by phone, email or online booking. We reply to every request within 24 hours on business days, and the quote is always free with no obligation.',
+      faqs: [
+        { q: 'How quickly do you reply?', a: 'We reply to calls, emails and bookings within 24 hours on business days. For urgent repairs, calling directly is the fastest option.' },
+        { q: 'Is the visit and quote free?', a: 'Yes. The quote is 100% free and we do not charge a call-out fee within Greater Lisbon.' },
+        { q: 'Which areas do you cover?', a: 'We cover all of Greater Lisbon — Lisbon, Sintra, Cascais, Oeiras, Almada, Setúbal and neighbouring municipalities. Contact us to confirm your area.' },
+      ],
+    },
+    fr: {
+      heading: 'Comment nous pouvons aider',
+      intro: 'Vous pouvez contacter Prime Estores par téléphone, e-mail ou réservation en ligne. Nous répondons à chaque demande en moins de 24 heures les jours ouvrables, et le devis est toujours gratuit et sans engagement.',
+      faqs: [
+        { q: 'Sous combien de temps répondez-vous ?', a: 'Nous répondons aux appels, e-mails et réservations en moins de 24 heures les jours ouvrables. Pour les réparations urgentes, appeler directement est le plus rapide.' },
+        { q: 'La visite et le devis sont-ils gratuits ?', a: 'Oui. Le devis est 100 % gratuit et nous ne facturons pas de frais de déplacement dans le Grand Lisbonne.' },
+        { q: 'Quelles zones couvrez-vous ?', a: 'Nous couvrons tout le Grand Lisbonne — Lisbonne, Sintra, Cascais, Oeiras, Almada, Setúbal et les communes voisines. Contactez-nous pour confirmer votre zone.' },
+      ],
+    },
+    es: {
+      heading: 'Cómo podemos ayudar',
+      intro: 'Puede contactar con Prime Estores por teléfono, correo electrónico o reserva en línea. Respondemos a cada solicitud en menos de 24 horas en días laborables, y el presupuesto es siempre gratuito y sin compromiso.',
+      faqs: [
+        { q: '¿En cuánto tiempo responden?', a: 'Respondemos a llamadas, correos y reservas en menos de 24 horas en días laborables. Para reparaciones urgentes, llamar directamente es lo más rápido.' },
+        { q: '¿La visita y el presupuesto tienen coste?', a: 'No. El presupuesto es 100 % gratuito y no cobramos desplazamiento dentro del Gran Lisboa.' },
+        { q: '¿Qué zonas cubren?', a: 'Cubrimos todo el Gran Lisboa — Lisboa, Sintra, Cascais, Oeiras, Almada, Setúbal y municipios vecinos. Contáctenos para confirmar su zona.' },
+      ],
+    },
+    de: {
+      heading: 'Wie wir helfen können',
+      intro: 'Sie können Prime Estores telefonisch, per E-Mail oder über die Online-Buchung erreichen. Wir antworten auf jede Anfrage innerhalb von 24 Stunden an Werktagen, und der Kostenvoranschlag ist immer kostenlos und unverbindlich.',
+      faqs: [
+        { q: 'Wie schnell antworten Sie?', a: 'Wir beantworten Anrufe, E-Mails und Buchungen innerhalb von 24 Stunden an Werktagen. Bei dringenden Reparaturen ist ein direkter Anruf am schnellsten.' },
+        { q: 'Sind Besuch und Kostenvoranschlag kostenlos?', a: 'Ja. Der Kostenvoranschlag ist 100 % kostenlos und wir berechnen im Großraum Lissabon keine Anfahrtskosten.' },
+        { q: 'Welche Gebiete decken Sie ab?', a: 'Wir decken den gesamten Großraum Lissabon ab — Lissabon, Sintra, Cascais, Oeiras, Almada, Setúbal und Nachbargemeinden. Kontaktieren Sie uns, um Ihr Gebiet zu bestätigen.' },
+      ],
+    },
+    it: {
+      heading: 'Come possiamo aiutare',
+      intro: 'Puoi contattare Prime Estores per telefono, e-mail o prenotazione online. Rispondiamo a ogni richiesta entro 24 ore nei giorni lavorativi e il preventivo è sempre gratuito e senza impegno.',
+      faqs: [
+        { q: 'In quanto tempo rispondete?', a: 'Rispondiamo a chiamate, e-mail e prenotazioni entro 24 ore nei giorni lavorativi. Per riparazioni urgenti, chiamare direttamente è la via più rapida.' },
+        { q: 'La visita e il preventivo hanno un costo?', a: 'No. Il preventivo è 100% gratuito e non addebitiamo spese di trasferta nella Grande Lisbona.' },
+        { q: 'Quali zone coprite?', a: 'Copriamo tutta la Grande Lisbona — Lisbona, Sintra, Cascais, Oeiras, Almada, Setúbal e i comuni vicini. Contattaci per confermare la tua zona.' },
+      ],
+    },
+  },
+  quote: {
+    pt: {
+      heading: 'Sobre o seu orçamento',
+      intro: 'Preencha o pedido com os detalhes do seu projeto e enviamos-lhe um orçamento gratuito e detalhado, sem compromisso. Quanto mais informação nos der (tipo de estore, medidas ou fotos), mais rigoroso será o valor.',
+      faqs: [
+        { q: 'O orçamento é mesmo gratuito?', a: 'Sim, é 100% gratuito e sem qualquer compromisso. Só avança se aprovar o valor apresentado.' },
+        { q: 'Que informação devo enviar?', a: 'Indique o tipo de estore (elétrico ou manual), medidas aproximadas ou fotos, e a localização. Com isto conseguimos estimar com rigor.' },
+        { q: 'Quanto tempo é válido o orçamento?', a: 'Os nossos orçamentos são normalmente válidos durante 30 dias. Se precisar de mais tempo, é só dizer.' },
+      ],
+    },
+    en: {
+      heading: 'About your quote',
+      intro: 'Fill in the request with your project details and we will send you a free, detailed quote with no obligation. The more information you give us (type of blind, measurements or photos), the more accurate the price will be.',
+      faqs: [
+        { q: 'Is the quote really free?', a: 'Yes, it is 100% free with no obligation whatsoever. You only proceed if you approve the price we present.' },
+        { q: 'What information should I send?', a: 'Tell us the type of blind (electric or manual), approximate measurements or photos, and the location. That lets us estimate accurately.' },
+        { q: 'How long is the quote valid?', a: 'Our quotes are usually valid for 30 days. If you need more time, just let us know.' },
+      ],
+    },
+    fr: {
+      heading: 'À propos de votre devis',
+      intro: 'Remplissez la demande avec les détails de votre projet et nous vous enverrons un devis gratuit et détaillé, sans engagement. Plus vous nous donnez d\'informations (type de store, mesures ou photos), plus le prix sera précis.',
+      faqs: [
+        { q: 'Le devis est-il vraiment gratuit ?', a: 'Oui, il est 100 % gratuit et sans aucun engagement. Vous ne continuez que si vous approuvez le prix proposé.' },
+        { q: 'Quelles informations dois-je envoyer ?', a: 'Indiquez le type de store (électrique ou manuel), les mesures approximatives ou des photos, et l\'emplacement. Cela nous permet d\'estimer avec précision.' },
+        { q: 'Combien de temps le devis est-il valable ?', a: 'Nos devis sont généralement valables 30 jours. Si vous avez besoin de plus de temps, dites-le-nous.' },
+      ],
+    },
+    es: {
+      heading: 'Sobre su presupuesto',
+      intro: 'Rellene la solicitud con los detalles de su proyecto y le enviaremos un presupuesto gratuito y detallado, sin compromiso. Cuanta más información nos dé (tipo de persiana, medidas o fotos), más preciso será el importe.',
+      faqs: [
+        { q: '¿El presupuesto es realmente gratuito?', a: 'Sí, es 100 % gratuito y sin ningún compromiso. Solo continúa si aprueba el importe presentado.' },
+        { q: '¿Qué información debo enviar?', a: 'Indique el tipo de persiana (eléctrica o manual), medidas aproximadas o fotos, y la ubicación. Con eso podemos estimar con precisión.' },
+        { q: '¿Cuánto tiempo es válido el presupuesto?', a: 'Nuestros presupuestos suelen tener una validez de 30 días. Si necesita más tiempo, solo tiene que decírnoslo.' },
+      ],
+    },
+    de: {
+      heading: 'Zu Ihrem Kostenvoranschlag',
+      intro: 'Füllen Sie die Anfrage mit den Details Ihres Projekts aus und wir senden Ihnen einen kostenlosen, detaillierten Kostenvoranschlag ohne Verpflichtung. Je mehr Informationen Sie uns geben (Art der Jalousie, Maße oder Fotos), desto genauer wird der Preis.',
+      faqs: [
+        { q: 'Ist der Kostenvoranschlag wirklich kostenlos?', a: 'Ja, er ist 100 % kostenlos und völlig unverbindlich. Sie fahren nur fort, wenn Sie den vorgelegten Preis genehmigen.' },
+        { q: 'Welche Informationen soll ich senden?', a: 'Nennen Sie die Art der Jalousie (elektrisch oder manuell), ungefähre Maße oder Fotos und den Standort. Damit können wir genau kalkulieren.' },
+        { q: 'Wie lange ist der Kostenvoranschlag gültig?', a: 'Unsere Kostenvoranschläge sind in der Regel 30 Tage gültig. Wenn Sie mehr Zeit brauchen, sagen Sie uns einfach Bescheid.' },
+      ],
+    },
+    it: {
+      heading: 'Sul tuo preventivo',
+      intro: 'Compila la richiesta con i dettagli del tuo progetto e ti invieremo un preventivo gratuito e dettagliato, senza impegno. Più informazioni ci fornisci (tipo di tenda, misure o foto), più preciso sarà l\'importo.',
+      faqs: [
+        { q: 'Il preventivo è davvero gratuito?', a: 'Sì, è 100% gratuito e senza alcun impegno. Procedi solo se approvi l\'importo presentato.' },
+        { q: 'Quali informazioni devo inviare?', a: 'Indica il tipo di tenda (elettrica o manuale), misure approssimative o foto e la posizione. Così possiamo stimare con precisione.' },
+        { q: 'Per quanto tempo è valido il preventivo?', a: 'I nostri preventivi sono di solito validi per 30 giorni. Se hai bisogno di più tempo, basta dircelo.' },
+      ],
+    },
+  },
+  coverage: {
+    pt: {
+      heading: 'A nossa cobertura',
+      intro: 'A Prime Estores presta serviço de instalação e reparação de estores em toda a Grande Lisboa. Deslocamo-nos a qualquer ponto da área metropolitana sem custo adicional de deslocação, com tempos de resposta rápidos.',
+      faqs: [
+        { q: 'Cobram deslocação?', a: 'Não cobramos deslocação dentro da Grande Lisboa. Para zonas fora desta área, avaliamos caso a caso.' },
+        { q: 'A minha zona não está na lista. Deslocam-se?', a: 'Sim, sempre que possível. Contacte-nos com a sua localidade e confirmamos rapidamente a disponibilidade.' },
+        { q: 'Em quanto tempo conseguem aparecer?', a: 'Na maioria dos casos ainda na mesma semana. As reparações urgentes têm prioridade na agenda.' },
+      ],
+    },
+    en: {
+      heading: 'Our coverage',
+      intro: 'Prime Estores installs and repairs blinds across all of Greater Lisbon. We travel to any point in the metropolitan area with no extra call-out charge and with fast response times.',
+      faqs: [
+        { q: 'Do you charge a call-out fee?', a: 'We do not charge for travel within Greater Lisbon. For areas outside this region, we assess on a case-by-case basis.' },
+        { q: 'My area is not on the list. Do you come?', a: 'Yes, whenever possible. Contact us with your location and we will quickly confirm availability.' },
+        { q: 'How soon can you come?', a: 'In most cases within the same week. Urgent repairs are given priority in our schedule.' },
+      ],
+    },
+    fr: {
+      heading: 'Notre couverture',
+      intro: 'Prime Estores installe et répare des stores dans tout le Grand Lisbonne. Nous nous déplaçons partout dans la zone métropolitaine sans frais de déplacement supplémentaires et avec des délais de réponse rapides.',
+      faqs: [
+        { q: 'Facturez-vous des frais de déplacement ?', a: 'Nous ne facturons pas de déplacement dans le Grand Lisbonne. Pour les zones en dehors de cette région, nous évaluons au cas par cas.' },
+        { q: 'Ma zone n\'est pas sur la liste. Vous déplacez-vous ?', a: 'Oui, dans la mesure du possible. Contactez-nous avec votre localité et nous confirmerons rapidement la disponibilité.' },
+        { q: 'Sous combien de temps pouvez-vous venir ?', a: 'Dans la plupart des cas dans la même semaine. Les réparations urgentes sont prioritaires dans notre planning.' },
+      ],
+    },
+    es: {
+      heading: 'Nuestra cobertura',
+      intro: 'Prime Estores instala y repara persianas en todo el Gran Lisboa. Nos desplazamos a cualquier punto del área metropolitana sin coste adicional de desplazamiento y con tiempos de respuesta rápidos.',
+      faqs: [
+        { q: '¿Cobran desplazamiento?', a: 'No cobramos desplazamiento dentro del Gran Lisboa. Para zonas fuera de esta región, lo evaluamos caso por caso.' },
+        { q: 'Mi zona no está en la lista. ¿Se desplazan?', a: 'Sí, siempre que sea posible. Contáctenos con su localidad y confirmaremos rápidamente la disponibilidad.' },
+        { q: '¿En cuánto tiempo pueden acudir?', a: 'En la mayoría de los casos, en la misma semana. Las reparaciones urgentes tienen prioridad en nuestra agenda.' },
+      ],
+    },
+    de: {
+      heading: 'Unser Einzugsgebiet',
+      intro: 'Prime Estores installiert und repariert Jalousien im gesamten Großraum Lissabon. Wir fahren ohne zusätzliche Anfahrtskosten und mit kurzen Reaktionszeiten zu jedem Punkt im Metropolgebiet.',
+      faqs: [
+        { q: 'Berechnen Sie Anfahrtskosten?', a: 'Im Großraum Lissabon berechnen wir keine Anfahrt. Für Gebiete außerhalb dieser Region prüfen wir von Fall zu Fall.' },
+        { q: 'Mein Gebiet steht nicht auf der Liste. Kommen Sie trotzdem?', a: 'Ja, wann immer möglich. Kontaktieren Sie uns mit Ihrem Ort und wir bestätigen die Verfügbarkeit schnell.' },
+        { q: 'Wie schnell können Sie kommen?', a: 'In den meisten Fällen noch in derselben Woche. Dringende Reparaturen werden im Terminplan bevorzugt behandelt.' },
+      ],
+    },
+    it: {
+      heading: 'La nostra copertura',
+      intro: 'Prime Estores installa e ripara tende in tutta la Grande Lisbona. Ci spostiamo in qualsiasi punto dell\'area metropolitana senza costi aggiuntivi di trasferta e con tempi di risposta rapidi.',
+      faqs: [
+        { q: 'Addebitate la trasferta?', a: 'Non addebitiamo la trasferta nella Grande Lisbona. Per le zone fuori da quest\'area, valutiamo caso per caso.' },
+        { q: 'La mia zona non è in elenco. Vi spostate?', a: 'Sì, quando possibile. Contattaci indicando la tua località e confermeremo rapidamente la disponibilità.' },
+        { q: 'In quanto tempo potete venire?', a: 'Nella maggior parte dei casi entro la stessa settimana. Le riparazioni urgenti hanno priorità in agenda.' },
+      ],
+    },
+  },
+};
+
+const block = content[page][lang] ?? content[page].pt;
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: block.faqs.map(f => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+<section class="py-16 lg:py-20 bg-[#F5F5F5]" aria-labelledby="helpful-heading">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-2xl mb-10">
+      <h2 id="helpful-heading" class="text-2xl lg:text-3xl font-black text-[#1A1A1A] mb-4">{block.heading}</h2>
+      <p class="text-gray-600 leading-relaxed">{block.intro}</p>
+    </div>
+
+    <div class="space-y-3">
+      {block.faqs.map((faq, index) => (
+        <details class="bg-white rounded-xl border border-gray-200 overflow-hidden group" id={`helpful-faq-${index}`}>
+          <summary class="flex items-center justify-between gap-4 px-6 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors">
+            <h3 class="font-semibold text-[#1A1A1A] text-base pr-2">{faq.q}</h3>
+            <span class="flex-shrink-0 w-6 h-6 flex items-center justify-center rounded-full bg-red-50 text-[#8B1A1A] group-open:bg-[#8B1A1A] group-open:text-white transition-colors" aria-hidden="true">
+              <svg class="w-4 h-4 transition-transform group-open:rotate-45" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+              </svg>
+            </span>
+          </summary>
+          <div class="px-6 pb-4 pt-0">
+            <p class="text-gray-600 text-sm leading-relaxed">{faq.a}</p>
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>

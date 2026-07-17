@@ -1,5 +1,6 @@
 ﻿---
 import Layout from '../../layouts/Layout.astro';
+import HelpfulContent from '../../components/HelpfulContent.astro';
 import { useTranslations } from '../../i18n/utils';
 
 const lang = 'fr' as const;
@@ -73,4 +74,5 @@ const zones = [
       </div>
     </div>
   </section>
+  <HelpfulContent lang={lang} page="coverage" />
 </Layout>

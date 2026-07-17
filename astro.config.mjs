@@ -32,7 +32,10 @@ function getChangefreq(url) {
 export default defineConfig({
   site: 'https://primeestores.pt',
   build: {
-    inlineStylesheets: 'always',
+    // 'auto' inlines only small stylesheets and links the (large) Tailwind
+    // bundle as an external, cacheable file — lighter HTML, faster navigation
+    // between pages, and a healthier text/HTML ratio than 'always'.
+    inlineStylesheets: 'auto',
   },
   integrations: [
     tailwind(),

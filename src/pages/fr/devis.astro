@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import HelpfulContent from '../../components/HelpfulContent.astro';
 import BookingToggleSection from '../../components/BookingToggleSection.astro';
 import { useTranslations } from '../../i18n/utils';
 
@@ -70,4 +71,5 @@ const iconSvgs: Record<string, string> = {
       </div>
     </div>
   </section>
+  <HelpfulContent lang={lang} page="quote" />
 </Layout>

@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import BookingToggleSection from '../components/BookingToggleSection.astro';
+import HelpfulContent from '../components/HelpfulContent.astro';
 import { useTranslations } from '../i18n/utils';
 
 const lang = 'pt' as const;
@@ -102,4 +103,6 @@ const t = useTranslations(lang);
       </div>
     </div>
   </section>
+
+  <HelpfulContent lang={lang} page="contact" />
 </Layout>
