@@ -11,7 +11,9 @@ const {
   label = 'Falar no WhatsApp'
 } = Astro.props;
 
-const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+// Link directly to the official click-to-chat endpoint (returns 200) instead of
+// wa.me, which 302-redirects here — the redirect made SEO crawlers flag the link.
+const whatsappUrl = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`;
 ---
 
 <a
