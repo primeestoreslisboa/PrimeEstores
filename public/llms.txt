@@ -1,0 +1,33 @@
+# Prime Estores
+
+> Empresa especializada na instalação e reparação de estores elétricos e manuais, com serviço de eletricidade associado, em toda a Grande Lisboa. Orçamentos gratuitos e resposta rápida para habitação e comércio.
+
+A Prime Estores atua em Lisboa, Sintra, Cascais, Oeiras, Almada, Setúbal, Amadora, Loures, Odivelas e restantes municípios da área metropolitana de Lisboa. O site está disponível em português (predefinição), inglês, espanhol, francês, italiano e alemão.
+
+## Serviços
+
+- [Estores elétricos](https://primeestores.pt/servicos/estores-eletricos): Instalação e automação de estores elétricos para casa e comércio.
+- [Estores manuais](https://primeestores.pt/servicos/estores-manuais): Instalação e substituição de estores manuais.
+- [Reparação de estores](https://primeestores.pt/servicos/reparacao-estores): Reparação de estores elétricos e manuais, incluindo intervenções urgentes.
+- [Eletricidade](https://primeestores.pt/servicos/eletricidade): Trabalhos de eletricidade associados à instalação e automação de estores.
+
+## Páginas principais
+
+- [Página inicial](https://primeestores.pt/): Apresentação da empresa e dos serviços.
+- [Sobre](https://primeestores.pt/sobre): Quem somos e como trabalhamos.
+- [Zonas que servimos](https://primeestores.pt/zonas-que-servimos): Cobertura na Grande Lisboa por concelho.
+- [Pedir orçamento](https://primeestores.pt/orcamento): Pedido de orçamento gratuito.
+- [Contacto](https://primeestores.pt/contacto): Formas de contacto e localização.
+- [Artigos](https://primeestores.pt/artigos): Guias e dicas sobre estores e automação.
+
+## Outros idiomas
+
+- [English](https://primeestores.pt/en): Blinds and shutters installation and repair in the Lisbon area.
+- [Español](https://primeestores.pt/es): Instalación y reparación de persianas en la región de Lisboa.
+- [Français](https://primeestores.pt/fr): Installation et réparation de stores dans la région de Lisbonne.
+- [Italiano](https://primeestores.pt/it): Installazione e riparazione di tende nella regione di Lisbona.
+- [Deutsch](https://primeestores.pt/de): Installation und Reparatur von Jalousien im Raum Lissabon.
+
+## Optional
+
+- [Política de Privacidade](https://primeestores.pt/politica-privacidade): Tratamento de dados e privacidade.

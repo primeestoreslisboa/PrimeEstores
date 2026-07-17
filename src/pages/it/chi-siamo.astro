@@ -1,0 +1,265 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const baseUrl = 'https://primeestores.pt';
+const pageUrl = `${baseUrl}/it/chi-siamo/`;
+
+const sobreSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  '@id': `${baseUrl}/#business`,
+  name: 'Prime Estores',
+  url: baseUrl,
+  telephone: '+351923348323',
+  email: 'info@primeestores.pt',
+  image: `${baseUrl}/og-image.jpg`,
+  description: 'Azienda specializzata nell\'installazione e riparazione di tende da sole elettriche e manuali a Lisbona e nella Grande Lisbona dal 2015.',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Lisbona',
+    addressRegion: 'Lisbona',
+    addressCountry: 'PT',
+  },
+  foundingDate: '2015',
+  areaServed: { '@type': 'State', name: 'Grande Lisbona' },
+  priceRange: '€€',
+  openingHoursSpecification: [{
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+    opens: '08:00',
+    closes: '20:00',
+  }],
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: `${baseUrl}/it/` },
+    { '@type': 'ListItem', position: 2, name: 'Chi siamo — Prime Estores', item: pageUrl },
+  ],
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(sobreSchema)} />
+<script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+
+<Layout
+  title="Chi siamo — Specialisti in tende a Lisbona | Prime Estores"
+  description="Scopri Prime Estores: la nostra storia, il team, i valori e l'impegno per la qualità nell'installazione e riparazione di tende elettriche e manuali a Lisbona dal 2015."
+  keywords="chi siamo Prime Estores, azienda tende Lisbona, chi siamo Prime Estores, installatori tende certificati Lisbona"
+  canonicalURL={pageUrl}
+  lang="it"
+>
+  <!-- Hero -->
+  <section class="bg-gradient-to-br from-[#1A1A1A] to-[#8B1A1A] text-white py-16 lg:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <nav aria-label="Breadcrumb" class="mb-6">
+        <ol class="flex items-center gap-2 text-sm text-white/80">
+          <li><a href="/it/" class="hover:text-white transition-colors">Home</a></li>
+          <li aria-hidden="true"><span>/</span></li>
+          <li><span class="text-white">Chi siamo</span></li>
+        </ol>
+      </nav>
+      <div class="max-w-3xl">
+        <span class="inline-block bg-white/10 border border-white/20 text-white text-xs font-semibold uppercase tracking-widest px-3 py-1 rounded-full mb-4">La nostra azienda</span>
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black leading-tight mb-4">
+          Chi siamo
+        </h1>
+        <p class="text-xl text-white/80 leading-relaxed">
+          Siamo specialisti in tende elettriche e manuali a Lisbona da oltre un decennio. Installiamo qualità, durata e comfort in ogni progetto.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- La nostra storia -->
+  <section class="py-16 lg:py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <span class="text-[#8B1A1A] text-sm font-semibold uppercase tracking-widest mb-3 block">La nostra storia</span>
+          <h2 class="text-2xl lg:text-3xl font-black text-[#1A1A1A] mb-6">
+            Oltre un decennio al servizio di Lisbona
+          </h2>
+          <p class="text-gray-600 leading-relaxed mb-4">
+            Prime Estores è nata nel 2015 dalla passione per i sistemi di ombreggiatura di qualità e dalla convinzione che Lisbona meritasse un servizio di installazione di tende davvero professionale — puntuale, trasparente e con una garanzia reale.
+          </p>
+          <p class="text-gray-600 leading-relaxed mb-4">
+            Abbiamo iniziato con una piccola squadra focalizzata sulla città di Lisbona. Nel corso degli anni siamo cresciuti in modo organico grazie alla soddisfazione dei nostri clienti e alle loro raccomandazioni. Oggi copriamo tutta la Grande Lisbona, da Mafra a Setúbal, servendo centinaia di clienti all'anno — privati, aziende e condomini.
+          </p>
+          <p class="text-gray-600 leading-relaxed mb-6">
+            Ciò che non è cambiato dal primo giorno: il nostro impegno per la qualità dei materiali che installiamo, la formazione continua del nostro team e la totale trasparenza nel preventivo. Non addebitiamo mai sorprese.
+          </p>
+          <div class="grid grid-cols-3 gap-6">
+            {[
+              { numero: '10+', label: 'Anni di esperienza' },
+              { numero: '2000+', label: 'Installazioni completate' },
+              { numero: '98%', label: 'Clienti soddisfatti' },
+            ].map(stat => (
+              <div class="text-center">
+                <div class="text-3xl font-black text-[#8B1A1A] mb-1">{stat.numero}</div>
+                <div class="text-gray-500 text-xs leading-tight">{stat.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div class="bg-[#F5F5F5] rounded-3xl p-8">
+          <h3 class="text-xl font-black text-[#1A1A1A] mb-6">I nostri valori</h3>
+          <div class="space-y-5">
+            {[
+              {
+                title: 'Trasparenza',
+                desc: 'Presentiamo preventivi dettagliati e senza clausole nascoste. Il prezzo concordato è il prezzo che pagherà.',
+                icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>',
+              },
+              {
+                title: 'Qualità senza compromessi',
+                desc: 'Utilizziamo solo materiali e motori di produttori riconosciuti — Somfy, Nice, Rollease — con garanzia sui componenti.',
+                icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>',
+              },
+              {
+                title: 'Puntualità',
+                desc: 'Rispettiamo il suo tempo. Ci presentiamo all\'ora concordata e completiamo i lavori entro i tempi stimati.',
+                icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>',
+              },
+              {
+                title: 'Servizio post-vendita',
+                desc: 'Il nostro rapporto non finisce con l\'installazione. Restiamo disponibili per regolazioni, riparazioni e manutenzione per tutta la vita del prodotto.',
+                icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"/>',
+              },
+            ].map(item => (
+              <div class="flex gap-4">
+                <div class="w-10 h-10 bg-[#8B1A1A] rounded-xl flex items-center justify-center flex-shrink-0">
+                  <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <Fragment set:html={item.icon} />
+                  </svg>
+                </div>
+                <div>
+                  <div class="font-semibold text-[#1A1A1A] mb-0.5">{item.title}</div>
+                  <p class="text-gray-500 text-sm leading-relaxed">{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Il nostro team -->
+  <section class="py-16 lg:py-20 bg-[#F5F5F5]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl mx-auto text-center mb-12">
+        <span class="text-[#8B1A1A] text-sm font-semibold uppercase tracking-widest mb-3 block">Chi siamo</span>
+        <h2 class="text-2xl lg:text-3xl font-black text-[#1A1A1A] mb-4">Il nostro team</h2>
+        <p class="text-gray-600 leading-relaxed">
+          Prime Estores è composta da tecnici specializzati, con formazione certificata nell'installazione di sistemi di ombreggiatura elettrici e domotica. Tutti i nostri installatori sono dipendenti diretti — non subappaltiamo l'installazione.
+        </p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {[
+          {
+            area: 'Installazione elettrica',
+            desc: 'Tecnici certificati per l\'installazione di motori Somfy, Nice e Rollease e l\'integrazione con sistemi domotici (KNX, Z-Wave, Zigbee).',
+            icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>',
+          },
+          {
+            area: 'Riparazione e manutenzione',
+            desc: 'Tecnici specializzati nella diagnosi e riparazione di qualsiasi marca o modello di tenda elettrica o manuale, con magazzino ricambi per interventi immediati.',
+            icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>',
+          },
+          {
+            area: 'Consulenza e progetto',
+            desc: 'Specialisti nella consulenza per progetti di ombreggiatura in lavori di ristrutturazione, condomini e spazi commerciali — dalla specifica tecnica all\'installazione finale.',
+            icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>',
+          },
+        ].map(item => (
+          <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+            <div class="w-12 h-12 bg-[#8B1A1A] rounded-xl flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <Fragment set:html={item.icon} />
+              </svg>
+            </div>
+            <h3 class="font-bold text-[#1A1A1A] mb-2">{item.area}</h3>
+            <p class="text-gray-500 text-sm leading-relaxed">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Marchi e certificazioni -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl mx-auto text-center mb-10">
+        <h2 class="text-2xl font-black text-[#1A1A1A] mb-4">Marchi e partner</h2>
+        <p class="text-gray-600 leading-relaxed">
+          Lavoriamo con i marchi leader del mercato, garantendo qualità e disponibilità dei ricambi a lungo termine.
+        </p>
+      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-6">
+        {[
+          { nome: 'Somfy', desc: 'Leader mondiale nei motori per tende e tapparelle. Protocollo io-homecontrol e RTS.' },
+          { nome: 'Nice', desc: 'Produttore italiano di soluzioni di automazione. Motori silenziosi e affidabili.' },
+          { nome: 'Rollease Acmeda', desc: 'Sistemi a rullo ad alta precisione per installazioni residenziali e commerciali.' },
+          { nome: 'Bubendorff', desc: 'Tende esterne ad alte prestazioni energetiche, con certificazione energetica europea.' },
+        ].map(marca => (
+          <div class="bg-[#F5F5F5] rounded-2xl p-5 text-center">
+            <div class="font-black text-[#1A1A1A] text-lg mb-2">{marca.nome}</div>
+            <p class="text-gray-500 text-xs leading-relaxed">{marca.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Area di intervento -->
+  <section class="py-16 bg-[#F5F5F5]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <span class="text-[#8B1A1A] text-sm font-semibold uppercase tracking-widest mb-3 block">Dove operiamo</span>
+          <h2 class="text-2xl lg:text-3xl font-black text-[#1A1A1A] mb-6">Tutta la Grande Lisbona e oltre</h2>
+          <p class="text-gray-600 leading-relaxed mb-4">
+            La nostra area di intervento copre tutta la Grande Lisbona — dal centro storico della capitale ai comuni limitrofi. Ci spostiamo in qualsiasi punto di quest'area senza costi aggiuntivi di trasferta.
+          </p>
+          <p class="text-gray-600 leading-relaxed mb-6">
+            Per progetti di maggiori dimensioni (condomini, aziende, lavori di ristrutturazione), valutiamo gli spostamenti fuori dalla Grande Lisbona caso per caso. Contattaci per verificare la copertura nella tua zona.
+          </p>
+          <a href="/it/zone-servite/" class="inline-flex items-center gap-2 text-[#8B1A1A] font-semibold hover:underline">
+            Vedi tutte le zone che serviamo →
+          </a>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          {['Lisbona', 'Sintra', 'Cascais', 'Oeiras', 'Almada', 'Setúbal', 'Amadora', 'Loures', 'Odivelas', 'Mafra', 'Sesimbra', 'Palmela', 'Barreiro', 'Seixal'].map(zona => (
+            <span class="bg-white border border-gray-200 text-gray-700 text-sm font-medium px-4 py-2 rounded-full shadow-sm">
+              {zona}
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 bg-[#1A1A1A] text-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-2xl lg:text-3xl font-black mb-4">
+        Pronto a lavorare con noi?
+      </h2>
+      <p class="text-gray-400 text-lg mb-8 max-w-2xl mx-auto">
+        Richiedi il tuo preventivo gratuito. Rispondiamo in meno di 24 ore.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/it/preventivo/" class="inline-flex items-center justify-center gap-2 bg-[#8B1A1A] text-white font-bold px-8 py-4 rounded-lg hover:bg-[#7a1717] transition-colors">
+          Richiedi un preventivo gratuito
+        </a>
+        <a href="/it/contatto/" class="inline-flex items-center justify-center gap-2 border-2 border-white text-white font-bold px-8 py-4 rounded-lg hover:bg-white/10 transition-colors">
+          Parla con il nostro team
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Layout>

@@ -19,6 +19,7 @@ const baseRouteMap: RouteGroup[] = [
   { pt: '/servicos/eletricidade/',         en: '/en/services/electrical-work/',             fr: '/fr/services/electricite/',                 es: '/es/servicios/electricidad/',                de: '/de/dienstleistungen/elektroinstallation/',       it: '/it/servizi/impianto-elettrico/' },
   { pt: '/politica-privacidade/',          en: '/en/privacy-policy/',                       fr: '/fr/politique-confidentialite/',            es: '/es/politica-privacidad/',                   de: '/de/datenschutz/',                                it: '/it/informativa-privacy/'        },
   { pt: '/artigos/',                       en: '/en/articles/',                             fr: '/fr/articles/',                             es: '/es/articulos/',                             de: '/de/artikel/',                                    it: '/it/articoli/'                   },
+  { pt: '/sobre/',                         en: '/en/about/',                                fr: '/fr/a-propos/',                             es: '/es/sobre-nosotros/',                        de: '/de/ueber-uns/',                                  it: '/it/chi-siamo/'                  },
 ];
 
 // PT ↔ EN slug pairing for the Zona × Serviço matrix (only these 2 languages exist)

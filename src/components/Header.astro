@@ -80,6 +80,18 @@ if (lang === 'en') {
   navLinks[1].dropdown![2].href = '/it/servizi/riparazione-tende';
   navLinks[1].dropdown![3].href = '/it/servizi/impianto-elettrico';
 }
+
+// "About" page — localized route + label per language (inserted after the
+// per-language reassignments so it never disturbs the index-based edits above)
+const aboutLink: Record<Lang, { href: string; label: string }> = {
+  pt: { href: '/sobre/',            label: 'Sobre' },
+  en: { href: '/en/about/',         label: 'About' },
+  fr: { href: '/fr/a-propos/',      label: 'À propos' },
+  es: { href: '/es/sobre-nosotros/', label: 'Nosotros' },
+  de: { href: '/de/ueber-uns/',     label: 'Über uns' },
+  it: { href: '/it/chi-siamo/',     label: 'Chi siamo' },
+};
+navLinks.splice(3, 0, aboutLink[lang]);
 ---
 
 <header class="bg-white shadow-sm sticky top-0 z-50 border-b-2 border-[#8B1A1A]">

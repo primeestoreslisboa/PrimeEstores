@@ -1,0 +1,265 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const baseUrl = 'https://primeestores.pt';
+const pageUrl = `${baseUrl}/es/sobre-nosotros/`;
+
+const sobreSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  '@id': `${baseUrl}/#business`,
+  name: 'Prime Estores',
+  url: baseUrl,
+  telephone: '+351923348323',
+  email: 'info@primeestores.pt',
+  image: `${baseUrl}/og-image.jpg`,
+  description: 'Empresa especializada en la instalación y reparación de persianas eléctricas y manuales en Lisboa y el Gran Lisboa desde 2015.',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Lisboa',
+    addressRegion: 'Lisboa',
+    addressCountry: 'PT',
+  },
+  foundingDate: '2015',
+  areaServed: { '@type': 'State', name: 'Gran Lisboa' },
+  priceRange: '€€',
+  openingHoursSpecification: [{
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+    opens: '08:00',
+    closes: '20:00',
+  }],
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Inicio', item: `${baseUrl}/es/` },
+    { '@type': 'ListItem', position: 2, name: 'Sobre Prime Estores', item: pageUrl },
+  ],
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(sobreSchema)} />
+<script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+
+<Layout
+  title="Sobre nosotros — Especialistas en persianas en Lisboa | Prime Estores"
+  description="Conozca Prime Estores: nuestra historia, equipo, valores y compromiso con la calidad en la instalación y reparación de persianas eléctricas y manuales en Lisboa desde 2015."
+  keywords="sobre Prime Estores, empresa persianas Lisboa, quiénes somos Prime Estores, instaladores persianas certificados Lisboa"
+  canonicalURL={pageUrl}
+  lang="es"
+>
+  <!-- Hero -->
+  <section class="bg-gradient-to-br from-[#1A1A1A] to-[#8B1A1A] text-white py-16 lg:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <nav aria-label="Breadcrumb" class="mb-6">
+        <ol class="flex items-center gap-2 text-sm text-white/80">
+          <li><a href="/es/" class="hover:text-white transition-colors">Inicio</a></li>
+          <li aria-hidden="true"><span>/</span></li>
+          <li><span class="text-white">Sobre nosotros</span></li>
+        </ol>
+      </nav>
+      <div class="max-w-3xl">
+        <span class="inline-block bg-white/10 border border-white/20 text-white text-xs font-semibold uppercase tracking-widest px-3 py-1 rounded-full mb-4">Nuestra empresa</span>
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black leading-tight mb-4">
+          Sobre Prime Estores
+        </h1>
+        <p class="text-xl text-white/80 leading-relaxed">
+          Somos especialistas en persianas eléctricas y manuales en Lisboa desde hace más de una década. Instalamos calidad, durabilidad y confort en cada proyecto.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Nuestra historia -->
+  <section class="py-16 lg:py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <span class="text-[#8B1A1A] text-sm font-semibold uppercase tracking-widest mb-3 block">Nuestra historia</span>
+          <h2 class="text-2xl lg:text-3xl font-black text-[#1A1A1A] mb-6">
+            Más de una década al servicio de Lisboa
+          </h2>
+          <p class="text-gray-600 leading-relaxed mb-4">
+            Prime Estores nació en 2015 de la pasión por los sistemas de sombreado de calidad y de la convicción de que Lisboa merecía un servicio de instalación de persianas verdaderamente profesional — puntual, transparente y con garantía real.
+          </p>
+          <p class="text-gray-600 leading-relaxed mb-4">
+            Empezamos con un pequeño equipo centrado en la ciudad de Lisboa. Con los años, crecimos de forma orgánica gracias a la satisfacción de nuestros clientes y a sus recomendaciones. Hoy cubrimos todo el Gran Lisboa, desde Mafra hasta Setúbal, atendiendo a cientos de clientes al año — particulares, empresas y comunidades de vecinos.
+          </p>
+          <p class="text-gray-600 leading-relaxed mb-6">
+            Lo que no ha cambiado desde el primer día: nuestro compromiso con la calidad de los materiales que instalamos, la formación continua de nuestro equipo y la total transparencia en el presupuesto. Nunca cobramos sorpresas.
+          </p>
+          <div class="grid grid-cols-3 gap-6">
+            {[
+              { numero: '10+', label: 'Años de experiencia' },
+              { numero: '2000+', label: 'Instalaciones realizadas' },
+              { numero: '98%', label: 'Clientes satisfechos' },
+            ].map(stat => (
+              <div class="text-center">
+                <div class="text-3xl font-black text-[#8B1A1A] mb-1">{stat.numero}</div>
+                <div class="text-gray-500 text-xs leading-tight">{stat.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div class="bg-[#F5F5F5] rounded-3xl p-8">
+          <h3 class="text-xl font-black text-[#1A1A1A] mb-6">Nuestros valores</h3>
+          <div class="space-y-5">
+            {[
+              {
+                title: 'Transparencia',
+                desc: 'Presentamos presupuestos detallados y sin letra pequeña. El precio que acordamos es el precio que pagará.',
+                icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>',
+              },
+              {
+                title: 'Calidad sin concesiones',
+                desc: 'Utilizamos solo materiales y motores de fabricantes reconocidos — Somfy, Nice, Rollease — con garantía de piezas.',
+                icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>',
+              },
+              {
+                title: 'Puntualidad',
+                desc: 'Respetamos su tiempo. Nos presentamos a la hora acordada y terminamos los trabajos dentro del plazo estimado.',
+                icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>',
+              },
+              {
+                title: 'Servicio posventa',
+                desc: 'Nuestra relación no termina con la instalación. Seguimos disponibles para ajuste, reparación y mantenimiento durante toda la vida del producto.',
+                icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"/>',
+              },
+            ].map(item => (
+              <div class="flex gap-4">
+                <div class="w-10 h-10 bg-[#8B1A1A] rounded-xl flex items-center justify-center flex-shrink-0">
+                  <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <Fragment set:html={item.icon} />
+                  </svg>
+                </div>
+                <div>
+                  <div class="font-semibold text-[#1A1A1A] mb-0.5">{item.title}</div>
+                  <p class="text-gray-500 text-sm leading-relaxed">{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Nuestro equipo -->
+  <section class="py-16 lg:py-20 bg-[#F5F5F5]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl mx-auto text-center mb-12">
+        <span class="text-[#8B1A1A] text-sm font-semibold uppercase tracking-widest mb-3 block">Quiénes somos</span>
+        <h2 class="text-2xl lg:text-3xl font-black text-[#1A1A1A] mb-4">Nuestro equipo</h2>
+        <p class="text-gray-600 leading-relaxed">
+          Prime Estores está formada por técnicos especializados, con formación certificada en instalación de sistemas de sombreado eléctrico y domótica. Todos nuestros instaladores son empleados directos — no subcontratamos la instalación.
+        </p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {[
+          {
+            area: 'Instalación eléctrica',
+            desc: 'Técnicos certificados en la instalación de motores Somfy, Nice y Rollease, e integración con sistemas de domótica (KNX, Z-Wave, Zigbee).',
+            icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>',
+          },
+          {
+            area: 'Reparación y mantenimiento',
+            desc: 'Técnicos especializados en el diagnóstico y la reparación de cualquier marca o modelo de persiana eléctrica o manual, con stock de piezas para intervención inmediata.',
+            icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>',
+          },
+          {
+            area: 'Consultoría y proyecto',
+            desc: 'Especialistas en asesoramiento para proyectos de sombreado en obras de rehabilitación, comunidades de vecinos y espacios comerciales — desde la especificación técnica hasta la instalación final.',
+            icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>',
+          },
+        ].map(item => (
+          <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+            <div class="w-12 h-12 bg-[#8B1A1A] rounded-xl flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <Fragment set:html={item.icon} />
+              </svg>
+            </div>
+            <h3 class="font-bold text-[#1A1A1A] mb-2">{item.area}</h3>
+            <p class="text-gray-500 text-sm leading-relaxed">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Marcas y certificaciones -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl mx-auto text-center mb-10">
+        <h2 class="text-2xl font-black text-[#1A1A1A] mb-4">Marcas y socios</h2>
+        <p class="text-gray-600 leading-relaxed">
+          Trabajamos con las marcas líderes del mercado, garantizando calidad y disponibilidad de piezas a largo plazo.
+        </p>
+      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-6">
+        {[
+          { nome: 'Somfy', desc: 'Líder mundial en motores para persianas y estores. Protocolo io-homecontrol y RTS.' },
+          { nome: 'Nice', desc: 'Fabricante italiano de soluciones de automatización. Motores silenciosos y fiables.' },
+          { nome: 'Rollease Acmeda', desc: 'Sistemas de enrollable de alta precisión para instalaciones residenciales y comerciales.' },
+          { nome: 'Bubendorff', desc: 'Persianas exteriores de alto rendimiento energético, con certificación energética europea.' },
+        ].map(marca => (
+          <div class="bg-[#F5F5F5] rounded-2xl p-5 text-center">
+            <div class="font-black text-[#1A1A1A] text-lg mb-2">{marca.nome}</div>
+            <p class="text-gray-500 text-xs leading-relaxed">{marca.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Área de actuación -->
+  <section class="py-16 bg-[#F5F5F5]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <span class="text-[#8B1A1A] text-sm font-semibold uppercase tracking-widest mb-3 block">Dónde actuamos</span>
+          <h2 class="text-2xl lg:text-3xl font-black text-[#1A1A1A] mb-6">Todo el Gran Lisboa y más allá</h2>
+          <p class="text-gray-600 leading-relaxed mb-4">
+            Nuestra área de actuación cubre todo el Gran Lisboa — desde el centro histórico de la capital hasta los municipios limítrofes. Nos desplazamos a cualquier punto de esta zona sin coste adicional de desplazamiento.
+          </p>
+          <p class="text-gray-600 leading-relaxed mb-6">
+            Para proyectos de mayor envergadura (comunidades de vecinos, empresas, obras de rehabilitación), estudiamos los desplazamientos fuera del Gran Lisboa caso por caso. Contáctenos para comprobar la cobertura en su zona.
+          </p>
+          <a href="/es/zonas-cobertura/" class="inline-flex items-center gap-2 text-[#8B1A1A] font-semibold hover:underline">
+            Ver todas las zonas que cubrimos →
+          </a>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          {['Lisboa', 'Sintra', 'Cascais', 'Oeiras', 'Almada', 'Setúbal', 'Amadora', 'Loures', 'Odivelas', 'Mafra', 'Sesimbra', 'Palmela', 'Barreiro', 'Seixal'].map(zona => (
+            <span class="bg-white border border-gray-200 text-gray-700 text-sm font-medium px-4 py-2 rounded-full shadow-sm">
+              {zona}
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 bg-[#1A1A1A] text-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-2xl lg:text-3xl font-black mb-4">
+        ¿Listo para trabajar con nosotros?
+      </h2>
+      <p class="text-gray-400 text-lg mb-8 max-w-2xl mx-auto">
+        Solicite su presupuesto gratuito. Respondemos en menos de 24 horas.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/es/presupuesto/" class="inline-flex items-center justify-center gap-2 bg-[#8B1A1A] text-white font-bold px-8 py-4 rounded-lg hover:bg-[#7a1717] transition-colors">
+          Solicitar presupuesto gratis
+        </a>
+        <a href="/es/contacto/" class="inline-flex items-center justify-center gap-2 border-2 border-white text-white font-bold px-8 py-4 rounded-lg hover:bg-white/10 transition-colors">
+          Hablar con nuestro equipo
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Layout>

@@ -1,0 +1,265 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const baseUrl = 'https://primeestores.pt';
+const pageUrl = `${baseUrl}/de/ueber-uns/`;
+
+const sobreSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  '@id': `${baseUrl}/#business`,
+  name: 'Prime Estores',
+  url: baseUrl,
+  telephone: '+351923348323',
+  email: 'info@primeestores.pt',
+  image: `${baseUrl}/og-image.jpg`,
+  description: 'Auf die Installation und Reparatur von elektrischen und manuellen Jalousien in Lissabon und im Großraum Lissabon spezialisiertes Unternehmen seit 2015.',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Lissabon',
+    addressRegion: 'Lissabon',
+    addressCountry: 'PT',
+  },
+  foundingDate: '2015',
+  areaServed: { '@type': 'State', name: 'Großraum Lissabon' },
+  priceRange: '€€',
+  openingHoursSpecification: [{
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+    opens: '08:00',
+    closes: '20:00',
+  }],
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Startseite', item: `${baseUrl}/de/` },
+    { '@type': 'ListItem', position: 2, name: 'Über Prime Estores', item: pageUrl },
+  ],
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(sobreSchema)} />
+<script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+
+<Layout
+  title="Über uns — Jalousien-Spezialisten in Lissabon | Prime Estores"
+  description="Lernen Sie Prime Estores kennen: unsere Geschichte, unser Team, unsere Werte und unser Engagement für Qualität bei der Installation und Reparatur von elektrischen und manuellen Jalousien in Lissabon seit 2015."
+  keywords="über Prime Estores, Jalousien Unternehmen Lissabon, wer wir sind Prime Estores, zertifizierte Jalousien-Monteure Lissabon"
+  canonicalURL={pageUrl}
+  lang="de"
+>
+  <!-- Hero -->
+  <section class="bg-gradient-to-br from-[#1A1A1A] to-[#8B1A1A] text-white py-16 lg:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <nav aria-label="Breadcrumb" class="mb-6">
+        <ol class="flex items-center gap-2 text-sm text-white/80">
+          <li><a href="/de/" class="hover:text-white transition-colors">Startseite</a></li>
+          <li aria-hidden="true"><span>/</span></li>
+          <li><span class="text-white">Über uns</span></li>
+        </ol>
+      </nav>
+      <div class="max-w-3xl">
+        <span class="inline-block bg-white/10 border border-white/20 text-white text-xs font-semibold uppercase tracking-widest px-3 py-1 rounded-full mb-4">Unser Unternehmen</span>
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black leading-tight mb-4">
+          Über Prime Estores
+        </h1>
+        <p class="text-xl text-white/80 leading-relaxed">
+          Wir sind seit über einem Jahrzehnt Spezialisten für elektrische und manuelle Jalousien in Lissabon. Wir installieren Qualität, Langlebigkeit und Komfort in jedem Projekt.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Unsere Geschichte -->
+  <section class="py-16 lg:py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <span class="text-[#8B1A1A] text-sm font-semibold uppercase tracking-widest mb-3 block">Unsere Geschichte</span>
+          <h2 class="text-2xl lg:text-3xl font-black text-[#1A1A1A] mb-6">
+            Seit über einem Jahrzehnt im Dienste Lissabons
+          </h2>
+          <p class="text-gray-600 leading-relaxed mb-4">
+            Prime Estores entstand 2015 aus der Leidenschaft für hochwertige Beschattungssysteme und der Überzeugung, dass Lissabon einen wirklich professionellen Jalousien-Installationsservice verdient — pünktlich, transparent und mit echter Garantie.
+          </p>
+          <p class="text-gray-600 leading-relaxed mb-4">
+            Wir begannen mit einem kleinen Team, das sich auf die Stadt Lissabon konzentrierte. Im Laufe der Jahre sind wir dank der Zufriedenheit unserer Kunden und ihrer Empfehlungen organisch gewachsen. Heute decken wir den gesamten Großraum Lissabon ab, von Mafra bis Setúbal, und betreuen Hunderte von Kunden pro Jahr — Privatpersonen, Unternehmen und Eigentümergemeinschaften.
+          </p>
+          <p class="text-gray-600 leading-relaxed mb-6">
+            Was sich seit dem ersten Tag nicht geändert hat: unser Engagement für die Qualität der von uns installierten Materialien, die kontinuierliche Weiterbildung unseres Teams und die vollständige Transparenz beim Kostenvoranschlag. Wir berechnen niemals Überraschungen.
+          </p>
+          <div class="grid grid-cols-3 gap-6">
+            {[
+              { numero: '10+', label: 'Jahre Erfahrung' },
+              { numero: '2000+', label: 'Abgeschlossene Installationen' },
+              { numero: '98%', label: 'Zufriedene Kunden' },
+            ].map(stat => (
+              <div class="text-center">
+                <div class="text-3xl font-black text-[#8B1A1A] mb-1">{stat.numero}</div>
+                <div class="text-gray-500 text-xs leading-tight">{stat.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div class="bg-[#F5F5F5] rounded-3xl p-8">
+          <h3 class="text-xl font-black text-[#1A1A1A] mb-6">Unsere Werte</h3>
+          <div class="space-y-5">
+            {[
+              {
+                title: 'Transparenz',
+                desc: 'Wir erstellen detaillierte Kostenvoranschläge ohne Kleingedrucktes. Der vereinbarte Preis ist der Preis, den Sie zahlen.',
+                icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>',
+              },
+              {
+                title: 'Kompromisslose Qualität',
+                desc: 'Wir verwenden ausschließlich Materialien und Motoren anerkannter Hersteller — Somfy, Nice, Rollease — mit Teilegarantie.',
+                icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>',
+              },
+              {
+                title: 'Pünktlichkeit',
+                desc: 'Wir respektieren Ihre Zeit. Wir erscheinen zur vereinbarten Zeit und schließen die Arbeiten innerhalb des geschätzten Zeitrahmens ab.',
+                icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>',
+              },
+              {
+                title: 'Kundendienst',
+                desc: 'Unsere Beziehung endet nicht mit der Installation. Wir stehen Ihnen während der gesamten Lebensdauer des Produkts für Einstellung, Reparatur und Wartung zur Verfügung.',
+                icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"/>',
+              },
+            ].map(item => (
+              <div class="flex gap-4">
+                <div class="w-10 h-10 bg-[#8B1A1A] rounded-xl flex items-center justify-center flex-shrink-0">
+                  <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <Fragment set:html={item.icon} />
+                  </svg>
+                </div>
+                <div>
+                  <div class="font-semibold text-[#1A1A1A] mb-0.5">{item.title}</div>
+                  <p class="text-gray-500 text-sm leading-relaxed">{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Unser Team -->
+  <section class="py-16 lg:py-20 bg-[#F5F5F5]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl mx-auto text-center mb-12">
+        <span class="text-[#8B1A1A] text-sm font-semibold uppercase tracking-widest mb-3 block">Wer wir sind</span>
+        <h2 class="text-2xl lg:text-3xl font-black text-[#1A1A1A] mb-4">Unser Team</h2>
+        <p class="text-gray-600 leading-relaxed">
+          Prime Estores besteht aus spezialisierten Technikern mit zertifizierter Ausbildung in der Installation elektrischer Beschattungssysteme und Hausautomation. Alle unsere Monteure sind direkte Mitarbeiter — wir vergeben die Installation nicht an Subunternehmer.
+        </p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {[
+          {
+            area: 'Elektroinstallation',
+            desc: 'Techniker mit Zertifizierung für die Installation von Somfy-, Nice- und Rollease-Motoren sowie die Integration in Hausautomationssysteme (KNX, Z-Wave, Zigbee).',
+            icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>',
+          },
+          {
+            area: 'Reparatur und Wartung',
+            desc: 'Techniker, die auf die Diagnose und Reparatur jeder Marke oder jedes Modells elektrischer oder manueller Jalousien spezialisiert sind, mit einem Teilelager für sofortige Eingriffe.',
+            icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>',
+          },
+          {
+            area: 'Beratung und Planung',
+            desc: 'Spezialisten für die Beratung bei Beschattungsprojekten in Sanierungsarbeiten, Eigentümergemeinschaften und Gewerberäumen — von der technischen Spezifikation bis zur endgültigen Installation.',
+            icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>',
+          },
+        ].map(item => (
+          <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+            <div class="w-12 h-12 bg-[#8B1A1A] rounded-xl flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <Fragment set:html={item.icon} />
+              </svg>
+            </div>
+            <h3 class="font-bold text-[#1A1A1A] mb-2">{item.area}</h3>
+            <p class="text-gray-500 text-sm leading-relaxed">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Marken und Zertifizierungen -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl mx-auto text-center mb-10">
+        <h2 class="text-2xl font-black text-[#1A1A1A] mb-4">Marken und Partner</h2>
+        <p class="text-gray-600 leading-relaxed">
+          Wir arbeiten mit den führenden Marken des Marktes und garantieren so Qualität und langfristige Verfügbarkeit von Ersatzteilen.
+        </p>
+      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-6">
+        {[
+          { nome: 'Somfy', desc: 'Weltmarktführer für Motoren für Jalousien und Rollläden. io-homecontrol- und RTS-Protokoll.' },
+          { nome: 'Nice', desc: 'Italienischer Hersteller von Automatisierungslösungen. Leise und zuverlässige Motoren.' },
+          { nome: 'Rollease Acmeda', desc: 'Hochpräzise Rollosysteme für Wohn- und Gewerbeinstallationen.' },
+          { nome: 'Bubendorff', desc: 'Außenjalousien mit hoher Energieeffizienz und europäischer Energiezertifizierung.' },
+        ].map(marca => (
+          <div class="bg-[#F5F5F5] rounded-2xl p-5 text-center">
+            <div class="font-black text-[#1A1A1A] text-lg mb-2">{marca.nome}</div>
+            <p class="text-gray-500 text-xs leading-relaxed">{marca.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Einsatzgebiet -->
+  <section class="py-16 bg-[#F5F5F5]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <span class="text-[#8B1A1A] text-sm font-semibold uppercase tracking-widest mb-3 block">Wo wir tätig sind</span>
+          <h2 class="text-2xl lg:text-3xl font-black text-[#1A1A1A] mb-6">Der gesamte Großraum Lissabon und darüber hinaus</h2>
+          <p class="text-gray-600 leading-relaxed mb-4">
+            Unser Einsatzgebiet umfasst den gesamten Großraum Lissabon — vom historischen Zentrum der Hauptstadt bis zu den Nachbargemeinden. Wir fahren ohne zusätzliche Anfahrtskosten zu jedem Punkt in diesem Gebiet.
+          </p>
+          <p class="text-gray-600 leading-relaxed mb-6">
+            Für größere Projekte (Eigentümergemeinschaften, Unternehmen, Sanierungsarbeiten) prüfen wir Anfahrten außerhalb des Großraums Lissabon von Fall zu Fall. Kontaktieren Sie uns, um die Abdeckung in Ihrer Region zu prüfen.
+          </p>
+          <a href="/de/versorgungsgebiete/" class="inline-flex items-center gap-2 text-[#8B1A1A] font-semibold hover:underline">
+            Alle von uns bedienten Gebiete ansehen →
+          </a>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          {['Lissabon', 'Sintra', 'Cascais', 'Oeiras', 'Almada', 'Setúbal', 'Amadora', 'Loures', 'Odivelas', 'Mafra', 'Sesimbra', 'Palmela', 'Barreiro', 'Seixal'].map(zona => (
+            <span class="bg-white border border-gray-200 text-gray-700 text-sm font-medium px-4 py-2 rounded-full shadow-sm">
+              {zona}
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 bg-[#1A1A1A] text-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-2xl lg:text-3xl font-black mb-4">
+        Bereit, mit uns zu arbeiten?
+      </h2>
+      <p class="text-gray-400 text-lg mb-8 max-w-2xl mx-auto">
+        Fordern Sie Ihren kostenlosen Kostenvoranschlag an. Wir antworten in weniger als 24 Stunden.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/de/angebot/" class="inline-flex items-center justify-center gap-2 bg-[#8B1A1A] text-white font-bold px-8 py-4 rounded-lg hover:bg-[#7a1717] transition-colors">
+          Kostenlosen Kostenvoranschlag anfordern
+        </a>
+        <a href="/de/kontakt/" class="inline-flex items-center justify-center gap-2 border-2 border-white text-white font-bold px-8 py-4 rounded-lg hover:bg-white/10 transition-colors">
+          Mit unserem Team sprechen
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Layout>
