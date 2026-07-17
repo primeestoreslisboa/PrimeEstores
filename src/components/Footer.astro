@@ -48,7 +48,35 @@ const links = {
           : lang === 'es' ? '/es/zonas-cobertura'
           : lang === 'de' ? '/de/versorgungsgebiete'
           : '/it/zone-servite',
+  about:    lang === 'pt' ? '/sobre/'
+          : lang === 'en' ? '/en/about/'
+          : lang === 'fr' ? '/fr/a-propos/'
+          : lang === 'es' ? '/es/sobre-nosotros/'
+          : lang === 'de' ? '/de/ueber-uns/'
+          : '/it/chi-siamo/',
+  privacy:  lang === 'pt' ? '/politica-privacidade/'
+          : lang === 'en' ? '/en/privacy-policy/'
+          : lang === 'fr' ? '/fr/politique-confidentialite/'
+          : lang === 'es' ? '/es/politica-privacidad/'
+          : lang === 'de' ? '/de/datenschutz/'
+          : '/it/informativa-privacy/',
 };
+
+const aboutLabel =
+  lang === 'en' ? 'About Us' :
+  lang === 'fr' ? 'À propos' :
+  lang === 'es' ? 'Nosotros' :
+  lang === 'de' ? 'Über uns' :
+  lang === 'it' ? 'Chi siamo' :
+  'Sobre Nós';
+
+const privacyLabel =
+  lang === 'en' ? 'Privacy Policy' :
+  lang === 'fr' ? 'Politique de confidentialité' :
+  lang === 'es' ? 'Política de privacidad' :
+  lang === 'de' ? 'Datenschutz' :
+  lang === 'it' ? 'Informativa sulla privacy' :
+  'Política de Privacidade';
 
 const desc =
   lang === 'en' ? 'Specialists in electric and manual blind installation and repair across Greater Lisbon. Over 10 years of experience at your service.' :
@@ -257,16 +285,12 @@ const socialLinks = [
           <li>
             <a href={links.contact} class="text-gray-300 hover:text-white transition-colors text-sm">{t('nav.contact')}</a>
           </li>
-          {lang === 'pt' && (
-            <>
-              <li>
-                <a href="/sobre/" class="text-gray-300 hover:text-white transition-colors text-sm">Sobre Nós</a>
-              </li>
-              <li>
-                <a href="/politica-privacidade" class="text-gray-300 hover:text-white transition-colors text-sm">Privacidade</a>
-              </li>
-            </>
-          )}
+          <li>
+            <a href={links.about} class="text-gray-300 hover:text-white transition-colors text-sm">{aboutLabel}</a>
+          </li>
+          <li>
+            <a href={links.privacy} class="text-gray-300 hover:text-white transition-colors text-sm">{privacyLabel}</a>
+          </li>
         </ul>
 
         <!-- CTA -->
@@ -290,12 +314,8 @@ const socialLinks = [
         &copy; {currentYear} Prime Estores. {rightsText}
       </p>
       <div class="flex items-center gap-4 flex-wrap justify-center sm:justify-end">
-        {lang === 'pt' && (
-          <>
-            <a href="/sobre/" class="text-gray-400 hover:text-white text-xs transition-colors">Sobre Nós</a>
-            <a href="/politica-privacidade" class="text-gray-400 hover:text-white text-xs transition-colors">Política de Privacidade</a>
-          </>
-        )}
+        <a href={links.about} class="text-gray-400 hover:text-white text-xs transition-colors">{aboutLabel}</a>
+        <a href={links.privacy} class="text-gray-400 hover:text-white text-xs transition-colors">{privacyLabel}</a>
         <p class="text-gray-300 text-xs">
           Lisboa, Portugal &bull; NIF: 123 456 789
         </p>

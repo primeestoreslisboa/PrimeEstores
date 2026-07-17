@@ -8,47 +8,47 @@ interface Props {
 const { lang = 'pt' } = Astro.props;
 
 const privacyLink =
-  lang === 'en' ? '/en/privacy-policy' :
-  lang === 'fr' ? '/fr/politique-confidentialite' :
-  lang === 'es' ? '/es/politica-privacidad' :
-  lang === 'de' ? '/de/datenschutz' :
-  lang === 'it' ? '/it/informativa-privacy' :
-  '/politica-privacidade';
+  lang === 'en' ? '/en/privacy-policy/' :
+  lang === 'fr' ? '/fr/politique-confidentialite/' :
+  lang === 'es' ? '/es/politica-privacidad/' :
+  lang === 'de' ? '/de/datenschutz/' :
+  lang === 'it' ? '/it/informativa-privacy/' :
+  '/politica-privacidade/';
 
 const texts = {
   pt: {
     message: 'Utilizamos cookies para melhorar a sua experiência e apresentar anúncios relevantes. Ao continuar a navegar, aceita o uso de cookies.',
-    learnMore: 'Saiba mais',
+    privacyPolicy: 'Consulte a nossa Política de Privacidade',
     accept: 'Aceitar',
     reject: 'Rejeitar',
   },
   en: {
     message: 'We use cookies to improve your experience and show relevant ads. By continuing to browse, you agree to the use of cookies.',
-    learnMore: 'Learn more',
+    privacyPolicy: 'Read our Privacy Policy',
     accept: 'Accept',
     reject: 'Reject',
   },
   fr: {
     message: 'Nous utilisons des cookies pour améliorer votre expérience et afficher des annonces pertinentes. En continuant à naviguer, vous acceptez l\'utilisation des cookies.',
-    learnMore: 'En savoir plus',
+    privacyPolicy: 'Consultez notre Politique de confidentialité',
     accept: 'Accepter',
     reject: 'Refuser',
   },
   es: {
     message: 'Utilizamos cookies para mejorar su experiencia y mostrar anuncios relevantes. Al continuar navegando, acepta el uso de cookies.',
-    learnMore: 'Más información',
+    privacyPolicy: 'Consulte nuestra Política de privacidad',
     accept: 'Aceptar',
     reject: 'Rechazar',
   },
   de: {
     message: 'Wir verwenden Cookies, um Ihre Erfahrung zu verbessern und relevante Werbung anzuzeigen. Wenn Sie weiter surfen, stimmen Sie der Verwendung von Cookies zu.',
-    learnMore: 'Mehr erfahren',
+    privacyPolicy: 'Lesen Sie unsere Datenschutzerklärung',
     accept: 'Akzeptieren',
     reject: 'Ablehnen',
   },
   it: {
     message: 'Utilizziamo cookie per migliorare la tua esperienza e mostrare annunci pertinenti. Continuando a navigare, accetti l\'utilizzo dei cookie.',
-    learnMore: 'Scopri di più',
+    privacyPolicy: 'Consulta la nostra Informativa sulla privacy',
     accept: 'Accetta',
     reject: 'Rifiuta',
   },
@@ -67,7 +67,7 @@ const t = texts[lang] ?? texts.pt;
     <p class="text-sm text-gray-300 flex-1">
       {t.message}
       {' '}
-      <a href={privacyLink} class="underline text-white hover:text-gray-300 transition-colors whitespace-nowrap">{t.learnMore}</a>.
+      <a href={privacyLink} class="underline text-white hover:text-gray-300 transition-colors whitespace-nowrap">{t.privacyPolicy}</a>.
     </p>
     <div class="flex gap-3 shrink-0">
       <button
