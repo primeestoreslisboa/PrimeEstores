@@ -14,6 +14,8 @@ const quoteHref = lang === 'pt' ? '/orcamento' :
   lang === 'fr' ? '/fr/devis' :
   lang === 'es' ? '/es/presupuesto' :
   lang === 'de' ? '/de/angebot' :
+  lang === 'ru' ? '/ru/quote/' :
+  lang === 'uk' ? '/uk/quote/' :
   '/it/preventivo';
 
 const reasons = [
@@ -66,6 +68,8 @@ const reasons = [
            lang === 'es' ? 'Somos una empresa familiar con raíces en Lisboa, comprometidos con la calidad y la satisfacción de cada cliente.' :
            lang === 'de' ? 'Wir sind ein Familienunternehmen mit Wurzeln in Lissabon, das sich der Qualität und Zufriedenheit jedes Kunden verpflichtet fühlt.' :
            lang === 'it' ? 'Siamo un\'azienda familiare con radici a Lisbona, impegnata nella qualità e nella soddisfazione di ogni cliente.' :
+           lang === 'ru' ? 'Мы — семейная компания с корнями в Лиссабоне, приверженная качеству и удовлетворению каждого клиента.' :
+           lang === 'uk' ? 'Ми — сімейна компанія з корінням у Лісабоні, віддана якості та задоволенню кожного клієнта.' :
            'Somos uma empresa familiar com raízes em Lisboa, comprometidos com a qualidade e a satisfação de cada cliente.'}
         </p>
 
@@ -80,6 +84,8 @@ const reasons = [
                lang === 'es' ? 'Años de experiencia' :
                lang === 'de' ? 'Jahre Erfahrung' :
                lang === 'it' ? 'Anni di esperienza' :
+               lang === 'ru' ? 'Лет опыта' :
+               lang === 'uk' ? 'Років досвіду' :
                'Anos de experiência'}
             </div>
           </div>
@@ -92,6 +98,8 @@ const reasons = [
                lang === 'es' ? 'Clientes satisfechos' :
                lang === 'de' ? 'Zufriedene Kunden' :
                lang === 'it' ? 'Clienti soddisfatti' :
+               lang === 'ru' ? 'Довольных клиентов' :
+               lang === 'uk' ? 'Задоволених клієнтів' :
                'Clientes satisfeitos'}
             </div>
           </div>
@@ -104,6 +112,8 @@ const reasons = [
                lang === 'es' ? 'Presupuesto gratis' :
                lang === 'de' ? 'Kostenloser Kostenvoranschlag' :
                lang === 'it' ? 'Preventivo gratuito' :
+               lang === 'ru' ? 'Бесплатная смета' :
+               lang === 'uk' ? 'Безкоштовний кошторис' :
                'Orçamento gratuito'}
             </div>
           </div>

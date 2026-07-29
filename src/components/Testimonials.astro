@@ -14,6 +14,8 @@ const quoteHref = lang === 'pt' ? '/orcamento' :
   lang === 'fr' ? '/fr/devis' :
   lang === 'es' ? '/es/presupuesto' :
   lang === 'de' ? '/de/angebot' :
+  lang === 'ru' ? '/ru/quote/' :
+  lang === 'uk' ? '/uk/quote/' :
   '/it/preventivo';
 
 const testimonials = [
@@ -30,14 +32,18 @@ const testimonials = [
       : lang === 'es'
       ? '¡Excelente servicio! Contacté a Prime Estores para instalar tres persianas eléctricas en mi apartamento. El equipo fue muy profesional, llegó a tiempo y realizó un trabajo impecable. ¡Recomiendo sin dudarlo!'
       : lang === 'de' ? 'Ausgezeichneter Service! Ich habe Prime Estores kontaktiert, um drei elektrische Jalousien in meiner Wohnung zu installieren. Das Team war sehr professionell, pünktlich und hat tadellose Arbeit geleistet. Ich empfehle ohne Zögern!'
+      : lang === 'ru' ? 'Отличный сервис! Я обратилась в Prime Estores, чтобы установить три электрические рольставни в своей квартире. Команда была очень профессиональной, приехала вовремя и выполнила безупречную работу. Рекомендую без колебаний!'
+      : lang === 'uk' ? 'Чудовий сервіс! Я звернулася до Prime Estores, щоб встановити три електричні ролети у своїй квартирі. Команда була дуже професійною, приїхала вчасно та виконала бездоганну роботу. Рекомендую без вагань!'
       : 'Servizio eccellente! Ho contattato Prime Estores per installare tre tende elettriche nel mio appartamento. Il team è stato molto professionale, puntuale e ha svolto un lavoro impeccabile. Consiglio senza esitazione!',
     service: lang === 'pt' ? 'Instalação de Estores Elétricos' :
       lang === 'en' ? 'Electric Blind Installation' :
       lang === 'fr' ? 'Installation de Stores Électriques' :
       lang === 'es' ? 'Instalación de Persianas Eléctricas' :
       lang === 'de' ? 'Elektrische Jalousien Installation' :
+      lang === 'ru' ? 'Установка электрических рольставней' :
+      lang === 'uk' ? 'Встановлення електричних ролет' :
       'Installazione Tende Elettriche',
-    date: lang === 'pt' ? 'Janeiro 2025' : lang === 'de' ? 'Januar 2025' : lang === 'it' ? 'Gennaio 2025' : 'January 2025',
+    date: lang === 'pt' ? 'Janeiro 2025' : lang === 'de' ? 'Januar 2025' : lang === 'it' ? 'Gennaio 2025' : lang === 'ru' ? 'Январь 2025' : lang === 'uk' ? 'Січень 2025' : 'January 2025',
   },
   {
     name: 'Carlos Mendes',
@@ -52,14 +58,18 @@ const testimonials = [
       : lang === 'es'
       ? 'Necesitaba reparar urgentemente una persiana que se averió un viernes por la tarde. Llamé a Prime Estores y pudieron venir el mismo día. El técnico fue muy amable y eficiente. Precio muy justo.'
       : lang === 'de' ? 'Ich musste dringend eine Jalousie reparieren lassen, die an einem Freitagnachmittag kaputt ging. Ich rief Prime Estores an und sie kamen noch am selben Tag. Der Techniker war sehr freundlich und effizient. Sehr fairer Preis.'
+      : lang === 'ru' ? 'Мне срочно нужно было отремонтировать рольставню, которая сломалась в пятницу днём. Я позвонил в Prime Estores, и они смогли приехать в тот же день. Техник был очень приветливым и эффективным. Очень справедливая цена.'
+      : lang === 'uk' ? 'Мені терміново потрібно було відремонтувати ролету, яка зламалася в пʼятницю вдень. Я зателефонував до Prime Estores, і вони змогли приїхати того ж дня. Технік був дуже привітним та ефективним. Дуже справедлива ціна.'
       : 'Avevo urgente bisogno di riparare una tenda che si è guastata un venerdì pomeriggio. Ho chiamato Prime Estores e sono riusciti a venire lo stesso giorno. Il tecnico era molto gentile ed efficiente. Prezzo molto giusto.',
     service: lang === 'pt' ? 'Reparação de Estore Elétrico' :
       lang === 'en' ? 'Electric Blind Repair' :
       lang === 'fr' ? 'Réparation de Store Électrique' :
       lang === 'es' ? 'Reparación de Persiana Eléctrica' :
       lang === 'de' ? 'Elektrische Jalousie Reparatur' :
+      lang === 'ru' ? 'Ремонт электрической рольставни' :
+      lang === 'uk' ? 'Ремонт електричної ролети' :
       'Riparazione Tenda Elettrica',
-    date: lang === 'pt' ? 'Fevereiro 2025' : lang === 'de' ? 'Februar 2025' : lang === 'it' ? 'Febbraio 2025' : 'February 2025',
+    date: lang === 'pt' ? 'Fevereiro 2025' : lang === 'de' ? 'Februar 2025' : lang === 'it' ? 'Febbraio 2025' : lang === 'ru' ? 'Февраль 2025' : lang === 'uk' ? 'Лютий 2025' : 'February 2025',
   },
   {
     name: 'Ana Paula Rodrigues',
@@ -74,14 +84,18 @@ const testimonials = [
       : lang === 'es'
       ? 'Instalaron persianas manuales en toda mi villa en Oeiras. El servicio desde el primer contacto fue ejemplar — presupuesto claro, sin sorpresas, y la mejor relación calidad-precio que encontré.'
       : lang === 'de' ? 'Sie installierten manuelle Jalousien in meiner ganzen Villa in Oeiras. Der Service vom ersten Kontakt an war vorbildlich — klares Angebot, keine Überraschungen und das beste Preis-Leistungs-Verhältnis das ich gefunden habe.'
+      : lang === 'ru' ? 'Они установили ручные рольставни по всей моей вилле в Оэйраше. Обслуживание с первого контакта было образцовым — понятная смета, без сюрпризов и лучшее соотношение цены и качества, которое я нашла.'
+      : lang === 'uk' ? 'Вони встановили ручні ролети по всій моїй віллі в Оейраші. Обслуговування з першого контакту було зразковим — зрозумілий кошторис, без сюрпризів і найкраще співвідношення ціни та якості, яке я знайшла.'
       : 'Hanno installato tende manuali in tutta la mia villa a Oeiras. Il servizio dal primo contatto è stato esemplare — preventivo chiaro, nessuna sorpresa, e il miglior rapporto qualità-prezzo che ho trovato.',
     service: lang === 'pt' ? 'Instalação de Estores Manuais' :
       lang === 'en' ? 'Manual Blind Installation' :
       lang === 'fr' ? 'Installation de Stores Manuels' :
       lang === 'es' ? 'Instalación de Persianas Manuales' :
       lang === 'de' ? 'Manuelle Jalousien Installation' :
+      lang === 'ru' ? 'Установка ручных рольставней' :
+      lang === 'uk' ? 'Встановлення ручних ролет' :
       'Installazione Tende Manuali',
-    date: lang === 'pt' ? 'Março 2025' : lang === 'de' ? 'März 2025' : lang === 'it' ? 'Marzo 2025' : 'March 2025',
+    date: lang === 'pt' ? 'Março 2025' : lang === 'de' ? 'März 2025' : lang === 'it' ? 'Marzo 2025' : lang === 'ru' ? 'Март 2025' : lang === 'uk' ? 'Березень 2025' : 'March 2025',
   },
 ];
 
@@ -101,6 +115,8 @@ function renderStars(count: number) {
          lang === 'es' ? 'Testimonios' :
          lang === 'de' ? 'Kundenbewertungen' :
          lang === 'it' ? 'Testimonianze' :
+         lang === 'ru' ? 'Отзывы' :
+         lang === 'uk' ? 'Відгуки' :
          'Testemunhos'}
       </span>
       <h2 id="testimonials-heading" class="text-3xl lg:text-4xl font-black text-[#1A1A1A] mb-4">
@@ -123,6 +139,8 @@ function renderStars(count: number) {
            lang === 'es' ? 'Basado en reseñas de clientes' :
            lang === 'de' ? 'Basierend auf Kundenbewertungen' :
            lang === 'it' ? 'Basato sulle recensioni dei clienti' :
+           lang === 'ru' ? 'На основе отзывов клиентов' :
+           lang === 'uk' ? 'На основі відгуків клієнтів' :
            'Baseado em avaliações de clientes'}
         </div>
       </div>
@@ -171,6 +189,8 @@ function renderStars(count: number) {
          lang === 'es' ? 'Únase a nuestros clientes satisfechos en todo el Gran Lisboa' :
          lang === 'de' ? 'Schließen Sie sich unseren zufriedenen Kunden in ganz Groß-Lissabon an' :
          lang === 'it' ? 'Unisciti ai nostri clienti soddisfatti in tutta la Grande Lisbona' :
+         lang === 'ru' ? 'Присоединяйтесь к нашим довольным клиентам по всему Большому Лиссабону' :
+         lang === 'uk' ? 'Приєднуйтесь до наших задоволених клієнтів по всьому Великому Лісабону' :
          'Junte-se aos nossos clientes satisfeitos em toda a Grande Lisboa'}
       </p>
       <a

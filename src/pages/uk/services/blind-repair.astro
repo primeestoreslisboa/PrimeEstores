@@ -1,0 +1,94 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import ContactForm from '../../../components/ContactForm.astro';
+import RelatedServices from '../../../components/RelatedServices.astro';
+import { useTranslations } from '../../../i18n/utils';
+
+const lang = 'uk' as const;
+const t = useTranslations(lang);
+---
+
+<Layout
+  title="Ремонт ролетів у Лісабоні | Prime Estores"
+  description="Терміновий ремонт електричних і ручних ролетів у Лісабоні та Великому Лісабоні: мотор, стрічка, напрямні або механізм. Швидка діагностика. Безкоштовний кошторис."
+  schemaType="Service"
+  serviceName="Ремонт ролетів у Лісабоні"
+  serviceDescription="Швидка діагностика та ремонт будь-яких електричних і ручних ролетів у Лісабоні та Великому Лісабоні."
+  lang={lang}
+>
+  <section class="bg-gradient-to-br from-[#1A1A1A] to-[#8B1A1A] text-white py-16 lg:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <nav aria-label="Breadcrumb" class="mb-6">
+        <ol class="flex items-center gap-2 text-sm text-white/80">
+          <li><a href="/uk/" class="hover:text-white transition-colors">Головна</a></li>
+          <li aria-hidden="true"><span>/</span></li>
+          <li><span class="text-white">Ремонт ролетів</span></li>
+        </ol>
+      </nav>
+      <div class="max-w-3xl">
+        <span class="inline-block bg-white/10 border border-white/20 text-white text-xs font-semibold uppercase tracking-widest px-3 py-1 rounded-full mb-4">Послуга</span>
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black leading-tight mb-4">{t('service.repair.h1')}</h1>
+        <p class="text-xl text-white/80 leading-relaxed mb-8">Ваші ролети не піднімаються, заклинили або шумлять? Ми швидко виявляємо несправність і ремонтуємо будь-яку марку та модель по всьому Великому Лісабону.</p>
+        <div class="flex flex-col sm:flex-row gap-3">
+          <a href="/uk/quote/" class="inline-flex items-center justify-center gap-2 bg-white text-[#8B1A1A] font-bold px-6 py-3.5 rounded-lg hover:bg-gray-100 transition-colors">Отримати безкоштовний кошторис</a>
+          <a href="tel:+351923348323" class="inline-flex items-center justify-center gap-2 border-2 border-white text-white font-bold px-6 py-3.5 rounded-lg hover:bg-white/10 transition-colors">+351 923 348 323</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 lg:py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-3 gap-12">
+        <div class="lg:col-span-2">
+          <h2 class="text-2xl lg:text-3xl font-black text-[#1A1A1A] mb-4">Ремонт будь-яких ролетів</h2>
+          <p class="text-gray-600 leading-relaxed mb-6">Ми ремонтуємо електричні та ручні ролети будь-якої марки й моделі. Спершу проводимо діагностику, щоб точно визначити причину несправності, а потім пропонуємо найнадійніше й найекономніше рішення — без зайвої заміни.</p>
+          <p class="text-gray-600 leading-relaxed mb-6">У Prime Estores тримаємо на складі запчастини для найчастіших поломок, тому в багатьох випадках усуваємо проблему за один візит по всьому Великому Лісабону.</p>
+
+          <h2 class="text-2xl font-black text-[#1A1A1A] mb-4 mt-8">Що ми ремонтуємо</h2>
+          <div class="grid sm:grid-cols-2 gap-4 mb-8">
+            {[
+              { title: 'Згорілий або заклинений мотор', desc: 'Заміна та налаштування моторів будь-якого типу' },
+              { title: 'Порвана або зіскочена стрічка', desc: 'Заміна стрічки та ремонт механізму підйому' },
+              { title: 'Пошкоджені напрямні та ламелі', desc: 'Заміна ламелей, напрямних і осей' },
+              { title: 'Пульт і вимикачі', desc: 'Налаштування або заміна керування та приймачів' },
+              { title: 'Шум і заїдання', desc: 'Змащення, регулювання та усунення люфту' },
+              { title: 'Терміновий ремонт', desc: 'Пріоритетний запис, часто того ж дня' },
+            ].map(item => (
+              <div class="flex gap-3 p-4 bg-[#F5F5F5] rounded-xl">
+                <svg class="w-5 h-5 text-[#8B1A1A] flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                </svg>
+                <div>
+                  <div class="font-semibold text-[#1A1A1A] text-sm">{item.title}</div>
+                  <div class="text-gray-500 text-xs mt-0.5">{item.desc}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <h2 class="text-2xl font-black text-[#1A1A1A] mb-4 mt-8">Зони обслуговування</h2>
+          <p class="text-gray-600 leading-relaxed mb-4">Ми ремонтуємо ролети по всьому <strong>Великому Лісабону</strong>, включно з: Лісабон (усі райони), Сінтра, Кашкайш, Оейраш, Алмада, Сетубал, Амадора, Лоуреш, Одівелаш та інші.</p>
+          <a href="/uk/coverage-areas/" class="text-[#8B1A1A] font-semibold hover:underline text-sm">Переглянути всі зони обслуговування →</a>
+        </div>
+        <div class="space-y-6">
+          <ContactForm showTitle={true} lang={lang} />
+          <div class="bg-[#F5F5F5] rounded-2xl p-6">
+            <h3 class="font-bold text-[#1A1A1A] mb-4">Корисна інформація</h3>
+            <div class="space-y-3 text-sm">
+              {['Відповідь протягом 24 годин', 'Терміновий ремонт того ж дня', '100% безкоштовний кошторис', 'Сертифіковані фахівці'].map(item => (
+                <div class="flex items-center gap-2">
+                  <svg class="w-4 h-4 text-[#8B1A1A]" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                  </svg>
+                  <span class="text-gray-600">{item}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <RelatedServices current="repair" lang="uk" />
+</Layout>

@@ -18,18 +18,24 @@ const serviceSlug = {
     lang === 'fr' ? '/fr/services/stores-electriques' :
     lang === 'es' ? '/es/servicios/persianas-electricas' :
     lang === 'de' ? '/de/dienstleistungen/elektrische-jalousien' :
+    lang === 'ru' ? '/ru/services/electric-blinds/' :
+    lang === 'uk' ? '/uk/services/electric-blinds/' :
     '/it/servizi/tende-elettriche',
   manual: lang === 'pt' ? `${langPrefix}/servicos/estores-manuais` :
     lang === 'en' ? '/en/services/manual-blinds' :
     lang === 'fr' ? '/fr/services/stores-manuels' :
     lang === 'es' ? '/es/servicios/persianas-manuales' :
     lang === 'de' ? '/de/dienstleistungen/manuelle-jalousien' :
+    lang === 'ru' ? '/ru/services/manual-blinds/' :
+    lang === 'uk' ? '/uk/services/manual-blinds/' :
     '/it/servizi/tende-manuali',
   repair: lang === 'pt' ? `${langPrefix}/servicos/reparacao-estores` :
     lang === 'en' ? '/en/services/blind-repair' :
     lang === 'fr' ? '/fr/services/reparation-stores' :
     lang === 'es' ? '/es/servicios/reparacion-persianas' :
     lang === 'de' ? '/de/dienstleistungen/jalousien-reparatur' :
+    lang === 'ru' ? '/ru/services/blind-repair/' :
+    lang === 'uk' ? '/uk/services/blind-repair/' :
     '/it/servizi/riparazione-tende',
 };
 
@@ -38,6 +44,8 @@ const quoteHref = lang === 'pt' ? '/orcamento' :
   lang === 'fr' ? '/fr/devis' :
   lang === 'es' ? '/es/presupuesto' :
   lang === 'de' ? '/de/angebot' :
+  lang === 'ru' ? '/ru/quote/' :
+  lang === 'uk' ? '/uk/quote/' :
   '/it/preventivo';
 
 const services = [
@@ -58,6 +66,10 @@ const services = [
       ? ['Mando a distancia', 'Compatible con domótica', 'Instalación profesional', 'Garantía 1 año']
       : lang === 'de'
       ? ['Fernbedienung', 'Smart-Home-kompatibel', 'Professionelle Installation', '1 Jahr Garantie']
+      : lang === 'ru'
+      ? ['Дистанционное управление', 'Совместимо с умным домом', 'Профессиональная установка', 'Гарантия 1 год']
+      : lang === 'uk'
+      ? ['Дистанційне керування', 'Сумісно з розумним будинком', 'Професійне встановлення', 'Гарантія 1 рік']
       : ['Telecomando', 'Compatibile con domotica', 'Installazione professionale', 'Garanzia 1 anno'],
   },
   {
@@ -77,6 +89,10 @@ const services = [
       ? ['Varios modelos y colores', 'Fácil mantenimiento', 'Económicos', 'Instalación rápida']
       : lang === 'de'
       ? ['Verschiedene Modelle und Farben', 'Einfache Wartung', 'Kostengünstig', 'Schnelle Installation']
+      : lang === 'ru'
+      ? ['Различные модели и цвета', 'Простое обслуживание', 'Экономичные', 'Быстрая установка']
+      : lang === 'uk'
+      ? ['Різні моделі та кольори', 'Просте обслуговування', 'Економічні', 'Швидке встановлення']
       : ['Vari modelli e colori', 'Facile manutenzione', 'Economici', 'Installazione rapida'],
   },
   {
@@ -96,6 +112,10 @@ const services = [
       ? ['Diagnóstico gratuito', 'Reparación urgente', 'Piezas originales', 'Técnicos certificados']
       : lang === 'de'
       ? ['Kostenlose Diagnose', 'Notfallreparatur', 'Originalteile', 'Zertifizierte Techniker']
+      : lang === 'ru'
+      ? ['Бесплатная диагностика', 'Срочный ремонт', 'Оригинальные запчасти', 'Сертифицированные специалисты']
+      : lang === 'uk'
+      ? ['Безкоштовна діагностика', 'Терміновий ремонт', 'Оригінальні запчастини', 'Сертифіковані фахівці']
       : ['Diagnosi gratuita', 'Riparazione urgente', 'Parti originali', 'Tecnici certificati'],
   },
 ];

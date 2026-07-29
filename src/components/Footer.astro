@@ -17,48 +17,64 @@ const links = {
           : lang === 'fr' ? '/fr/services/stores-electriques'
           : lang === 'es' ? '/es/servicios/persianas-electricas'
           : lang === 'de' ? '/de/dienstleistungen/elektrische-jalousien'
+          : lang === 'ru' ? '/ru/services/electric-blinds/'
+          : lang === 'uk' ? '/uk/services/electric-blinds/'
           : '/it/servizi/tende-elettriche',
   manual:   lang === 'pt' ? '/servicos/estores-manuais'
           : lang === 'en' ? '/en/services/manual-blinds'
           : lang === 'fr' ? '/fr/services/stores-manuels'
           : lang === 'es' ? '/es/servicios/persianas-manuales'
           : lang === 'de' ? '/de/dienstleistungen/manuelle-jalousien'
+          : lang === 'ru' ? '/ru/services/manual-blinds/'
+          : lang === 'uk' ? '/uk/services/manual-blinds/'
           : '/it/servizi/tende-manuali',
   repair:   lang === 'pt' ? '/servicos/reparacao-estores'
           : lang === 'en' ? '/en/services/blind-repair'
           : lang === 'fr' ? '/fr/services/reparation-stores'
           : lang === 'es' ? '/es/servicios/reparacion-persianas'
           : lang === 'de' ? '/de/dienstleistungen/jalousien-reparatur'
+          : lang === 'ru' ? '/ru/services/blind-repair/'
+          : lang === 'uk' ? '/uk/services/blind-repair/'
           : '/it/servizi/riparazione-tende',
   quote:    lang === 'pt' ? '/orcamento'
           : lang === 'en' ? '/en/quote'
           : lang === 'fr' ? '/fr/devis'
           : lang === 'es' ? '/es/presupuesto'
           : lang === 'de' ? '/de/angebot'
+          : lang === 'ru' ? '/ru/quote/'
+          : lang === 'uk' ? '/uk/quote/'
           : '/it/preventivo',
   contact:  lang === 'pt' ? '/contacto'
           : lang === 'en' ? '/en/contact'
           : lang === 'fr' ? '/fr/contact'
           : lang === 'es' ? '/es/contacto'
           : lang === 'de' ? '/de/kontakt'
+          : lang === 'ru' ? '/ru/contact/'
+          : lang === 'uk' ? '/uk/contact/'
           : '/it/contatto',
   zones:    lang === 'pt' ? '/zonas-que-servimos'
           : lang === 'en' ? '/en/coverage-areas'
           : lang === 'fr' ? '/fr/zones-couvertes'
           : lang === 'es' ? '/es/zonas-cobertura'
           : lang === 'de' ? '/de/versorgungsgebiete'
+          : lang === 'ru' ? '/ru/coverage-areas/'
+          : lang === 'uk' ? '/uk/coverage-areas/'
           : '/it/zone-servite',
   about:    lang === 'pt' ? '/sobre/'
           : lang === 'en' ? '/en/about/'
           : lang === 'fr' ? '/fr/a-propos/'
           : lang === 'es' ? '/es/sobre-nosotros/'
           : lang === 'de' ? '/de/ueber-uns/'
+          : lang === 'ru' ? '/ru/about/'
+          : lang === 'uk' ? '/uk/about/'
           : '/it/chi-siamo/',
   privacy:  lang === 'pt' ? '/politica-privacidade/'
           : lang === 'en' ? '/en/privacy-policy/'
           : lang === 'fr' ? '/fr/politique-confidentialite/'
           : lang === 'es' ? '/es/politica-privacidad/'
           : lang === 'de' ? '/de/datenschutz/'
+          : lang === 'ru' ? '/ru/privacy-policy/'
+          : lang === 'uk' ? '/uk/privacy-policy/'
           : '/it/informativa-privacy/',
 };
 
@@ -68,6 +84,8 @@ const aboutLabel =
   lang === 'es' ? 'Nosotros' :
   lang === 'de' ? 'Über uns' :
   lang === 'it' ? 'Chi siamo' :
+  lang === 'ru' ? 'О нас' :
+  lang === 'uk' ? 'Про нас' :
   'Sobre Nós';
 
 const privacyLabel =
@@ -76,6 +94,8 @@ const privacyLabel =
   lang === 'es' ? 'Política de privacidad' :
   lang === 'de' ? 'Datenschutz' :
   lang === 'it' ? 'Informativa sulla privacy' :
+  lang === 'ru' ? 'Политика конфиденциальности' :
+  lang === 'uk' ? 'Політика конфіденційності' :
   'Política de Privacidade';
 
 const desc =
@@ -84,6 +104,8 @@ const desc =
   lang === 'es' ? 'Especialistas en instalación y reparación de persianas eléctricas y manuales en todo el Gran Lisboa. Más de 10 años de experiencia a su servicio.' :
   lang === 'de' ? 'Spezialisten für Installation und Reparatur von elektrischen und manuellen Jalousien in ganz Groß-Lissabon. Über 10 Jahre Erfahrung zu Ihren Diensten.' :
   lang === 'it' ? 'Specialisti in installazione e riparazione di tende elettriche e manuali in tutta la Grande Lisbona. Oltre 10 anni di esperienza al vostro servizio.' :
+  lang === 'ru' ? 'Специалисты по установке и ремонту электрических и ручных рольставней по всему Большому Лиссабону. Более 10 лет опыта к вашим услугам.' :
+  lang === 'uk' ? 'Спеціалісти зі встановлення та ремонту електричних і ручних ролет по всьому Великому Лісабону. Понад 10 років досвіду до ваших послуг.' :
   'Especialistas em instalação e reparação de estores elétricos e manuais em toda a Grande Lisboa. Mais de 10 anos de experiência ao seu serviço.';
 
 const hoursLabel =
@@ -92,6 +114,8 @@ const hoursLabel =
   lang === 'es' ? 'Horario' :
   lang === 'de' ? 'Öffnungszeiten' :
   lang === 'it' ? 'Orari' :
+  lang === 'ru' ? 'Часы работы' :
+  lang === 'uk' ? 'Години роботи' :
   'Horário';
 
 const hoursValue =
@@ -100,6 +124,8 @@ const hoursValue =
   lang === 'es' ? 'Lunes a Sábado: 08h00 – 20h00' :
   lang === 'de' ? 'Montag bis Samstag: 08:00 – 20:00 Uhr' :
   lang === 'it' ? 'Lunedì al Sabato: 08:00 – 20:00' :
+  lang === 'ru' ? 'Понедельник – суббота: 8:00 – 20:00' :
+  lang === 'uk' ? 'Понеділок – субота: 8:00 – 20:00' :
   'Segunda a Sábado: 08h00 – 20h00';
 
 const infoLabel =
@@ -108,6 +134,8 @@ const infoLabel =
   lang === 'es' ? 'Información' :
   lang === 'de' ? 'Informationen' :
   lang === 'it' ? 'Informazioni' :
+  lang === 'ru' ? 'Информация' :
+  lang === 'uk' ? 'Інформація' :
   'Informações';
 
 const ctaFreeQuote =
@@ -116,6 +144,8 @@ const ctaFreeQuote =
   lang === 'es' ? 'Presupuesto 100% Gratis' :
   lang === 'de' ? '100% Kostenloser Kostenvoranschlag' :
   lang === 'it' ? 'Preventivo 100% Gratuito' :
+  lang === 'ru' ? '100% бесплатная смета' :
+  lang === 'uk' ? '100% безкоштовний кошторис' :
   'Orçamento 100% Gratuito';
 
 const ctaResponse =
@@ -124,6 +154,8 @@ const ctaResponse =
   lang === 'es' ? 'Respuesta en menos de 24 horas' :
   lang === 'de' ? 'Antwort in weniger als 24 Stunden' :
   lang === 'it' ? 'Risposta in meno di 24 ore' :
+  lang === 'ru' ? 'Ответ менее чем за 24 часа' :
+  lang === 'uk' ? 'Відповідь менш ніж за 24 години' :
   'Resposta em menos de 24 horas';
 
 const ctaButton =
@@ -132,6 +164,8 @@ const ctaButton =
   lang === 'es' ? 'Pedir Presupuesto' :
   lang === 'de' ? 'Angebot anfragen' :
   lang === 'it' ? 'Richiedi Preventivo' :
+  lang === 'ru' ? 'Получить смету' :
+  lang === 'uk' ? 'Отримати кошторис' :
   'Pedir Orçamento';
 
 const rightsText =
@@ -140,6 +174,8 @@ const rightsText =
   lang === 'es' ? 'Todos los derechos reservados.' :
   lang === 'de' ? 'Alle Rechte vorbehalten.' :
   lang === 'it' ? 'Tutti i diritti riservati.' :
+  lang === 'ru' ? 'Все права защищены.' :
+  lang === 'uk' ? 'Усі права захищені.' :
   'Todos os direitos reservados.';
 
 // ── Social links — update these URLs ──────────────────────────────────────

@@ -23,6 +23,8 @@ const quoteHref = lang === 'pt' ? '/orcamento' :
   lang === 'fr' ? '/fr/devis' :
   lang === 'es' ? '/es/presupuesto' :
   lang === 'de' ? '/de/angebot' :
+  lang === 'ru' ? '/ru/quote/' :
+  lang === 'uk' ? '/uk/quote/' :
   '/it/preventivo';
 ---
 
@@ -62,6 +64,8 @@ const quoteHref = lang === 'pt' ? '/orcamento' :
            lang === 'es' ? 'Disponible Lun–Sáb • 08h–20h' :
            lang === 'de' ? 'Verfügbar Mo–Sa • 8–20 Uhr' :
            lang === 'it' ? 'Disponibile Lun–Sab • 08h–20h' :
+           lang === 'ru' ? 'Доступны Пн–Сб • 8:00–20:00' :
+           lang === 'uk' ? 'Доступні Пн–Сб • 8:00–20:00' :
            'Disponível Seg–Sáb • 08h00–20h00'}
         </span>
       </div>
@@ -102,27 +106,27 @@ const quoteHref = lang === 'pt' ? '/orcamento' :
           <div class="text-center sm:text-left">
             <div class="text-2xl sm:text-3xl font-black text-white">10+</div>
             <div class="text-xs sm:text-sm text-white/80 mt-0.5">
-            {lang === 'en' ? 'Years of Experience' : lang === 'fr' ? "Ans d'expérience" : lang === 'es' ? 'Años de experiencia' : lang === 'de' ? 'Jahre Erfahrung' : lang === 'it' ? 'Anni di Esperienza' : 'Anos de Experiência'}
+            {lang === 'en' ? 'Years of Experience' : lang === 'fr' ? "Ans d'expérience" : lang === 'es' ? 'Años de experiencia' : lang === 'de' ? 'Jahre Erfahrung' : lang === 'it' ? 'Anni di Esperienza' : lang === 'ru' ? 'Лет опыта' : lang === 'uk' ? 'Років досвіду' : 'Anos de Experiência'}
           </div>
           </div>
           <div class="text-center sm:text-left">
             <div class="text-2xl sm:text-3xl font-black text-white">500+</div>
             <div class="text-xs sm:text-sm text-white/80 mt-0.5">
-              {lang === 'en' ? 'Happy Clients' : lang === 'fr' ? 'Clients Satisfaits' : lang === 'es' ? 'Clientes Satisfechos' : lang === 'de' ? 'Zufriedene Kunden' : lang === 'it' ? 'Clienti Soddisfatti' : 'Clientes Satisfeitos'}
+              {lang === 'en' ? 'Happy Clients' : lang === 'fr' ? 'Clients Satisfaits' : lang === 'es' ? 'Clientes Satisfechos' : lang === 'de' ? 'Zufriedene Kunden' : lang === 'it' ? 'Clienti Soddisfatti' : lang === 'ru' ? 'Довольных клиентов' : lang === 'uk' ? 'Задоволених клієнтів' : 'Clientes Satisfeitos'}
             </div>
           </div>
           <div class="text-center sm:text-left">
             <div class="text-2xl sm:text-3xl font-black text-white">24h</div>
             <div class="text-xs sm:text-sm text-white/80 mt-0.5">
-              {lang === 'en' ? 'Guaranteed Response' : lang === 'fr' ? 'Réponse Garantie' : lang === 'es' ? 'Respuesta Garantizada' : lang === 'de' ? 'Garantierte Antwort' : lang === 'it' ? 'Risposta Garantita' : 'Resposta Garantida'}
+              {lang === 'en' ? 'Guaranteed Response' : lang === 'fr' ? 'Réponse Garantie' : lang === 'es' ? 'Respuesta Garantizada' : lang === 'de' ? 'Garantierte Antwort' : lang === 'it' ? 'Risposta Garantita' : lang === 'ru' ? 'Гарантированный ответ' : lang === 'uk' ? 'Гарантована відповідь' : 'Resposta Garantida'}
             </div>
           </div>
           <div class="text-center sm:text-left">
             <div class="text-2xl sm:text-3xl font-black text-white">
-              {lang === 'de' ? '1 Jahr' : lang === 'it' ? '1 Anno' : lang === 'en' ? '1 Year' : lang === 'fr' ? '1 An' : lang === 'es' ? '1 Año' : '1 Ano'}
+              {lang === 'de' ? '1 Jahr' : lang === 'it' ? '1 Anno' : lang === 'en' ? '1 Year' : lang === 'fr' ? '1 An' : lang === 'es' ? '1 Año' : lang === 'ru' ? '1 год' : lang === 'uk' ? '1 рік' : '1 Ano'}
             </div>
             <div class="text-xs sm:text-sm text-white/80 mt-0.5">
-              {lang === 'en' ? 'Work Warranty' : lang === 'fr' ? 'Garantie Travaux' : lang === 'es' ? 'Garantía Trabajos' : lang === 'de' ? 'Garantie auf Arbeiten' : lang === 'it' ? 'Garanzia Lavori' : 'Garantia nos Trabalhos'}
+              {lang === 'en' ? 'Work Warranty' : lang === 'fr' ? 'Garantie Travaux' : lang === 'es' ? 'Garantía Trabajos' : lang === 'de' ? 'Garantie auf Arbeiten' : lang === 'it' ? 'Garanzia Lavori' : lang === 'ru' ? 'Гарантия на работы' : lang === 'uk' ? 'Гарантія на роботи' : 'Garantia nos Trabalhos'}
             </div>
           </div>
         </div>

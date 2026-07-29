@@ -1,0 +1,75 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import HelpfulContent from '../../components/HelpfulContent.astro';
+import BookingToggleSection from '../../components/BookingToggleSection.astro';
+import { useTranslations } from '../../i18n/utils';
+
+const lang = 'uk' as const;
+const t = useTranslations(lang);
+
+const guaranteeKeys = ['1', '2', '3', '4'] as const;
+const icons = ['clock', 'free', 'shield', 'list'] as const;
+const iconSvgs: Record<string, string> = {
+  clock: '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>',
+  free: '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>',
+  shield: '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>',
+  list: '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>',
+};
+---
+
+<Layout
+  title="Отримати безкоштовний кошторис | Prime Estores"
+  description="Замовте безкоштовний кошторис на встановлення або ремонт електричних чи ручних ролетів у Лісабоні. Забронюйте онлайн або надішліть запит електронною поштою. Відповідь протягом 24 годин."
+  lang={lang}
+>
+  <section class="bg-gradient-to-br from-[#1A1A1A] to-[#8B1A1A] text-white py-12 lg:py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <nav aria-label="Breadcrumb" class="mb-6">
+        <ol class="flex items-center gap-2 text-sm text-white/80">
+          <li><a href="/uk/" class="hover:text-white transition-colors">{t('nav.home')}</a></li>
+          <li aria-hidden="true"><span>/</span></li>
+          <li><span class="text-white">{t('nav.quote')}</span></li>
+        </ol>
+      </nav>
+      <div class="max-w-2xl">
+        <h1 class="text-3xl sm:text-4xl font-black leading-tight mb-3">{t('quote.title')}</h1>
+        <p class="text-xl text-white/80">{t('quote.hero.subtitle')}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 lg:py-20 bg-[#F5F5F5]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-3 gap-12 items-start">
+        <div>
+          <h2 class="text-xl font-black text-[#1A1A1A] mb-6">{t('quote.guarantee.title')}</h2>
+          <div class="space-y-4">
+            {guaranteeKeys.map((key, i) => (
+              <div class="flex gap-3 p-4 bg-white rounded-xl shadow-sm">
+                <div class="w-10 h-10 bg-red-50 text-[#8B1A1A] rounded-lg flex items-center justify-center flex-shrink-0">
+                  <Fragment set:html={iconSvgs[icons[i]]} />
+                </div>
+                <div>
+                  <div class="font-semibold text-[#1A1A1A] text-sm">{t(`quote.guarantee.${key}.title` as any)}</div>
+                  <div class="text-gray-500 text-xs mt-0.5 leading-relaxed">{t(`quote.guarantee.${key}.desc` as any)}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div class="mt-6 p-5 bg-[#1A1A1A] rounded-xl text-white">
+            <p class="text-sm text-gray-300 mb-2">{t('quote.phone.prefer')}</p>
+            <a href="tel:+351923348323" class="text-white font-bold text-lg hover:text-[#C0392B] transition-colors flex items-center gap-2">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+              +351 923 348 323
+            </a>
+            <p class="text-xs text-gray-500 mt-1">{t('quote.phone.hours')}</p>
+          </div>
+        </div>
+        <div class="lg:col-span-2">
+          <BookingToggleSection lang={lang} />
+        </div>
+      </div>
+    </div>
+  </section>
+  <HelpfulContent lang={lang} page="quote" />
+</Layout>

@@ -1,0 +1,265 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const baseUrl = 'https://primeestores.pt';
+const pageUrl = `${baseUrl}/uk/about/`;
+
+const sobreSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  '@id': `${baseUrl}/#business`,
+  name: 'Prime Estores',
+  url: baseUrl,
+  telephone: '+351923348323',
+  email: 'info@primeestores.pt',
+  image: `${baseUrl}/og-image.jpg`,
+  description: 'Компанія, що спеціалізується на встановленні та ремонті електричних і ручних ролетів у Лісабоні та Великому Лісабоні з 2015 року.',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Лісабон',
+    addressRegion: 'Лісабон',
+    addressCountry: 'PT',
+  },
+  foundingDate: '2015',
+  areaServed: { '@type': 'State', name: 'Великий Лісабон' },
+  priceRange: '€€',
+  openingHoursSpecification: [{
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+    opens: '08:00',
+    closes: '20:00',
+  }],
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Головна', item: `${baseUrl}/uk/` },
+    { '@type': 'ListItem', position: 2, name: 'Про Prime Estores', item: pageUrl },
+  ],
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(sobreSchema)} />
+<script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+
+<Layout
+  title="Про Prime Estores — Спеціалісти з ролетів у Лісабоні"
+  description="Познайомтеся з Prime Estores: наша історія, команда, цінності та прагнення до якості у встановленні й ремонті електричних і ручних ролетів у Лісабоні з 2015 року."
+  keywords="про Prime Estores, компанія з ролетів Лісабон, хто ми Prime Estores, сертифіковані монтажники ролетів Лісабон"
+  canonicalURL={pageUrl}
+  lang="uk"
+>
+  <!-- Hero -->
+  <section class="bg-gradient-to-br from-[#1A1A1A] to-[#8B1A1A] text-white py-16 lg:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <nav aria-label="Breadcrumb" class="mb-6">
+        <ol class="flex items-center gap-2 text-sm text-white/80">
+          <li><a href="/uk/" class="hover:text-white transition-colors">Головна</a></li>
+          <li aria-hidden="true"><span>/</span></li>
+          <li><span class="text-white">Про нас</span></li>
+        </ol>
+      </nav>
+      <div class="max-w-3xl">
+        <span class="inline-block bg-white/10 border border-white/20 text-white text-xs font-semibold uppercase tracking-widest px-3 py-1 rounded-full mb-4">Наша компанія</span>
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black leading-tight mb-4">
+          Про Prime Estores
+        </h1>
+        <p class="text-xl text-white/80 leading-relaxed">
+          Ми є спеціалістами з електричних і ручних ролетів у Лісабоні вже понад десять років. Ми встановлюємо якість, довговічність і комфорт у кожному проєкті.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Story -->
+  <section class="py-16 lg:py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <span class="text-[#8B1A1A] text-sm font-semibold uppercase tracking-widest mb-3 block">Наша історія</span>
+          <h2 class="text-2xl lg:text-3xl font-black text-[#1A1A1A] mb-6">
+            Понад десятиліття на службі Лісабона
+          </h2>
+          <p class="text-gray-600 leading-relaxed mb-4">
+            Prime Estores народилася у 2015 році з любові до якісних систем затінення та переконання, що Лісабон заслуговує на справді професійну послугу встановлення ролетів — пунктуальну, прозору та з реальною гарантією.
+          </p>
+          <p class="text-gray-600 leading-relaxed mb-4">
+            Ми почали з невеликої команди, зосередженої на місті Лісабон. З роками ми органічно зростали завдяки задоволенню наших клієнтів та їхнім рекомендаціям. Сьогодні ми охоплюємо весь Великий Лісабон, від Мафри до Сетубала, обслуговуючи сотні клієнтів на рік — приватних осіб, бізнес та кондомініуми.
+          </p>
+          <p class="text-gray-600 leading-relaxed mb-6">
+            Що не змінилося з першого дня: наше прагнення до якості матеріалів, які ми встановлюємо, постійне навчання нашої команди та повна прозорість у наших кошторисах. Ми ніколи не беремо плату за несподіванки.
+          </p>
+          <div class="grid grid-cols-3 gap-6">
+            {[
+              { numero: '10+', label: 'Років досвіду' },
+              { numero: '2000+', label: 'Виконаних встановлень' },
+              { numero: '98%', label: 'Задоволених клієнтів' },
+            ].map(stat => (
+              <div class="text-center">
+                <div class="text-3xl font-black text-[#8B1A1A] mb-1">{stat.numero}</div>
+                <div class="text-gray-500 text-xs leading-tight">{stat.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div class="bg-[#F5F5F5] rounded-3xl p-8">
+          <h3 class="text-xl font-black text-[#1A1A1A] mb-6">Наші цінності</h3>
+          <div class="space-y-5">
+            {[
+              {
+                title: 'Прозорість',
+                desc: 'Ми надаємо детальні кошториси без дрібного шрифту. Ціна, яку ми узгоджуємо, — це ціна, яку ви платите.',
+                icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>',
+              },
+              {
+                title: 'Безкомпромісна якість',
+                desc: 'Ми використовуємо лише матеріали та двигуни від визнаних виробників — Somfy, Nice, Rollease — з гарантією на запчастини.',
+                icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>',
+              },
+              {
+                title: 'Пунктуальність',
+                desc: 'Ми поважаємо ваш час. Ми приїжджаємо в узгоджений час і виконуємо роботу в межах орієнтовного строку.',
+                icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>',
+              },
+              {
+                title: 'Післяпродажне обслуговування',
+                desc: 'Наші стосунки не закінчуються встановленням. Ми залишаємося доступними для налаштування, ремонту та обслуговування протягом усього строку служби продукту.',
+                icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"/>',
+              },
+            ].map(item => (
+              <div class="flex gap-4">
+                <div class="w-10 h-10 bg-[#8B1A1A] rounded-xl flex items-center justify-center flex-shrink-0">
+                  <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <Fragment set:html={item.icon} />
+                  </svg>
+                </div>
+                <div>
+                  <div class="font-semibold text-[#1A1A1A] mb-0.5">{item.title}</div>
+                  <p class="text-gray-500 text-sm leading-relaxed">{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Team -->
+  <section class="py-16 lg:py-20 bg-[#F5F5F5]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl mx-auto text-center mb-12">
+        <span class="text-[#8B1A1A] text-sm font-semibold uppercase tracking-widest mb-3 block">Хто ми</span>
+        <h2 class="text-2xl lg:text-3xl font-black text-[#1A1A1A] mb-4">Наша команда</h2>
+        <p class="text-gray-600 leading-relaxed">
+          Prime Estores складається зі спеціалізованих технічних фахівців із сертифікованою підготовкою у встановленні електричних систем затінення та розумного дому. Усі наші монтажники — прямі співробітники; ми ніколи не передаємо встановлення на субпідряд.
+        </p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {[
+          {
+            area: 'Електричне встановлення',
+            desc: 'Технічні фахівці, сертифіковані у встановленні двигунів Somfy, Nice та Rollease, а також в інтеграції із системами розумного дому (KNX, Z-Wave, Zigbee).',
+            icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>',
+          },
+          {
+            area: 'Ремонт та обслуговування',
+            desc: 'Технічні фахівці, які спеціалізуються на діагностиці та ремонті ролетів будь-якого бренду чи моделі, електричних або ручних, з наявним запасом запчастин для негайного втручання.',
+            icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>',
+          },
+          {
+            area: 'Консультації та проєктування',
+            desc: 'Спеціалісти з консультування щодо проєктів затінення для ремонтних робіт, кондомініумів та комерційних приміщень — від технічної специфікації до фінального встановлення.',
+            icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>',
+          },
+        ].map(item => (
+          <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+            <div class="w-12 h-12 bg-[#8B1A1A] rounded-xl flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <Fragment set:html={item.icon} />
+              </svg>
+            </div>
+            <h3 class="font-bold text-[#1A1A1A] mb-2">{item.area}</h3>
+            <p class="text-gray-500 text-sm leading-relaxed">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Brands and Certifications -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl mx-auto text-center mb-10">
+        <h2 class="text-2xl font-black text-[#1A1A1A] mb-4">Бренди та партнери</h2>
+        <p class="text-gray-600 leading-relaxed">
+          Ми працюємо з провідними брендами ринку, гарантуючи якість та довгострокову доступність запчастин.
+        </p>
+      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-6">
+        {[
+          { nome: 'Somfy', desc: 'Світовий лідер у виробництві двигунів для ролетів і жалюзі. Протоколи io-homecontrol та RTS.' },
+          { nome: 'Nice', desc: 'Італійський виробник рішень автоматизації. Тихі та надійні двигуни.' },
+          { nome: 'Rollease Acmeda', desc: 'Високоточні роликові системи для житлових та комерційних установок.' },
+          { nome: 'Bubendorff', desc: 'Зовнішні ролети з високою енергоефективністю та європейською енергетичною сертифікацією.' },
+        ].map(marca => (
+          <div class="bg-[#F5F5F5] rounded-2xl p-5 text-center">
+            <div class="font-black text-[#1A1A1A] text-lg mb-2">{marca.nome}</div>
+            <p class="text-gray-500 text-xs leading-relaxed">{marca.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Coverage Area -->
+  <section class="py-16 bg-[#F5F5F5]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <span class="text-[#8B1A1A] text-sm font-semibold uppercase tracking-widest mb-3 block">Де ми працюємо</span>
+          <h2 class="text-2xl lg:text-3xl font-black text-[#1A1A1A] mb-6">Весь Великий Лісабон і не тільки</h2>
+          <p class="text-gray-600 leading-relaxed mb-4">
+            Наша зона обслуговування охоплює весь Великий Лісабон — від історичного центру столиці до сусідніх муніципалітетів. Ми виїжджаємо в будь-яку точку цієї зони без додаткової плати за виклик.
+          </p>
+          <p class="text-gray-600 leading-relaxed mb-6">
+            Для більших проєктів (кондомініуми, бізнес, ремонтні роботи) ми оцінюємо виїзди за межі Великого Лісабона в індивідуальному порядку. Звʼяжіться з нами, щоб перевірити покриття у вашому районі.
+          </p>
+          <a href="/uk/coverage-areas/" class="inline-flex items-center gap-2 text-[#8B1A1A] font-semibold hover:underline">
+            Переглянути всі зони, які ми обслуговуємо →
+          </a>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          {['Лісабон', 'Сінтра', 'Кашкайш', 'Оейраш', 'Алмада', 'Сетубал', 'Амадора', 'Лоуреш', 'Одівелаш', 'Мафра', 'Сезімбра', 'Палмела', 'Баррейру', 'Сейшал'].map(zona => (
+            <span class="bg-white border border-gray-200 text-gray-700 text-sm font-medium px-4 py-2 rounded-full shadow-sm">
+              {zona}
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 bg-[#1A1A1A] text-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-2xl lg:text-3xl font-black mb-4">
+        Готові працювати з нами?
+      </h2>
+      <p class="text-gray-400 text-lg mb-8 max-w-2xl mx-auto">
+        Замовте безкоштовний кошторис. Ми відповідаємо менш ніж за 24 години.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/uk/quote/" class="inline-flex items-center justify-center gap-2 bg-[#8B1A1A] text-white font-bold px-8 py-4 rounded-lg hover:bg-[#7a1717] transition-colors">
+          Отримати безкоштовний кошторис
+        </a>
+        <a href="/uk/contact/" class="inline-flex items-center justify-center gap-2 border-2 border-white text-white font-bold px-8 py-4 rounded-lg hover:bg-white/10 transition-colors">
+          Поговорити з нашою командою
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Layout>

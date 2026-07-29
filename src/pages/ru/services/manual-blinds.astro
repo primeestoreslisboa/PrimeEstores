@@ -1,0 +1,73 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import ContactForm from '../../../components/ContactForm.astro';
+import RelatedServices from '../../../components/RelatedServices.astro';
+import { useTranslations } from '../../../i18n/utils';
+
+const lang = 'ru' as const;
+const t = useTranslations(lang);
+---
+
+<Layout
+  title="Установка и ремонт ручных рольставней в Лиссабоне | Prime Estores"
+  description="Качественная установка ручных рольставней в Лиссабоне и Большом Лиссабоне. Различные модели и цвета, быстрая и профессиональная установка. Бесплатная смета."
+  schemaType="Service"
+  serviceName="Установка ручных рольставней в Лиссабоне"
+  serviceDescription="Качественная установка ручных рольставней в Лиссабоне и Большом Лиссабоне. Доступны различные модели и цвета."
+  lang={lang}
+>
+  <section class="bg-gradient-to-br from-[#1A1A1A] to-[#8B1A1A] text-white py-16 lg:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <nav aria-label="Breadcrumb" class="mb-6">
+        <ol class="flex items-center gap-2 text-sm text-white/80">
+          <li><a href="/ru/" class="hover:text-white transition-colors">Главная</a></li>
+          <li aria-hidden="true"><span>/</span></li>
+          <li><span class="text-white">Ручные рольставни</span></li>
+        </ol>
+      </nav>
+      <div class="max-w-3xl">
+        <span class="inline-block bg-white/10 border border-white/20 text-white text-xs font-semibold uppercase tracking-widest px-3 py-1 rounded-full mb-4">Услуга</span>
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black leading-tight mb-4">{t('service.manual.h1')}</h1>
+        <p class="text-xl text-white/80 leading-relaxed mb-8">Практичные и экономичные решения для любого помещения. Мы устанавливаем качественные ручные рольставни по всему Большому Лиссабону.</p>
+        <div class="flex flex-col sm:flex-row gap-3">
+          <a href="/ru/quote/" class="inline-flex items-center justify-center gap-2 bg-white text-[#8B1A1A] font-bold px-6 py-3.5 rounded-lg hover:bg-gray-100 transition-colors">Получить бесплатную смету</a>
+          <a href="tel:+351923348323" class="inline-flex items-center justify-center gap-2 border-2 border-white text-white font-bold px-6 py-3.5 rounded-lg hover:bg-white/10 transition-colors">+351 923 348 323</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 lg:py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-3 gap-12">
+        <div class="lg:col-span-2">
+          <h2 class="text-2xl lg:text-3xl font-black text-[#1A1A1A] mb-4">Ручные рольставни: качество и практичность</h2>
+          <p class="text-gray-600 leading-relaxed mb-6">Ручные рольставни остаются самым популярным решением для управления светом и приватностью. Они экономичны, просты в эксплуатации и требуют минимального обслуживания. Доступны в широком ассортименте материалов, тканей и цветов.</p>
+
+          <h2 class="text-2xl font-black text-[#1A1A1A] mb-4 mt-8">Типы ручных рольставней, которые мы устанавливаем</h2>
+          <div class="grid sm:grid-cols-2 gap-4 mb-8">
+            {[
+              { title: 'Рулонные шторы', desc: 'Простые, элегантные и удобные в эксплуатации. Доступны в непрозрачной, фильтрующей ткани или блэкаут.' },
+              { title: 'Венецианские жалюзи', desc: 'Точное управление светом и приватностью. Из алюминия или дерева.' },
+              { title: 'Горизонтальные жалюзи', desc: 'Идеальны для больших проёмов. Плавная и тихая работа.' },
+              { title: 'Вертикальные жалюзи', desc: 'Идеальны для перегородок или больших окон.' },
+              { title: 'Шторы блэкаут', desc: 'Полное затемнение. Идеальны для спален и домашнего кинотеатра.' },
+              { title: 'Солнцезащитные экранные шторы', desc: 'Фильтруют свет, сохраняя видимость наружу. Энергоэффективны.' },
+            ].map(item => (
+              <div class="p-4 bg-[#F5F5F5] rounded-xl border-l-4 border-[#8B1A1A]">
+                <div class="font-semibold text-[#1A1A1A] text-sm mb-1">{item.title}</div>
+                <div class="text-gray-500 text-xs">{item.desc}</div>
+              </div>
+            ))}
+          </div>
+
+          <a href="/ru/coverage-areas/" class="text-[#8B1A1A] font-semibold hover:underline text-sm">Посмотреть все зоны обслуживания →</a>
+        </div>
+        <div class="space-y-6">
+          <ContactForm showTitle={true} lang={lang} />
+        </div>
+      </div>
+    </div>
+  </section>
+  <RelatedServices current="manual" lang="ru" />
+</Layout>

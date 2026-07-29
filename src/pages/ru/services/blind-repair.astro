@@ -1,0 +1,94 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import ContactForm from '../../../components/ContactForm.astro';
+import RelatedServices from '../../../components/RelatedServices.astro';
+import { useTranslations } from '../../../i18n/utils';
+
+const lang = 'ru' as const;
+const t = useTranslations(lang);
+---
+
+<Layout
+  title="Ремонт рольставней в Лиссабоне | Prime Estores"
+  description="Срочный ремонт электрических и ручных рольставней в Лиссабоне и Большом Лиссабоне: мотор, лента, направляющие или механизм. Быстрая диагностика. Бесплатная смета."
+  schemaType="Service"
+  serviceName="Ремонт рольставней в Лиссабоне"
+  serviceDescription="Быстрая диагностика и ремонт любых электрических и ручных рольставней в Лиссабоне и Большом Лиссабоне."
+  lang={lang}
+>
+  <section class="bg-gradient-to-br from-[#1A1A1A] to-[#8B1A1A] text-white py-16 lg:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <nav aria-label="Breadcrumb" class="mb-6">
+        <ol class="flex items-center gap-2 text-sm text-white/80">
+          <li><a href="/ru/" class="hover:text-white transition-colors">Главная</a></li>
+          <li aria-hidden="true"><span>/</span></li>
+          <li><span class="text-white">Ремонт рольставней</span></li>
+        </ol>
+      </nav>
+      <div class="max-w-3xl">
+        <span class="inline-block bg-white/10 border border-white/20 text-white text-xs font-semibold uppercase tracking-widest px-3 py-1 rounded-full mb-4">Услуга</span>
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black leading-tight mb-4">{t('service.repair.h1')}</h1>
+        <p class="text-xl text-white/80 leading-relaxed mb-8">Ваши рольставни не поднимаются, заклинили или шумят? Мы быстро выявляем неисправность и ремонтируем любую марку и модель по всему Большому Лиссабону.</p>
+        <div class="flex flex-col sm:flex-row gap-3">
+          <a href="/ru/quote/" class="inline-flex items-center justify-center gap-2 bg-white text-[#8B1A1A] font-bold px-6 py-3.5 rounded-lg hover:bg-gray-100 transition-colors">Получить бесплатную смету</a>
+          <a href="tel:+351923348323" class="inline-flex items-center justify-center gap-2 border-2 border-white text-white font-bold px-6 py-3.5 rounded-lg hover:bg-white/10 transition-colors">+351 923 348 323</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 lg:py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-3 gap-12">
+        <div class="lg:col-span-2">
+          <h2 class="text-2xl lg:text-3xl font-black text-[#1A1A1A] mb-4">Ремонт любых рольставней</h2>
+          <p class="text-gray-600 leading-relaxed mb-6">Мы ремонтируем электрические и ручные рольставни любой марки и модели. Сначала проводим диагностику, чтобы точно определить причину неисправности, а затем предлагаем самое надёжное и экономичное решение — без ненужной замены.</p>
+          <p class="text-gray-600 leading-relaxed mb-6">В Prime Estores держим на складе запчасти для самых частых поломок, поэтому во многих случаях можем устранить проблему за один визит по всему Большому Лиссабону.</p>
+
+          <h2 class="text-2xl font-black text-[#1A1A1A] mb-4 mt-8">Что мы ремонтируем</h2>
+          <div class="grid sm:grid-cols-2 gap-4 mb-8">
+            {[
+              { title: 'Сгоревший или заклинивший мотор', desc: 'Замена и настройка моторов любого типа' },
+              { title: 'Порванная или соскочившая лента', desc: 'Замена ленты и ремонт механизма подъёма' },
+              { title: 'Повреждённые направляющие и ламели', desc: 'Замена ламелей, направляющих и осей' },
+              { title: 'Пульт и выключатели', desc: 'Настройка или замена управления и приёмников' },
+              { title: 'Шум и заедание', desc: 'Смазка, регулировка и устранение люфта' },
+              { title: 'Срочный ремонт', desc: 'Приоритетная запись, часто в тот же день' },
+            ].map(item => (
+              <div class="flex gap-3 p-4 bg-[#F5F5F5] rounded-xl">
+                <svg class="w-5 h-5 text-[#8B1A1A] flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                </svg>
+                <div>
+                  <div class="font-semibold text-[#1A1A1A] text-sm">{item.title}</div>
+                  <div class="text-gray-500 text-xs mt-0.5">{item.desc}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <h2 class="text-2xl font-black text-[#1A1A1A] mb-4 mt-8">Зоны обслуживания</h2>
+          <p class="text-gray-600 leading-relaxed mb-4">Мы ремонтируем рольставни по всему <strong>Большому Лиссабону</strong>, включая: Лиссабон (все районы), Синтра, Кашкайш, Оэйраш, Алмада, Сетубал, Амадора, Лориш, Одивелаш и другие.</p>
+          <a href="/ru/coverage-areas/" class="text-[#8B1A1A] font-semibold hover:underline text-sm">Посмотреть все зоны обслуживания →</a>
+        </div>
+        <div class="space-y-6">
+          <ContactForm showTitle={true} lang={lang} />
+          <div class="bg-[#F5F5F5] rounded-2xl p-6">
+            <h3 class="font-bold text-[#1A1A1A] mb-4">Полезная информация</h3>
+            <div class="space-y-3 text-sm">
+              {['Ответ в течение 24 часов', 'Срочный ремонт в тот же день', '100% бесплатная смета', 'Сертифицированные техники'].map(item => (
+                <div class="flex items-center gap-2">
+                  <svg class="w-4 h-4 text-[#8B1A1A]" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                  </svg>
+                  <span class="text-gray-600">{item}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <RelatedServices current="repair" lang="ru" />
+</Layout>

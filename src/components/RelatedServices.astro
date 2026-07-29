@@ -1,6 +1,6 @@
 ---
 export type ServiceType = 'electric' | 'manual' | 'repair' | 'electrical' | 'smart-home';
-export type Lang = 'pt' | 'en' | 'fr' | 'es' | 'de' | 'it';
+export type Lang = 'pt' | 'en' | 'fr' | 'es' | 'de' | 'it' | 'ru' | 'uk';
 
 export interface Props {
   lang?: Lang;
@@ -59,6 +59,20 @@ const allServices: Record<Lang, Record<ServiceType, ServiceLink>> = {
     electrical: { label: 'Impianto Elettrico',  desc: 'Installazione e riparazione di circuiti elettrici.',              href: '/it/servizi/impianto-elettrico',   icon: '🔌' },
     'smart-home': { label: 'Casa Intelligente', desc: 'Automatizza tende, luci e cancelli da telefono o voce.',           href: '/it/servizi/casa-intelligente/',   icon: '🏠' },
   },
+  ru: {
+    electric:   { label: 'Электрические рольставни', desc: 'Установка моторизованных систем с пультом.',                   href: '/ru/services/electric-blinds/',    icon: '⚡' },
+    manual:     { label: 'Ручные рольставни',        desc: 'Установка рулонных и ручных рольставней.',                     href: '/ru/services/manual-blinds/',      icon: '🪟' },
+    repair:     { label: 'Ремонт рольставней',       desc: 'Срочный ремонт любых рольставней.',                            href: '/ru/services/blind-repair/',       icon: '🔧' },
+    electrical: { label: 'Электромонтаж',            desc: 'Монтаж и ремонт электрических цепей.',                         href: '/ru/services/electrical-work/',    icon: '🔌' },
+    'smart-home': { label: 'Умный дом',              desc: 'Автоматизация рольставней, света и ворот через телефон или голос.', href: '/ru/services/smart-home/',    icon: '🏠' },
+  },
+  uk: {
+    electric:   { label: 'Електричні ролети',        desc: 'Встановлення моторизованих систем з пультом.',                 href: '/uk/services/electric-blinds/',    icon: '⚡' },
+    manual:     { label: 'Ручні ролети',             desc: 'Встановлення рулонних і ручних ролетів.',                      href: '/uk/services/manual-blinds/',      icon: '🪟' },
+    repair:     { label: 'Ремонт ролетів',           desc: 'Терміновий ремонт будь-яких ролетів.',                         href: '/uk/services/blind-repair/',       icon: '🔧' },
+    electrical: { label: 'Електромонтаж',            desc: 'Монтаж і ремонт електричних мереж.',                           href: '/uk/services/electrical-work/',    icon: '🔌' },
+    'smart-home': { label: 'Розумний дім',           desc: 'Автоматизація ролетів, світла та воріт через телефон або голос.', href: '/uk/services/smart-home/',      icon: '🏠' },
+  },
 };
 
 const headings: Record<Lang, string> = {
@@ -68,6 +82,8 @@ const headings: Record<Lang, string> = {
   es: 'Otros servicios',
   de: 'Weitere Leistungen',
   it: 'Altri servizi',
+  ru: 'Другие услуги',
+  uk: 'Інші послуги',
 };
 
 const related = (Object.keys(allServices[lang]) as ServiceType[])

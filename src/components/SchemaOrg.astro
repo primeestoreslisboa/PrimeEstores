@@ -25,6 +25,8 @@ const breadcrumbLabels: Record<string, { home: string }> = {
   es: { home: 'Inicio' },
   de: { home: 'Startseite' },
   it: { home: 'Home' },
+  ru: { home: 'Главная' },
+  uk: { home: 'Головна' },
 };
 
 // Home URLs derived dynamically from Astro's site config
@@ -36,6 +38,8 @@ const homeUrlSuffix: Record<string, string> = {
   es: '/es/',
   de: '/de/',
   it: '/it/',
+  ru: '/ru/',
+  uk: '/uk/',
 };
 const { home: homeLabel } = breadcrumbLabels[lang] ?? breadcrumbLabels['pt'];
 const homeUrl = `${baseUrl}${homeUrlSuffix[lang] ?? '/'}`;

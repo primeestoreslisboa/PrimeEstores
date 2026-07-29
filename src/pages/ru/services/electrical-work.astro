@@ -1,0 +1,94 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import ContactForm from '../../../components/ContactForm.astro';
+import RelatedServices from '../../../components/RelatedServices.astro';
+import { useTranslations } from '../../../i18n/utils';
+
+const lang = 'ru' as const;
+const t = useTranslations(lang);
+---
+
+<Layout
+  title="Электромонтажные работы в Лиссабоне | Prime Estores"
+  description="Электромонтажные работы для рольставней и умного дома в Лиссабоне и Большом Лиссабоне: подключение моторов, выключателей, автоматики. Сертифицированные техники. Бесплатная смета."
+  schemaType="Service"
+  serviceName="Электромонтажные работы в Лиссабоне"
+  serviceDescription="Электромонтажные работы, связанные с установкой и автоматизацией рольставней, в Лиссабоне и Большом Лиссабоне."
+  lang={lang}
+>
+  <section class="bg-gradient-to-br from-[#1A1A1A] to-[#8B1A1A] text-white py-16 lg:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <nav aria-label="Breadcrumb" class="mb-6">
+        <ol class="flex items-center gap-2 text-sm text-white/80">
+          <li><a href="/ru/" class="hover:text-white transition-colors">Главная</a></li>
+          <li aria-hidden="true"><span>/</span></li>
+          <li><span class="text-white">Электромонтажные работы</span></li>
+        </ol>
+      </nav>
+      <div class="max-w-3xl">
+        <span class="inline-block bg-white/10 border border-white/20 text-white text-xs font-semibold uppercase tracking-widest px-3 py-1 rounded-full mb-4">Услуга</span>
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black leading-tight mb-4">Электромонтажные работы в Лиссабоне</h1>
+        <p class="text-xl text-white/80 leading-relaxed mb-8">Надёжная электрика для ваших рольставней и умного дома. Выполняем подключение моторов, выключателей и автоматики с гарантией безопасности по всему Большому Лиссабону.</p>
+        <div class="flex flex-col sm:flex-row gap-3">
+          <a href="/ru/quote/" class="inline-flex items-center justify-center gap-2 bg-white text-[#8B1A1A] font-bold px-6 py-3.5 rounded-lg hover:bg-gray-100 transition-colors">Получить бесплатную смету</a>
+          <a href="tel:+351923348323" class="inline-flex items-center justify-center gap-2 border-2 border-white text-white font-bold px-6 py-3.5 rounded-lg hover:bg-white/10 transition-colors">+351 923 348 323</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 lg:py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-3 gap-12">
+        <div class="lg:col-span-2">
+          <h2 class="text-2xl lg:text-3xl font-black text-[#1A1A1A] mb-4">Электрика для рольставней и не только</h2>
+          <p class="text-gray-600 leading-relaxed mb-6">Помимо установки рольставней, мы выполняем связанные с ними электромонтажные работы: прокладка линий питания для моторов, установка выключателей и приёмников, подготовка электрики для автоматизации и умного дома.</p>
+          <p class="text-gray-600 leading-relaxed mb-6">Все работы выполняют сертифицированные техники Prime Estores с соблюдением норм безопасности, аккуратно и без лишних разрушений по всему Большому Лиссабону.</p>
+
+          <h2 class="text-2xl font-black text-[#1A1A1A] mb-4 mt-8">Что мы выполняем</h2>
+          <div class="grid sm:grid-cols-2 gap-4 mb-8">
+            {[
+              { title: 'Питание для моторов', desc: 'Прокладка и подключение линий для электрических рольставней' },
+              { title: 'Выключатели и управление', desc: 'Установка настенных выключателей, кнопок и приёмников' },
+              { title: 'Подготовка к автоматизации', desc: 'Электрика под системы умного дома и сценарии' },
+              { title: 'Мелкий электромонтаж', desc: 'Розетки, точки освещения и подключения по месту' },
+              { title: 'Проверка и безопасность', desc: 'Проверка соединений и защита цепей' },
+              { title: 'Аккуратный монтаж', desc: 'Чистая работа без лишних разрушений' },
+            ].map(item => (
+              <div class="flex gap-3 p-4 bg-[#F5F5F5] rounded-xl">
+                <svg class="w-5 h-5 text-[#8B1A1A] flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                </svg>
+                <div>
+                  <div class="font-semibold text-[#1A1A1A] text-sm">{item.title}</div>
+                  <div class="text-gray-500 text-xs mt-0.5">{item.desc}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <h2 class="text-2xl font-black text-[#1A1A1A] mb-4 mt-8">Зоны обслуживания</h2>
+          <p class="text-gray-600 leading-relaxed mb-4">Мы выполняем электромонтажные работы по всему <strong>Большому Лиссабону</strong>, включая: Лиссабон (все районы), Синтра, Кашкайш, Оэйраш, Алмада, Сетубал, Амадора, Лориш, Одивелаш и другие.</p>
+          <a href="/ru/coverage-areas/" class="text-[#8B1A1A] font-semibold hover:underline text-sm">Посмотреть все зоны обслуживания →</a>
+        </div>
+        <div class="space-y-6">
+          <ContactForm showTitle={true} lang={lang} />
+          <div class="bg-[#F5F5F5] rounded-2xl p-6">
+            <h3 class="font-bold text-[#1A1A1A] mb-4">Полезная информация</h3>
+            <div class="space-y-3 text-sm">
+              {['Ответ в течение 24 часов', 'Сертифицированные техники', '100% бесплатная смета', 'Соблюдение норм безопасности'].map(item => (
+                <div class="flex items-center gap-2">
+                  <svg class="w-4 h-4 text-[#8B1A1A]" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                  </svg>
+                  <span class="text-gray-600">{item}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <RelatedServices current="electrical" lang="ru" />
+</Layout>

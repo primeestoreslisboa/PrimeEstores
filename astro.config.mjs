@@ -9,7 +9,7 @@ const LAST_MOD = new Date();
 function getPriority(url) {
   const path = url.replace('https://primeestores.pt', '').replace(/\/$/, '');
   // Home pages — máxima prioridade
-  if (path === '' || path === '/en' || path === '/fr' || path === '/es' || path === '/de' || path === '/it') return 1.0;
+  if (path === '' || path === '/en' || path === '/fr' || path === '/es' || path === '/de' || path === '/it' || path === '/ru' || path === '/uk') return 1.0;
   // Páginas de serviço — capturam tráfego orgânico ("reparação estores Lisboa")
   if (path.includes('servico') || path.includes('service') || path.includes('dienst') || path.includes('servizi') || path.includes('servic')) return 0.9;
   // Orçamento e contacto — páginas de conversão
@@ -24,7 +24,7 @@ function getPriority(url) {
 /** @param {string} url */
 function getChangefreq(url) {
   const path = url.replace('https://primeestores.pt', '');
-  if (path === '/' || path === '/en/' || path === '/fr/' || path === '/es/' || path === '/de/' || path === '/it/') return 'weekly';
+  if (path === '/' || path === '/en/' || path === '/fr/' || path === '/es/' || path === '/de/' || path === '/it/' || path === '/ru/' || path === '/uk/') return 'weekly';
   return 'monthly';
 }
 
@@ -49,6 +49,8 @@ export default defineConfig({
           es: 'es-ES',
           de: 'de-DE',
           it: 'it-IT',
+          ru: 'ru-RU',
+          uk: 'uk-UA',
         },
       },
       serialize(item) {
@@ -63,7 +65,7 @@ export default defineConfig({
   ],
   i18n: {
     defaultLocale: 'pt',
-    locales: ['pt', 'en', 'fr', 'es', 'de', 'it'],
+    locales: ['pt', 'en', 'fr', 'es', 'de', 'it', 'ru', 'uk'],
     routing: {
       prefixDefaultLocale: false,
     }

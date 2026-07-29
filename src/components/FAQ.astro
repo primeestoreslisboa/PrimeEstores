@@ -28,6 +28,8 @@ const contactHref = lang === 'pt' ? '/contacto' :
   lang === 'en' ? '/en/contact' :
   lang === 'fr' ? '/fr/contact' :
   lang === 'es' ? '/es/contacto' :
+  lang === 'ru' ? '/ru/contact/' :
+  lang === 'uk' ? '/uk/contact/' :
   '/de/kontakt';
 ---
 
@@ -69,6 +71,8 @@ const contactHref = lang === 'pt' ? '/contacto' :
          lang === 'en' ? "Didn't find the answer you're looking for?" :
          lang === 'fr' ? "Vous n'avez pas trouvé la réponse que vous cherchez?" :
          lang === 'es' ? '¿No encontró la respuesta que busca?' :
+         lang === 'ru' ? 'Не нашли ответ, который искали?' :
+         lang === 'uk' ? 'Не знайшли відповідь, яку шукали?' :
          'Haben Sie die gesuchte Antwort nicht gefunden?'}
       </p>
       <div class="flex flex-col sm:flex-row gap-3 justify-center">
@@ -80,6 +84,8 @@ const contactHref = lang === 'pt' ? '/contacto' :
            lang === 'en' ? 'Send a question' :
            lang === 'fr' ? 'Envoyer une question' :
            lang === 'es' ? 'Enviar una pregunta' :
+           lang === 'ru' ? 'Отправить вопрос' :
+           lang === 'uk' ? 'Надіслати запитання' :
            'Frage senden'}
         </a>
         <a

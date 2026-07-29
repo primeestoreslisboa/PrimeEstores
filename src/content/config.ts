@@ -15,6 +15,8 @@ const artigosFr = defineCollection({ type: 'content', schema: artigoSchema });
 const artigosEs = defineCollection({ type: 'content', schema: artigoSchema });
 const artigosDe = defineCollection({ type: 'content', schema: artigoSchema });
 const artigosIt = defineCollection({ type: 'content', schema: artigoSchema });
+const artigosRu = defineCollection({ type: 'content', schema: artigoSchema });
+const artigosUk = defineCollection({ type: 'content', schema: artigoSchema });
 
 export const collections = {
   artigos,
@@ -23,4 +25,6 @@ export const collections = {
   'artigos-es': artigosEs,
   'artigos-de': artigosDe,
   'artigos-it': artigosIt,
+  'artigos-ru': artigosRu,
+  'artigos-uk': artigosUk,
 };

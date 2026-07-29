@@ -50,6 +50,8 @@ const htmlLangMap: Record<string, string> = {
   es: 'es-ES',
   de: 'de-DE',
   it: 'it-IT',
+  ru: 'ru-RU',
+  uk: 'uk-UA',
 };
 const htmlLang = htmlLangMap[lang] ?? lang;
 
@@ -64,6 +66,8 @@ const hreflangEntries: { hreflang: string; code: RouteLang }[] = [
   { hreflang: 'es-ES', code: 'es' },
   { hreflang: 'de-DE', code: 'de' },
   { hreflang: 'it-IT', code: 'it' },
+  { hreflang: 'ru-RU', code: 'ru' },
+  { hreflang: 'uk-UA', code: 'uk' },
 ];
 
 // Only pages that belong to a translation cluster advertise the full 6-language
