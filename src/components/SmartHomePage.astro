@@ -1,0 +1,585 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ContactForm from './ContactForm.astro';
+import RelatedServices from './RelatedServices.astro';
+import type { Lang } from '../i18n/utils';
+
+export interface Props {
+  lang?: Lang;
+}
+
+const { lang = 'pt' } = Astro.props;
+
+const baseUrl = 'https://primeestores.pt';
+
+// Localized route slugs for this page (used for canonical + breadcrumb)
+const pagePath: Record<Lang, string> = {
+  pt: '/servicos/casa-inteligente/',
+  en: '/en/services/smart-home/',
+  fr: '/fr/services/maison-connectee/',
+  es: '/es/servicios/hogar-inteligente/',
+  de: '/de/dienstleistungen/smart-home/',
+  it: '/it/servizi/casa-intelligente/',
+};
+
+// Localized links to conversion pages
+const links: Record<Lang, { home: string; quote: string; zones: string }> = {
+  pt: { home: '/',      quote: '/orcamento/',     zones: '/zonas-que-servimos/' },
+  en: { home: '/en/',   quote: '/en/quote/',      zones: '/en/coverage-areas/' },
+  fr: { home: '/fr/',   quote: '/fr/devis/',      zones: '/fr/zones-couvertes/' },
+  es: { home: '/es/',   quote: '/es/presupuesto/', zones: '/es/zonas-cobertura/' },
+  de: { home: '/de/',   quote: '/de/angebot/',    zones: '/de/versorgungsgebiete/' },
+  it: { home: '/it/',   quote: '/it/preventivo/', zones: '/it/zone-servite/' },
+};
+
+// Icons (stroke paths) reused across service cards
+const icons: Record<string, string> = {
+  blinds: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4h16v16H4zM4 9h16M9 9v11"/>',
+  light: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 18h6M10 21h4M12 3a6 6 0 00-4 10.5c.5.5 1 1.2 1 2h6c0-.8.5-1.5 1-2A6 6 0 0012 3z"/>',
+  gate: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 21V8l9-5 9 5v13M3 21h18M7 21V11m4 10V11m4 10V11m4 10V11"/>',
+  scene: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3l1.5 3.5L10 8 6.5 9.5 5 13 3.5 9.5 0 8l3.5-1.5zM18 10l1 2.5L21.5 14 19 15l-1 2.5L17 15l-2.5-1L17 12.5zM13 3l.8 2L16 5.8 14 6.6 13.2 9 12.4 6.6 10 5.8 12.4 5z"/>',
+  voice: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15a3 3 0 003-3V6a3 3 0 00-6 0v6a3 3 0 003 3zm7-3a7 7 0 01-14 0m7 7v3"/>',
+  support: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>',
+};
+
+interface Content {
+  meta: { title: string; description: string; keywords: string; serviceName: string; serviceDescription: string };
+  badge: string;
+  breadcrumb: string;
+  h1: string;
+  subtitle: string;
+  ctaQuote: string;
+  introHeading: string;
+  introP1: string;
+  introP2: string;
+  servicesHeading: string;
+  services: { key: string; title: string; desc: string }[];
+  advantagesHeading: string;
+  advantages: { title: string; desc: string }[];
+  processHeading: string;
+  process: { step: string; title: string; desc: string }[];
+  faqHeading: string;
+  faqs: { q: string; a: string }[];
+  zonesHeading: string;
+  zonesText: string;
+  zonesLink: string;
+  finalTitle: string;
+  finalText: string;
+  finalQuote: string;
+  finalContact: string;
+  formIntro: string;
+}
+
+const content: Record<Lang, Content> = {
+  pt: {
+    meta: {
+      title: 'Casa Inteligente e Domótica em Lisboa | Prime Estores',
+      description: 'Transforme a sua casa numa casa inteligente: estores, iluminação, portões, cenários e controlo por voz e telemóvel. Instalação de domótica em toda a Grande Lisboa. Orçamento grátis.',
+      keywords: 'casa inteligente Lisboa, domótica Lisboa, automação residencial, estores inteligentes, iluminação inteligente, controlo por voz, controlo por telemóvel, portão automático',
+      serviceName: 'Instalação de Casa Inteligente e Domótica em Lisboa',
+      serviceDescription: 'Instalação de sistemas de domótica em Lisboa e Grande Lisboa: estores, iluminação, portões, cenários automáticos e controlo por voz e telemóvel.',
+    },
+    badge: 'Serviço',
+    breadcrumb: 'Casa Inteligente',
+    h1: 'Casa Inteligente e Domótica em Lisboa',
+    subtitle: 'Controle estores, luzes e portões pelo telemóvel ou por voz. Automatizamos a sua casa com soluções simples, fiáveis e adaptadas ao seu dia a dia.',
+    ctaQuote: 'Pedir Orçamento Grátis',
+    introHeading: 'O que é uma casa inteligente?',
+    introP1: 'Uma casa inteligente reúne os equipamentos do dia a dia — estores, iluminação, portões, climatização — num único sistema que controla a partir do telemóvel, de um comando ou por voz. Deixa de depender de vários telecomandos e passa a ter tudo à distância de um toque.',
+    introP2: 'Como já somos especialistas em estores elétricos e trabalhos de eletricidade, a domótica é a evolução natural do nosso serviço. Instalamos e configuramos tudo, deixamos a funcionar e ensinamos a usar — sem complicações técnicas para si.',
+    servicesHeading: 'O que instalamos',
+    services: [
+      { key: 'blinds', title: 'Estores e cortinas inteligentes', desc: 'Motorização e controlo de estores e cortinas por app, comando ou voz, com abertura e fecho automáticos por horário ou luz solar.' },
+      { key: 'light', title: 'Iluminação inteligente', desc: 'Interruptores e reguladores inteligentes para acender, baixar a intensidade e criar ambientes de luz a partir do telemóvel ou por voz.' },
+      { key: 'gate', title: 'Portões e garagens', desc: 'Abertura de portões e portas de garagem pelo telemóvel ou por voz, com notificação de abertura e fecho.' },
+      { key: 'scene', title: 'Cenários e automações', desc: 'Rotinas com um só toque: "Sair de casa" fecha estores, apaga luzes e ativa a segurança; "Bom dia" abre a casa por si.' },
+      { key: 'voice', title: 'Controlo por voz e telemóvel', desc: 'Tudo reunido numa única aplicação e compatível com os principais assistentes de voz do mercado, em casa ou à distância.' },
+      { key: 'support', title: 'Manutenção e suporte', desc: 'Acompanhamos o sistema depois da instalação: atualizações, novos equipamentos e apoio sempre que precisar.' },
+    ],
+    advantagesHeading: 'Vantagens de automatizar a sua casa',
+    advantages: [
+      { title: 'Conforto', desc: 'Controle tudo sem esforço, de qualquer divisão ou fora de casa.' },
+      { title: 'Poupança de energia', desc: 'Estores e luzes que se ajustam sozinhos reduzem o consumo.' },
+      { title: 'Segurança', desc: 'Simulação de presença e avisos quando algo abre ou fecha.' },
+      { title: 'Acessibilidade', desc: 'Ideal para quem tem mobilidade reduzida ou muitas janelas.' },
+    ],
+    processHeading: 'Como trabalhamos',
+    process: [
+      { step: '01', title: 'Visita e orçamento gratuito', desc: 'Avaliamos a sua casa e o que pretende automatizar, e apresentamos orçamento sem compromisso.' },
+      { step: '02', title: 'Projeto à sua medida', desc: 'Propomos a solução mais simples e fiável para as suas necessidades e orçamento.' },
+      { step: '03', title: 'Instalação profissional', desc: 'Os nossos técnicos instalam tudo de forma limpa e organizada, sem obras desnecessárias.' },
+      { step: '04', title: 'Configuração e cenários', desc: 'Ligamos os equipamentos, criamos os cenários e integramos o controlo por voz e telemóvel.' },
+      { step: '05', title: 'Formação e apoio', desc: 'Ensinamos a usar o sistema e ficamos disponíveis para o que precisar.' },
+    ],
+    faqHeading: 'Perguntas frequentes',
+    faqs: [
+      { q: 'Preciso de obras para ter uma casa inteligente?', a: 'Na maioria dos casos não. Muitas soluções usam módulos que se instalam atrás dos interruptores ou nos motores existentes, sem partir paredes.' },
+      { q: 'Funciona com a instalação que já tenho?', a: 'Sim, na maior parte dos casos aproveitamos estores, iluminação e portões existentes, acrescentando apenas os módulos de controlo.' },
+      { q: 'Continua a funcionar se a Internet falhar?', a: 'Sim. Os comandos de parede e comandos físicos continuam a funcionar; apenas o controlo remoto e por voz dependem da ligação.' },
+      { q: 'Posso começar pequeno e ir acrescentando?', a: 'Claro. Pode começar só pelos estores ou pela iluminação e ampliar o sistema quando quiser.' },
+    ],
+    zonesHeading: 'Onde instalamos',
+    zonesText: 'Instalamos soluções de casa inteligente em toda a Grande Lisboa: Lisboa, Sintra, Cascais, Oeiras, Almada, Setúbal, Amadora, Loures, Odivelas e concelhos vizinhos.',
+    zonesLink: 'Ver todas as zonas que servimos →',
+    finalTitle: 'Pronto para tornar a sua casa inteligente?',
+    finalText: 'Peça um orçamento gratuito e sem compromisso. Respondemos em menos de 24 horas.',
+    finalQuote: 'Pedir Orçamento Grátis',
+    finalContact: 'Falar com a Nossa Equipa',
+    formIntro: 'Peça o seu orçamento',
+  },
+  en: {
+    meta: {
+      title: 'Smart Home & Home Automation in Lisbon | Prime Estores',
+      description: 'Turn your home into a smart home: blinds, lighting, gates, scenes and voice and phone control. Home automation across Greater Lisbon. Free quote.',
+      keywords: 'smart home Lisbon, home automation Lisbon, smart blinds, smart lighting, voice control, phone control, automatic gate, home automation Greater Lisbon',
+      serviceName: 'Smart Home & Home Automation Installation in Lisbon',
+      serviceDescription: 'Home automation installation in Lisbon and Greater Lisbon: blinds, lighting, gates, automatic scenes and voice and phone control.',
+    },
+    badge: 'Service',
+    breadcrumb: 'Smart Home',
+    h1: 'Smart Home & Home Automation in Lisbon',
+    subtitle: 'Control blinds, lights and gates from your phone or by voice. We automate your home with simple, reliable solutions tailored to your daily life.',
+    ctaQuote: 'Get a Free Quote',
+    introHeading: 'What is a smart home?',
+    introP1: 'A smart home brings your everyday equipment — blinds, lighting, gates, climate — into a single system you control from your phone, a remote or by voice. No more juggling several remotes: everything is a tap away.',
+    introP2: 'As specialists in electric blinds and electrical work, home automation is the natural next step for us. We install and configure everything, leave it working and show you how to use it — with no technical hassle for you.',
+    servicesHeading: 'What we install',
+    services: [
+      { key: 'blinds', title: 'Smart blinds and curtains', desc: 'Motorisation and control of blinds and curtains by app, remote or voice, with automatic opening and closing by schedule or sunlight.' },
+      { key: 'light', title: 'Smart lighting', desc: 'Smart switches and dimmers to turn on, dim and create lighting scenes from your phone or by voice.' },
+      { key: 'gate', title: 'Gates and garages', desc: 'Open gates and garage doors from your phone or by voice, with open and close notifications.' },
+      { key: 'scene', title: 'Scenes and automations', desc: 'One-tap routines: "Leaving home" closes blinds, turns off lights and arms security; "Good morning" opens up the house for you.' },
+      { key: 'voice', title: 'Voice and phone control', desc: 'Everything in a single app and compatible with the main voice assistants on the market, at home or away.' },
+      { key: 'support', title: 'Maintenance and support', desc: 'We look after the system after installation: updates, new devices and support whenever you need it.' },
+    ],
+    advantagesHeading: 'Benefits of automating your home',
+    advantages: [
+      { title: 'Comfort', desc: 'Control everything effortlessly, from any room or away from home.' },
+      { title: 'Energy savings', desc: 'Blinds and lights that adjust themselves reduce consumption.' },
+      { title: 'Security', desc: 'Presence simulation and alerts when something opens or closes.' },
+      { title: 'Accessibility', desc: 'Ideal for reduced mobility or homes with many windows.' },
+    ],
+    processHeading: 'How we work',
+    process: [
+      { step: '01', title: 'Free visit and quote', desc: 'We assess your home and what you want to automate, and provide a no-obligation quote.' },
+      { step: '02', title: 'A tailored project', desc: 'We propose the simplest, most reliable solution for your needs and budget.' },
+      { step: '03', title: 'Professional installation', desc: 'Our technicians install everything cleanly and tidily, with no unnecessary building work.' },
+      { step: '04', title: 'Setup and scenes', desc: 'We connect the devices, create the scenes and integrate voice and phone control.' },
+      { step: '05', title: 'Training and support', desc: 'We show you how to use the system and stay available for whatever you need.' },
+    ],
+    faqHeading: 'Frequently asked questions',
+    faqs: [
+      { q: 'Do I need building work for a smart home?', a: 'In most cases, no. Many solutions use modules fitted behind switches or into existing motors, without breaking walls.' },
+      { q: 'Does it work with what I already have?', a: 'Yes, in most cases we reuse existing blinds, lighting and gates, adding only the control modules.' },
+      { q: 'Does it still work if the internet goes down?', a: 'Yes. Wall and physical controls keep working; only remote and voice control depend on the connection.' },
+      { q: 'Can I start small and add more later?', a: 'Absolutely. You can start with just the blinds or lighting and expand the system whenever you like.' },
+    ],
+    zonesHeading: 'Where we install',
+    zonesText: 'We install smart home solutions across all of Greater Lisbon: Lisbon, Sintra, Cascais, Oeiras, Almada, Setúbal, Amadora, Loures, Odivelas and neighbouring municipalities.',
+    zonesLink: 'See all the areas we serve →',
+    finalTitle: 'Ready to make your home smart?',
+    finalText: 'Request a free, no-obligation quote. We reply in under 24 hours.',
+    finalQuote: 'Get a Free Quote',
+    finalContact: 'Talk to Our Team',
+    formIntro: 'Request your quote',
+  },
+  fr: {
+    meta: {
+      title: 'Maison connectée et domotique à Lisbonne | Prime Estores',
+      description: 'Transformez votre logement en maison connectée : stores, éclairage, portails, scénarios et contrôle par voix et smartphone. Domotique dans tout le Grand Lisbonne. Devis gratuit.',
+      keywords: 'maison connectée Lisbonne, domotique Lisbonne, stores connectés, éclairage connecté, contrôle vocal, contrôle smartphone, portail automatique',
+      serviceName: 'Installation de maison connectée et domotique à Lisbonne',
+      serviceDescription: 'Installation domotique à Lisbonne et dans le Grand Lisbonne : stores, éclairage, portails, scénarios automatiques et contrôle par voix et smartphone.',
+    },
+    badge: 'Service',
+    breadcrumb: 'Maison connectée',
+    h1: 'Maison connectée et domotique à Lisbonne',
+    subtitle: 'Contrôlez stores, lumières et portails depuis votre smartphone ou par la voix. Nous automatisons votre logement avec des solutions simples et fiables, adaptées à votre quotidien.',
+    ctaQuote: 'Demander un devis gratuit',
+    introHeading: 'Qu\'est-ce qu\'une maison connectée ?',
+    introP1: 'Une maison connectée réunit vos équipements du quotidien — stores, éclairage, portails, climatisation — dans un seul système que vous contrôlez depuis votre smartphone, une télécommande ou par la voix. Fini les multiples télécommandes : tout est à portée de doigt.',
+    introP2: 'Spécialistes des stores électriques et des travaux d\'électricité, la domotique est pour nous l\'évolution naturelle. Nous installons et configurons tout, le laissons fonctionnel et vous montrons comment l\'utiliser — sans complications techniques pour vous.',
+    servicesHeading: 'Ce que nous installons',
+    services: [
+      { key: 'blinds', title: 'Stores et rideaux connectés', desc: 'Motorisation et contrôle des stores et rideaux par application, télécommande ou voix, avec ouverture et fermeture automatiques selon l\'horaire ou l\'ensoleillement.' },
+      { key: 'light', title: 'Éclairage connecté', desc: 'Interrupteurs et variateurs connectés pour allumer, tamiser et créer des ambiances lumineuses depuis votre smartphone ou par la voix.' },
+      { key: 'gate', title: 'Portails et garages', desc: 'Ouverture des portails et portes de garage depuis votre smartphone ou par la voix, avec notification d\'ouverture et de fermeture.' },
+      { key: 'scene', title: 'Scénarios et automatisations', desc: 'Des routines en un geste : « Départ » ferme les stores, éteint les lumières et active la sécurité ; « Bonjour » ouvre la maison pour vous.' },
+      { key: 'voice', title: 'Contrôle par voix et smartphone', desc: 'Tout réuni dans une seule application et compatible avec les principaux assistants vocaux du marché, chez vous ou à distance.' },
+      { key: 'support', title: 'Maintenance et assistance', desc: 'Nous suivons le système après l\'installation : mises à jour, nouveaux équipements et assistance dès que vous en avez besoin.' },
+    ],
+    advantagesHeading: 'Les avantages d\'automatiser votre logement',
+    advantages: [
+      { title: 'Confort', desc: 'Contrôlez tout sans effort, depuis n\'importe quelle pièce ou à distance.' },
+      { title: 'Économies d\'énergie', desc: 'Des stores et lumières qui s\'ajustent seuls réduisent la consommation.' },
+      { title: 'Sécurité', desc: 'Simulation de présence et alertes quand quelque chose s\'ouvre ou se ferme.' },
+      { title: 'Accessibilité', desc: 'Idéal en cas de mobilité réduite ou de logement avec beaucoup de fenêtres.' },
+    ],
+    processHeading: 'Comment nous travaillons',
+    process: [
+      { step: '01', title: 'Visite et devis gratuits', desc: 'Nous évaluons votre logement et ce que vous souhaitez automatiser, et présentons un devis sans engagement.' },
+      { step: '02', title: 'Un projet sur mesure', desc: 'Nous proposons la solution la plus simple et fiable pour vos besoins et votre budget.' },
+      { step: '03', title: 'Installation professionnelle', desc: 'Nos techniciens installent tout proprement et soigneusement, sans travaux inutiles.' },
+      { step: '04', title: 'Configuration et scénarios', desc: 'Nous connectons les équipements, créons les scénarios et intégrons le contrôle par voix et smartphone.' },
+      { step: '05', title: 'Formation et assistance', desc: 'Nous vous montrons comment utiliser le système et restons disponibles pour tout besoin.' },
+    ],
+    faqHeading: 'Questions fréquentes',
+    faqs: [
+      { q: 'Faut-il des travaux pour une maison connectée ?', a: 'Dans la plupart des cas, non. De nombreuses solutions utilisent des modules installés derrière les interrupteurs ou dans les moteurs existants, sans casser les murs.' },
+      { q: 'Cela fonctionne-t-il avec ce que j\'ai déjà ?', a: 'Oui, dans la plupart des cas nous réutilisons stores, éclairage et portails existants, en ajoutant seulement les modules de contrôle.' },
+      { q: 'Est-ce que ça marche si Internet tombe en panne ?', a: 'Oui. Les commandes murales et physiques continuent de fonctionner ; seul le contrôle à distance et vocal dépend de la connexion.' },
+      { q: 'Puis-je commencer petit et compléter ensuite ?', a: 'Bien sûr. Vous pouvez commencer par les stores ou l\'éclairage et étendre le système quand vous le souhaitez.' },
+    ],
+    zonesHeading: 'Où nous intervenons',
+    zonesText: 'Nous installons des solutions de maison connectée dans tout le Grand Lisbonne : Lisbonne, Sintra, Cascais, Oeiras, Almada, Setúbal, Amadora, Loures, Odivelas et les communes voisines.',
+    zonesLink: 'Voir toutes les zones que nous couvrons →',
+    finalTitle: 'Prêt à rendre votre maison intelligente ?',
+    finalText: 'Demandez un devis gratuit et sans engagement. Nous répondons en moins de 24 heures.',
+    finalQuote: 'Demander un devis gratuit',
+    finalContact: 'Parler à notre équipe',
+    formIntro: 'Demandez votre devis',
+  },
+  es: {
+    meta: {
+      title: 'Hogar inteligente y domótica en Lisboa | Prime Estores',
+      description: 'Convierta su casa en un hogar inteligente: persianas, iluminación, portones, escenas y control por voz y móvil. Domótica en todo el Gran Lisboa. Presupuesto gratis.',
+      keywords: 'hogar inteligente Lisboa, domótica Lisboa, persianas inteligentes, iluminación inteligente, control por voz, control por móvil, portón automático',
+      serviceName: 'Instalación de hogar inteligente y domótica en Lisboa',
+      serviceDescription: 'Instalación domótica en Lisboa y el Gran Lisboa: persianas, iluminación, portones, escenas automáticas y control por voz y móvil.',
+    },
+    badge: 'Servicio',
+    breadcrumb: 'Hogar Inteligente',
+    h1: 'Hogar inteligente y domótica en Lisboa',
+    subtitle: 'Controle persianas, luces y portones desde el móvil o por voz. Automatizamos su casa con soluciones simples, fiables y adaptadas a su día a día.',
+    ctaQuote: 'Pedir presupuesto gratis',
+    introHeading: '¿Qué es un hogar inteligente?',
+    introP1: 'Un hogar inteligente reúne los equipos del día a día — persianas, iluminación, portones, climatización — en un único sistema que controla desde el móvil, un mando o por voz. Se acabaron los múltiples mandos: todo a un toque de distancia.',
+    introP2: 'Como ya somos especialistas en persianas eléctricas y trabajos de electricidad, la domótica es la evolución natural de nuestro servicio. Instalamos y configuramos todo, lo dejamos funcionando y le enseñamos a usarlo — sin complicaciones técnicas para usted.',
+    servicesHeading: 'Qué instalamos',
+    services: [
+      { key: 'blinds', title: 'Persianas y cortinas inteligentes', desc: 'Motorización y control de persianas y cortinas por app, mando o voz, con apertura y cierre automáticos por horario o luz solar.' },
+      { key: 'light', title: 'Iluminación inteligente', desc: 'Interruptores y reguladores inteligentes para encender, atenuar y crear ambientes de luz desde el móvil o por voz.' },
+      { key: 'gate', title: 'Portones y garajes', desc: 'Apertura de portones y puertas de garaje desde el móvil o por voz, con notificación de apertura y cierre.' },
+      { key: 'scene', title: 'Escenas y automatizaciones', desc: 'Rutinas con un solo toque: «Salir de casa» baja persianas, apaga luces y activa la seguridad; «Buenos días» abre la casa por usted.' },
+      { key: 'voice', title: 'Control por voz y móvil', desc: 'Todo reunido en una única aplicación y compatible con los principales asistentes de voz del mercado, en casa o a distancia.' },
+      { key: 'support', title: 'Mantenimiento y soporte', desc: 'Acompañamos el sistema tras la instalación: actualizaciones, nuevos equipos y soporte siempre que lo necesite.' },
+    ],
+    advantagesHeading: 'Ventajas de automatizar su casa',
+    advantages: [
+      { title: 'Confort', desc: 'Controle todo sin esfuerzo, desde cualquier estancia o fuera de casa.' },
+      { title: 'Ahorro de energía', desc: 'Persianas y luces que se ajustan solas reducen el consumo.' },
+      { title: 'Seguridad', desc: 'Simulación de presencia y avisos cuando algo se abre o se cierra.' },
+      { title: 'Accesibilidad', desc: 'Ideal para movilidad reducida o casas con muchas ventanas.' },
+    ],
+    processHeading: 'Cómo trabajamos',
+    process: [
+      { step: '01', title: 'Visita y presupuesto gratis', desc: 'Evaluamos su casa y lo que desea automatizar, y presentamos un presupuesto sin compromiso.' },
+      { step: '02', title: 'Un proyecto a su medida', desc: 'Proponemos la solución más simple y fiable para sus necesidades y presupuesto.' },
+      { step: '03', title: 'Instalación profesional', desc: 'Nuestros técnicos instalan todo de forma limpia y ordenada, sin obras innecesarias.' },
+      { step: '04', title: 'Configuración y escenas', desc: 'Conectamos los equipos, creamos las escenas e integramos el control por voz y móvil.' },
+      { step: '05', title: 'Formación y soporte', desc: 'Le enseñamos a usar el sistema y quedamos disponibles para lo que necesite.' },
+    ],
+    faqHeading: 'Preguntas frecuentes',
+    faqs: [
+      { q: '¿Necesito obras para tener un hogar inteligente?', a: 'En la mayoría de los casos, no. Muchas soluciones usan módulos que se instalan detrás de los interruptores o en los motores existentes, sin romper paredes.' },
+      { q: '¿Funciona con la instalación que ya tengo?', a: 'Sí, en la mayoría de los casos aprovechamos persianas, iluminación y portones existentes, añadiendo solo los módulos de control.' },
+      { q: '¿Sigue funcionando si falla Internet?', a: 'Sí. Los mandos de pared y físicos siguen funcionando; solo el control remoto y por voz dependen de la conexión.' },
+      { q: '¿Puedo empezar poco a poco e ir ampliando?', a: 'Por supuesto. Puede empezar solo por las persianas o la iluminación y ampliar el sistema cuando quiera.' },
+    ],
+    zonesHeading: 'Dónde instalamos',
+    zonesText: 'Instalamos soluciones de hogar inteligente en todo el Gran Lisboa: Lisboa, Sintra, Cascais, Oeiras, Almada, Setúbal, Amadora, Loures, Odivelas y municipios vecinos.',
+    zonesLink: 'Ver todas las zonas que cubrimos →',
+    finalTitle: '¿Listo para hacer su casa inteligente?',
+    finalText: 'Solicite un presupuesto gratuito y sin compromiso. Respondemos en menos de 24 horas.',
+    finalQuote: 'Pedir presupuesto gratis',
+    finalContact: 'Hablar con nuestro equipo',
+    formIntro: 'Solicite su presupuesto',
+  },
+  de: {
+    meta: {
+      title: 'Smart Home und Hausautomation in Lissabon | Prime Estores',
+      description: 'Machen Sie Ihr Zuhause zum Smart Home: Jalousien, Beleuchtung, Tore, Szenen sowie Sprach- und Handysteuerung. Hausautomation im gesamten Großraum Lissabon. Kostenloser Kostenvoranschlag.',
+      keywords: 'Smart Home Lissabon, Hausautomation Lissabon, smarte Jalousien, smarte Beleuchtung, Sprachsteuerung, Handysteuerung, automatisches Tor',
+      serviceName: 'Installation von Smart Home und Hausautomation in Lissabon',
+      serviceDescription: 'Hausautomation in Lissabon und im Großraum Lissabon: Jalousien, Beleuchtung, Tore, automatische Szenen sowie Sprach- und Handysteuerung.',
+    },
+    badge: 'Leistung',
+    breadcrumb: 'Smart Home',
+    h1: 'Smart Home und Hausautomation in Lissabon',
+    subtitle: 'Steuern Sie Jalousien, Licht und Tore per Handy oder Sprache. Wir automatisieren Ihr Zuhause mit einfachen, zuverlässigen Lösungen, die zu Ihrem Alltag passen.',
+    ctaQuote: 'Kostenlosen Kostenvoranschlag anfordern',
+    introHeading: 'Was ist ein Smart Home?',
+    introP1: 'Ein Smart Home vereint Ihre Alltagsgeräte — Jalousien, Beleuchtung, Tore, Klima — in einem einzigen System, das Sie per Handy, Fernbedienung oder Sprache steuern. Schluss mit vielen Fernbedienungen: Alles ist nur einen Fingertipp entfernt.',
+    introP2: 'Als Spezialisten für elektrische Jalousien und Elektroarbeiten ist die Hausautomation für uns der natürliche nächste Schritt. Wir installieren und konfigurieren alles, übergeben es funktionsbereit und zeigen Ihnen die Bedienung — ganz ohne technischen Aufwand für Sie.',
+    servicesHeading: 'Was wir installieren',
+    services: [
+      { key: 'blinds', title: 'Smarte Jalousien und Vorhänge', desc: 'Motorisierung und Steuerung von Jalousien und Vorhängen per App, Fernbedienung oder Sprache, mit automatischem Öffnen und Schließen nach Zeitplan oder Sonnenlicht.' },
+      { key: 'light', title: 'Smarte Beleuchtung', desc: 'Smarte Schalter und Dimmer zum Ein- und Ausschalten, Dimmen und Erstellen von Lichtszenen per Handy oder Sprache.' },
+      { key: 'gate', title: 'Tore und Garagen', desc: 'Öffnen von Toren und Garagentoren per Handy oder Sprache, mit Benachrichtigung beim Öffnen und Schließen.' },
+      { key: 'scene', title: 'Szenen und Automationen', desc: 'Routinen mit einem Fingertipp: „Haus verlassen" schließt Jalousien, schaltet Licht aus und aktiviert die Sicherheit; „Guten Morgen" öffnet das Haus für Sie.' },
+      { key: 'voice', title: 'Sprach- und Handysteuerung', desc: 'Alles in einer einzigen App und kompatibel mit den wichtigsten Sprachassistenten am Markt, zu Hause oder unterwegs.' },
+      { key: 'support', title: 'Wartung und Support', desc: 'Wir betreuen das System nach der Installation: Updates, neue Geräte und Support, wann immer Sie ihn brauchen.' },
+    ],
+    advantagesHeading: 'Vorteile der Hausautomation',
+    advantages: [
+      { title: 'Komfort', desc: 'Steuern Sie alles mühelos, aus jedem Raum oder von unterwegs.' },
+      { title: 'Energieeinsparung', desc: 'Jalousien und Licht, die sich selbst anpassen, senken den Verbrauch.' },
+      { title: 'Sicherheit', desc: 'Anwesenheitssimulation und Hinweise, wenn sich etwas öffnet oder schließt.' },
+      { title: 'Barrierefreiheit', desc: 'Ideal bei eingeschränkter Mobilität oder vielen Fenstern.' },
+    ],
+    processHeading: 'So arbeiten wir',
+    process: [
+      { step: '01', title: 'Besuch und kostenloser Kostenvoranschlag', desc: 'Wir prüfen Ihr Zuhause und was Sie automatisieren möchten und legen einen unverbindlichen Kostenvoranschlag vor.' },
+      { step: '02', title: 'Ein maßgeschneidertes Projekt', desc: 'Wir schlagen die einfachste und zuverlässigste Lösung für Ihre Bedürfnisse und Ihr Budget vor.' },
+      { step: '03', title: 'Professionelle Installation', desc: 'Unsere Techniker installieren alles sauber und ordentlich, ohne unnötige Bauarbeiten.' },
+      { step: '04', title: 'Einrichtung und Szenen', desc: 'Wir verbinden die Geräte, erstellen die Szenen und integrieren die Sprach- und Handysteuerung.' },
+      { step: '05', title: 'Einweisung und Support', desc: 'Wir zeigen Ihnen die Bedienung des Systems und bleiben für alles verfügbar, was Sie brauchen.' },
+    ],
+    faqHeading: 'Häufige Fragen',
+    faqs: [
+      { q: 'Sind für ein Smart Home Bauarbeiten nötig?', a: 'In den meisten Fällen nicht. Viele Lösungen nutzen Module, die hinter den Schaltern oder in vorhandene Motoren eingebaut werden, ohne Wände aufzureißen.' },
+      { q: 'Funktioniert es mit meiner vorhandenen Ausstattung?', a: 'Ja, in den meisten Fällen nutzen wir vorhandene Jalousien, Beleuchtung und Tore weiter und ergänzen nur die Steuermodule.' },
+      { q: 'Funktioniert es weiter, wenn das Internet ausfällt?', a: 'Ja. Wand- und physische Bedienelemente funktionieren weiter; nur die Fern- und Sprachsteuerung hängt von der Verbindung ab.' },
+      { q: 'Kann ich klein anfangen und später erweitern?', a: 'Natürlich. Sie können nur mit den Jalousien oder der Beleuchtung beginnen und das System jederzeit erweitern.' },
+    ],
+    zonesHeading: 'Wo wir installieren',
+    zonesText: 'Wir installieren Smart-Home-Lösungen im gesamten Großraum Lissabon: Lissabon, Sintra, Cascais, Oeiras, Almada, Setúbal, Amadora, Loures, Odivelas und Nachbargemeinden.',
+    zonesLink: 'Alle von uns bedienten Gebiete ansehen →',
+    finalTitle: 'Bereit, Ihr Zuhause smart zu machen?',
+    finalText: 'Fordern Sie einen kostenlosen, unverbindlichen Kostenvoranschlag an. Wir antworten in weniger als 24 Stunden.',
+    finalQuote: 'Kostenlosen Kostenvoranschlag anfordern',
+    finalContact: 'Mit unserem Team sprechen',
+    formIntro: 'Fordern Sie Ihren Kostenvoranschlag an',
+  },
+  it: {
+    meta: {
+      title: 'Casa intelligente e domotica a Lisbona | Prime Estores',
+      description: 'Trasforma la tua casa in una casa intelligente: tende, illuminazione, cancelli, scenari e controllo tramite voce e telefono. Domotica in tutta la Grande Lisbona. Preventivo gratuito.',
+      keywords: 'casa intelligente Lisbona, domotica Lisbona, tende intelligenti, illuminazione intelligente, controllo vocale, controllo da telefono, cancello automatico',
+      serviceName: 'Installazione di casa intelligente e domotica a Lisbona',
+      serviceDescription: 'Installazione domotica a Lisbona e nella Grande Lisbona: tende, illuminazione, cancelli, scenari automatici e controllo tramite voce e telefono.',
+    },
+    badge: 'Servizio',
+    breadcrumb: 'Casa Intelligente',
+    h1: 'Casa intelligente e domotica a Lisbona',
+    subtitle: 'Controlla tende, luci e cancelli dal telefono o con la voce. Automatizziamo la tua casa con soluzioni semplici, affidabili e adatte alla tua vita quotidiana.',
+    ctaQuote: 'Richiedi un preventivo gratuito',
+    introHeading: 'Che cos\'è una casa intelligente?',
+    introP1: 'Una casa intelligente riunisce i dispositivi di tutti i giorni — tende, illuminazione, cancelli, climatizzazione — in un unico sistema che controlli dal telefono, da un telecomando o con la voce. Basta con i tanti telecomandi: tutto a portata di un tocco.',
+    introP2: 'Essendo già specialisti in tende elettriche e lavori elettrici, la domotica è l\'evoluzione naturale del nostro servizio. Installiamo e configuriamo tutto, lo lasciamo funzionante e ti insegniamo a usarlo — senza complicazioni tecniche per te.',
+    servicesHeading: 'Cosa installiamo',
+    services: [
+      { key: 'blinds', title: 'Tende e tendaggi intelligenti', desc: 'Motorizzazione e controllo di tende e tendaggi tramite app, telecomando o voce, con apertura e chiusura automatiche per orario o luce solare.' },
+      { key: 'light', title: 'Illuminazione intelligente', desc: 'Interruttori e dimmer intelligenti per accendere, regolare l\'intensità e creare ambienti luminosi dal telefono o con la voce.' },
+      { key: 'gate', title: 'Cancelli e garage', desc: 'Apertura di cancelli e porte del garage dal telefono o con la voce, con notifica di apertura e chiusura.' },
+      { key: 'scene', title: 'Scenari e automazioni', desc: 'Routine con un solo tocco: "Esco di casa" chiude le tende, spegne le luci e attiva la sicurezza; "Buongiorno" apre la casa per te.' },
+      { key: 'voice', title: 'Controllo tramite voce e telefono', desc: 'Tutto riunito in un\'unica app e compatibile con i principali assistenti vocali sul mercato, a casa o a distanza.' },
+      { key: 'support', title: 'Manutenzione e supporto', desc: 'Seguiamo il sistema dopo l\'installazione: aggiornamenti, nuovi dispositivi e supporto ogni volta che ne hai bisogno.' },
+    ],
+    advantagesHeading: 'I vantaggi di automatizzare la casa',
+    advantages: [
+      { title: 'Comfort', desc: 'Controlla tutto senza sforzo, da qualsiasi stanza o fuori casa.' },
+      { title: 'Risparmio energetico', desc: 'Tende e luci che si regolano da sole riducono i consumi.' },
+      { title: 'Sicurezza', desc: 'Simulazione di presenza e avvisi quando qualcosa si apre o si chiude.' },
+      { title: 'Accessibilità', desc: 'Ideale per mobilità ridotta o case con molte finestre.' },
+    ],
+    processHeading: 'Come lavoriamo',
+    process: [
+      { step: '01', title: 'Sopralluogo e preventivo gratuiti', desc: 'Valutiamo la tua casa e ciò che vuoi automatizzare e presentiamo un preventivo senza impegno.' },
+      { step: '02', title: 'Un progetto su misura', desc: 'Proponiamo la soluzione più semplice e affidabile per le tue esigenze e il tuo budget.' },
+      { step: '03', title: 'Installazione professionale', desc: 'I nostri tecnici installano tutto in modo pulito e ordinato, senza lavori inutili.' },
+      { step: '04', title: 'Configurazione e scenari', desc: 'Colleghiamo i dispositivi, creiamo gli scenari e integriamo il controllo tramite voce e telefono.' },
+      { step: '05', title: 'Formazione e supporto', desc: 'Ti insegniamo a usare il sistema e restiamo disponibili per qualsiasi necessità.' },
+    ],
+    faqHeading: 'Domande frequenti',
+    faqs: [
+      { q: 'Servono lavori per avere una casa intelligente?', a: 'Nella maggior parte dei casi no. Molte soluzioni usano moduli installati dietro gli interruttori o nei motori esistenti, senza rompere i muri.' },
+      { q: 'Funziona con ciò che ho già?', a: 'Sì, nella maggior parte dei casi riutilizziamo tende, illuminazione e cancelli esistenti, aggiungendo solo i moduli di controllo.' },
+      { q: 'Continua a funzionare se Internet non va?', a: 'Sì. I comandi a parete e fisici continuano a funzionare; solo il controllo da remoto e vocale dipende dalla connessione.' },
+      { q: 'Posso iniziare in piccolo e aggiungere in seguito?', a: 'Certo. Puoi iniziare solo dalle tende o dall\'illuminazione ed estendere il sistema quando vuoi.' },
+    ],
+    zonesHeading: 'Dove installiamo',
+    zonesText: 'Installiamo soluzioni per la casa intelligente in tutta la Grande Lisbona: Lisbona, Sintra, Cascais, Oeiras, Almada, Setúbal, Amadora, Loures, Odivelas e i comuni vicini.',
+    zonesLink: 'Vedi tutte le zone che serviamo →',
+    finalTitle: 'Pronto a rendere la tua casa intelligente?',
+    finalText: 'Richiedi un preventivo gratuito e senza impegno. Rispondiamo in meno di 24 ore.',
+    finalQuote: 'Richiedi un preventivo gratuito',
+    finalContact: 'Parla con il nostro team',
+    formIntro: 'Richiedi il tuo preventivo',
+  },
+};
+
+const c = content[lang] ?? content.pt;
+const l = links[lang] ?? links.pt;
+const pageUrl = `${baseUrl}${pagePath[lang] ?? pagePath.pt}`;
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: c.breadcrumb, item: pageUrl },
+  ],
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: c.faqs.map(f => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+<script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+<Layout
+  title={c.meta.title}
+  description={c.meta.description}
+  keywords={c.meta.keywords}
+  canonicalURL={pageUrl}
+  schemaType="Service"
+  serviceName={c.meta.serviceName}
+  serviceDescription={c.meta.serviceDescription}
+  lang={lang}
+>
+  <!-- Hero -->
+  <section class="bg-gradient-to-br from-[#1A1A1A] to-[#8B1A1A] text-white py-16 lg:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <nav aria-label="Breadcrumb" class="mb-6">
+        <ol class="flex items-center gap-2 text-sm text-white/80">
+          <li><a href={l.home} class="hover:text-white transition-colors">{lang === 'pt' ? 'Início' : lang === 'en' ? 'Home' : lang === 'fr' ? 'Accueil' : lang === 'es' ? 'Inicio' : lang === 'de' ? 'Startseite' : 'Home'}</a></li>
+          <li aria-hidden="true"><span>/</span></li>
+          <li><span class="text-white">{c.breadcrumb}</span></li>
+        </ol>
+      </nav>
+      <div class="max-w-3xl">
+        <span class="inline-block bg-white/10 border border-white/20 text-white text-xs font-semibold uppercase tracking-widest px-3 py-1 rounded-full mb-4">{c.badge}</span>
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black leading-tight mb-4">{c.h1}</h1>
+        <p class="text-lg sm:text-xl text-white/80 leading-relaxed mb-8">{c.subtitle}</p>
+        <div class="flex flex-col sm:flex-row gap-3">
+          <a href={l.quote} class="inline-flex items-center justify-center gap-2 bg-white text-[#8B1A1A] font-bold px-6 py-3.5 rounded-lg hover:bg-gray-100 transition-colors">
+            {c.ctaQuote}
+          </a>
+          <a href="tel:+351923348323" class="inline-flex items-center justify-center gap-2 border-2 border-white text-white font-bold px-6 py-3.5 rounded-lg hover:bg-white/10 transition-colors">
+            +351 923 348 323
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Intro -->
+  <section class="py-16 lg:py-20 bg-white">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl lg:text-3xl font-black text-[#1A1A1A] mb-4">{c.introHeading}</h2>
+      <p class="text-gray-600 leading-relaxed mb-4">{c.introP1}</p>
+      <p class="text-gray-600 leading-relaxed">{c.introP2}</p>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="py-16 lg:py-20 bg-[#F5F5F5]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl lg:text-3xl font-black text-[#1A1A1A] mb-10 text-center">{c.servicesHeading}</h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {c.services.map(s => (
+          <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+            <div class="w-12 h-12 bg-[#8B1A1A] rounded-xl flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <Fragment set:html={icons[s.key]} />
+              </svg>
+            </div>
+            <h3 class="font-bold text-[#1A1A1A] mb-2">{s.title}</h3>
+            <p class="text-gray-500 text-sm leading-relaxed">{s.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Advantages + process + form -->
+  <section class="py-16 lg:py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-3 gap-12">
+        <div class="lg:col-span-2">
+          <h2 class="text-2xl lg:text-3xl font-black text-[#1A1A1A] mb-6">{c.advantagesHeading}</h2>
+          <div class="grid sm:grid-cols-2 gap-4 mb-10">
+            {c.advantages.map(item => (
+              <div class="flex gap-3 p-4 bg-[#F5F5F5] rounded-xl">
+                <svg class="w-5 h-5 text-[#8B1A1A] flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                </svg>
+                <div>
+                  <div class="font-semibold text-[#1A1A1A] text-sm">{item.title}</div>
+                  <div class="text-gray-500 text-xs mt-0.5">{item.desc}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <h2 class="text-2xl font-black text-[#1A1A1A] mb-6">{c.processHeading}</h2>
+          <ol class="space-y-4 mb-10">
+            {c.process.map(item => (
+              <li class="flex gap-4">
+                <div class="flex-shrink-0 w-10 h-10 bg-[#8B1A1A] text-white rounded-full flex items-center justify-center font-black text-sm">{item.step}</div>
+                <div>
+                  <div class="font-semibold text-[#1A1A1A]">{item.title}</div>
+                  <div class="text-gray-500 text-sm mt-0.5">{item.desc}</div>
+                </div>
+              </li>
+            ))}
+          </ol>
+
+          <h2 class="text-2xl font-black text-[#1A1A1A] mb-4">{c.zonesHeading}</h2>
+          <p class="text-gray-600 leading-relaxed mb-4">{c.zonesText}</p>
+          <a href={l.zones} class="text-[#8B1A1A] font-semibold hover:underline text-sm">{c.zonesLink}</a>
+        </div>
+
+        <div class="space-y-6">
+          <ContactForm showTitle={true} lang={lang} />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-16 lg:py-20 bg-[#F5F5F5]" aria-labelledby="smarthome-faq">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 id="smarthome-faq" class="text-2xl lg:text-3xl font-black text-[#1A1A1A] mb-8 text-center">{c.faqHeading}</h2>
+      <div class="space-y-3">
+        {c.faqs.map((faq, index) => (
+          <details class="bg-white rounded-xl border border-gray-200 overflow-hidden group" id={`sh-faq-${index}`}>
+            <summary class="flex items-center justify-between gap-4 px-6 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors">
+              <h3 class="font-semibold text-[#1A1A1A] text-base pr-2">{faq.q}</h3>
+              <span class="flex-shrink-0 w-6 h-6 flex items-center justify-center rounded-full bg-red-50 text-[#8B1A1A] group-open:bg-[#8B1A1A] group-open:text-white transition-colors" aria-hidden="true">
+                <svg class="w-4 h-4 transition-transform group-open:rotate-45" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+                </svg>
+              </span>
+            </summary>
+            <div class="px-6 pb-4 pt-0">
+              <p class="text-gray-600 text-sm leading-relaxed">{faq.a}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="py-16 bg-[#1A1A1A] text-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-2xl lg:text-3xl font-black mb-4">{c.finalTitle}</h2>
+      <p class="text-gray-400 text-lg mb-8 max-w-2xl mx-auto">{c.finalText}</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href={l.quote} class="inline-flex items-center justify-center gap-2 bg-[#8B1A1A] text-white font-bold px-8 py-4 rounded-lg hover:bg-[#7a1717] transition-colors">{c.finalQuote}</a>
+        <a href="tel:+351923348323" class="inline-flex items-center justify-center gap-2 border-2 border-white text-white font-bold px-8 py-4 rounded-lg hover:bg-white/10 transition-colors">{c.finalContact}</a>
+      </div>
+    </div>
+  </section>
+
+  <RelatedServices current="smart-home" lang={lang} />
+</Layout>

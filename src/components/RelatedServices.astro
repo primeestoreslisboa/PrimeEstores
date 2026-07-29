@@ -1,5 +1,5 @@
 ---
-export type ServiceType = 'electric' | 'manual' | 'repair' | 'electrical';
+export type ServiceType = 'electric' | 'manual' | 'repair' | 'electrical' | 'smart-home';
 export type Lang = 'pt' | 'en' | 'fr' | 'es' | 'de' | 'it';
 
 export interface Props {
@@ -22,36 +22,42 @@ const allServices: Record<Lang, Record<ServiceType, ServiceLink>> = {
     manual:     { label: 'Estores Manuais',     desc: 'Instalação de estores de enrolar e rolo manuais.',                 href: '/servicos/estores-manuais',    icon: '🪟' },
     repair:     { label: 'Reparação',           desc: 'Reparação urgente de qualquer tipo de estore.',                    href: '/servicos/reparacao-estores',  icon: '🔧' },
     electrical: { label: 'Eletricidade',        desc: 'Instalação e reparação de circuitos elétricos.',                   href: '/servicos/eletricidade',       icon: '🔌' },
+    'smart-home': { label: 'Casa Inteligente',  desc: 'Automação de estores, luzes e portões por telemóvel ou voz.',      href: '/servicos/casa-inteligente/',  icon: '🏠' },
   },
   en: {
     electric:   { label: 'Electric Blinds',     desc: 'Installation of motorized systems with remote control.',           href: '/en/services/electric-blinds',      icon: '⚡' },
     manual:     { label: 'Manual Blinds',        desc: 'Installation of roller and manual blinds.',                        href: '/en/services/manual-blinds',        icon: '🪟' },
     repair:     { label: 'Blind Repair',         desc: 'Urgent repair for any type of blind.',                             href: '/en/services/blind-repair',         icon: '🔧' },
     electrical: { label: 'Electrical Work',      desc: 'Installation and repair of electrical circuits.',                  href: '/en/services/electrical-work',      icon: '🔌' },
+    'smart-home': { label: 'Smart Home',         desc: 'Automate blinds, lights and gates by phone or voice.',             href: '/en/services/smart-home/',          icon: '🏠' },
   },
   fr: {
     electric:   { label: 'Stores Électriques',  desc: 'Installation de systèmes motorisés avec télécommande.',            href: '/fr/services/stores-electriques',   icon: '⚡' },
     manual:     { label: 'Stores Manuels',       desc: 'Installation de stores enrouleurs et manuels.',                    href: '/fr/services/stores-manuels',       icon: '🪟' },
     repair:     { label: 'Réparation',           desc: 'Réparation urgente de tout type de store.',                        href: '/fr/services/reparation-stores',    icon: '🔧' },
     electrical: { label: 'Électricité',          desc: 'Installation et réparation de circuits électriques.',              href: '/fr/services/electricite',          icon: '🔌' },
+    'smart-home': { label: 'Maison connectée',   desc: 'Automatisez stores, lumières et portails par smartphone ou voix.', href: '/fr/services/maison-connectee/',    icon: '🏠' },
   },
   es: {
     electric:   { label: 'Persianas Eléctricas',desc: 'Instalación de sistemas motorizados con mando a distancia.',       href: '/es/servicios/persianas-electricas',  icon: '⚡' },
     manual:     { label: 'Persianas Manuales',   desc: 'Instalación de persianas enrollables y manuales.',                 href: '/es/servicios/persianas-manuales',    icon: '🪟' },
     repair:     { label: 'Reparación',           desc: 'Reparación urgente de cualquier tipo de persiana.',                href: '/es/servicios/reparacion-persianas', icon: '🔧' },
     electrical: { label: 'Electricidad',         desc: 'Instalación y reparación de circuitos eléctricos.',               href: '/es/servicios/electricidad',         icon: '🔌' },
+    'smart-home': { label: 'Hogar Inteligente',  desc: 'Automatice persianas, luces y portones por móvil o voz.',          href: '/es/servicios/hogar-inteligente/',   icon: '🏠' },
   },
   de: {
     electric:   { label: 'Elektr. Jalousien',   desc: 'Installation motorisierter Systeme mit Fernbedienung.',            href: '/de/dienstleistungen/elektrische-jalousien',  icon: '⚡' },
     manual:     { label: 'Manuelle Jalousien',   desc: 'Installation von Rollo- und Manualjalousien.',                    href: '/de/dienstleistungen/manuelle-jalousien',     icon: '🪟' },
     repair:     { label: 'Reparatur',            desc: 'Schnelle Reparatur jeder Art von Jalousie.',                      href: '/de/dienstleistungen/jalousien-reparatur',    icon: '🔧' },
     electrical: { label: 'Elektroinstallation', desc: 'Installation und Reparatur elektrischer Leitungen.',              href: '/de/dienstleistungen/elektroinstallation',    icon: '🔌' },
+    'smart-home': { label: 'Smart Home',         desc: 'Jalousien, Licht und Tore per Handy oder Sprache automatisieren.', href: '/de/dienstleistungen/smart-home/',            icon: '🏠' },
   },
   it: {
     electric:   { label: 'Tende Elettriche',    desc: 'Installazione di sistemi motorizzati con telecomando.',            href: '/it/servizi/tende-elettriche',     icon: '⚡' },
     manual:     { label: 'Tende Manuali',        desc: 'Installazione di tende a rullo e manuali.',                       href: '/it/servizi/tende-manuali',        icon: '🪟' },
     repair:     { label: 'Riparazione',          desc: 'Riparazione urgente di qualsiasi tipo di tenda.',                 href: '/it/servizi/riparazione-tende',    icon: '🔧' },
     electrical: { label: 'Impianto Elettrico',  desc: 'Installazione e riparazione di circuiti elettrici.',              href: '/it/servizi/impianto-elettrico',   icon: '🔌' },
+    'smart-home': { label: 'Casa Intelligente', desc: 'Automatizza tende, luci e cancelli da telefono o voce.',           href: '/it/servizi/casa-intelligente/',   icon: '🏠' },
   },
 };
 

@@ -81,6 +81,17 @@ if (lang === 'en') {
   navLinks[1].dropdown![3].href = '/it/servizi/impianto-elettrico';
 }
 
+// "Smart Home" service — appended to the services dropdown in every language.
+const smartHomeService: Record<Lang, { href: string; label: string }> = {
+  pt: { href: '/servicos/casa-inteligente/',      label: 'Casa Inteligente' },
+  en: { href: '/en/services/smart-home/',         label: 'Smart Home' },
+  fr: { href: '/fr/services/maison-connectee/',   label: 'Maison connectée' },
+  es: { href: '/es/servicios/hogar-inteligente/', label: 'Hogar Inteligente' },
+  de: { href: '/de/dienstleistungen/smart-home/', label: 'Smart Home' },
+  it: { href: '/it/servizi/casa-intelligente/',   label: 'Casa Intelligente' },
+};
+navLinks[1].dropdown!.push(smartHomeService[lang]);
+
 // "About" page — localized route + label per language (inserted after the
 // per-language reassignments so it never disturbs the index-based edits above)
 const aboutLink: Record<Lang, { href: string; label: string }> = {
