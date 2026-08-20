@@ -15,6 +15,10 @@ export const ui = {
   pt: {
     // Nav
     'nav.home': 'Início',
+    'home.seo.heading': 'Estores elétricos e manuais em Lisboa e Grande Lisboa',
+    'home.seo.p1': 'A Prime Estores é especialista na instalação e reparação de estores elétricos e manuais em Lisboa e em toda a Grande Lisboa. Com mais de 10 anos de experiência, motorizamos, substituímos e reparamos estores de rolo, venezianas e portadas em habitações, condomínios e espaços comerciais.',
+    'home.seo.p2': 'Além da instalação de estores motorizados, fazemos reparação urgente de motores, fitas, lâminas e mecanismos, trabalhos de eletricidade associados e soluções de casa inteligente que lhe permitem controlar os estores pelo telemóvel ou por voz.',
+    'home.seo.p3': 'Deslocamo-nos a Lisboa, Sintra, Cascais, Oeiras, Almada, Setúbal, Amadora, Loures, Odivelas e concelhos vizinhos, sem custo de deslocação. Peça já o seu orçamento gratuito e sem compromisso — respondemos em menos de 24 horas.',
     'nav.services': 'Serviços',
     'nav.services.electric': 'Estores Elétricos',
     'nav.services.manual': 'Estores Manuais',
@@ -181,6 +185,10 @@ export const ui = {
   },
   en: {
     'nav.home': 'Home',
+    'home.seo.heading': 'Electric and manual blinds in Lisbon and Greater Lisbon',
+    'home.seo.p1': 'Prime Estores specialises in the installation and repair of electric and manual blinds in Lisbon and across Greater Lisbon. With over 10 years of experience, we motorise, replace and repair roller blinds, venetian blinds and shutters in homes, condominiums and commercial spaces.',
+    'home.seo.p2': 'Beyond installing motorised blinds, we carry out urgent repairs of motors, straps, slats and mechanisms, related electrical work, and smart home solutions that let you control your blinds from your phone or by voice.',
+    'home.seo.p3': 'We travel to Lisbon, Sintra, Cascais, Oeiras, Almada, Setúbal, Amadora, Loures, Odivelas and neighbouring municipalities at no call-out charge. Request your free, no-obligation quote now — we reply in under 24 hours.',
     'nav.services': 'Services',
     'nav.services.electric': 'Electric Blinds',
     'nav.services.manual': 'Manual Blinds',
@@ -334,6 +342,10 @@ export const ui = {
   },
   fr: {
     'nav.home': 'Accueil',
+    'home.seo.heading': 'Stores électriques et manuels à Lisbonne et dans le Grand Lisbonne',
+    'home.seo.p1': 'Prime Estores est spécialisée dans l\'installation et la réparation de stores électriques et manuels à Lisbonne et dans tout le Grand Lisbonne. Avec plus de 10 ans d\'expérience, nous motorisons, remplaçons et réparons stores enrouleurs, stores vénitiens et volets dans les logements, copropriétés et espaces commerciaux.',
+    'home.seo.p2': 'Au-delà de l\'installation de stores motorisés, nous réalisons la réparation urgente de moteurs, sangles, lames et mécanismes, les travaux d\'électricité associés et des solutions de maison connectée qui vous permettent de contrôler vos stores par smartphone ou par la voix.',
+    'home.seo.p3': 'Nous nous déplaçons à Lisbonne, Sintra, Cascais, Oeiras, Almada, Setúbal, Amadora, Loures, Odivelas et communes voisines sans frais de déplacement. Demandez dès maintenant votre devis gratuit et sans engagement — nous répondons en moins de 24 heures.',
     'nav.services': 'Services',
     'nav.services.electric': 'Stores Électriques',
     'nav.services.manual': 'Stores Manuels',
@@ -487,6 +499,10 @@ export const ui = {
   },
   es: {
     'nav.home': 'Inicio',
+    'home.seo.heading': 'Persianas eléctricas y manuales en Lisboa y el Gran Lisboa',
+    'home.seo.p1': 'Prime Estores está especializada en la instalación y reparación de persianas eléctricas y manuales en Lisboa y en todo el Gran Lisboa. Con más de 10 años de experiencia, motorizamos, sustituimos y reparamos persianas enrollables, venecianas y contraventanas en viviendas, comunidades y espacios comerciales.',
+    'home.seo.p2': 'Además de la instalación de persianas motorizadas, realizamos reparación urgente de motores, cintas, lamas y mecanismos, trabajos de electricidad asociados y soluciones de hogar inteligente que le permiten controlar las persianas desde el móvil o por voz.',
+    'home.seo.p3': 'Nos desplazamos a Lisboa, Sintra, Cascais, Oeiras, Almada, Setúbal, Amadora, Loures, Odivelas y municipios vecinos sin coste de desplazamiento. Solicite ya su presupuesto gratuito y sin compromiso: respondemos en menos de 24 horas.',
     'nav.services': 'Servicios',
     'nav.services.electric': 'Persianas Eléctricas',
     'nav.services.manual': 'Persianas Manuales',
@@ -640,6 +656,10 @@ export const ui = {
   },
   de: {
     'nav.home': 'Startseite',
+    'home.seo.heading': 'Elektrische und manuelle Jalousien in Lissabon und im Großraum Lissabon',
+    'home.seo.p1': 'Prime Estores ist auf die Installation und Reparatur von elektrischen und manuellen Jalousien in Lissabon und im gesamten Großraum Lissabon spezialisiert. Mit über 10 Jahren Erfahrung motorisieren, ersetzen und reparieren wir Rollos, Jalousien und Rollläden in Wohnungen, Eigentümergemeinschaften und Gewerberäumen.',
+    'home.seo.p2': 'Neben der Installation motorisierter Jalousien führen wir dringende Reparaturen von Motoren, Gurten, Lamellen und Mechanismen, zugehörige Elektroarbeiten sowie Smart-Home-Lösungen durch, mit denen Sie Ihre Jalousien per Handy oder Sprache steuern.',
+    'home.seo.p3': 'Wir fahren ohne Anfahrtskosten nach Lissabon, Sintra, Cascais, Oeiras, Almada, Setúbal, Amadora, Loures, Odivelas und in die Nachbargemeinden. Fordern Sie jetzt Ihren kostenlosen und unverbindlichen Kostenvoranschlag an — wir antworten in weniger als 24 Stunden.',
     'nav.services': 'Dienstleistungen',
     'nav.services.electric': 'Elektrische Jalousien',
     'nav.services.manual': 'Manuelle Jalousien',
@@ -793,6 +813,10 @@ export const ui = {
   },
   it: {
     'nav.home': 'Home',
+    'home.seo.heading': 'Tende elettriche e manuali a Lisbona e nella Grande Lisbona',
+    'home.seo.p1': 'Prime Estores è specializzata nell\'installazione e riparazione di tende elettriche e manuali a Lisbona e in tutta la Grande Lisbona. Con oltre 10 anni di esperienza, motorizziamo, sostituiamo e ripariamo tende a rullo, veneziane e tapparelle in abitazioni, condomini e spazi commerciali.',
+    'home.seo.p2': 'Oltre all\'installazione di tende motorizzate, effettuiamo riparazioni urgenti di motori, cinghie, lamelle e meccanismi, lavori elettrici correlati e soluzioni di casa intelligente che ti permettono di controllare le tende dal telefono o con la voce.',
+    'home.seo.p3': 'Ci spostiamo a Lisbona, Sintra, Cascais, Oeiras, Almada, Setúbal, Amadora, Loures, Odivelas e comuni vicini senza costi di trasferta. Richiedi subito il tuo preventivo gratuito e senza impegno: rispondiamo in meno di 24 ore.',
     'nav.services': 'Servizi',
     'nav.services.electric': 'Tende Elettriche',
     'nav.services.manual': 'Tende Manuali',
@@ -946,6 +970,10 @@ export const ui = {
   },
   ru: {
     'nav.home': 'Главная',
+    'home.seo.heading': 'Электрические и ручные рольставни в Лиссабоне и Большом Лиссабоне',
+    'home.seo.p1': 'Prime Estores специализируется на установке и ремонте электрических и ручных рольставней в Лиссабоне и по всему Большому Лиссабону. Имея более 10 лет опыта, мы моторизуем, заменяем и ремонтируем рулонные рольставни, жалюзи и ставни в домах, кондоминиумах и коммерческих помещениях.',
+    'home.seo.p2': 'Помимо установки моторизованных рольставней, мы выполняем срочный ремонт моторов, лент, ламелей и механизмов, сопутствующие электромонтажные работы и решения для умного дома, которые позволяют управлять рольставнями с телефона или голосом.',
+    'home.seo.p3': 'Мы выезжаем в Лиссабон, Синтру, Кашкайш, Оэйраш, Алмаду, Сетубал, Амадору, Лориш, Одивелаш и соседние муниципалитеты без платы за выезд. Запросите бесплатную смету без обязательств прямо сейчас — отвечаем менее чем за 24 часа.',
     'nav.services': 'Услуги',
     'nav.services.electric': 'Электрические рольставни',
     'nav.services.manual': 'Ручные рольставни',
@@ -1094,6 +1122,10 @@ export const ui = {
   },
   uk: {
     'nav.home': 'Головна',
+    'home.seo.heading': 'Електричні та ручні ролети в Лісабоні та Великому Лісабоні',
+    'home.seo.p1': 'Prime Estores спеціалізується на встановленні та ремонті електричних і ручних ролетів у Лісабоні та по всьому Великому Лісабону. Маючи понад 10 років досвіду, ми моторизуємо, замінюємо та ремонтуємо рулонні ролети, жалюзі та віконниці в будинках, кондомініумах і комерційних приміщеннях.',
+    'home.seo.p2': 'Окрім встановлення моторизованих ролетів, ми виконуємо терміновий ремонт моторів, стрічок, ламелей і механізмів, супутні електромонтажні роботи та рішення для розумного дому, що дозволяють керувати ролетами з телефона або голосом.',
+    'home.seo.p3': 'Ми виїжджаємо до Лісабона, Сінтри, Кашкайша, Оейраша, Алмади, Сетубала, Амадори, Лоуреша, Одівелаша та сусідніх муніципалітетів без плати за виїзд. Замовте безкоштовний кошторис без зобовʼязань просто зараз — відповідаємо менш ніж за 24 години.',
     'nav.services': 'Послуги',
     'nav.services.electric': 'Електричні ролети',
     'nav.services.manual': 'Ручні ролети',
