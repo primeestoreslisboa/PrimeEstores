@@ -8,7 +8,11 @@ interface Props {
 
 const { lang = 'pt' } = Astro.props;
 
-const { rating, reviewCount, googleMapsUrl } = googleReviews;
+// Values can be overridden by Netlify environment variables (updated in the
+// Netlify dashboard + redeploy — no code change). Falls back to the JSON file.
+const rating = Number(import.meta.env.PUBLIC_REVIEW_RATING ?? googleReviews.rating);
+const reviewCount = Number(import.meta.env.PUBLIC_REVIEW_COUNT ?? googleReviews.reviewCount);
+const googleMapsUrl = import.meta.env.PUBLIC_REVIEW_MAPS_URL ?? googleReviews.googleMapsUrl;
 
 const labels = {
   pt: {
