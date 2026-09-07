@@ -66,4 +66,16 @@ export const servicosMatrizEn: ServicoMatrizEn[] = [
     intro: z => `Need an electrician in ${z.nome}? We install sockets, switches, LED lighting and electrical points for motorized blinds in ${z.nome}, with technicians certified to Portuguese standards (RTIEBT).`,
     detail: z => `Whenever possible we combine the electrical work with the blind installation in the same visit to ${z.nome}, saving time and costs. ${z.detail}`,
   },
+  {
+    slug: 'blind-strap-replacement',
+    type: 'repair',
+    nome: 'Strap Replacement',
+    serviceHref: '/en/services/blind-strap-replacement/',
+    h1: z => `Blind Strap Replacement in ${z}`,
+    title: z => `Blind Strap Replacement in ${z} — At Your Home`,
+    description: z => `Replacement of the strap of manual blinds in ${z}. Broken or worn strap? Fast home service, no call-out charge. Free quote.`,
+    keywords: z => `blind strap replacement ${z}, replace blind strap ${z}, broken blind strap ${z}, blind webbing ${z}, manual blind strap repair ${z}`,
+    intro: z => `Has your blind strap snapped or worn out in ${z.nome}? Prime Estores replaces the strap of manual blinds at your home in ${z.nome}, fast and with no call-out charge. We bring the right strap and replace it on site.`,
+    detail: z => `We travel to ${z.nome} often on the same day, with straps of various widths in stock. ${z.detail}`,
+  },
 ];

@@ -1,0 +1,483 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ContactForm from './ContactForm.astro';
+import RelatedServices from './RelatedServices.astro';
+import type { Lang } from '../i18n/utils';
+
+export interface Props { lang?: Lang }
+const { lang = 'pt' } = Astro.props;
+const baseUrl = 'https://primeestores.pt';
+
+const pagePath: Record<Lang, string> = {
+  pt: '/servicos/troca-fita-estores/',
+  en: '/en/services/blind-strap-replacement/',
+  fr: '/fr/services/remplacement-sangle-store/',
+  es: '/es/servicios/cambio-cinta-persiana/',
+  de: '/de/dienstleistungen/gurtwechsel-jalousien/',
+  it: '/it/servizi/sostituzione-cinghia-tende/',
+  ru: '/ru/services/blind-strap-replacement/',
+  uk: '/uk/services/blind-strap-replacement/',
+};
+
+const links: Record<Lang, { home: string; quote: string; zones: string; repair: string; manual: string; electric: string }> = {
+  pt: { home: '/',    quote: '/orcamento/',      zones: '/zonas-que-servimos/',     repair: '/servicos/reparacao-estores/',              manual: '/servicos/estores-manuais/',                electric: '/servicos/estores-eletricos/' },
+  en: { home: '/en/', quote: '/en/quote/',       zones: '/en/coverage-areas/',      repair: '/en/services/blind-repair/',                manual: '/en/services/manual-blinds/',               electric: '/en/services/electric-blinds/' },
+  fr: { home: '/fr/', quote: '/fr/devis/',       zones: '/fr/zones-couvertes/',     repair: '/fr/services/reparation-stores/',           manual: '/fr/services/stores-manuels/',              electric: '/fr/services/stores-electriques/' },
+  es: { home: '/es/', quote: '/es/presupuesto/', zones: '/es/zonas-cobertura/',     repair: '/es/servicios/reparacion-persianas/',       manual: '/es/servicios/persianas-manuales/',         electric: '/es/servicios/persianas-electricas/' },
+  de: { home: '/de/', quote: '/de/angebot/',     zones: '/de/versorgungsgebiete/',  repair: '/de/dienstleistungen/jalousien-reparatur/', manual: '/de/dienstleistungen/manuelle-jalousien/',  electric: '/de/dienstleistungen/elektrische-jalousien/' },
+  it: { home: '/it/', quote: '/it/preventivo/',  zones: '/it/zone-servite/',        repair: '/it/servizi/riparazione-tende/',            manual: '/it/servizi/tende-manuali/',                electric: '/it/servizi/tende-elettriche/' },
+  ru: { home: '/ru/', quote: '/ru/quote/',       zones: '/ru/coverage-areas/',      repair: '/ru/services/blind-repair/',                manual: '/ru/services/manual-blinds/',               electric: '/ru/services/electric-blinds/' },
+  uk: { home: '/uk/', quote: '/uk/quote/',       zones: '/uk/coverage-areas/',      repair: '/uk/services/blind-repair/',                manual: '/uk/services/manual-blinds/',               electric: '/uk/services/electric-blinds/' },
+};
+
+interface C {
+  metaTitle: string; metaDesc: string; keywords: string;
+  badge: string; bcHome: string; bcRepair: string; bcLeaf: string;
+  h1: string; subtitle: string; callNow: string; ctaQuote: string;
+  urgentBold: string; urgentText: string;
+  introH2: string; introP1: string; introP2: string;
+  signsH2: string; signs: string[];
+  processH2: string; process: { step: string; title: string; desc: string }[];
+  localH2: string; localP: string; chipPrefix: string; zonesLink: string;
+  faqH2: string; faqs: { q: string; a: string }[];
+  sideTitle: string; sideText: string; alsoTitle: string; alsoRepair: string; alsoManual: string; alsoElectric: string;
+  zonas: string[];
+}
+
+const LX = { pt: 'Lisboa', en: 'Lisbon', fr: 'Lisbonne', es: 'Lisboa', de: 'Lissabon', it: 'Lisbona', ru: 'Лиссабон', uk: 'Лісабон' };
+
+const content: Record<Lang, C> = {
+  pt: {
+    metaTitle: 'Troca de Fita de Estore em Lisboa | Prime Estores',
+    metaDesc: 'Fita do estore partida ou gasta? Fazemos a troca e substituição da fita de estores manuais em Lisboa e Grande Lisboa, ao domicílio e no mesmo dia. Orçamento grátis.',
+    keywords: 'troca de fita de estore, substituir fita estore, fita de estore partida, reparar fita estore Lisboa, troca fita persiana, mudar fita estore',
+    badge: 'Reparação de Estores', bcHome: 'Início', bcRepair: 'Reparação', bcLeaf: 'Troca de Fita',
+    h1: 'Troca de Fita de Estore em Lisboa e Grande Lisboa',
+    subtitle: 'A fita do seu estore partiu, saiu do sítio ou está gasta? Substituímos a fita de estores manuais ao domicílio, com rapidez, em toda a Grande Lisboa.',
+    callNow: 'Ligar Agora: +351 923 348 323', ctaQuote: 'Pedir Orçamento Grátis',
+    urgentBold: 'Fita partida?', urgentText: 'tentamos deslocar-nos no mesmo dia.',
+    introH2: 'Troca e substituição da fita do estore',
+    introP1: 'A fita (ou cinta) é o que lhe permite subir e descer o estore manual. Com o uso, a fita desgasta-se, desfia e acaba por partir — deixando o estore preso ou impossível de mover. A boa notícia é que não é preciso substituir o estore inteiro: basta trocar a fita.',
+    introP2: 'A Prime Estores faz a troca de fita de estores manuais ao domicílio, em toda a Grande Lisboa. Levamos a fita na largura e comprimento certos, substituímos no local e testamos o funcionamento — normalmente numa única visita, com orçamento gratuito.',
+    signsH2: 'Sinais de que precisa de trocar a fita',
+    signs: ['A fita partiu completamente', 'A fita está desfiada ou gasta', 'A fita patina e não sobe o estore', 'A fita saiu da roldana ou do enrolador', 'O estore ficou preso a meio', 'O enrolador da fita está solto ou partido'],
+    processH2: 'Como funciona a troca de fita',
+    process: [
+      { step: '01', title: 'Contacto e orçamento', desc: 'Ligue-nos ou preencha o formulário a indicar a medida aproximada do estore. Damos orçamento gratuito e agendamos a visita.' },
+      { step: '02', title: 'Visita ao domicílio', desc: 'Deslocamo-nos a sua casa ou empresa com a fita adequada, sem custo de deslocação na Grande Lisboa.' },
+      { step: '03', title: 'Substituição no local', desc: 'Retiramos a fita antiga, colocamos a nova na roldana/enrolador e ajustamos a tensão correta.' },
+      { step: '04', title: 'Teste e garantia', desc: 'Testamos a subida e descida completas do estore e garantimos que fica a funcionar perfeitamente.' },
+    ],
+    localH2: 'Troca de fita de estore em toda a Grande Lisboa',
+    localP: 'Fazemos a troca de fita de estore ao domicílio em Lisboa e em todos os concelhos vizinhos, sem custo de deslocação. Onde quer que esteja na área metropolitana, temos um técnico perto de si:',
+    chipPrefix: 'Troca de fita em', zonesLink: 'Ver todas as zonas que servimos →',
+    faqH2: 'Perguntas frequentes',
+    faqs: [
+      { q: 'Quanto custa trocar a fita de um estore?', a: 'O valor depende do tamanho do estore e do tipo de fita, mas é uma das reparações mais económicas. Damos sempre orçamento gratuito antes de avançar, sem compromisso.' },
+      { q: 'Conseguem vir no mesmo dia?', a: 'Na maioria dos casos sim, consoante a disponibilidade da agenda e a sua zona. Para maior rapidez, ligue para +351 923 348 323.' },
+      { q: 'Trocam a fita de qualquer tipo de estore?', a: 'Sim. Substituímos a fita (cinta) em estores de enrolar manuais de qualquer marca, modelo e largura, incluindo estores antigos.' },
+      { q: 'Preciso de comprar a fita antes?', a: 'Não. Levamos a fita adequada connosco, na largura e comprimento certos para o seu estore.' },
+      { q: 'Fazem a troca ao domicílio?', a: 'Sim, deslocamo-nos a sua casa ou empresa em toda a Grande Lisboa, sem custo de deslocação. A substituição é feita no local, normalmente numa única visita.' },
+    ],
+    sideTitle: 'Fita partida?', sideText: 'Ligue diretamente e tratamos da troca com a maior brevidade — muitas vezes no próprio dia.',
+    alsoTitle: 'Também reparamos', alsoRepair: 'Reparação de estores', alsoManual: 'Estores manuais', alsoElectric: 'Estores elétricos',
+    zonas: ['Lisboa', 'Sintra', 'Cascais', 'Oeiras', 'Almada', 'Setúbal', 'Amadora', 'Loures', 'Odivelas', 'Vila Franca de Xira', 'Mafra', 'Sesimbra', 'Palmela'],
+  },
+  en: {
+    metaTitle: 'Blind Strap Replacement in Lisbon | Prime Estores',
+    metaDesc: 'Broken or worn blind strap? We replace the strap (webbing) of manual blinds in Lisbon and Greater Lisbon, at your home and same day. Free quote.',
+    keywords: 'blind strap replacement, replace blind strap, broken blind strap, blind webbing replacement Lisbon, manual blind strap repair',
+    badge: 'Blind Repair', bcHome: 'Home', bcRepair: 'Repair', bcLeaf: 'Strap Replacement',
+    h1: 'Blind Strap Replacement in Lisbon and Greater Lisbon',
+    subtitle: 'Has your blind strap snapped, slipped off or worn out? We replace the strap of manual blinds at your home, fast, across all of Greater Lisbon.',
+    callNow: 'Call Now: +351 923 348 323', ctaQuote: 'Get a Free Quote',
+    urgentBold: 'Broken strap?', urgentText: 'we try to come the same day.',
+    introH2: 'Replacing your blind strap',
+    introP1: 'The strap (or webbing) is what lets you raise and lower a manual blind. With use, the strap wears, frays and eventually snaps — leaving the blind stuck or impossible to move. The good news: you don\'t need to replace the whole blind, just the strap.',
+    introP2: 'Prime Estores replaces the strap of manual blinds at your home, across all of Greater Lisbon. We bring the strap in the right width and length, replace it on site and test the operation — usually in a single visit, with a free quote.',
+    signsH2: 'Signs your strap needs replacing',
+    signs: ['The strap has snapped completely', 'The strap is frayed or worn', 'The strap slips and won\'t raise the blind', 'The strap came off the pulley or winder', 'The blind is stuck halfway', 'The strap winder is loose or broken'],
+    processH2: 'How the strap replacement works',
+    process: [
+      { step: '01', title: 'Contact and quote', desc: 'Call us or fill in the form with the approximate size of the blind. We give a free quote and schedule the visit.' },
+      { step: '02', title: 'Visit to your home', desc: 'We come to your home or business with the right strap, at no call-out charge in Greater Lisbon.' },
+      { step: '03', title: 'On-site replacement', desc: 'We remove the old strap, fit the new one to the pulley/winder and set the correct tension.' },
+      { step: '04', title: 'Test and guarantee', desc: 'We test the full up and down travel of the blind and make sure it works perfectly.' },
+    ],
+    localH2: 'Blind strap replacement across Greater Lisbon',
+    localP: 'We replace blind straps at your home in Lisbon and every neighbouring municipality, at no call-out charge. Wherever you are in the metropolitan area, we have a technician near you:',
+    chipPrefix: 'Strap replacement in', zonesLink: 'See all the areas we serve →',
+    faqH2: 'Frequently asked questions',
+    faqs: [
+      { q: 'How much does it cost to replace a blind strap?', a: 'The price depends on the size of the blind and the type of strap, but it is one of the most affordable repairs. We always give a free, no-obligation quote first.' },
+      { q: 'Can you come the same day?', a: 'In most cases yes, depending on schedule availability and your area. For the fastest service, call +351 923 348 323.' },
+      { q: 'Do you replace the strap on any type of blind?', a: 'Yes. We replace the strap on manual roller blinds of any brand, model and width, including older blinds.' },
+      { q: 'Do I need to buy the strap first?', a: 'No. We bring the right strap with us, in the correct width and length for your blind.' },
+      { q: 'Do you do it at my home?', a: 'Yes, we travel to your home or business across all of Greater Lisbon at no call-out charge. The replacement is done on site, usually in a single visit.' },
+    ],
+    sideTitle: 'Broken strap?', sideText: 'Call us directly and we handle the replacement as soon as possible — often the same day.',
+    alsoTitle: 'We also repair', alsoRepair: 'Blind repair', alsoManual: 'Manual blinds', alsoElectric: 'Electric blinds',
+    zonas: ['Lisbon', 'Sintra', 'Cascais', 'Oeiras', 'Almada', 'Setúbal', 'Amadora', 'Loures', 'Odivelas', 'Vila Franca de Xira', 'Mafra', 'Sesimbra', 'Palmela'],
+  },
+  fr: {
+    metaTitle: 'Remplacement de sangle de store à Lisbonne | Prime Estores',
+    metaDesc: 'Sangle de store cassée ou usée ? Nous remplaçons la sangle des stores manuels à Lisbonne et dans le Grand Lisbonne, à domicile et le jour même. Devis gratuit.',
+    keywords: 'remplacement sangle store, changer sangle store, sangle store cassée, réparer sangle store Lisbonne, sangle volet roulant manuel',
+    badge: 'Réparation de stores', bcHome: 'Accueil', bcRepair: 'Réparation', bcLeaf: 'Sangle',
+    h1: 'Remplacement de sangle de store à Lisbonne et dans le Grand Lisbonne',
+    subtitle: 'La sangle de votre store a cassé, a déraillé ou est usée ? Nous remplaçons la sangle des stores manuels à domicile, rapidement, dans tout le Grand Lisbonne.',
+    callNow: 'Appeler : +351 923 348 323', ctaQuote: 'Demander un devis gratuit',
+    urgentBold: 'Sangle cassée ?', urgentText: 'nous essayons de venir le jour même.',
+    introH2: 'Remplacement de la sangle de votre store',
+    introP1: 'La sangle est ce qui permet de monter et descendre un store manuel. À l\'usage, la sangle s\'use, s\'effiloche et finit par casser — laissant le store bloqué ou impossible à manœuvrer. Bonne nouvelle : nul besoin de remplacer tout le store, il suffit de changer la sangle.',
+    introP2: 'Prime Estores remplace la sangle des stores manuels à domicile, dans tout le Grand Lisbonne. Nous apportons la sangle à la bonne largeur et longueur, la remplaçons sur place et testons le fonctionnement — généralement en une seule visite, avec devis gratuit.',
+    signsH2: 'Signes qu\'il faut changer la sangle',
+    signs: ['La sangle a cassé complètement', 'La sangle est effilochée ou usée', 'La sangle patine et ne monte plus le store', 'La sangle est sortie de la poulie ou de l\'enrouleur', 'Le store est bloqué à mi-hauteur', 'L\'enrouleur de sangle est desserré ou cassé'],
+    processH2: 'Comment se déroule le remplacement',
+    process: [
+      { step: '01', title: 'Contact et devis', desc: 'Appelez-nous ou remplissez le formulaire en indiquant la taille approximative du store. Devis gratuit et prise de rendez-vous.' },
+      { step: '02', title: 'Visite à domicile', desc: 'Nous venons chez vous ou dans votre entreprise avec la bonne sangle, sans frais de déplacement dans le Grand Lisbonne.' },
+      { step: '03', title: 'Remplacement sur place', desc: 'Nous retirons l\'ancienne sangle, installons la nouvelle sur la poulie/enrouleur et réglons la bonne tension.' },
+      { step: '04', title: 'Test et garantie', desc: 'Nous testons la montée et la descente complètes du store et garantissons un fonctionnement parfait.' },
+    ],
+    localH2: 'Remplacement de sangle de store dans tout le Grand Lisbonne',
+    localP: 'Nous remplaçons les sangles de store à domicile à Lisbonne et dans toutes les communes voisines, sans frais de déplacement. Où que vous soyez dans l\'aire métropolitaine, un technicien est proche de vous :',
+    chipPrefix: 'Remplacement de sangle à', zonesLink: 'Voir toutes les zones que nous couvrons →',
+    faqH2: 'Questions fréquentes',
+    faqs: [
+      { q: 'Combien coûte le remplacement d\'une sangle de store ?', a: 'Le prix dépend de la taille du store et du type de sangle, mais c\'est l\'une des réparations les plus économiques. Nous donnons toujours un devis gratuit et sans engagement.' },
+      { q: 'Pouvez-vous venir le jour même ?', a: 'Dans la plupart des cas oui, selon les disponibilités et votre zone. Pour plus de rapidité, appelez le +351 923 348 323.' },
+      { q: 'Remplacez-vous la sangle de tout type de store ?', a: 'Oui. Nous remplaçons la sangle des stores enrouleurs manuels de toute marque, modèle et largeur, y compris les stores anciens.' },
+      { q: 'Dois-je acheter la sangle à l\'avance ?', a: 'Non. Nous apportons la sangle adaptée, à la bonne largeur et longueur pour votre store.' },
+      { q: 'Intervenez-vous à domicile ?', a: 'Oui, nous nous déplaçons chez vous dans tout le Grand Lisbonne sans frais de déplacement. Le remplacement se fait sur place, généralement en une seule visite.' },
+    ],
+    sideTitle: 'Sangle cassée ?', sideText: 'Appelez-nous directement et nous gérons le remplacement au plus vite — souvent le jour même.',
+    alsoTitle: 'Nous réparons aussi', alsoRepair: 'Réparation de stores', alsoManual: 'Stores manuels', alsoElectric: 'Stores électriques',
+    zonas: ['Lisbonne', 'Sintra', 'Cascais', 'Oeiras', 'Almada', 'Setúbal', 'Amadora', 'Loures', 'Odivelas', 'Vila Franca de Xira', 'Mafra', 'Sesimbra', 'Palmela'],
+  },
+  es: {
+    metaTitle: 'Cambio de cinta de persiana en Lisboa | Prime Estores',
+    metaDesc: '¿Cinta de la persiana rota o gastada? Cambiamos la cinta de persianas manuales en Lisboa y el Gran Lisboa, a domicilio y el mismo día. Presupuesto gratis.',
+    keywords: 'cambio de cinta de persiana, sustituir cinta persiana, cinta persiana rota, reparar cinta persiana Lisboa, cambiar cinta persiana',
+    badge: 'Reparación de persianas', bcHome: 'Inicio', bcRepair: 'Reparación', bcLeaf: 'Cambio de cinta',
+    h1: 'Cambio de cinta de persiana en Lisboa y el Gran Lisboa',
+    subtitle: '¿La cinta de su persiana se rompió, se salió o está gastada? Cambiamos la cinta de persianas manuales a domicilio, con rapidez, en todo el Gran Lisboa.',
+    callNow: 'Llamar: +351 923 348 323', ctaQuote: 'Pedir presupuesto gratis',
+    urgentBold: '¿Cinta rota?', urgentText: 'intentamos acudir el mismo día.',
+    introH2: 'Cambio y sustitución de la cinta de la persiana',
+    introP1: 'La cinta es lo que permite subir y bajar una persiana manual. Con el uso, la cinta se desgasta, se deshilacha y acaba rompiéndose — dejando la persiana atascada o imposible de mover. La buena noticia: no hace falta cambiar toda la persiana, basta con cambiar la cinta.',
+    introP2: 'Prime Estores cambia la cinta de persianas manuales a domicilio, en todo el Gran Lisboa. Llevamos la cinta con el ancho y largo correctos, la sustituimos in situ y probamos el funcionamiento — normalmente en una sola visita, con presupuesto gratuito.',
+    signsH2: 'Señales de que hay que cambiar la cinta',
+    signs: ['La cinta se ha roto por completo', 'La cinta está deshilachada o gastada', 'La cinta patina y no sube la persiana', 'La cinta se salió de la polea o del recogedor', 'La persiana quedó atascada a media altura', 'El recogedor de la cinta está suelto o roto'],
+    processH2: 'Cómo funciona el cambio de cinta',
+    process: [
+      { step: '01', title: 'Contacto y presupuesto', desc: 'Llámenos o rellene el formulario indicando la medida aproximada de la persiana. Presupuesto gratuito y cita.' },
+      { step: '02', title: 'Visita a domicilio', desc: 'Nos desplazamos a su casa o empresa con la cinta adecuada, sin coste de desplazamiento en el Gran Lisboa.' },
+      { step: '03', title: 'Sustitución in situ', desc: 'Retiramos la cinta antigua, colocamos la nueva en la polea/recogedor y ajustamos la tensión correcta.' },
+      { step: '04', title: 'Prueba y garantía', desc: 'Probamos la subida y bajada completas de la persiana y garantizamos un funcionamiento perfecto.' },
+    ],
+    localH2: 'Cambio de cinta de persiana en todo el Gran Lisboa',
+    localP: 'Cambiamos cintas de persiana a domicilio en Lisboa y en todos los municipios vecinos, sin coste de desplazamiento. Esté donde esté en el área metropolitana, tenemos un técnico cerca de usted:',
+    chipPrefix: 'Cambio de cinta en', zonesLink: 'Ver todas las zonas que cubrimos →',
+    faqH2: 'Preguntas frecuentes',
+    faqs: [
+      { q: '¿Cuánto cuesta cambiar la cinta de una persiana?', a: 'El precio depende del tamaño de la persiana y del tipo de cinta, pero es una de las reparaciones más económicas. Siempre damos presupuesto gratuito y sin compromiso.' },
+      { q: '¿Pueden venir el mismo día?', a: 'En la mayoría de los casos sí, según la disponibilidad y su zona. Para mayor rapidez, llame al +351 923 348 323.' },
+      { q: '¿Cambian la cinta de cualquier tipo de persiana?', a: 'Sí. Sustituimos la cinta de persianas enrollables manuales de cualquier marca, modelo y ancho, incluidas persianas antiguas.' },
+      { q: '¿Debo comprar la cinta antes?', a: 'No. Llevamos la cinta adecuada, con el ancho y largo correctos para su persiana.' },
+      { q: '¿Lo hacen a domicilio?', a: 'Sí, nos desplazamos a su casa o empresa en todo el Gran Lisboa sin coste de desplazamiento. La sustitución se hace in situ, normalmente en una sola visita.' },
+    ],
+    sideTitle: '¿Cinta rota?', sideText: 'Llámenos directamente y gestionamos el cambio lo antes posible — a menudo el mismo día.',
+    alsoTitle: 'También reparamos', alsoRepair: 'Reparación de persianas', alsoManual: 'Persianas manuales', alsoElectric: 'Persianas eléctricas',
+    zonas: ['Lisboa', 'Sintra', 'Cascais', 'Oeiras', 'Almada', 'Setúbal', 'Amadora', 'Loures', 'Odivelas', 'Vila Franca de Xira', 'Mafra', 'Sesimbra', 'Palmela'],
+  },
+  de: {
+    metaTitle: 'Gurtwechsel für Jalousien in Lissabon | Prime Estores',
+    metaDesc: 'Gurt der Jalousie gerissen oder abgenutzt? Wir wechseln den Gurt manueller Jalousien in Lissabon und im Großraum Lissabon, bei Ihnen zu Hause und am selben Tag. Kostenloser Kostenvoranschlag.',
+    keywords: 'Gurtwechsel Jalousie, Jalousie Gurt wechseln, Gurt gerissen Jalousie, Rollladengurt wechseln Lissabon, Gurtband Jalousie',
+    badge: 'Jalousien-Reparatur', bcHome: 'Startseite', bcRepair: 'Reparatur', bcLeaf: 'Gurtwechsel',
+    h1: 'Gurtwechsel für Jalousien in Lissabon und im Großraum Lissabon',
+    subtitle: 'Ist der Gurt Ihrer Jalousie gerissen, herausgesprungen oder abgenutzt? Wir wechseln den Gurt manueller Jalousien bei Ihnen zu Hause, schnell, im gesamten Großraum Lissabon.',
+    callNow: 'Anrufen: +351 923 348 323', ctaQuote: 'Kostenlosen Kostenvoranschlag anfordern',
+    urgentBold: 'Gurt gerissen?', urgentText: 'wir versuchen, noch am selben Tag zu kommen.',
+    introH2: 'Wechsel des Jalousiengurts',
+    introP1: 'Der Gurt (das Gurtband) ist das, womit Sie eine manuelle Jalousie hoch- und herunterlassen. Mit der Zeit nutzt sich der Gurt ab, franst aus und reißt schließlich — die Jalousie bleibt stecken oder lässt sich nicht mehr bewegen. Die gute Nachricht: Sie müssen nicht die ganze Jalousie ersetzen, nur den Gurt.',
+    introP2: 'Prime Estores wechselt den Gurt manueller Jalousien bei Ihnen zu Hause, im gesamten Großraum Lissabon. Wir bringen den Gurt in der richtigen Breite und Länge mit, wechseln ihn vor Ort und testen die Funktion — in der Regel bei einem einzigen Besuch, mit kostenlosem Kostenvoranschlag.',
+    signsH2: 'Anzeichen, dass der Gurt gewechselt werden muss',
+    signs: ['Der Gurt ist komplett gerissen', 'Der Gurt ist ausgefranst oder abgenutzt', 'Der Gurt rutscht durch und hebt die Jalousie nicht', 'Der Gurt ist aus der Rolle oder dem Gurtwickler gesprungen', 'Die Jalousie klemmt auf halber Höhe', 'Der Gurtwickler ist locker oder defekt'],
+    processH2: 'So läuft der Gurtwechsel ab',
+    process: [
+      { step: '01', title: 'Kontakt und Kostenvoranschlag', desc: 'Rufen Sie an oder füllen Sie das Formular mit der ungefähren Größe der Jalousie aus. Kostenloser Kostenvoranschlag und Termin.' },
+      { step: '02', title: 'Besuch bei Ihnen zu Hause', desc: 'Wir kommen mit dem passenden Gurt zu Ihnen nach Hause oder ins Geschäft, ohne Anfahrtskosten im Großraum Lissabon.' },
+      { step: '03', title: 'Wechsel vor Ort', desc: 'Wir entfernen den alten Gurt, setzen den neuen in Rolle/Wickler ein und stellen die richtige Spannung ein.' },
+      { step: '04', title: 'Test und Garantie', desc: 'Wir testen das vollständige Hoch- und Herunterfahren der Jalousie und stellen einen einwandfreien Betrieb sicher.' },
+    ],
+    localH2: 'Gurtwechsel für Jalousien im gesamten Großraum Lissabon',
+    localP: 'Wir wechseln Jalousiengurte bei Ihnen zu Hause in Lissabon und in allen Nachbargemeinden, ohne Anfahrtskosten. Wo immer Sie im Metropolgebiet sind, ist ein Techniker in Ihrer Nähe:',
+    chipPrefix: 'Gurtwechsel in', zonesLink: 'Alle von uns bedienten Gebiete ansehen →',
+    faqH2: 'Häufige Fragen',
+    faqs: [
+      { q: 'Was kostet der Wechsel eines Jalousiengurts?', a: 'Der Preis hängt von der Größe der Jalousie und der Art des Gurts ab, ist aber eine der günstigsten Reparaturen. Wir erstellen immer zuerst einen kostenlosen, unverbindlichen Kostenvoranschlag.' },
+      { q: 'Können Sie am selben Tag kommen?', a: 'In den meisten Fällen ja, je nach Verfügbarkeit und Ihrer Region. Für schnellsten Service rufen Sie +351 923 348 323 an.' },
+      { q: 'Wechseln Sie den Gurt bei jeder Art von Jalousie?', a: 'Ja. Wir wechseln den Gurt manueller Rolljalousien jeder Marke, jedes Modells und jeder Breite, auch bei älteren Jalousien.' },
+      { q: 'Muss ich den Gurt vorher kaufen?', a: 'Nein. Wir bringen den passenden Gurt in der richtigen Breite und Länge für Ihre Jalousie mit.' },
+      { q: 'Machen Sie das bei mir zu Hause?', a: 'Ja, wir kommen zu Ihnen nach Hause oder ins Geschäft im gesamten Großraum Lissabon, ohne Anfahrtskosten. Der Wechsel erfolgt vor Ort, in der Regel bei einem einzigen Besuch.' },
+    ],
+    sideTitle: 'Gurt gerissen?', sideText: 'Rufen Sie uns direkt an und wir kümmern uns schnellstmöglich um den Wechsel — oft am selben Tag.',
+    alsoTitle: 'Wir reparieren auch', alsoRepair: 'Jalousien-Reparatur', alsoManual: 'Manuelle Jalousien', alsoElectric: 'Elektrische Jalousien',
+    zonas: ['Lissabon', 'Sintra', 'Cascais', 'Oeiras', 'Almada', 'Setúbal', 'Amadora', 'Loures', 'Odivelas', 'Vila Franca de Xira', 'Mafra', 'Sesimbra', 'Palmela'],
+  },
+  it: {
+    metaTitle: 'Sostituzione cinghia tenda a Lisbona | Prime Estores',
+    metaDesc: 'Cinghia della tenda rotta o consumata? Sostituiamo la cinghia delle tende manuali a Lisbona e nella Grande Lisbona, a domicilio e in giornata. Preventivo gratuito.',
+    keywords: 'sostituzione cinghia tenda, cambiare cinghia tapparella, cinghia tenda rotta, riparare cinghia tapparella Lisbona, cinghia avvolgibile',
+    badge: 'Riparazione tende', bcHome: 'Home', bcRepair: 'Riparazione', bcLeaf: 'Cinghia',
+    h1: 'Sostituzione cinghia tenda a Lisbona e nella Grande Lisbona',
+    subtitle: 'La cinghia della tua tenda si è rotta, è uscita dalla sede o è consumata? Sostituiamo la cinghia delle tende manuali a domicilio, rapidamente, in tutta la Grande Lisbona.',
+    callNow: 'Chiama: +351 923 348 323', ctaQuote: 'Richiedi un preventivo gratuito',
+    urgentBold: 'Cinghia rotta?', urgentText: 'cerchiamo di venire in giornata.',
+    introH2: 'Sostituzione della cinghia della tenda',
+    introP1: 'La cinghia è ciò che permette di alzare e abbassare una tenda manuale. Con l\'uso, la cinghia si consuma, si sfilaccia e finisce per rompersi — lasciando la tenda bloccata o impossibile da muovere. La buona notizia: non serve sostituire tutta la tenda, basta cambiare la cinghia.',
+    introP2: 'Prime Estores sostituisce la cinghia delle tende manuali a domicilio, in tutta la Grande Lisbona. Portiamo la cinghia della larghezza e lunghezza giuste, la sostituiamo sul posto e testiamo il funzionamento — di solito in un\'unica visita, con preventivo gratuito.',
+    signsH2: 'Segnali che la cinghia va sostituita',
+    signs: ['La cinghia si è rotta del tutto', 'La cinghia è sfilacciata o consumata', 'La cinghia slitta e non alza la tenda', 'La cinghia è uscita dalla puleggia o dall\'avvolgitore', 'La tenda è bloccata a metà', 'L\'avvolgitore della cinghia è allentato o rotto'],
+    processH2: 'Come funziona la sostituzione',
+    process: [
+      { step: '01', title: 'Contatto e preventivo', desc: 'Chiamaci o compila il modulo indicando la misura approssimativa della tenda. Preventivo gratuito e appuntamento.' },
+      { step: '02', title: 'Visita a domicilio', desc: 'Veniamo a casa o in azienda con la cinghia adatta, senza costi di trasferta nella Grande Lisbona.' },
+      { step: '03', title: 'Sostituzione sul posto', desc: 'Rimuoviamo la cinghia vecchia, montiamo quella nuova sulla puleggia/avvolgitore e regoliamo la giusta tensione.' },
+      { step: '04', title: 'Test e garanzia', desc: 'Testiamo la salita e la discesa complete della tenda e garantiamo un funzionamento perfetto.' },
+    ],
+    localH2: 'Sostituzione cinghia tenda in tutta la Grande Lisbona',
+    localP: 'Sostituiamo le cinghie delle tende a domicilio a Lisbona e in tutti i comuni vicini, senza costi di trasferta. Ovunque tu sia nell\'area metropolitana, abbiamo un tecnico vicino a te:',
+    chipPrefix: 'Sostituzione cinghia a', zonesLink: 'Vedi tutte le zone che serviamo →',
+    faqH2: 'Domande frequenti',
+    faqs: [
+      { q: 'Quanto costa sostituire la cinghia di una tenda?', a: 'Il prezzo dipende dalla dimensione della tenda e dal tipo di cinghia, ma è una delle riparazioni più economiche. Diamo sempre un preventivo gratuito e senza impegno.' },
+      { q: 'Potete venire in giornata?', a: 'Nella maggior parte dei casi sì, in base alla disponibilità e alla tua zona. Per maggiore rapidità, chiama il +351 923 348 323.' },
+      { q: 'Sostituite la cinghia di qualsiasi tenda?', a: 'Sì. Sostituiamo la cinghia delle tende avvolgibili manuali di qualsiasi marca, modello e larghezza, comprese le tende più vecchie.' },
+      { q: 'Devo comprare la cinghia prima?', a: 'No. Portiamo noi la cinghia adatta, della larghezza e lunghezza giuste per la tua tenda.' },
+      { q: 'Lo fate a domicilio?', a: 'Sì, veniamo a casa o in azienda in tutta la Grande Lisbona senza costi di trasferta. La sostituzione avviene sul posto, di solito in un\'unica visita.' },
+    ],
+    sideTitle: 'Cinghia rotta?', sideText: 'Chiamaci direttamente e gestiamo la sostituzione al più presto — spesso in giornata.',
+    alsoTitle: 'Ripariamo anche', alsoRepair: 'Riparazione tende', alsoManual: 'Tende manuali', alsoElectric: 'Tende elettriche',
+    zonas: ['Lisbona', 'Sintra', 'Cascais', 'Oeiras', 'Almada', 'Setúbal', 'Amadora', 'Loures', 'Odivelas', 'Vila Franca de Xira', 'Mafra', 'Sesimbra', 'Palmela'],
+  },
+  ru: {
+    metaTitle: 'Замена ленты рольставней в Лиссабоне | Prime Estores',
+    metaDesc: 'Порвалась или износилась лента рольставней? Меняем ленту ручных рольставней в Лиссабоне и Большом Лиссабоне, с выездом и в тот же день. Бесплатная смета.',
+    keywords: 'замена ленты рольставней, заменить ленту рольставней, порвалась лента рольставней, ремонт ленты рольставней Лиссабон, поменять ленту',
+    badge: 'Ремонт рольставней', bcHome: 'Главная', bcRepair: 'Ремонт', bcLeaf: 'Замена ленты',
+    h1: 'Замена ленты рольставней в Лиссабоне и Большом Лиссабоне',
+    subtitle: 'Лента вашего рольставня порвалась, соскочила или износилась? Меняем ленту ручных рольставней с выездом, быстро, по всему Большому Лиссабону.',
+    callNow: 'Позвонить: +351 923 348 323', ctaQuote: 'Получить бесплатную смету',
+    urgentBold: 'Лента порвалась?', urgentText: 'стараемся приехать в тот же день.',
+    introH2: 'Замена ленты рольставня',
+    introP1: 'Лента — это то, чем вы поднимаете и опускаете ручной рольставень. Со временем лента изнашивается, лохматится и рвётся — и рольставень застревает или перестаёт двигаться. Хорошая новость: менять весь рольставень не нужно, достаточно заменить ленту.',
+    introP2: 'Prime Estores меняет ленту ручных рольставней с выездом по всему Большому Лиссабону. Привозим ленту нужной ширины и длины, меняем на месте и проверяем работу — обычно за один визит, с бесплатной сметой.',
+    signsH2: 'Признаки того, что ленту пора менять',
+    signs: ['Лента полностью порвалась', 'Лента растрепалась или износилась', 'Лента проскальзывает и не поднимает рольставень', 'Лента соскочила с ролика или барабана', 'Рольставень застрял на середине', 'Барабан ленты разболтался или сломался'],
+    processH2: 'Как проходит замена ленты',
+    process: [
+      { step: '01', title: 'Контакт и смета', desc: 'Позвоните или заполните форму, указав примерный размер рольставня. Даём бесплатную смету и назначаем визит.' },
+      { step: '02', title: 'Выезд на дом', desc: 'Приезжаем к вам домой или в офис с подходящей лентой, без платы за выезд в Большом Лиссабоне.' },
+      { step: '03', title: 'Замена на месте', desc: 'Снимаем старую ленту, ставим новую на ролик/барабан и настраиваем правильное натяжение.' },
+      { step: '04', title: 'Проверка и гарантия', desc: 'Проверяем полный подъём и опускание рольставня и гарантируем безупречную работу.' },
+    ],
+    localH2: 'Замена ленты рольставней по всему Большому Лиссабону',
+    localP: 'Меняем ленты рольставней с выездом в Лиссабоне и во всех соседних муниципалитетах, без платы за выезд. Где бы вы ни были в столичном регионе, рядом есть наш техник:',
+    chipPrefix: 'Замена ленты в', zonesLink: 'Посмотреть все зоны обслуживания →',
+    faqH2: 'Часто задаваемые вопросы',
+    faqs: [
+      { q: 'Сколько стоит замена ленты рольставней?', a: 'Цена зависит от размера рольставня и типа ленты, но это один из самых недорогих ремонтов. Мы всегда даём бесплатную смету без обязательств.' },
+      { q: 'Можете приехать в тот же день?', a: 'В большинстве случаев да, в зависимости от загрузки и вашей зоны. Для самой быстрой реакции звоните +351 923 348 323.' },
+      { q: 'Меняете ленту на любом рольставне?', a: 'Да. Меняем ленту на ручных рулонных рольставнях любой марки, модели и ширины, включая старые.' },
+      { q: 'Нужно ли покупать ленту заранее?', a: 'Нет. Мы привозим подходящую ленту нужной ширины и длины для вашего рольставня.' },
+      { q: 'Вы делаете это на дому?', a: 'Да, приезжаем к вам домой или в офис по всему Большому Лиссабону без платы за выезд. Замена выполняется на месте, обычно за один визит.' },
+    ],
+    sideTitle: 'Лента порвалась?', sideText: 'Позвоните напрямую, и мы выполним замену как можно скорее — часто в тот же день.',
+    alsoTitle: 'Также ремонтируем', alsoRepair: 'Ремонт рольставней', alsoManual: 'Ручные рольставни', alsoElectric: 'Электрические рольставни',
+    zonas: ['Лиссабон', 'Синтра', 'Кашкайш', 'Оэйраш', 'Алмада', 'Сетубал', 'Амадора', 'Лориш', 'Одивелаш', 'Вила-Франка-де-Шира', 'Мафра', 'Сезимбра', 'Палмела'],
+  },
+  uk: {
+    metaTitle: 'Заміна стрічки ролетів у Лісабоні | Prime Estores',
+    metaDesc: 'Порвалася чи зносилася стрічка ролетів? Міняємо стрічку ручних ролетів у Лісабоні та Великому Лісабоні, з виїздом і того ж дня. Безкоштовний кошторис.',
+    keywords: 'заміна стрічки ролетів, замінити стрічку ролетів, порвалася стрічка ролетів, ремонт стрічки ролетів Лісабон, поміняти стрічку',
+    badge: 'Ремонт ролетів', bcHome: 'Головна', bcRepair: 'Ремонт', bcLeaf: 'Заміна стрічки',
+    h1: 'Заміна стрічки ролетів у Лісабоні та Великому Лісабоні',
+    subtitle: 'Стрічка вашого ролета порвалася, зіскочила чи зносилася? Міняємо стрічку ручних ролетів з виїздом, швидко, по всьому Великому Лісабону.',
+    callNow: 'Зателефонувати: +351 923 348 323', ctaQuote: 'Отримати безкоштовний кошторис',
+    urgentBold: 'Стрічка порвалася?', urgentText: 'намагаємося приїхати того ж дня.',
+    introH2: 'Заміна стрічки ролета',
+    introP1: 'Стрічка — це те, чим ви піднімаєте й опускаєте ручний ролет. З часом стрічка зношується, розкуйовджується і зрештою рветься — і ролет застрягає або перестає рухатися. Хороша новина: міняти весь ролет не потрібно, достатньо замінити стрічку.',
+    introP2: 'Prime Estores міняє стрічку ручних ролетів з виїздом по всьому Великому Лісабону. Привозимо стрічку потрібної ширини й довжини, міняємо на місці та перевіряємо роботу — зазвичай за один візит, із безкоштовним кошторисом.',
+    signsH2: 'Ознаки того, що стрічку час міняти',
+    signs: ['Стрічка повністю порвалася', 'Стрічка розкуйовдилася або зносилася', 'Стрічка проковзує й не піднімає ролет', 'Стрічка зіскочила з ролика або барабана', 'Ролет застряг посередині', 'Барабан стрічки розхитався або зламався'],
+    processH2: 'Як відбувається заміна стрічки',
+    process: [
+      { step: '01', title: 'Контакт і кошторис', desc: 'Зателефонуйте або заповніть форму, вказавши приблизний розмір ролета. Даємо безкоштовний кошторис і призначаємо візит.' },
+      { step: '02', title: 'Виїзд додому', desc: 'Приїжджаємо до вас додому або в офіс із відповідною стрічкою, без плати за виїзд у Великому Лісабоні.' },
+      { step: '03', title: 'Заміна на місці', desc: 'Знімаємо стару стрічку, встановлюємо нову на ролик/барабан і налаштовуємо правильний натяг.' },
+      { step: '04', title: 'Перевірка та гарантія', desc: 'Перевіряємо повний підйом і опускання ролета та гарантуємо бездоганну роботу.' },
+    ],
+    localH2: 'Заміна стрічки ролетів по всьому Великому Лісабону',
+    localP: 'Міняємо стрічки ролетів з виїздом у Лісабоні та в усіх сусідніх муніципалітетах, без плати за виїзд. Де б ви не були в столичному регіоні, поряд є наш технік:',
+    chipPrefix: 'Заміна стрічки в', zonesLink: 'Переглянути всі зони обслуговування →',
+    faqH2: 'Часті запитання',
+    faqs: [
+      { q: 'Скільки коштує заміна стрічки ролета?', a: 'Ціна залежить від розміру ролета й типу стрічки, але це один із найдешевших ремонтів. Ми завжди даємо безкоштовний кошторис без зобовʼязань.' },
+      { q: 'Чи можете приїхати того ж дня?', a: 'У більшості випадків так, залежно від завантаженості та вашої зони. Для найшвидшої реакції телефонуйте +351 923 348 323.' },
+      { q: 'Міняєте стрічку на будь-якому ролеті?', a: 'Так. Міняємо стрічку на ручних рулонних ролетах будь-якої марки, моделі та ширини, зокрема старих.' },
+      { q: 'Чи потрібно купувати стрічку заздалегідь?', a: 'Ні. Ми привозимо відповідну стрічку потрібної ширини й довжини для вашого ролета.' },
+      { q: 'Ви робите це вдома?', a: 'Так, приїжджаємо до вас додому або в офіс по всьому Великому Лісабону без плати за виїзд. Заміна виконується на місці, зазвичай за один візит.' },
+    ],
+    sideTitle: 'Стрічка порвалася?', sideText: 'Зателефонуйте напряму, і ми виконаємо заміну якнайшвидше — часто того ж дня.',
+    alsoTitle: 'Також ремонтуємо', alsoRepair: 'Ремонт ролетів', alsoManual: 'Ручні ролети', alsoElectric: 'Електричні ролети',
+    zonas: ['Лісабон', 'Сінтра', 'Кашкайш', 'Оейраш', 'Алмада', 'Сетубал', 'Амадора', 'Лоуреш', 'Одівелаш', 'Віла-Франка-де-Шіра', 'Мафра', 'Сезімбра', 'Палмела'],
+  },
+};
+
+const c = content[lang] ?? content.pt;
+const l = links[lang] ?? links.pt;
+const pageUrl = `${baseUrl}${pagePath[lang] ?? pagePath.pt}`;
+
+const serviceSchema = {
+  '@context': 'https://schema.org', '@type': 'Service',
+  name: c.metaTitle.split(' | ')[0], serviceType: c.bcLeaf,
+  provider: { '@type': 'LocalBusiness', name: 'Prime Estores', telephone: '+351923348323', url: baseUrl },
+  areaServed: { '@type': 'State', name: `${LX[lang]}` }, description: c.metaDesc,
+};
+const breadcrumbSchema = {
+  '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: c.bcHome, item: `${baseUrl}${l.home}` },
+    { '@type': 'ListItem', position: 2, name: c.bcRepair, item: `${baseUrl}${l.repair}` },
+    { '@type': 'ListItem', position: 3, name: c.bcLeaf, item: pageUrl },
+  ],
+};
+const faqSchema = {
+  '@context': 'https://schema.org', '@type': 'FAQPage',
+  mainEntity: c.faqs.map(f => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+<script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+<script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+<Layout title={c.metaTitle} description={c.metaDesc} keywords={c.keywords} canonicalURL={pageUrl} lang={lang}>
+  <section class="bg-gradient-to-br from-[#1A1A1A] to-[#8B1A1A] text-white py-16 lg:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <nav aria-label="Breadcrumb" class="mb-6">
+        <ol class="flex items-center gap-2 text-sm text-white/80">
+          <li><a href={l.home} class="hover:text-white transition-colors">{c.bcHome}</a></li>
+          <li aria-hidden="true"><span>/</span></li>
+          <li><a href={l.repair} class="hover:text-white transition-colors">{c.bcRepair}</a></li>
+          <li aria-hidden="true"><span>/</span></li>
+          <li><span class="text-white">{c.bcLeaf}</span></li>
+        </ol>
+      </nav>
+      <div class="max-w-3xl">
+        <span class="inline-block bg-white/10 border border-white/20 text-white text-xs font-semibold uppercase tracking-widest px-3 py-1 rounded-full mb-4">{c.badge}</span>
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black leading-tight mb-4">{c.h1}</h1>
+        <p class="text-xl text-white/80 leading-relaxed mb-8">{c.subtitle}</p>
+        <div class="flex flex-col sm:flex-row gap-3">
+          <a href="tel:+351923348323" class="inline-flex items-center justify-center gap-2 bg-white text-[#8B1A1A] font-bold px-6 py-3.5 rounded-lg hover:bg-gray-100 transition-colors">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+            {c.callNow}
+          </a>
+          <a href={l.quote} class="inline-flex items-center justify-center gap-2 border-2 border-white text-white font-bold px-6 py-3.5 rounded-lg hover:bg-white/10 transition-colors">{c.ctaQuote}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="bg-amber-50 border-y border-amber-200 py-3">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <p class="text-center text-amber-800 text-sm font-medium">
+        <span class="font-bold">{c.urgentBold}</span> <a href="tel:+351923348323" class="underline font-bold">+351 923 348 323</a> — {c.urgentText}
+      </p>
+    </div>
+  </div>
+
+  <section class="py-16 lg:py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-3 gap-12">
+        <div class="lg:col-span-2">
+          <h2 class="text-2xl lg:text-3xl font-black text-[#1A1A1A] mb-4">{c.introH2}</h2>
+          <p class="text-gray-600 leading-relaxed mb-6">{c.introP1}</p>
+          <p class="text-gray-600 leading-relaxed mb-6">{c.introP2}</p>
+
+          <h2 class="text-2xl font-black text-[#1A1A1A] mb-4 mt-8">{c.signsH2}</h2>
+          <div class="grid sm:grid-cols-2 gap-3 mb-8">
+            {c.signs.map(s => (
+              <div class="flex items-center gap-2 p-3 bg-[#F5F5F5] rounded-lg text-sm">
+                <svg class="w-4 h-4 text-[#8B1A1A] flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                <span class="text-gray-700">{s}</span>
+              </div>
+            ))}
+          </div>
+
+          <h2 class="text-2xl font-black text-[#1A1A1A] mb-4 mt-8">{c.processH2}</h2>
+          <ol class="space-y-4 mb-8">
+            {c.process.map(item => (
+              <li class="flex gap-4">
+                <div class="flex-shrink-0 w-10 h-10 bg-[#8B1A1A] text-white rounded-full flex items-center justify-center font-black text-sm">{item.step}</div>
+                <div>
+                  <div class="font-semibold text-[#1A1A1A]">{item.title}</div>
+                  <div class="text-gray-500 text-sm mt-0.5">{item.desc}</div>
+                </div>
+              </li>
+            ))}
+          </ol>
+
+          <h2 class="text-2xl font-black text-[#1A1A1A] mb-4 mt-8">{c.localH2}</h2>
+          <p class="text-gray-600 leading-relaxed mb-4">{c.localP}</p>
+          <div class="flex flex-wrap gap-2 mb-4">
+            {c.zonas.map(zona => (
+              <span class="bg-[#F5F5F5] border border-gray-200 text-gray-700 text-sm font-medium px-3 py-1.5 rounded-full">{c.chipPrefix} {zona}</span>
+            ))}
+          </div>
+          <a href={l.zones} class="text-[#8B1A1A] font-semibold hover:underline text-sm">{c.zonesLink}</a>
+
+          <h2 class="text-2xl font-black text-[#1A1A1A] mb-4 mt-10">{c.faqH2}</h2>
+          <div class="space-y-3">
+            {c.faqs.map((faq, index) => (
+              <details class="bg-[#F5F5F5] rounded-xl overflow-hidden group" id={`fita-faq-${index}`}>
+                <summary class="flex items-center justify-between gap-4 px-5 py-4 cursor-pointer list-none hover:bg-gray-100 transition-colors">
+                  <h3 class="font-semibold text-[#1A1A1A] text-sm pr-2">{faq.q}</h3>
+                  <span class="flex-shrink-0 w-6 h-6 flex items-center justify-center rounded-full bg-white text-[#8B1A1A] group-open:bg-[#8B1A1A] group-open:text-white transition-colors" aria-hidden="true">
+                    <svg class="w-4 h-4 transition-transform group-open:rotate-45" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                  </span>
+                </summary>
+                <div class="px-5 pb-4 pt-0"><p class="text-gray-600 text-sm leading-relaxed">{faq.a}</p></div>
+              </details>
+            ))}
+          </div>
+        </div>
+
+        <div class="space-y-6">
+          <div class="bg-[#8B1A1A] rounded-2xl p-6 text-white">
+            <h3 class="font-black text-xl mb-2">{c.sideTitle}</h3>
+            <p class="text-red-100 text-sm mb-4">{c.sideText}</p>
+            <a href="tel:+351923348323" class="flex items-center justify-center gap-2 bg-white text-[#8B1A1A] font-bold px-4 py-3 rounded-lg hover:bg-gray-100 transition-colors text-sm w-full">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+              +351 923 348 323
+            </a>
+          </div>
+          <ContactForm showTitle={true} lang={lang} />
+          <div class="bg-[#F5F5F5] rounded-2xl p-6">
+            <h3 class="font-bold text-[#1A1A1A] mb-4">{c.alsoTitle}</h3>
+            <ul class="space-y-2 text-sm">
+              <li><a href={l.repair} class="text-[#8B1A1A] hover:underline">{c.alsoRepair} →</a></li>
+              <li><a href={l.manual} class="text-[#8B1A1A] hover:underline">{c.alsoManual} →</a></li>
+              <li><a href={l.electric} class="text-[#8B1A1A] hover:underline">{c.alsoElectric} →</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <RelatedServices current="repair" lang={lang} />
+</Layout>

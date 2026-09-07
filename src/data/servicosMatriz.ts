@@ -65,4 +65,16 @@ export const servicosMatriz: ServicoMatriz[] = [
     intro: z => `Precisa de um eletricista em ${z.nome}? Realizamos instalação de tomadas, interruptores, iluminação LED e pontos elétricos para estores motorizados em ${z.nome}, com técnicos certificados segundo as normas portuguesas (RTIEBT).`,
     detail: z => `Sempre que possível combinamos o trabalho elétrico com a instalação do estore na mesma visita a ${z.nome}, poupando tempo e custos. ${z.detail}`,
   },
+  {
+    slug: 'troca-fita-estores',
+    type: 'repair',
+    nome: 'Troca de Fita',
+    serviceHref: '/servicos/troca-fita-estores/',
+    h1: z => `Troca de Fita de Estore em ${z}`,
+    title: z => `Troca de Fita de Estore em ${z} — Ao Domicílio`,
+    description: z => `Troca e substituição da fita de estores manuais em ${z}. Fita partida ou gasta? Serviço rápido ao domicílio, sem custo de deslocação. Orçamento gratuito.`,
+    keywords: z => `troca de fita estore ${z}, substituir fita estore ${z}, fita estore partida ${z}, mudar fita estore ${z}, reparar fita persiana ${z}`,
+    intro: z => `A fita do seu estore partiu ou está gasta em ${z.nome}? A Prime Estores faz a troca de fita de estores manuais ao domicílio em ${z.nome}, com rapidez e sem custo de deslocação. Levamos a fita adequada e substituímos no local.`,
+    detail: z => `Deslocamo-nos a ${z.nome} muitas vezes no próprio dia, com fita de várias larguras em stock. ${z.detail}`,
+  },
 ];
