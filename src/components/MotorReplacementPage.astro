@@ -1,0 +1,483 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ContactForm from './ContactForm.astro';
+import RelatedServices from './RelatedServices.astro';
+import type { Lang } from '../i18n/utils';
+
+export interface Props { lang?: Lang }
+const { lang = 'pt' } = Astro.props;
+const baseUrl = 'https://primeestores.pt';
+
+const pagePath: Record<Lang, string> = {
+  pt: '/servicos/troca-motor-estores/',
+  en: '/en/services/blind-motor-replacement/',
+  fr: '/fr/services/remplacement-moteur-store/',
+  es: '/es/servicios/cambio-motor-persiana/',
+  de: '/de/dienstleistungen/motorwechsel-jalousien/',
+  it: '/it/servizi/sostituzione-motore-tende/',
+  ru: '/ru/services/blind-motor-replacement/',
+  uk: '/uk/services/blind-motor-replacement/',
+};
+
+const links: Record<Lang, { home: string; quote: string; zones: string; repair: string; manual: string; electric: string }> = {
+  pt: { home: '/',    quote: '/orcamento/',      zones: '/zonas-que-servimos/',     repair: '/servicos/reparacao-estores/',              manual: '/servicos/estores-manuais/',                electric: '/servicos/estores-eletricos/' },
+  en: { home: '/en/', quote: '/en/quote/',       zones: '/en/coverage-areas/',      repair: '/en/services/blind-repair/',                manual: '/en/services/manual-blinds/',               electric: '/en/services/electric-blinds/' },
+  fr: { home: '/fr/', quote: '/fr/devis/',       zones: '/fr/zones-couvertes/',     repair: '/fr/services/reparation-stores/',           manual: '/fr/services/stores-manuels/',              electric: '/fr/services/stores-electriques/' },
+  es: { home: '/es/', quote: '/es/presupuesto/', zones: '/es/zonas-cobertura/',     repair: '/es/servicios/reparacion-persianas/',       manual: '/es/servicios/persianas-manuales/',         electric: '/es/servicios/persianas-electricas/' },
+  de: { home: '/de/', quote: '/de/angebot/',     zones: '/de/versorgungsgebiete/',  repair: '/de/dienstleistungen/jalousien-reparatur/', manual: '/de/dienstleistungen/manuelle-jalousien/',  electric: '/de/dienstleistungen/elektrische-jalousien/' },
+  it: { home: '/it/', quote: '/it/preventivo/',  zones: '/it/zone-servite/',        repair: '/it/servizi/riparazione-tende/',            manual: '/it/servizi/tende-manuali/',                electric: '/it/servizi/tende-elettriche/' },
+  ru: { home: '/ru/', quote: '/ru/quote/',       zones: '/ru/coverage-areas/',      repair: '/ru/services/blind-repair/',                manual: '/ru/services/manual-blinds/',               electric: '/ru/services/electric-blinds/' },
+  uk: { home: '/uk/', quote: '/uk/quote/',       zones: '/uk/coverage-areas/',      repair: '/uk/services/blind-repair/',                manual: '/uk/services/manual-blinds/',               electric: '/uk/services/electric-blinds/' },
+};
+
+interface C {
+  metaTitle: string; metaDesc: string; keywords: string;
+  badge: string; bcHome: string; bcRepair: string; bcLeaf: string;
+  h1: string; subtitle: string; callNow: string; ctaQuote: string;
+  urgentBold: string; urgentText: string;
+  introH2: string; introP1: string; introP2: string;
+  signsH2: string; signs: string[];
+  processH2: string; process: { step: string; title: string; desc: string }[];
+  localH2: string; localP: string; chipPrefix: string; zonesLink: string;
+  faqH2: string; faqs: { q: string; a: string }[];
+  sideTitle: string; sideText: string; alsoTitle: string; alsoRepair: string; alsoManual: string; alsoElectric: string;
+  zonas: string[];
+}
+
+const LX = { pt: 'Lisboa', en: 'Lisbon', fr: 'Lisbonne', es: 'Lisboa', de: 'Lissabon', it: 'Lisbona', ru: 'Лиссабон', uk: 'Лісабон' };
+
+const content: Record<Lang, C> = {
+  pt: {
+    metaTitle: 'Troca de Motor de Estore em Lisboa | Prime Estores',
+    metaDesc: 'Motor do estore queimado ou sem resposta? Fazemos a troca e substituição do motor de estores elétricos em Lisboa e Grande Lisboa, ao domicílio e no mesmo dia. Orçamento grátis.',
+    keywords: 'troca de motor de estore, substituir motor estore, motor estore avariado, motor estore queimado, reparar motor estore Lisboa, mudar motor persiana',
+    badge: 'Reparação de Estores', bcHome: 'Início', bcRepair: 'Reparação', bcLeaf: 'Troca de Motor',
+    h1: 'Troca de Motor de Estore em Lisboa e Grande Lisboa',
+    subtitle: 'O motor do seu estore elétrico queimou, faz barulho ou deixou de responder? Substituímos o motor ao domicílio, com rapidez, em toda a Grande Lisboa.',
+    callNow: 'Ligar Agora: +351 923 348 323', ctaQuote: 'Pedir Orçamento Grátis',
+    urgentBold: 'Motor avariado?', urgentText: 'tentamos deslocar-nos no mesmo dia.',
+    introH2: 'Troca e substituição do motor do estore',
+    introP1: 'O motor é o coração do estore elétrico. Com o tempo ou por sobrecarga, o motor pode queimar, perder força ou deixar de responder — e o estore fica parado. Na maioria dos casos não é preciso trocar o estore: basta substituir o motor.',
+    introP2: 'A Prime Estores faz a troca de motor de estores elétricos ao domicílio, em toda a Grande Lisboa. Diagnosticamos a avaria, indicamos o motor adequado, substituímos no local e programamos os fins de curso — normalmente numa única visita, com orçamento gratuito.',
+    signsH2: 'Sinais de que precisa de trocar o motor',
+    signs: ['O motor não responde ao telecomando', 'O motor faz barulho mas não move o estore', 'O estore elétrico parou a meio', 'Cheiro a queimado no motor', 'O motor funciona lento ou fraco', 'O estore elétrico não sobe nem desce'],
+    processH2: 'Como funciona a troca de motor',
+    process: [
+      { step: '01', title: 'Contacto e diagnóstico', desc: 'Ligue-nos ou preencha o formulário. Avaliamos o motor e a avaria, com orçamento gratuito e sem compromisso.' },
+      { step: '02', title: 'Visita ao domicílio', desc: 'Deslocamo-nos a sua casa ou empresa com o motor adequado, sem custo de deslocação na Grande Lisboa.' },
+      { step: '03', title: 'Substituição e programação', desc: 'Retiramos o motor antigo, instalamos o novo e programamos os fins de curso (limites de subida e descida).' },
+      { step: '04', title: 'Teste e garantia', desc: 'Testamos o funcionamento completo com telecomando ou interruptor e garantimos que fica perfeito.' },
+    ],
+    localH2: 'Troca de motor de estore em toda a Grande Lisboa',
+    localP: 'Fazemos a troca de motor de estore ao domicílio em Lisboa e em todos os concelhos vizinhos, sem custo de deslocação. Onde quer que esteja na área metropolitana, temos um técnico perto de si:',
+    chipPrefix: 'Troca de motor em', zonesLink: 'Ver todas as zonas que servimos →',
+    faqH2: 'Perguntas frequentes',
+    faqs: [
+      { q: 'Quanto custa trocar o motor de um estore?', a: 'Depende do tamanho e do peso do estore e do tipo de motor. Damos sempre orçamento gratuito e sem compromisso após o diagnóstico.' },
+      { q: 'Conseguem vir no mesmo dia?', a: 'Na maioria dos casos sim, consoante a disponibilidade da agenda e a sua zona. Para maior rapidez, ligue para +351 923 348 323.' },
+      { q: 'Trocam o motor de qualquer marca de estore?', a: 'Sim. Substituímos motores tubulares de estores elétricos de qualquer marca e modelo, e programamos os fins de curso.' },
+      { q: 'Que motor usam na substituição?', a: 'Levamos um motor de qualidade com a potência adequada ao seu estore e deixamo-lo a funcionar com telecomando ou interruptor.' },
+      { q: 'Fazem a troca ao domicílio?', a: 'Sim, deslocamo-nos a sua casa ou empresa em toda a Grande Lisboa, sem custo de deslocação. A substituição é feita no local, normalmente numa única visita.' },
+    ],
+    sideTitle: 'Motor avariado?', sideText: 'Ligue diretamente e tratamos da troca com a maior brevidade — muitas vezes no próprio dia.',
+    alsoTitle: 'Também reparamos', alsoRepair: 'Reparação de estores', alsoManual: 'Estores manuais', alsoElectric: 'Estores elétricos',
+    zonas: ['Lisboa', 'Sintra', 'Cascais', 'Oeiras', 'Almada', 'Setúbal', 'Amadora', 'Loures', 'Odivelas', 'Vila Franca de Xira', 'Mafra', 'Sesimbra', 'Palmela'],
+  },
+  en: {
+    metaTitle: 'Blind Motor Replacement in Lisbon | Prime Estores',
+    metaDesc: 'Burnt-out or unresponsive blind motor? We replace the motor of electric blinds in Lisbon and Greater Lisbon, at your home and same day. Free quote.',
+    keywords: 'blind motor replacement, replace blind motor, faulty blind motor, burnt blind motor, electric blind motor repair Lisbon',
+    badge: 'Blind Repair', bcHome: 'Home', bcRepair: 'Repair', bcLeaf: 'Motor Replacement',
+    h1: 'Blind Motor Replacement in Lisbon and Greater Lisbon',
+    subtitle: 'Has your electric blind motor burnt out, started humming or stopped responding? We replace the motor at your home, fast, across all of Greater Lisbon.',
+    callNow: 'Call Now: +351 923 348 323', ctaQuote: 'Get a Free Quote',
+    urgentBold: 'Faulty motor?', urgentText: 'we try to come the same day.',
+    introH2: 'Replacing your blind motor',
+    introP1: 'The motor is the heart of an electric blind. Over time or from overload, the motor can burn out, lose power or stop responding — leaving the blind stuck. In most cases you don\'t need to replace the blind: just the motor.',
+    introP2: 'Prime Estores replaces electric blind motors at your home, across all of Greater Lisbon. We diagnose the fault, recommend the right motor, replace it on site and program the travel limits — usually in a single visit, with a free quote.',
+    signsH2: 'Signs your motor needs replacing',
+    signs: ['The motor doesn\'t respond to the remote', 'The motor hums but doesn\'t move the blind', 'The electric blind stopped halfway', 'Burning smell from the motor', 'The motor runs slow or weak', 'The electric blind won\'t go up or down'],
+    processH2: 'How the motor replacement works',
+    process: [
+      { step: '01', title: 'Contact and diagnosis', desc: 'Call us or fill in the form. We assess the motor and the fault, with a free, no-obligation quote.' },
+      { step: '02', title: 'Visit to your home', desc: 'We come to your home or business with the right motor, at no call-out charge in Greater Lisbon.' },
+      { step: '03', title: 'Replacement and programming', desc: 'We remove the old motor, fit the new one and program the travel limits (up and down stops).' },
+      { step: '04', title: 'Test and guarantee', desc: 'We test the full operation with the remote or switch and make sure it works perfectly.' },
+    ],
+    localH2: 'Blind motor replacement across Greater Lisbon',
+    localP: 'We replace blind motors at your home in Lisbon and every neighbouring municipality, at no call-out charge. Wherever you are in the metropolitan area, we have a technician near you:',
+    chipPrefix: 'Motor replacement in', zonesLink: 'See all the areas we serve →',
+    faqH2: 'Frequently asked questions',
+    faqs: [
+      { q: 'How much does it cost to replace a blind motor?', a: 'It depends on the size and weight of the blind and the type of motor. We always give a free, no-obligation quote after the diagnosis.' },
+      { q: 'Can you come the same day?', a: 'In most cases yes, depending on schedule availability and your area. For the fastest service, call +351 923 348 323.' },
+      { q: 'Do you replace the motor on any blind brand?', a: 'Yes. We replace tubular motors on electric blinds of any brand and model, and program the travel limits.' },
+      { q: 'What motor do you use for the replacement?', a: 'We bring a quality motor with the right power for your blind and leave it working with a remote or switch.' },
+      { q: 'Do you do it at my home?', a: 'Yes, we travel to your home or business across all of Greater Lisbon at no call-out charge. The replacement is done on site, usually in a single visit.' },
+    ],
+    sideTitle: 'Faulty motor?', sideText: 'Call us directly and we handle the replacement as soon as possible — often the same day.',
+    alsoTitle: 'We also repair', alsoRepair: 'Blind repair', alsoManual: 'Manual blinds', alsoElectric: 'Electric blinds',
+    zonas: ['Lisbon', 'Sintra', 'Cascais', 'Oeiras', 'Almada', 'Setúbal', 'Amadora', 'Loures', 'Odivelas', 'Vila Franca de Xira', 'Mafra', 'Sesimbra', 'Palmela'],
+  },
+  fr: {
+    metaTitle: 'Remplacement de moteur de store à Lisbonne | Prime Estores',
+    metaDesc: 'Moteur de store grillé ou qui ne répond plus ? Nous remplaçons le moteur des stores électriques à Lisbonne et dans le Grand Lisbonne, à domicile et le jour même. Devis gratuit.',
+    keywords: 'remplacement moteur store, changer moteur store, moteur store en panne, moteur store grillé, réparer moteur store Lisbonne, moteur volet roulant',
+    badge: 'Réparation de stores', bcHome: 'Accueil', bcRepair: 'Réparation', bcLeaf: 'Moteur',
+    h1: 'Remplacement de moteur de store à Lisbonne et dans le Grand Lisbonne',
+    subtitle: 'Le moteur de votre store électrique a grillé, ronronne ou ne répond plus ? Nous remplaçons le moteur à domicile, rapidement, dans tout le Grand Lisbonne.',
+    callNow: 'Appeler : +351 923 348 323', ctaQuote: 'Demander un devis gratuit',
+    urgentBold: 'Moteur en panne ?', urgentText: 'nous essayons de venir le jour même.',
+    introH2: 'Remplacement du moteur de votre store',
+    introP1: 'Le moteur est le cœur du store électrique. Avec le temps ou par surcharge, le moteur peut griller, perdre de la puissance ou ne plus répondre — laissant le store bloqué. Dans la plupart des cas, nul besoin de remplacer le store : il suffit de changer le moteur.',
+    introP2: 'Prime Estores remplace le moteur des stores électriques à domicile, dans tout le Grand Lisbonne. Nous diagnostiquons la panne, recommandons le bon moteur, le remplaçons sur place et programmons les fins de course — généralement en une seule visite, avec devis gratuit.',
+    signsH2: 'Signes qu\'il faut changer le moteur',
+    signs: ['Le moteur ne répond pas à la télécommande', 'Le moteur ronronne mais ne bouge pas le store', 'Le store électrique s\'est arrêté à mi-hauteur', 'Odeur de brûlé au niveau du moteur', 'Le moteur fonctionne lentement ou faiblement', 'Le store électrique ne monte ni ne descend'],
+    processH2: 'Comment se déroule le remplacement',
+    process: [
+      { step: '01', title: 'Contact et diagnostic', desc: 'Appelez-nous ou remplissez le formulaire. Nous évaluons le moteur et la panne, avec un devis gratuit et sans engagement.' },
+      { step: '02', title: 'Visite à domicile', desc: 'Nous venons chez vous ou dans votre entreprise avec le bon moteur, sans frais de déplacement dans le Grand Lisbonne.' },
+      { step: '03', title: 'Remplacement et programmation', desc: 'Nous retirons l\'ancien moteur, installons le nouveau et programmons les fins de course (butées haute et basse).' },
+      { step: '04', title: 'Test et garantie', desc: 'Nous testons le fonctionnement complet avec la télécommande ou l\'interrupteur et garantissons un fonctionnement parfait.' },
+    ],
+    localH2: 'Remplacement de moteur de store dans tout le Grand Lisbonne',
+    localP: 'Nous remplaçons les moteurs de store à domicile à Lisbonne et dans toutes les communes voisines, sans frais de déplacement. Où que vous soyez dans l\'aire métropolitaine, un technicien est proche de vous :',
+    chipPrefix: 'Remplacement de moteur à', zonesLink: 'Voir toutes les zones que nous couvrons →',
+    faqH2: 'Questions fréquentes',
+    faqs: [
+      { q: 'Combien coûte le remplacement d\'un moteur de store ?', a: 'Cela dépend de la taille et du poids du store et du type de moteur. Nous donnons toujours un devis gratuit et sans engagement après le diagnostic.' },
+      { q: 'Pouvez-vous venir le jour même ?', a: 'Dans la plupart des cas oui, selon les disponibilités et votre zone. Pour plus de rapidité, appelez le +351 923 348 323.' },
+      { q: 'Remplacez-vous le moteur de toute marque de store ?', a: 'Oui. Nous remplaçons les moteurs tubulaires des stores électriques de toute marque et modèle, et programmons les fins de course.' },
+      { q: 'Quel moteur utilisez-vous pour le remplacement ?', a: 'Nous apportons un moteur de qualité avec la puissance adaptée à votre store et le laissons fonctionner avec télécommande ou interrupteur.' },
+      { q: 'Intervenez-vous à domicile ?', a: 'Oui, nous nous déplaçons chez vous dans tout le Grand Lisbonne sans frais de déplacement. Le remplacement se fait sur place, généralement en une seule visite.' },
+    ],
+    sideTitle: 'Moteur en panne ?', sideText: 'Appelez-nous directement et nous gérons le remplacement au plus vite — souvent le jour même.',
+    alsoTitle: 'Nous réparons aussi', alsoRepair: 'Réparation de stores', alsoManual: 'Stores manuels', alsoElectric: 'Stores électriques',
+    zonas: ['Lisbonne', 'Sintra', 'Cascais', 'Oeiras', 'Almada', 'Setúbal', 'Amadora', 'Loures', 'Odivelas', 'Vila Franca de Xira', 'Mafra', 'Sesimbra', 'Palmela'],
+  },
+  es: {
+    metaTitle: 'Cambio de motor de persiana en Lisboa | Prime Estores',
+    metaDesc: '¿Motor de la persiana quemado o sin respuesta? Cambiamos el motor de persianas eléctricas en Lisboa y el Gran Lisboa, a domicilio y el mismo día. Presupuesto gratis.',
+    keywords: 'cambio de motor de persiana, sustituir motor persiana, motor persiana averiado, motor persiana quemado, reparar motor persiana Lisboa',
+    badge: 'Reparación de persianas', bcHome: 'Inicio', bcRepair: 'Reparación', bcLeaf: 'Cambio de motor',
+    h1: 'Cambio de motor de persiana en Lisboa y el Gran Lisboa',
+    subtitle: '¿El motor de su persiana eléctrica se quemó, zumba o dejó de responder? Cambiamos el motor a domicilio, con rapidez, en todo el Gran Lisboa.',
+    callNow: 'Llamar: +351 923 348 323', ctaQuote: 'Pedir presupuesto gratis',
+    urgentBold: '¿Motor averiado?', urgentText: 'intentamos acudir el mismo día.',
+    introH2: 'Cambio y sustitución del motor de la persiana',
+    introP1: 'El motor es el corazón de la persiana eléctrica. Con el tiempo o por sobrecarga, el motor puede quemarse, perder fuerza o dejar de responder — dejando la persiana parada. En la mayoría de los casos no hace falta cambiar la persiana: basta con sustituir el motor.',
+    introP2: 'Prime Estores cambia el motor de persianas eléctricas a domicilio, en todo el Gran Lisboa. Diagnosticamos la avería, indicamos el motor adecuado, lo sustituimos in situ y programamos los finales de carrera — normalmente en una sola visita, con presupuesto gratuito.',
+    signsH2: 'Señales de que hay que cambiar el motor',
+    signs: ['El motor no responde al mando', 'El motor zumba pero no mueve la persiana', 'La persiana eléctrica se paró a media altura', 'Olor a quemado en el motor', 'El motor funciona lento o débil', 'La persiana eléctrica no sube ni baja'],
+    processH2: 'Cómo funciona el cambio de motor',
+    process: [
+      { step: '01', title: 'Contacto y diagnóstico', desc: 'Llámenos o rellene el formulario. Evaluamos el motor y la avería, con presupuesto gratuito y sin compromiso.' },
+      { step: '02', title: 'Visita a domicilio', desc: 'Nos desplazamos a su casa o empresa con el motor adecuado, sin coste de desplazamiento en el Gran Lisboa.' },
+      { step: '03', title: 'Sustitución y programación', desc: 'Retiramos el motor antiguo, instalamos el nuevo y programamos los finales de carrera (topes de subida y bajada).' },
+      { step: '04', title: 'Prueba y garantía', desc: 'Probamos el funcionamiento completo con mando o interruptor y garantizamos un funcionamiento perfecto.' },
+    ],
+    localH2: 'Cambio de motor de persiana en todo el Gran Lisboa',
+    localP: 'Cambiamos motores de persiana a domicilio en Lisboa y en todos los municipios vecinos, sin coste de desplazamiento. Esté donde esté en el área metropolitana, tenemos un técnico cerca de usted:',
+    chipPrefix: 'Cambio de motor en', zonesLink: 'Ver todas las zonas que cubrimos →',
+    faqH2: 'Preguntas frecuentes',
+    faqs: [
+      { q: '¿Cuánto cuesta cambiar el motor de una persiana?', a: 'Depende del tamaño y el peso de la persiana y del tipo de motor. Siempre damos presupuesto gratuito y sin compromiso tras el diagnóstico.' },
+      { q: '¿Pueden venir el mismo día?', a: 'En la mayoría de los casos sí, según la disponibilidad y su zona. Para mayor rapidez, llame al +351 923 348 323.' },
+      { q: '¿Cambian el motor de cualquier marca de persiana?', a: 'Sí. Sustituimos motores tubulares de persianas eléctricas de cualquier marca y modelo, y programamos los finales de carrera.' },
+      { q: '¿Qué motor usan en la sustitución?', a: 'Llevamos un motor de calidad con la potencia adecuada para su persiana y lo dejamos funcionando con mando o interruptor.' },
+      { q: '¿Lo hacen a domicilio?', a: 'Sí, nos desplazamos a su casa o empresa en todo el Gran Lisboa sin coste de desplazamiento. La sustitución se hace in situ, normalmente en una sola visita.' },
+    ],
+    sideTitle: '¿Motor averiado?', sideText: 'Llámenos directamente y gestionamos el cambio lo antes posible — a menudo el mismo día.',
+    alsoTitle: 'También reparamos', alsoRepair: 'Reparación de persianas', alsoManual: 'Persianas manuales', alsoElectric: 'Persianas eléctricas',
+    zonas: ['Lisboa', 'Sintra', 'Cascais', 'Oeiras', 'Almada', 'Setúbal', 'Amadora', 'Loures', 'Odivelas', 'Vila Franca de Xira', 'Mafra', 'Sesimbra', 'Palmela'],
+  },
+  de: {
+    metaTitle: 'Motorwechsel für Jalousien in Lissabon | Prime Estores',
+    metaDesc: 'Motor der Jalousie durchgebrannt oder ohne Reaktion? Wir wechseln den Motor elektrischer Jalousien in Lissabon und im Großraum Lissabon, bei Ihnen zu Hause und am selben Tag. Kostenloser Kostenvoranschlag.',
+    keywords: 'Motorwechsel Jalousie, Jalousie Motor wechseln, Jalousie Motor defekt, Rollladenmotor wechseln Lissabon, Motor Rollladen tauschen',
+    badge: 'Jalousien-Reparatur', bcHome: 'Startseite', bcRepair: 'Reparatur', bcLeaf: 'Motorwechsel',
+    h1: 'Motorwechsel für Jalousien in Lissabon und im Großraum Lissabon',
+    subtitle: 'Ist der Motor Ihrer elektrischen Jalousie durchgebrannt, brummt er oder reagiert er nicht mehr? Wir wechseln den Motor bei Ihnen zu Hause, schnell, im gesamten Großraum Lissabon.',
+    callNow: 'Anrufen: +351 923 348 323', ctaQuote: 'Kostenlosen Kostenvoranschlag anfordern',
+    urgentBold: 'Motor defekt?', urgentText: 'wir versuchen, noch am selben Tag zu kommen.',
+    introH2: 'Wechsel des Jalousienmotors',
+    introP1: 'Der Motor ist das Herz der elektrischen Jalousie. Mit der Zeit oder durch Überlastung kann der Motor durchbrennen, an Kraft verlieren oder nicht mehr reagieren — die Jalousie bleibt stehen. In den meisten Fällen müssen Sie nicht die ganze Jalousie ersetzen, nur den Motor.',
+    introP2: 'Prime Estores wechselt den Motor elektrischer Jalousien bei Ihnen zu Hause, im gesamten Großraum Lissabon. Wir diagnostizieren den Defekt, empfehlen den passenden Motor, wechseln ihn vor Ort und programmieren die Endlagen — in der Regel bei einem einzigen Besuch, mit kostenlosem Kostenvoranschlag.',
+    signsH2: 'Anzeichen, dass der Motor gewechselt werden muss',
+    signs: ['Der Motor reagiert nicht auf die Fernbedienung', 'Der Motor brummt, bewegt aber die Jalousie nicht', 'Die elektrische Jalousie blieb auf halber Höhe stehen', 'Brandgeruch am Motor', 'Der Motor läuft langsam oder schwach', 'Die elektrische Jalousie fährt weder hoch noch runter'],
+    processH2: 'So läuft der Motorwechsel ab',
+    process: [
+      { step: '01', title: 'Kontakt und Diagnose', desc: 'Rufen Sie an oder füllen Sie das Formular aus. Wir prüfen den Motor und den Defekt, mit kostenlosem, unverbindlichem Kostenvoranschlag.' },
+      { step: '02', title: 'Besuch bei Ihnen zu Hause', desc: 'Wir kommen mit dem passenden Motor zu Ihnen nach Hause oder ins Geschäft, ohne Anfahrtskosten im Großraum Lissabon.' },
+      { step: '03', title: 'Wechsel und Programmierung', desc: 'Wir entfernen den alten Motor, setzen den neuen ein und programmieren die Endlagen (oberer und unterer Anschlag).' },
+      { step: '04', title: 'Test und Garantie', desc: 'Wir testen den vollständigen Betrieb mit Fernbedienung oder Schalter und stellen einen einwandfreien Betrieb sicher.' },
+    ],
+    localH2: 'Motorwechsel für Jalousien im gesamten Großraum Lissabon',
+    localP: 'Wir wechseln Jalousienmotoren bei Ihnen zu Hause in Lissabon und in allen Nachbargemeinden, ohne Anfahrtskosten. Wo immer Sie im Metropolgebiet sind, ist ein Techniker in Ihrer Nähe:',
+    chipPrefix: 'Motorwechsel in', zonesLink: 'Alle von uns bedienten Gebiete ansehen →',
+    faqH2: 'Häufige Fragen',
+    faqs: [
+      { q: 'Was kostet der Wechsel eines Jalousienmotors?', a: 'Das hängt von Größe und Gewicht der Jalousie und der Art des Motors ab. Wir erstellen nach der Diagnose immer einen kostenlosen, unverbindlichen Kostenvoranschlag.' },
+      { q: 'Können Sie am selben Tag kommen?', a: 'In den meisten Fällen ja, je nach Verfügbarkeit und Ihrer Region. Für schnellsten Service rufen Sie +351 923 348 323 an.' },
+      { q: 'Wechseln Sie den Motor bei jeder Jalousienmarke?', a: 'Ja. Wir wechseln Rohrmotoren elektrischer Jalousien jeder Marke und jedes Modells und programmieren die Endlagen.' },
+      { q: 'Welchen Motor verwenden Sie beim Wechsel?', a: 'Wir bringen einen hochwertigen Motor mit der passenden Leistung für Ihre Jalousie mit und übergeben ihn funktionsbereit mit Fernbedienung oder Schalter.' },
+      { q: 'Machen Sie das bei mir zu Hause?', a: 'Ja, wir kommen zu Ihnen nach Hause oder ins Geschäft im gesamten Großraum Lissabon, ohne Anfahrtskosten. Der Wechsel erfolgt vor Ort, in der Regel bei einem einzigen Besuch.' },
+    ],
+    sideTitle: 'Motor defekt?', sideText: 'Rufen Sie uns direkt an und wir kümmern uns schnellstmöglich um den Wechsel — oft am selben Tag.',
+    alsoTitle: 'Wir reparieren auch', alsoRepair: 'Jalousien-Reparatur', alsoManual: 'Manuelle Jalousien', alsoElectric: 'Elektrische Jalousien',
+    zonas: ['Lissabon', 'Sintra', 'Cascais', 'Oeiras', 'Almada', 'Setúbal', 'Amadora', 'Loures', 'Odivelas', 'Vila Franca de Xira', 'Mafra', 'Sesimbra', 'Palmela'],
+  },
+  it: {
+    metaTitle: 'Sostituzione motore tenda a Lisbona | Prime Estores',
+    metaDesc: 'Motore della tenda bruciato o che non risponde? Sostituiamo il motore delle tende elettriche a Lisbona e nella Grande Lisbona, a domicilio e in giornata. Preventivo gratuito.',
+    keywords: 'sostituzione motore tenda, cambiare motore tapparella, motore tenda guasto, motore tapparella bruciato, riparare motore tapparella Lisbona',
+    badge: 'Riparazione tende', bcHome: 'Home', bcRepair: 'Riparazione', bcLeaf: 'Motore',
+    h1: 'Sostituzione motore tenda a Lisbona e nella Grande Lisbona',
+    subtitle: 'Il motore della tua tenda elettrica si è bruciato, ronza o non risponde più? Sostituiamo il motore a domicilio, rapidamente, in tutta la Grande Lisbona.',
+    callNow: 'Chiama: +351 923 348 323', ctaQuote: 'Richiedi un preventivo gratuito',
+    urgentBold: 'Motore guasto?', urgentText: 'cerchiamo di venire in giornata.',
+    introH2: 'Sostituzione del motore della tenda',
+    introP1: 'Il motore è il cuore della tenda elettrica. Con il tempo o per sovraccarico, il motore può bruciarsi, perdere forza o non rispondere più — lasciando la tenda ferma. Nella maggior parte dei casi non serve sostituire la tenda: basta cambiare il motore.',
+    introP2: 'Prime Estores sostituisce il motore delle tende elettriche a domicilio, in tutta la Grande Lisbona. Diagnostichiamo il guasto, indichiamo il motore adatto, lo sostituiamo sul posto e programmiamo i fine corsa — di solito in un\'unica visita, con preventivo gratuito.',
+    signsH2: 'Segnali che il motore va sostituito',
+    signs: ['Il motore non risponde al telecomando', 'Il motore ronza ma non muove la tenda', 'La tenda elettrica si è fermata a metà', 'Odore di bruciato dal motore', 'Il motore va lento o debole', 'La tenda elettrica non sale né scende'],
+    processH2: 'Come funziona la sostituzione',
+    process: [
+      { step: '01', title: 'Contatto e diagnosi', desc: 'Chiamaci o compila il modulo. Valutiamo il motore e il guasto, con preventivo gratuito e senza impegno.' },
+      { step: '02', title: 'Visita a domicilio', desc: 'Veniamo a casa o in azienda con il motore adatto, senza costi di trasferta nella Grande Lisbona.' },
+      { step: '03', title: 'Sostituzione e programmazione', desc: 'Rimuoviamo il motore vecchio, montiamo quello nuovo e programmiamo i fine corsa (limiti di salita e discesa).' },
+      { step: '04', title: 'Test e garanzia', desc: 'Testiamo il funzionamento completo con telecomando o interruttore e garantiamo un funzionamento perfetto.' },
+    ],
+    localH2: 'Sostituzione motore tenda in tutta la Grande Lisbona',
+    localP: 'Sostituiamo i motori delle tende a domicilio a Lisbona e in tutti i comuni vicini, senza costi di trasferta. Ovunque tu sia nell\'area metropolitana, abbiamo un tecnico vicino a te:',
+    chipPrefix: 'Sostituzione motore a', zonesLink: 'Vedi tutte le zone che serviamo →',
+    faqH2: 'Domande frequenti',
+    faqs: [
+      { q: 'Quanto costa sostituire il motore di una tenda?', a: 'Dipende dalle dimensioni e dal peso della tenda e dal tipo di motore. Diamo sempre un preventivo gratuito e senza impegno dopo la diagnosi.' },
+      { q: 'Potete venire in giornata?', a: 'Nella maggior parte dei casi sì, in base alla disponibilità e alla tua zona. Per maggiore rapidità, chiama il +351 923 348 323.' },
+      { q: 'Sostituite il motore di qualsiasi marca di tenda?', a: 'Sì. Sostituiamo motori tubolari di tende elettriche di qualsiasi marca e modello e programmiamo i fine corsa.' },
+      { q: 'Che motore usate nella sostituzione?', a: 'Portiamo un motore di qualità con la potenza adatta alla tua tenda e lo lasciamo funzionante con telecomando o interruttore.' },
+      { q: 'Lo fate a domicilio?', a: 'Sì, veniamo a casa o in azienda in tutta la Grande Lisbona senza costi di trasferta. La sostituzione avviene sul posto, di solito in un\'unica visita.' },
+    ],
+    sideTitle: 'Motore guasto?', sideText: 'Chiamaci direttamente e gestiamo la sostituzione al più presto — spesso in giornata.',
+    alsoTitle: 'Ripariamo anche', alsoRepair: 'Riparazione tende', alsoManual: 'Tende manuali', alsoElectric: 'Tende elettriche',
+    zonas: ['Lisbona', 'Sintra', 'Cascais', 'Oeiras', 'Almada', 'Setúbal', 'Amadora', 'Loures', 'Odivelas', 'Vila Franca de Xira', 'Mafra', 'Sesimbra', 'Palmela'],
+  },
+  ru: {
+    metaTitle: 'Замена мотора рольставней в Лиссабоне | Prime Estores',
+    metaDesc: 'Мотор рольставней сгорел или не реагирует? Меняем мотор электрических рольставней в Лиссабоне и Большом Лиссабоне, с выездом и в тот же день. Бесплатная смета.',
+    keywords: 'замена мотора рольставней, заменить мотор рольставней, мотор рольставней сгорел, ремонт мотора рольставней Лиссабон, поменять мотор',
+    badge: 'Ремонт рольставней', bcHome: 'Главная', bcRepair: 'Ремонт', bcLeaf: 'Замена мотора',
+    h1: 'Замена мотора рольставней в Лиссабоне и Большом Лиссабоне',
+    subtitle: 'Мотор ваших электрических рольставней сгорел, гудит или перестал реагировать? Меняем мотор с выездом, быстро, по всему Большому Лиссабону.',
+    callNow: 'Позвонить: +351 923 348 323', ctaQuote: 'Получить бесплатную смету',
+    urgentBold: 'Мотор сломался?', urgentText: 'стараемся приехать в тот же день.',
+    introH2: 'Замена мотора рольставней',
+    introP1: 'Мотор — это сердце электрических рольставней. Со временем или из-за перегрузки мотор может сгореть, потерять мощность или перестать реагировать — и рольставень останавливается. В большинстве случаев менять весь рольставень не нужно, достаточно заменить мотор.',
+    introP2: 'Prime Estores меняет мотор электрических рольставней с выездом по всему Большому Лиссабону. Диагностируем неисправность, подбираем подходящий мотор, меняем на месте и программируем концевые положения — обычно за один визит, с бесплатной сметой.',
+    signsH2: 'Признаки того, что мотор пора менять',
+    signs: ['Мотор не реагирует на пульт', 'Мотор гудит, но не двигает рольставень', 'Электрический рольставень остановился на середине', 'Запах гари от мотора', 'Мотор работает медленно или слабо', 'Электрический рольставень не поднимается и не опускается'],
+    processH2: 'Как проходит замена мотора',
+    process: [
+      { step: '01', title: 'Контакт и диагностика', desc: 'Позвоните или заполните форму. Оцениваем мотор и неисправность, с бесплатной сметой без обязательств.' },
+      { step: '02', title: 'Выезд на дом', desc: 'Приезжаем к вам домой или в офис с подходящим мотором, без платы за выезд в Большом Лиссабоне.' },
+      { step: '03', title: 'Замена и программирование', desc: 'Снимаем старый мотор, ставим новый и программируем концевые положения (верхний и нижний пределы).' },
+      { step: '04', title: 'Проверка и гарантия', desc: 'Проверяем полную работу с пультом или выключателем и гарантируем безупречную работу.' },
+    ],
+    localH2: 'Замена мотора рольставней по всему Большому Лиссабону',
+    localP: 'Меняем моторы рольставней с выездом в Лиссабоне и во всех соседних муниципалитетах, без платы за выезд. Где бы вы ни были в столичном регионе, рядом есть наш техник:',
+    chipPrefix: 'Замена мотора в', zonesLink: 'Посмотреть все зоны обслуживания →',
+    faqH2: 'Часто задаваемые вопросы',
+    faqs: [
+      { q: 'Сколько стоит замена мотора рольставней?', a: 'Зависит от размера и веса рольставня и типа мотора. После диагностики мы всегда даём бесплатную смету без обязательств.' },
+      { q: 'Можете приехать в тот же день?', a: 'В большинстве случаев да, в зависимости от загрузки и вашей зоны. Для самой быстрой реакции звоните +351 923 348 323.' },
+      { q: 'Меняете мотор любой марки рольставней?', a: 'Да. Меняем трубчатые моторы электрических рольставней любой марки и модели и программируем концевые положения.' },
+      { q: 'Какой мотор используете при замене?', a: 'Привозим качественный мотор нужной мощности для вашего рольставня и оставляем его работающим с пультом или выключателем.' },
+      { q: 'Вы делаете это на дому?', a: 'Да, приезжаем к вам домой или в офис по всему Большому Лиссабону без платы за выезд. Замена выполняется на месте, обычно за один визит.' },
+    ],
+    sideTitle: 'Мотор сломался?', sideText: 'Позвоните напрямую, и мы выполним замену как можно скорее — часто в тот же день.',
+    alsoTitle: 'Также ремонтируем', alsoRepair: 'Ремонт рольставней', alsoManual: 'Ручные рольставни', alsoElectric: 'Электрические рольставни',
+    zonas: ['Лиссабон', 'Синтра', 'Кашкайш', 'Оэйраш', 'Алмада', 'Сетубал', 'Амадора', 'Лориш', 'Одивелаш', 'Вила-Франка-де-Шира', 'Мафра', 'Сезимбра', 'Палмела'],
+  },
+  uk: {
+    metaTitle: 'Заміна мотора ролетів у Лісабоні | Prime Estores',
+    metaDesc: 'Мотор ролетів згорів або не реагує? Міняємо мотор електричних ролетів у Лісабоні та Великому Лісабоні, з виїздом і того ж дня. Безкоштовний кошторис.',
+    keywords: 'заміна мотора ролетів, замінити мотор ролетів, мотор ролетів згорів, ремонт мотора ролетів Лісабон, поміняти мотор',
+    badge: 'Ремонт ролетів', bcHome: 'Головна', bcRepair: 'Ремонт', bcLeaf: 'Заміна мотора',
+    h1: 'Заміна мотора ролетів у Лісабоні та Великому Лісабоні',
+    subtitle: 'Мотор ваших електричних ролетів згорів, гуде чи перестав реагувати? Міняємо мотор з виїздом, швидко, по всьому Великому Лісабону.',
+    callNow: 'Зателефонувати: +351 923 348 323', ctaQuote: 'Отримати безкоштовний кошторис',
+    urgentBold: 'Мотор зламався?', urgentText: 'намагаємося приїхати того ж дня.',
+    introH2: 'Заміна мотора ролета',
+    introP1: 'Мотор — це серце електричного ролета. З часом або через перевантаження мотор може згоріти, втратити потужність чи перестати реагувати — і ролет зупиняється. У більшості випадків міняти весь ролет не потрібно, достатньо замінити мотор.',
+    introP2: 'Prime Estores міняє мотор електричних ролетів з виїздом по всьому Великому Лісабону. Діагностуємо несправність, підбираємо відповідний мотор, міняємо на місці та програмуємо кінцеві положення — зазвичай за один візит, із безкоштовним кошторисом.',
+    signsH2: 'Ознаки того, що мотор час міняти',
+    signs: ['Мотор не реагує на пульт', 'Мотор гуде, але не рухає ролет', 'Електричний ролет зупинився посередині', 'Запах гару від мотора', 'Мотор працює повільно або слабко', 'Електричний ролет не піднімається й не опускається'],
+    processH2: 'Як відбувається заміна мотора',
+    process: [
+      { step: '01', title: 'Контакт і діагностика', desc: 'Зателефонуйте або заповніть форму. Оцінюємо мотор і несправність, із безкоштовним кошторисом без зобовʼязань.' },
+      { step: '02', title: 'Виїзд додому', desc: 'Приїжджаємо до вас додому або в офіс із відповідним мотором, без плати за виїзд у Великому Лісабоні.' },
+      { step: '03', title: 'Заміна та програмування', desc: 'Знімаємо старий мотор, встановлюємо новий і програмуємо кінцеві положення (верхня та нижня межі).' },
+      { step: '04', title: 'Перевірка та гарантія', desc: 'Перевіряємо повну роботу з пультом або вимикачем і гарантуємо бездоганну роботу.' },
+    ],
+    localH2: 'Заміна мотора ролетів по всьому Великому Лісабону',
+    localP: 'Міняємо мотори ролетів з виїздом у Лісабоні та в усіх сусідніх муніципалітетах, без плати за виїзд. Де б ви не були в столичному регіоні, поряд є наш технік:',
+    chipPrefix: 'Заміна мотора в', zonesLink: 'Переглянути всі зони обслуговування →',
+    faqH2: 'Часті запитання',
+    faqs: [
+      { q: 'Скільки коштує заміна мотора ролетів?', a: 'Залежить від розміру й ваги ролета та типу мотора. Після діагностики ми завжди даємо безкоштовний кошторис без зобовʼязань.' },
+      { q: 'Чи можете приїхати того ж дня?', a: 'У більшості випадків так, залежно від завантаженості та вашої зони. Для найшвидшої реакції телефонуйте +351 923 348 323.' },
+      { q: 'Міняєте мотор будь-якої марки ролетів?', a: 'Так. Міняємо трубчасті мотори електричних ролетів будь-якої марки та моделі й програмуємо кінцеві положення.' },
+      { q: 'Який мотор використовуєте при заміні?', a: 'Привозимо якісний мотор потрібної потужності для вашого ролета й залишаємо його працюючим з пультом або вимикачем.' },
+      { q: 'Ви робите це вдома?', a: 'Так, приїжджаємо до вас додому або в офіс по всьому Великому Лісабону без плати за виїзд. Заміна виконується на місці, зазвичай за один візит.' },
+    ],
+    sideTitle: 'Мотор зламався?', sideText: 'Зателефонуйте напряму, і ми виконаємо заміну якнайшвидше — часто того ж дня.',
+    alsoTitle: 'Також ремонтуємо', alsoRepair: 'Ремонт ролетів', alsoManual: 'Ручні ролети', alsoElectric: 'Електричні ролети',
+    zonas: ['Лісабон', 'Сінтра', 'Кашкайш', 'Оейраш', 'Алмада', 'Сетубал', 'Амадора', 'Лоуреш', 'Одівелаш', 'Віла-Франка-де-Шіра', 'Мафра', 'Сезімбра', 'Палмела'],
+  },
+};
+
+const c = content[lang] ?? content.pt;
+const l = links[lang] ?? links.pt;
+const pageUrl = `${baseUrl}${pagePath[lang] ?? pagePath.pt}`;
+
+const serviceSchema = {
+  '@context': 'https://schema.org', '@type': 'Service',
+  name: c.metaTitle.split(' | ')[0], serviceType: c.bcLeaf,
+  provider: { '@type': 'LocalBusiness', name: 'Prime Estores', telephone: '+351923348323', url: baseUrl },
+  areaServed: { '@type': 'State', name: `${LX[lang]}` }, description: c.metaDesc,
+};
+const breadcrumbSchema = {
+  '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: c.bcHome, item: `${baseUrl}${l.home}` },
+    { '@type': 'ListItem', position: 2, name: c.bcRepair, item: `${baseUrl}${l.repair}` },
+    { '@type': 'ListItem', position: 3, name: c.bcLeaf, item: pageUrl },
+  ],
+};
+const faqSchema = {
+  '@context': 'https://schema.org', '@type': 'FAQPage',
+  mainEntity: c.faqs.map(f => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+<script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+<script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+<Layout title={c.metaTitle} description={c.metaDesc} keywords={c.keywords} canonicalURL={pageUrl} lang={lang}>
+  <section class="bg-gradient-to-br from-[#1A1A1A] to-[#8B1A1A] text-white py-16 lg:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <nav aria-label="Breadcrumb" class="mb-6">
+        <ol class="flex items-center gap-2 text-sm text-white/80">
+          <li><a href={l.home} class="hover:text-white transition-colors">{c.bcHome}</a></li>
+          <li aria-hidden="true"><span>/</span></li>
+          <li><a href={l.repair} class="hover:text-white transition-colors">{c.bcRepair}</a></li>
+          <li aria-hidden="true"><span>/</span></li>
+          <li><span class="text-white">{c.bcLeaf}</span></li>
+        </ol>
+      </nav>
+      <div class="max-w-3xl">
+        <span class="inline-block bg-white/10 border border-white/20 text-white text-xs font-semibold uppercase tracking-widest px-3 py-1 rounded-full mb-4">{c.badge}</span>
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black leading-tight mb-4">{c.h1}</h1>
+        <p class="text-xl text-white/80 leading-relaxed mb-8">{c.subtitle}</p>
+        <div class="flex flex-col sm:flex-row gap-3">
+          <a href="tel:+351923348323" class="inline-flex items-center justify-center gap-2 bg-white text-[#8B1A1A] font-bold px-6 py-3.5 rounded-lg hover:bg-gray-100 transition-colors">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+            {c.callNow}
+          </a>
+          <a href={l.quote} class="inline-flex items-center justify-center gap-2 border-2 border-white text-white font-bold px-6 py-3.5 rounded-lg hover:bg-white/10 transition-colors">{c.ctaQuote}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="bg-amber-50 border-y border-amber-200 py-3">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <p class="text-center text-amber-800 text-sm font-medium">
+        <span class="font-bold">{c.urgentBold}</span> <a href="tel:+351923348323" class="underline font-bold">+351 923 348 323</a> — {c.urgentText}
+      </p>
+    </div>
+  </div>
+
+  <section class="py-16 lg:py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-3 gap-12">
+        <div class="lg:col-span-2">
+          <h2 class="text-2xl lg:text-3xl font-black text-[#1A1A1A] mb-4">{c.introH2}</h2>
+          <p class="text-gray-600 leading-relaxed mb-6">{c.introP1}</p>
+          <p class="text-gray-600 leading-relaxed mb-6">{c.introP2}</p>
+
+          <h2 class="text-2xl font-black text-[#1A1A1A] mb-4 mt-8">{c.signsH2}</h2>
+          <div class="grid sm:grid-cols-2 gap-3 mb-8">
+            {c.signs.map(s => (
+              <div class="flex items-center gap-2 p-3 bg-[#F5F5F5] rounded-lg text-sm">
+                <svg class="w-4 h-4 text-[#8B1A1A] flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                <span class="text-gray-700">{s}</span>
+              </div>
+            ))}
+          </div>
+
+          <h2 class="text-2xl font-black text-[#1A1A1A] mb-4 mt-8">{c.processH2}</h2>
+          <ol class="space-y-4 mb-8">
+            {c.process.map(item => (
+              <li class="flex gap-4">
+                <div class="flex-shrink-0 w-10 h-10 bg-[#8B1A1A] text-white rounded-full flex items-center justify-center font-black text-sm">{item.step}</div>
+                <div>
+                  <div class="font-semibold text-[#1A1A1A]">{item.title}</div>
+                  <div class="text-gray-500 text-sm mt-0.5">{item.desc}</div>
+                </div>
+              </li>
+            ))}
+          </ol>
+
+          <h2 class="text-2xl font-black text-[#1A1A1A] mb-4 mt-8">{c.localH2}</h2>
+          <p class="text-gray-600 leading-relaxed mb-4">{c.localP}</p>
+          <div class="flex flex-wrap gap-2 mb-4">
+            {c.zonas.map(zona => (
+              <span class="bg-[#F5F5F5] border border-gray-200 text-gray-700 text-sm font-medium px-3 py-1.5 rounded-full">{c.chipPrefix} {zona}</span>
+            ))}
+          </div>
+          <a href={l.zones} class="text-[#8B1A1A] font-semibold hover:underline text-sm">{c.zonesLink}</a>
+
+          <h2 class="text-2xl font-black text-[#1A1A1A] mb-4 mt-10">{c.faqH2}</h2>
+          <div class="space-y-3">
+            {c.faqs.map((faq, index) => (
+              <details class="bg-[#F5F5F5] rounded-xl overflow-hidden group" id={`motor-faq-${index}`}>
+                <summary class="flex items-center justify-between gap-4 px-5 py-4 cursor-pointer list-none hover:bg-gray-100 transition-colors">
+                  <h3 class="font-semibold text-[#1A1A1A] text-sm pr-2">{faq.q}</h3>
+                  <span class="flex-shrink-0 w-6 h-6 flex items-center justify-center rounded-full bg-white text-[#8B1A1A] group-open:bg-[#8B1A1A] group-open:text-white transition-colors" aria-hidden="true">
+                    <svg class="w-4 h-4 transition-transform group-open:rotate-45" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                  </span>
+                </summary>
+                <div class="px-5 pb-4 pt-0"><p class="text-gray-600 text-sm leading-relaxed">{faq.a}</p></div>
+              </details>
+            ))}
+          </div>
+        </div>
+
+        <div class="space-y-6">
+          <div class="bg-[#8B1A1A] rounded-2xl p-6 text-white">
+            <h3 class="font-black text-xl mb-2">{c.sideTitle}</h3>
+            <p class="text-red-100 text-sm mb-4">{c.sideText}</p>
+            <a href="tel:+351923348323" class="flex items-center justify-center gap-2 bg-white text-[#8B1A1A] font-bold px-4 py-3 rounded-lg hover:bg-gray-100 transition-colors text-sm w-full">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+              +351 923 348 323
+            </a>
+          </div>
+          <ContactForm showTitle={true} lang={lang} />
+          <div class="bg-[#F5F5F5] rounded-2xl p-6">
+            <h3 class="font-bold text-[#1A1A1A] mb-4">{c.alsoTitle}</h3>
+            <ul class="space-y-2 text-sm">
+              <li><a href={l.repair} class="text-[#8B1A1A] hover:underline">{c.alsoRepair} →</a></li>
+              <li><a href={l.electric} class="text-[#8B1A1A] hover:underline">{c.alsoElectric} →</a></li>
+              <li><a href={l.manual} class="text-[#8B1A1A] hover:underline">{c.alsoManual} →</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <RelatedServices current="repair" lang={lang} />
+</Layout>

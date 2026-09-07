@@ -19,6 +19,7 @@ const baseRouteMap: RouteGroup[] = [
   { pt: '/servicos/eletricidade/',         en: '/en/services/electrical-work/',             fr: '/fr/services/electricite/',                 es: '/es/servicios/electricidad/',                de: '/de/dienstleistungen/elektroinstallation/',       it: '/it/servizi/impianto-elettrico/',  ru: '/ru/services/electrical-work/',     uk: '/uk/services/electrical-work/'     },
   { pt: '/servicos/casa-inteligente/',     en: '/en/services/smart-home/',                  fr: '/fr/services/maison-connectee/',            es: '/es/servicios/hogar-inteligente/',           de: '/de/dienstleistungen/smart-home/',                it: '/it/servizi/casa-intelligente/',   ru: '/ru/services/smart-home/',          uk: '/uk/services/smart-home/'          },
   { pt: '/servicos/troca-fita-estores/',   en: '/en/services/blind-strap-replacement/',     fr: '/fr/services/remplacement-sangle-store/',   es: '/es/servicios/cambio-cinta-persiana/',       de: '/de/dienstleistungen/gurtwechsel-jalousien/',     it: '/it/servizi/sostituzione-cinghia-tende/', ru: '/ru/services/blind-strap-replacement/', uk: '/uk/services/blind-strap-replacement/' },
+  { pt: '/servicos/troca-motor-estores/',  en: '/en/services/blind-motor-replacement/',     fr: '/fr/services/remplacement-moteur-store/',   es: '/es/servicios/cambio-motor-persiana/',       de: '/de/dienstleistungen/motorwechsel-jalousien/',    it: '/it/servizi/sostituzione-motore-tende/',  ru: '/ru/services/blind-motor-replacement/', uk: '/uk/services/blind-motor-replacement/' },
   { pt: '/politica-privacidade/',          en: '/en/privacy-policy/',                       fr: '/fr/politique-confidentialite/',            es: '/es/politica-privacidad/',                   de: '/de/datenschutz/',                                it: '/it/informativa-privacy/',         ru: '/ru/privacy-policy/',               uk: '/uk/privacy-policy/'               },
   { pt: '/artigos/',                       en: '/en/articles/',                             fr: '/fr/articles/',                             es: '/es/articulos/',                             de: '/de/artikel/',                                    it: '/it/articoli/',                    ru: '/ru/articles/',                     uk: '/uk/articles/'                     },
   { pt: '/sobre/',                         en: '/en/about/',                                fr: '/fr/a-propos/',                             es: '/es/sobre-nosotros/',                        de: '/de/ueber-uns/',                                  it: '/it/chi-siamo/',                   ru: '/ru/about/',                        uk: '/uk/about/'                        },
@@ -31,6 +32,7 @@ const zonaServiceSlugs: { pt: string; en: string }[] = [
   { pt: 'reparacao-estores', en: 'blind-repair' },
   { pt: 'eletricidade',      en: 'electrical-work' },
   { pt: 'troca-fita-estores', en: 'blind-strap-replacement' },
+  { pt: 'troca-motor-estores', en: 'blind-motor-replacement' },
 ];
 
 // Generate PT ↔ EN clusters for each zona hub + its service matrix pages.

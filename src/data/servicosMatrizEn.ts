@@ -78,4 +78,16 @@ export const servicosMatrizEn: ServicoMatrizEn[] = [
     intro: z => `Has your blind strap snapped or worn out in ${z.nome}? Prime Estores replaces the strap of manual blinds at your home in ${z.nome}, fast and with no call-out charge. We bring the right strap and replace it on site.`,
     detail: z => `We travel to ${z.nome} often on the same day, with straps of various widths in stock. ${z.detail}`,
   },
+  {
+    slug: 'blind-motor-replacement',
+    type: 'repair',
+    nome: 'Motor Replacement',
+    serviceHref: '/en/services/blind-motor-replacement/',
+    h1: z => `Blind Motor Replacement in ${z}`,
+    title: z => `Blind Motor Replacement in ${z} — At Your Home`,
+    description: z => `Replacement of the motor of electric blinds in ${z}. Burnt-out or unresponsive motor? Fast home service, no call-out charge. Free quote.`,
+    keywords: z => `blind motor replacement ${z}, replace blind motor ${z}, faulty blind motor ${z}, burnt blind motor ${z}, electric blind motor repair ${z}`,
+    intro: z => `Has your electric blind motor failed in ${z.nome}? Prime Estores replaces electric blind motors at your home in ${z.nome}, with diagnosis, the right motor and limit programming. Free quote.`,
+    detail: z => `We travel to ${z.nome} often on the same day, with motors in stock. ${z.detail}`,
+  },
 ];

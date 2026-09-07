@@ -77,4 +77,16 @@ export const servicosMatriz: ServicoMatriz[] = [
     intro: z => `A fita do seu estore partiu ou está gasta em ${z.nome}? A Prime Estores faz a troca de fita de estores manuais ao domicílio em ${z.nome}, com rapidez e sem custo de deslocação. Levamos a fita adequada e substituímos no local.`,
     detail: z => `Deslocamo-nos a ${z.nome} muitas vezes no próprio dia, com fita de várias larguras em stock. ${z.detail}`,
   },
+  {
+    slug: 'troca-motor-estores',
+    type: 'repair',
+    nome: 'Troca de Motor',
+    serviceHref: '/servicos/troca-motor-estores/',
+    h1: z => `Troca de Motor de Estore em ${z}`,
+    title: z => `Troca de Motor de Estore em ${z} — Ao Domicílio`,
+    description: z => `Troca e substituição do motor de estores elétricos em ${z}. Motor queimado ou sem resposta? Serviço rápido ao domicílio, sem custo de deslocação. Orçamento gratuito.`,
+    keywords: z => `troca de motor estore ${z}, substituir motor estore ${z}, motor estore avariado ${z}, motor estore queimado ${z}, reparar motor estore ${z}`,
+    intro: z => `O motor do seu estore elétrico avariou em ${z.nome}? A Prime Estores faz a troca de motor de estores elétricos ao domicílio em ${z.nome}, com diagnóstico, motor adequado e programação dos fins de curso. Orçamento gratuito.`,
+    detail: z => `Deslocamo-nos a ${z.nome} muitas vezes no próprio dia, com motores em stock. ${z.detail}`,
+  },
 ];
