@@ -12,7 +12,7 @@ const zones = [
   { name: 'Cascais', slug: 'cascais', desc: 'Wir bedienen die gesamte Gemeinde Cascais, einschließlich Cascais-Zentrum, Estoril, Parede und Carcavelos.' },
   { name: 'Oeiras', slug: 'oeiras', desc: 'Wir bedienen die gesamte Gemeinde Oeiras, einschließlich Porto Salvo, Barcarena, Carnaxide und Algés.' },
   { name: 'Almada', slug: 'almada', desc: 'Wir decken Almada und alle seine Ortschaften ab, einschließlich Costa da Caparica, Trafaria und Cacilhas.' },
-  { name: 'Setúbal', slug: 'setubal', desc: 'Wir bedienen die Gemeinde Setúbal und Umgebung, einschließlich Azeitão und São Bernardo.' },
+  { name: 'Setúbal', slug: 'setubal', taxa: true, desc: 'Wir bedienen die Gemeinde Setúbal und Umgebung, einschließlich Azeitão und São Bernardo.' },
   { name: 'Amadora', slug: 'amadora', desc: 'Wir decken die gesamte Gemeinde Amadora ab, einschließlich Alfornelos, Brandoa und Damaia.' },
   { name: 'Loures', slug: 'loures', desc: 'Wir bedienen die Gemeinde Loures, einschließlich Sacavém, Santa Iria de Azóia und Moscavide.' },
   { name: 'Odivelas', slug: 'odivelas', desc: 'Wir decken die gesamte Gemeinde Odivelas ab, einschließlich Pontinha, Famões und Ramada.' },
@@ -51,7 +51,7 @@ const zones = [
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
                 </svg>
               </div>
-              <h3 class="text-xl font-black text-[#1A1A1A]">{zone.name}</h3>
+              <h3 class="text-xl font-black text-[#1A1A1A]">{zone.name}{zone.taxa && <span class="text-[#8B1A1A]"> *</span>}</h3>
             </div>
             <p class="text-gray-600 text-sm leading-relaxed mb-4">{zone.desc}</p>
             <a href="/de/angebot" class="inline-flex items-center gap-1 text-[#8B1A1A] font-semibold text-sm hover:gap-2 transition-all hover:underline">

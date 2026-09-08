@@ -12,13 +12,13 @@ const zones = [
   { name: 'Cascais', slug: 'cascais', desc: 'Serviamo l\'intero comune di Cascais, incluse Cascais centro, Estoril, Parede, Carcavelos, São Domingos de Rana e Alcabideche.' },
   { name: 'Oeiras', slug: 'oeiras', desc: 'Serviamo l\'intero comune di Oeiras, incluse Oeiras centro, Porto Salvo, Barcarena, Carnaxide, Linda-a-Velha, Algés e Cruz Quebrada.' },
   { name: 'Almada', slug: 'almada', desc: 'Copriamo Almada e tutte le sue località, incluse Costa da Caparica, Trafaria, Cacilhas, Almada Velha, Cova da Piedade e Laranjeiro.' },
-  { name: 'Setúbal', slug: 'setubal', desc: 'Serviamo il comune di Setúbal e dintorni, inclusa la città di Setúbal e zone come Azeitão, São Bernardo e Sado.' },
+  { name: 'Setúbal', slug: 'setubal', taxa: true, desc: 'Serviamo il comune di Setúbal e dintorni, inclusa la città di Setúbal e zone come Azeitão, São Bernardo e Sado.' },
   { name: 'Amadora', slug: 'amadora', desc: 'Copriamo l\'intero comune di Amadora, incluse Alfornelos, Brandoa, Damaia, Falagueira, Mina de Água, Reboleira e Venteira.' },
   { name: 'Loures', slug: 'loures', desc: 'Serviamo il comune di Loures, incluse Loures centro, Sacavém, Santa Iria de Azóia, Moscavide, Prior Velho e dintorni.' },
   { name: 'Odivelas', slug: 'odivelas', desc: 'Copriamo l\'intero comune di Odivelas, incluse Odivelas centro, Pontinha, Famões, Póvoa de Santo Adrião e Ramada.' },
   { name: 'Vila Franca de Xira', slug: 'vfx', desc: 'Serviamo Vila Franca de Xira e il suo intero comune, incluse Alverca do Ribatejo, Vialonga, Sobralinho e Forte da Casa.' },
-  { name: 'Mafra', slug: 'mafra', desc: 'Copriamo il comune di Mafra, incluse Mafra centro, Ericeira, Malveira, Cheleiros e altre località.' },
-  { name: 'Sesimbra', slug: 'sesimbra', desc: 'Serviamo Sesimbra e il suo comune, incluse Sesimbra centro, Santana, Cotovia e Quinta do Conde.' },
+  { name: 'Mafra', slug: 'mafra', taxa: true, desc: 'Copriamo il comune di Mafra, incluse Mafra centro, Ericeira, Malveira, Cheleiros e altre località.' },
+  { name: 'Sesimbra', slug: 'sesimbra', taxa: true, desc: 'Serviamo Sesimbra e il suo comune, incluse Sesimbra centro, Santana, Cotovia e Quinta do Conde.' },
 ];
 ---
 
@@ -55,7 +55,7 @@ const zones = [
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
                 </svg>
               </div>
-              <h3 class="text-xl font-black text-[#1A1A1A]">{zone.name}</h3>
+              <h3 class="text-xl font-black text-[#1A1A1A]">{zone.name}{zone.taxa && <span class="text-[#8B1A1A]"> *</span>}</h3>
             </div>
             <p class="text-gray-600 text-sm leading-relaxed mb-4">{zone.desc}</p>
             <a href="/it/preventivo" class="inline-flex items-center gap-1 text-[#8B1A1A] font-semibold text-sm hover:gap-2 transition-all hover:underline">

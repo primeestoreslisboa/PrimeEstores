@@ -13,6 +13,10 @@ interface ZonaProp { nome: string; slug: string; bairros: string[]; geo: { lat: 
 const { zona } = Astro.props as { zona: ZonaProp };
 const en = zonaEn[zona.slug];
 
+// More distant municipalities where a travel fee applies (only if the quote is not accepted)
+const feeZones = ['setubal', 'vila-franca-de-xira', 'mafra', 'sesimbra', 'palmela'];
+const hasFee = feeZones.includes(zona.slug);
+
 const baseUrl = 'https://primeestores.pt';
 const pageUrl = `${baseUrl}/en/coverage-areas/${zona.slug}/`;
 
@@ -127,7 +131,7 @@ const schemaBreadcrumb = {
             <div class="grid sm:grid-cols-2 gap-4">
               {[
                 { title: 'Fast response', desc: `Technicians available in ${zona.nome} Mon–Sat, 8am–8pm.` },
-                { title: 'Free quote', desc: 'We travel to assess the work at no cost.' },
+                { title: 'Free quote', desc: hasFee ? 'The quote is free with no obligation. In this municipality a travel fee may apply, only if the quote is not accepted.' : 'We travel to assess the work at no cost.' },
                 { title: 'Certified technicians', desc: 'Experienced installers with certified technical training in electric blind systems and home automation.' },
                 { title: '1-year warranty', desc: 'All installation work has a minimum 1-year warranty.' },
               ].map(item => (

@@ -108,6 +108,16 @@ const desc =
   lang === 'uk' ? 'Спеціалісти зі встановлення та ремонту електричних і ручних ролет по всьому Великому Лісабону. Понад 10 років досвіду до ваших послуг.' :
   'Especialistas em instalação e reparação de estores elétricos e manuais em toda a Grande Lisboa. Mais de 10 anos de experiência ao seu serviço.';
 
+const travelNote =
+  lang === 'en' ? '* In Setúbal, Vila Franca de Xira, Mafra, Sesimbra and Palmela a travel fee applies if the quote is not accepted.' :
+  lang === 'fr' ? '* À Setúbal, Vila Franca de Xira, Mafra, Sesimbra et Palmela, des frais de déplacement s\'appliquent si le devis n\'est pas accepté.' :
+  lang === 'es' ? '* En Setúbal, Vila Franca de Xira, Mafra, Sesimbra y Palmela se aplica una tasa de desplazamiento si el presupuesto no es aceptado.' :
+  lang === 'de' ? '* In Setúbal, Vila Franca de Xira, Mafra, Sesimbra und Palmela fällt eine Anfahrtsgebühr an, wenn der Kostenvoranschlag nicht angenommen wird.' :
+  lang === 'it' ? '* A Setúbal, Vila Franca de Xira, Mafra, Sesimbra e Palmela si applica un costo di trasferta se il preventivo non viene accettato.' :
+  lang === 'ru' ? '* В Сетубале, Вила-Франка-де-Шира, Мафре, Сезимбре и Палмеле взимается плата за выезд, если смета не принята.' :
+  lang === 'uk' ? '* У Сетубалі, Віла-Франка-де-Шіра, Мафрі, Сезімбрі та Палмелі стягується плата за виїзд, якщо кошторис не прийнято.' :
+  '* Nos concelhos de Setúbal, Vila Franca de Xira, Mafra, Sesimbra e Palmela aplica-se uma taxa de deslocação caso o orçamento não seja aceite.';
+
 const hoursLabel =
   lang === 'en' ? 'Hours' :
   lang === 'fr' ? 'Horaires' :
@@ -344,8 +354,13 @@ const socialLinks = [
 
     </div>
 
+    <!-- Travel policy note -->
+    <div class="border-t border-gray-800 mt-10 pt-6">
+      <p class="text-gray-400 text-xs leading-relaxed">{travelNote}</p>
+    </div>
+
     <!-- Bottom bar -->
-    <div class="border-t border-gray-800 mt-10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+    <div class="mt-6 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
       <p class="text-gray-300 text-sm">
         &copy; {currentYear} Prime Estores. {rightsText}
       </p>
@@ -353,7 +368,7 @@ const socialLinks = [
         <a href={links.about} class="text-gray-400 hover:text-white text-xs transition-colors">{aboutLabel}</a>
         <a href={links.privacy} class="text-gray-400 hover:text-white text-xs transition-colors">{privacyLabel}</a>
         <p class="text-gray-300 text-xs">
-          Lisboa, Portugal &bull; NIF: 123 456 789
+          Lisboa, Portugal
         </p>
       </div>
     </div>

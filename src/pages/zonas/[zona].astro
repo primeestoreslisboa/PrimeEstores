@@ -9,6 +9,10 @@ export function getStaticPaths() {
 const { zona: slug } = Astro.params;
 const zona = zonaBySlug[slug!];
 
+// Concelhos mais distantes onde se aplica taxa de deslocação (só se o orçamento não for aceite)
+const feeZones = ['setubal', 'vila-franca-de-xira', 'mafra', 'sesimbra', 'palmela'];
+const hasFee = feeZones.includes(zona.slug);
+
 const servicos = [
   {
     label: 'Estores Elétricos',
@@ -155,7 +159,7 @@ const schemaBreadcrumb = {
             <div class="grid sm:grid-cols-2 gap-4">
               {[
                 { title: 'Resposta rápida', desc: `Técnicos disponíveis em ${zona.nome} de 2ª a sábado, 8h–20h.` },
-                { title: 'Orçamento gratuito', desc: 'Deslocamo-nos para avaliar o trabalho sem qualquer custo.' },
+                { title: 'Orçamento gratuito', desc: hasFee ? 'O orçamento é gratuito e sem compromisso. Neste concelho pode aplicar-se uma taxa de deslocação, apenas caso o orçamento não seja aceite.' : 'Deslocamo-nos para avaliar o trabalho sem qualquer custo.' },
                 { title: 'Técnicos certificados', desc: 'Instaladores experientes com formação técnica certificada em sistemas de estores elétricos e domótica.' },
                 { title: 'Garantia de 1 ano', desc: 'Todos os trabalhos de instalação têm garantia mínima de 1 ano.' },
               ].map(item => (

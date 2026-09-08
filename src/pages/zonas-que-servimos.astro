@@ -31,6 +31,7 @@ const zonas = [
   {
     nome: 'Setúbal',
     slug: 'setubal',
+    taxa: true,
     descricao: 'Prestamos serviço no concelho de Setúbal e arredores, incluindo a cidade de Setúbal e zonas como Azeitão, São Bernardo e Sado. Instalação e reparação de estores elétricos e manuais para habitação e comércio.',
   },
   {
@@ -51,21 +52,25 @@ const zonas = [
   {
     nome: 'Vila Franca de Xira',
     slug: 'vila-franca-de-xira',
+    taxa: true,
     descricao: 'Prestamos serviço em Vila Franca de Xira e todo o seu município, incluindo Alverca do Ribatejo, Vialonga, Sobralinho, Forte da Casa e Alhandra. Cobertura completa da margem direita do Tejo.',
   },
   {
     nome: 'Mafra',
     slug: 'mafra',
+    taxa: true,
     descricao: 'Cobrimos o concelho de Mafra, incluindo Mafra centro, Ericeira, Malveira, Cheleiros e outras localidades. Zona periférica onde nos deslocamos regularmente para instalações e reparações.',
   },
   {
     nome: 'Sesimbra',
     slug: 'sesimbra',
+    taxa: true,
     descricao: 'Servimos Sesimbra e o seu município, incluindo Sesimbra centro, Santana, Cotovia e Quinta do Conde. Zona costeira com elevada procura de estores para proteção solar em segundas habitações.',
   },
   {
     nome: 'Palmela',
     slug: 'palmela',
+    taxa: true,
     descricao: 'Cobrimos o município de Palmela, incluindo Palmela centro, Pinhal Novo, Quinta do Anjo e Poceirão. Deslocamo-nos a todas as localidades para serviços de instalação e reparação de estores.',
   },
 ];
@@ -136,7 +141,7 @@ const zonas = [
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
                 </svg>
               </div>
-              <h3 class="text-xl font-black text-[#1A1A1A]">{zona.nome}</h3>
+              <h3 class="text-xl font-black text-[#1A1A1A]">{zona.nome}{zona.taxa && <span class="text-[#8B1A1A]" title="Taxa de deslocação caso o orçamento não seja aceite"> *</span>}</h3>
             </div>
             <p class="text-gray-600 text-sm leading-relaxed mb-4">{zona.descricao}</p>
             <a
