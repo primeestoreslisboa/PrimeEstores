@@ -88,29 +88,53 @@ const headings: Record<Lang, string> = {
 
 // Cross-link installation pages to the matching specific repair service:
 // manual blinds → strap replacement; electric blinds → motor replacement.
-const specificRepair: Partial<Record<ServiceType, Record<Lang, { href: string; label: string; lead: string }>>> = {
+const specificRepair: Partial<Record<ServiceType, Record<Lang, { href: string; label: string; lead: string }[]>>> = {
   manual: {
-    pt: { href: '/servicos/troca-fita-estores/',              label: 'Troca de fita de estore',            lead: 'Fita partida ou gasta?' },
-    en: { href: '/en/services/blind-strap-replacement/',      label: 'Blind strap replacement',            lead: 'Broken or worn strap?' },
-    fr: { href: '/fr/services/remplacement-sangle-store/',    label: 'Remplacement de sangle de store',    lead: 'Sangle cassée ou usée ?' },
-    es: { href: '/es/servicios/cambio-cinta-persiana/',       label: 'Cambio de cinta de persiana',        lead: '¿Cinta rota o gastada?' },
-    de: { href: '/de/dienstleistungen/gurtwechsel-jalousien/', label: 'Gurtwechsel für Jalousien',          lead: 'Gurt gerissen oder abgenutzt?' },
-    it: { href: '/it/servizi/sostituzione-cinghia-tende/',    label: 'Sostituzione cinghia tenda',         lead: 'Cinghia rotta o consumata?' },
-    ru: { href: '/ru/services/blind-strap-replacement/',      label: 'Замена ленты рольставней',           lead: 'Лента порвалась или износилась?' },
-    uk: { href: '/uk/services/blind-strap-replacement/',      label: 'Заміна стрічки ролетів',             lead: 'Стрічка порвалася чи зносилася?' },
+    pt: [
+      { href: '/servicos/troca-fita-estores/',  label: 'Troca de fita de estore',           lead: 'Fita partida ou gasta?' },
+      { href: '/servicos/troca-motor-estores/', label: 'Instalação de motor (motorização)', lead: 'Quer tornar o estore elétrico?' },
+    ],
+    en: [
+      { href: '/en/services/blind-strap-replacement/', label: 'Blind strap replacement',            lead: 'Broken or worn strap?' },
+      { href: '/en/services/blind-motor-replacement/', label: 'Motor installation (motorization)',  lead: 'Want to make your blind electric?' },
+    ],
+    fr: [
+      { href: '/fr/services/remplacement-sangle-store/', label: 'Remplacement de sangle de store',     lead: 'Sangle cassée ou usée ?' },
+      { href: '/fr/services/remplacement-moteur-store/', label: 'Installation de moteur (motorisation)', lead: 'Envie de rendre votre store électrique ?' },
+    ],
+    es: [
+      { href: '/es/servicios/cambio-cinta-persiana/', label: 'Cambio de cinta de persiana',         lead: '¿Cinta rota o gastada?' },
+      { href: '/es/servicios/cambio-motor-persiana/', label: 'Instalación de motor (motorización)', lead: '¿Quiere convertir su persiana en eléctrica?' },
+    ],
+    de: [
+      { href: '/de/dienstleistungen/gurtwechsel-jalousien/',  label: 'Gurtwechsel für Jalousien',    lead: 'Gurt gerissen oder abgenutzt?' },
+      { href: '/de/dienstleistungen/motorwechsel-jalousien/', label: 'Motoreinbau (Motorisierung)',  lead: 'Ihre Jalousie elektrisch machen?' },
+    ],
+    it: [
+      { href: '/it/servizi/sostituzione-cinghia-tende/', label: 'Sostituzione cinghia tenda',              lead: 'Cinghia rotta o consumata?' },
+      { href: '/it/servizi/sostituzione-motore-tende/',  label: 'Installazione motore (motorizzazione)',   lead: 'Vuoi rendere elettrica la tua tenda?' },
+    ],
+    ru: [
+      { href: '/ru/services/blind-strap-replacement/', label: 'Замена ленты рольставней',        lead: 'Лента порвалась или износилась?' },
+      { href: '/ru/services/blind-motor-replacement/', label: 'Установка мотора (моторизация)',  lead: 'Хотите сделать рольставень электрическим?' },
+    ],
+    uk: [
+      { href: '/uk/services/blind-strap-replacement/', label: 'Заміна стрічки ролетів',          lead: 'Стрічка порвалася чи зносилася?' },
+      { href: '/uk/services/blind-motor-replacement/', label: 'Встановлення мотора (моторизація)', lead: 'Хочете зробити ролет електричним?' },
+    ],
   },
   electric: {
-    pt: { href: '/servicos/troca-motor-estores/',             label: 'Troca de motor de estore',           lead: 'Motor avariado ou queimado?' },
-    en: { href: '/en/services/blind-motor-replacement/',      label: 'Blind motor replacement',            lead: 'Faulty or burnt-out motor?' },
-    fr: { href: '/fr/services/remplacement-moteur-store/',    label: 'Remplacement de moteur de store',    lead: 'Moteur en panne ou grillé ?' },
-    es: { href: '/es/servicios/cambio-motor-persiana/',       label: 'Cambio de motor de persiana',        lead: '¿Motor averiado o quemado?' },
-    de: { href: '/de/dienstleistungen/motorwechsel-jalousien/', label: 'Motorwechsel für Jalousien',       lead: 'Motor defekt oder durchgebrannt?' },
-    it: { href: '/it/servizi/sostituzione-motore-tende/',     label: 'Sostituzione motore tenda',          lead: 'Motore guasto o bruciato?' },
-    ru: { href: '/ru/services/blind-motor-replacement/',      label: 'Замена мотора рольставней',          lead: 'Мотор сломался или сгорел?' },
-    uk: { href: '/uk/services/blind-motor-replacement/',      label: 'Заміна мотора ролетів',              lead: 'Мотор зламався чи згорів?' },
+    pt: [ { href: '/servicos/troca-motor-estores/',             label: 'Troca de motor de estore',        lead: 'Motor avariado ou queimado?' } ],
+    en: [ { href: '/en/services/blind-motor-replacement/',      label: 'Blind motor replacement',         lead: 'Faulty or burnt-out motor?' } ],
+    fr: [ { href: '/fr/services/remplacement-moteur-store/',    label: 'Remplacement de moteur de store', lead: 'Moteur en panne ou grillé ?' } ],
+    es: [ { href: '/es/servicios/cambio-motor-persiana/',       label: 'Cambio de motor de persiana',     lead: '¿Motor averiado o quemado?' } ],
+    de: [ { href: '/de/dienstleistungen/motorwechsel-jalousien/', label: 'Motorwechsel für Jalousien',    lead: 'Motor defekt oder durchgebrannt?' } ],
+    it: [ { href: '/it/servizi/sostituzione-motore-tende/',     label: 'Sostituzione motore tenda',       lead: 'Motore guasto o bruciato?' } ],
+    ru: [ { href: '/ru/services/blind-motor-replacement/',      label: 'Замена мотора рольставней',       lead: 'Мотор сломался или сгорел?' } ],
+    uk: [ { href: '/uk/services/blind-motor-replacement/',      label: 'Заміна мотора ролетів',           lead: 'Мотор зламався чи згорів?' } ],
   },
 };
-const specific = specificRepair[current]?.[lang];
+const specificList = specificRepair[current]?.[lang] ?? [];
 
 const related = (Object.keys(allServices[lang]) as ServiceType[])
   .filter(s => s !== current)
@@ -119,16 +143,20 @@ const related = (Object.keys(allServices[lang]) as ServiceType[])
 
 <section class="py-12 bg-white border-t border-gray-100">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    {specific && (
-      <a
-        href={specific.href}
-        class="flex items-center justify-between gap-4 mb-8 p-5 rounded-xl bg-red-50 border border-[#8B1A1A]/20 hover:border-[#8B1A1A] transition-all group"
-      >
-        <span class="text-sm text-gray-700">
-          <span class="font-semibold text-[#1A1A1A]">{specific.lead}</span>{' '}
-          <span class="text-[#8B1A1A] font-bold group-hover:underline">{specific.label} →</span>
-        </span>
-      </a>
+    {specificList.length > 0 && (
+      <div class="grid sm:grid-cols-2 gap-4 mb-8">
+        {specificList.map(sp => (
+          <a
+            href={sp.href}
+            class="flex items-center justify-between gap-4 p-5 rounded-xl bg-red-50 border border-[#8B1A1A]/20 hover:border-[#8B1A1A] transition-all group"
+          >
+            <span class="text-sm text-gray-700">
+              <span class="font-semibold text-[#1A1A1A]">{sp.lead}</span>{' '}
+              <span class="text-[#8B1A1A] font-bold group-hover:underline">{sp.label} →</span>
+            </span>
+          </a>
+        ))}
+      </div>
     )}
     <h2 class="text-lg font-black text-[#1A1A1A] uppercase tracking-widest mb-6">{headings[lang]}</h2>
     <div class="grid sm:grid-cols-3 gap-4">

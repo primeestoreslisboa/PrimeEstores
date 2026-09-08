@@ -36,6 +36,7 @@ interface C {
   h1: string; subtitle: string; callNow: string; ctaQuote: string;
   urgentBold: string; urgentText: string;
   introH2: string; introP1: string; introP2: string;
+  motoriza: { h2: string; p: string };
   signsH2: string; signs: string[];
   processH2: string; process: { step: string; title: string; desc: string }[];
   localH2: string; localP: string; chipPrefix: string; zonesLink: string;
@@ -50,7 +51,8 @@ const content: Record<Lang, C> = {
   pt: {
     metaTitle: 'Troca de Motor de Estore em Lisboa | Prime Estores',
     metaDesc: 'Motor do estore queimado ou sem resposta? Fazemos a troca e substituição do motor de estores elétricos em Lisboa e Grande Lisboa, ao domicílio e no mesmo dia. Orçamento grátis.',
-    keywords: 'troca de motor de estore, substituir motor estore, motor estore avariado, motor estore queimado, reparar motor estore Lisboa, mudar motor persiana',
+    keywords: 'troca de motor de estore, substituir motor estore, motor estore avariado, motor estore queimado, reparar motor estore Lisboa, mudar motor persiana, instalação de motor estore, motorizar estore manual, motorização de estore, transformar estore manual em elétrico',
+    motoriza: { h2: 'Instalação de motor: transforme o seu estore manual em elétrico', p: 'Também instalamos motor em estores manuais já existentes — não precisa de trocar o estore. Motorizamos o seu estore de fita ou corrente e passa a controlá-lo por telecomando ou interruptor, com programação dos fins de curso. Peça um orçamento gratuito para motorização em toda a Grande Lisboa.' },
     badge: 'Reparação de Estores', bcHome: 'Início', bcRepair: 'Reparação', bcLeaf: 'Troca de Motor',
     h1: 'Troca de Motor de Estore em Lisboa e Grande Lisboa',
     subtitle: 'O motor do seu estore elétrico queimou, faz barulho ou deixou de responder? Substituímos o motor ao domicílio, com rapidez, em toda a Grande Lisboa.',
@@ -86,7 +88,8 @@ const content: Record<Lang, C> = {
   en: {
     metaTitle: 'Blind Motor Replacement in Lisbon | Prime Estores',
     metaDesc: 'Burnt-out or unresponsive blind motor? We replace the motor of electric blinds in Lisbon and Greater Lisbon, at your home and same day. Free quote.',
-    keywords: 'blind motor replacement, replace blind motor, faulty blind motor, burnt blind motor, electric blind motor repair Lisbon',
+    keywords: 'blind motor replacement, replace blind motor, faulty blind motor, burnt blind motor, electric blind motor repair Lisbon, blind motor installation, motorize manual blind, blind motorization, turn manual blind electric',
+    motoriza: { h2: 'Motor installation: turn your manual blind electric', p: 'We also install a motor on existing manual blinds — no need to replace the blind. We motorize your strap or chain blind so you can control it by remote or switch, with travel-limit programming. Request a free quote for motorization across Greater Lisbon.' },
     badge: 'Blind Repair', bcHome: 'Home', bcRepair: 'Repair', bcLeaf: 'Motor Replacement',
     h1: 'Blind Motor Replacement in Lisbon and Greater Lisbon',
     subtitle: 'Has your electric blind motor burnt out, started humming or stopped responding? We replace the motor at your home, fast, across all of Greater Lisbon.',
@@ -122,7 +125,8 @@ const content: Record<Lang, C> = {
   fr: {
     metaTitle: 'Remplacement de moteur de store à Lisbonne | Prime Estores',
     metaDesc: 'Moteur de store grillé ou qui ne répond plus ? Nous remplaçons le moteur des stores électriques à Lisbonne et dans le Grand Lisbonne, à domicile et le jour même. Devis gratuit.',
-    keywords: 'remplacement moteur store, changer moteur store, moteur store en panne, moteur store grillé, réparer moteur store Lisbonne, moteur volet roulant',
+    keywords: 'remplacement moteur store, changer moteur store, moteur store en panne, moteur store grillé, réparer moteur store Lisbonne, moteur volet roulant, installation moteur store, motoriser store manuel, motorisation store, rendre store manuel électrique',
+    motoriza: { h2: 'Installation de moteur : rendez votre store manuel électrique', p: 'Nous installons aussi un moteur sur les stores manuels existants — inutile de remplacer le store. Nous motorisons votre store à sangle ou à chaîne pour le commander par télécommande ou interrupteur, avec programmation des fins de course. Devis gratuit pour la motorisation dans tout le Grand Lisbonne.' },
     badge: 'Réparation de stores', bcHome: 'Accueil', bcRepair: 'Réparation', bcLeaf: 'Moteur',
     h1: 'Remplacement de moteur de store à Lisbonne et dans le Grand Lisbonne',
     subtitle: 'Le moteur de votre store électrique a grillé, ronronne ou ne répond plus ? Nous remplaçons le moteur à domicile, rapidement, dans tout le Grand Lisbonne.',
@@ -158,7 +162,8 @@ const content: Record<Lang, C> = {
   es: {
     metaTitle: 'Cambio de motor de persiana en Lisboa | Prime Estores',
     metaDesc: '¿Motor de la persiana quemado o sin respuesta? Cambiamos el motor de persianas eléctricas en Lisboa y el Gran Lisboa, a domicilio y el mismo día. Presupuesto gratis.',
-    keywords: 'cambio de motor de persiana, sustituir motor persiana, motor persiana averiado, motor persiana quemado, reparar motor persiana Lisboa',
+    keywords: 'cambio de motor de persiana, sustituir motor persiana, motor persiana averiado, motor persiana quemado, reparar motor persiana Lisboa, instalación de motor persiana, motorizar persiana manual, motorización persiana, convertir persiana manual en eléctrica',
+    motoriza: { h2: 'Instalación de motor: convierta su persiana manual en eléctrica', p: 'También instalamos motor en persianas manuales existentes — no hace falta cambiar la persiana. Motorizamos su persiana de cinta o cadena para controlarla con mando o interruptor, con programación de finales de carrera. Solicite un presupuesto gratuito para motorización en todo el Gran Lisboa.' },
     badge: 'Reparación de persianas', bcHome: 'Inicio', bcRepair: 'Reparación', bcLeaf: 'Cambio de motor',
     h1: 'Cambio de motor de persiana en Lisboa y el Gran Lisboa',
     subtitle: '¿El motor de su persiana eléctrica se quemó, zumba o dejó de responder? Cambiamos el motor a domicilio, con rapidez, en todo el Gran Lisboa.',
@@ -194,7 +199,8 @@ const content: Record<Lang, C> = {
   de: {
     metaTitle: 'Motorwechsel für Jalousien in Lissabon | Prime Estores',
     metaDesc: 'Motor der Jalousie durchgebrannt oder ohne Reaktion? Wir wechseln den Motor elektrischer Jalousien in Lissabon und im Großraum Lissabon, bei Ihnen zu Hause und am selben Tag. Kostenloser Kostenvoranschlag.',
-    keywords: 'Motorwechsel Jalousie, Jalousie Motor wechseln, Jalousie Motor defekt, Rollladenmotor wechseln Lissabon, Motor Rollladen tauschen',
+    keywords: 'Motorwechsel Jalousie, Jalousie Motor wechseln, Jalousie Motor defekt, Rollladenmotor wechseln Lissabon, Motor Rollladen tauschen, Motoreinbau Jalousie, manuelle Jalousie motorisieren, Jalousie Motorisierung, manuelle Jalousie elektrisch machen',
+    motoriza: { h2: 'Motoreinbau: machen Sie Ihre manuelle Jalousie elektrisch', p: 'Wir bauen auch einen Motor in vorhandene manuelle Jalousien ein — Sie müssen die Jalousie nicht ersetzen. Wir motorisieren Ihre Gurt- oder Kettenjalousie, sodass Sie sie per Fernbedienung oder Schalter steuern, mit Endlagenprogrammierung. Kostenloser Kostenvoranschlag für die Motorisierung im gesamten Großraum Lissabon.' },
     badge: 'Jalousien-Reparatur', bcHome: 'Startseite', bcRepair: 'Reparatur', bcLeaf: 'Motorwechsel',
     h1: 'Motorwechsel für Jalousien in Lissabon und im Großraum Lissabon',
     subtitle: 'Ist der Motor Ihrer elektrischen Jalousie durchgebrannt, brummt er oder reagiert er nicht mehr? Wir wechseln den Motor bei Ihnen zu Hause, schnell, im gesamten Großraum Lissabon.',
@@ -230,7 +236,8 @@ const content: Record<Lang, C> = {
   it: {
     metaTitle: 'Sostituzione motore tenda a Lisbona | Prime Estores',
     metaDesc: 'Motore della tenda bruciato o che non risponde? Sostituiamo il motore delle tende elettriche a Lisbona e nella Grande Lisbona, a domicilio e in giornata. Preventivo gratuito.',
-    keywords: 'sostituzione motore tenda, cambiare motore tapparella, motore tenda guasto, motore tapparella bruciato, riparare motore tapparella Lisbona',
+    keywords: 'sostituzione motore tenda, cambiare motore tapparella, motore tenda guasto, motore tapparella bruciato, riparare motore tapparella Lisbona, installazione motore tenda, motorizzare tenda manuale, motorizzazione tenda, rendere elettrica tenda manuale',
+    motoriza: { h2: 'Installazione del motore: rendi elettrica la tua tenda manuale', p: 'Installiamo anche un motore su tende manuali esistenti — non serve sostituire la tenda. Motorizziamo la tua tenda a cinghia o catena per controllarla con telecomando o interruttore, con programmazione dei fine corsa. Richiedi un preventivo gratuito per la motorizzazione in tutta la Grande Lisbona.' },
     badge: 'Riparazione tende', bcHome: 'Home', bcRepair: 'Riparazione', bcLeaf: 'Motore',
     h1: 'Sostituzione motore tenda a Lisbona e nella Grande Lisbona',
     subtitle: 'Il motore della tua tenda elettrica si è bruciato, ronza o non risponde più? Sostituiamo il motore a domicilio, rapidamente, in tutta la Grande Lisbona.',
@@ -266,7 +273,8 @@ const content: Record<Lang, C> = {
   ru: {
     metaTitle: 'Замена мотора рольставней в Лиссабоне | Prime Estores',
     metaDesc: 'Мотор рольставней сгорел или не реагирует? Меняем мотор электрических рольставней в Лиссабоне и Большом Лиссабоне, с выездом и в тот же день. Бесплатная смета.',
-    keywords: 'замена мотора рольставней, заменить мотор рольставней, мотор рольставней сгорел, ремонт мотора рольставней Лиссабон, поменять мотор',
+    keywords: 'замена мотора рольставней, заменить мотор рольставней, мотор рольставней сгорел, ремонт мотора рольставней Лиссабон, поменять мотор, установка мотора рольставней, моторизация рольставней, моторизовать ручной рольставень, сделать рольставень электрическим',
+    motoriza: { h2: 'Установка мотора: сделайте ручной рольставень электрическим', p: 'Мы также устанавливаем мотор на существующие ручные рольставни — менять рольставень не нужно. Моторизуем ваш ленточный или цепной рольставень, чтобы управлять им с пульта или выключателя, с программированием концевых положений. Бесплатная смета на моторизацию по всему Большому Лиссабону.' },
     badge: 'Ремонт рольставней', bcHome: 'Главная', bcRepair: 'Ремонт', bcLeaf: 'Замена мотора',
     h1: 'Замена мотора рольставней в Лиссабоне и Большом Лиссабоне',
     subtitle: 'Мотор ваших электрических рольставней сгорел, гудит или перестал реагировать? Меняем мотор с выездом, быстро, по всему Большому Лиссабону.',
@@ -302,7 +310,8 @@ const content: Record<Lang, C> = {
   uk: {
     metaTitle: 'Заміна мотора ролетів у Лісабоні | Prime Estores',
     metaDesc: 'Мотор ролетів згорів або не реагує? Міняємо мотор електричних ролетів у Лісабоні та Великому Лісабоні, з виїздом і того ж дня. Безкоштовний кошторис.',
-    keywords: 'заміна мотора ролетів, замінити мотор ролетів, мотор ролетів згорів, ремонт мотора ролетів Лісабон, поміняти мотор',
+    keywords: 'заміна мотора ролетів, замінити мотор ролетів, мотор ролетів згорів, ремонт мотора ролетів Лісабон, поміняти мотор, встановлення мотора ролетів, моторизація ролетів, моторизувати ручний ролет, зробити ролет електричним',
+    motoriza: { h2: 'Встановлення мотора: зробіть ручний ролет електричним', p: 'Ми також встановлюємо мотор на наявні ручні ролети — міняти ролет не потрібно. Моторизуємо ваш стрічковий або ланцюговий ролет, щоб керувати ним з пульта або вимикача, з програмуванням кінцевих положень. Безкоштовний кошторис на моторизацію по всьому Великому Лісабону.' },
     badge: 'Ремонт ролетів', bcHome: 'Головна', bcRepair: 'Ремонт', bcLeaf: 'Заміна мотора',
     h1: 'Заміна мотора ролетів у Лісабоні та Великому Лісабоні',
     subtitle: 'Мотор ваших електричних ролетів згорів, гуде чи перестав реагувати? Міняємо мотор з виїздом, швидко, по всьому Великому Лісабону.',
@@ -407,6 +416,11 @@ const faqSchema = {
           <h2 class="text-2xl lg:text-3xl font-black text-[#1A1A1A] mb-4">{c.introH2}</h2>
           <p class="text-gray-600 leading-relaxed mb-6">{c.introP1}</p>
           <p class="text-gray-600 leading-relaxed mb-6">{c.introP2}</p>
+
+          <div class="bg-[#F5F5F5] border-l-4 border-[#8B1A1A] rounded-r-xl p-5 mb-6">
+            <h2 class="text-xl font-black text-[#1A1A1A] mb-2">{c.motoriza.h2}</h2>
+            <p class="text-gray-600 leading-relaxed">{c.motoriza.p}</p>
+          </div>
 
           <h2 class="text-2xl font-black text-[#1A1A1A] mb-4 mt-8">{c.signsH2}</h2>
           <div class="grid sm:grid-cols-2 gap-3 mb-8">
