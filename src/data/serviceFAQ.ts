@@ -1,4 +1,4 @@
-export type ServiceType = 'electric' | 'manual' | 'repair' | 'electrical';
+export type ServiceType = 'electric' | 'manual' | 'repair' | 'electrical' | 'mosquito-nets';
 export type Lang = 'pt' | 'en' | 'fr' | 'es' | 'de' | 'it';
 
 export interface FAQItem { q: string; a: string; }
@@ -495,6 +495,116 @@ export const serviceData: Record<ServiceType, Record<Lang, ServiceData>> = {
         { q: 'Potete fare l\'installazione elettrica e la tenda nella stessa visita?', a: 'Sì, quando possibile eseguiamo entrambi i lavori nella stessa visita, ottimizzando i tempi e riducendo i costi per il cliente.' },
         { q: 'Danneggiate i muri durante l\'installazione?', a: 'Cerchiamo sempre di minimizzare i danni. Utilizziamo canaline a vista o tracce minime, mantenendo le finiture il più intatte possibile.' },
         { q: 'Che garanzia offrite sui lavori elettrici?', a: 'Tutti i lavori elettrici hanno 1 anno di garanzia. Se sorge un problema legato all\'installazione entro il periodo di garanzia, lo risolviamo senza costi aggiuntivi.' },
+      ],
+    },
+  },
+  'mosquito-nets': {
+    pt: {
+      faqTitle: 'Perguntas Frequentes — Redes Mosquiteiras',
+      pricingTitle: 'Quanto custa uma rede mosquiteira?',
+      pricingIntro: 'O preço depende do modelo, das medidas do vão e do tipo de fixação. Valores médios orientativos:',
+      pricingNote: 'Orçamento gratuito e sem compromisso. Todas as redes são feitas à medida — o preço final depende das dimensões.',
+      pricing: [
+        { label: 'Rede de enrolar vertical', value: '90€ – 180€/unid.' },
+        { label: 'Rede de enrolar lateral', value: '120€ – 250€/unid.' },
+        { label: 'Rede fixa / de correr', value: '40€ – 120€/unid.' },
+        { label: 'Mão de obra (instalação)', value: 'Incluída no preço' },
+      ],
+      faq: [
+        { q: 'Que tipos de redes mosquiteiras instalam?', a: 'Instalamos redes de enrolar verticais (ideais para janelas), redes de enrolar laterais (para portas e vãos largos) e redes fixas ou de correr. Todas feitas à medida.' },
+        { q: 'As redes são compatíveis com os estores?', a: 'Sim. As redes mosquiteiras instalam-se junto à janela ou porta e funcionam em conjunto com os estores, sem interferir no seu funcionamento.' },
+        { q: 'A rede deixa passar ar e luz?', a: 'Sim. A malha é fina o suficiente para deixar passar ar e luz naturalmente, ao mesmo tempo que impede a entrada de mosquitos e outros insetos.' },
+        { q: 'As redes são feitas à medida?', a: 'Sim, todas as redes são fabricadas à medida exata do seu vão, garantindo um encaixe perfeito e discreto.' },
+      ],
+    },
+    en: {
+      faqTitle: 'Frequently Asked Questions — Insect Screens',
+      pricingTitle: 'How much does an insect screen cost?',
+      pricingIntro: 'Price depends on the model, opening dimensions and type of fitting. Average indicative values:',
+      pricingNote: 'Free no-obligation quote. All screens are made to measure — final price depends on dimensions.',
+      pricing: [
+        { label: 'Vertical roller screen', value: '90€ – 180€/unit' },
+        { label: 'Side (lateral) roller screen', value: '120€ – 250€/unit' },
+        { label: 'Fixed / sliding screen', value: '40€ – 120€/unit' },
+        { label: 'Labour (installation)', value: 'Included in the price' },
+      ],
+      faq: [
+        { q: 'What types of insect screens do you install?', a: 'We install vertical roller screens (ideal for windows), side roller screens (for doors and wide openings) and fixed or sliding screens. All made to measure.' },
+        { q: 'Are the screens compatible with blinds?', a: 'Yes. Insect screens are fitted at the window or door and work alongside your blinds without interfering with their operation.' },
+        { q: 'Do the screens let air and light through?', a: 'Yes. The mesh is fine enough to let air and light through naturally while keeping mosquitoes and other insects out.' },
+        { q: 'Are the screens made to measure?', a: 'Yes, every screen is manufactured to the exact size of your opening for a perfect, discreet fit.' },
+      ],
+    },
+    fr: {
+      faqTitle: 'Questions fréquentes — Moustiquaires',
+      pricingTitle: 'Combien coûte une moustiquaire ?',
+      pricingIntro: 'Le prix dépend du modèle, des dimensions de l\'ouverture et du type de fixation. Valeurs moyennes indicatives :',
+      pricingNote: 'Devis gratuit et sans engagement. Toutes les moustiquaires sont sur mesure — le prix final dépend des dimensions.',
+      pricing: [
+        { label: 'Moustiquaire enroulable verticale', value: '90€ – 180€/unité' },
+        { label: 'Moustiquaire enroulable latérale', value: '120€ – 250€/unité' },
+        { label: 'Moustiquaire fixe / coulissante', value: '40€ – 120€/unité' },
+        { label: 'Main d\'œuvre (installation)', value: 'Incluse dans le prix' },
+      ],
+      faq: [
+        { q: 'Quels types de moustiquaires installez-vous ?', a: 'Nous installons des moustiquaires enroulables verticales (idéales pour les fenêtres), enroulables latérales (pour portes et grandes ouvertures) et fixes ou coulissantes. Toutes sur mesure.' },
+        { q: 'Les moustiquaires sont-elles compatibles avec les stores ?', a: 'Oui. Les moustiquaires se posent au niveau de la fenêtre ou de la porte et fonctionnent avec vos stores sans gêner leur fonctionnement.' },
+        { q: 'La moustiquaire laisse-t-elle passer l\'air et la lumière ?', a: 'Oui. La maille est assez fine pour laisser passer l\'air et la lumière tout en empêchant l\'entrée des moustiques et autres insectes.' },
+        { q: 'Les moustiquaires sont-elles sur mesure ?', a: 'Oui, chaque moustiquaire est fabriquée à la dimension exacte de votre ouverture pour un ajustement parfait et discret.' },
+      ],
+    },
+    es: {
+      faqTitle: 'Preguntas Frecuentes — Mosquiteras',
+      pricingTitle: '¿Cuánto cuesta una mosquitera?',
+      pricingIntro: 'El precio depende del modelo, las dimensiones del hueco y el tipo de fijación. Valores medios orientativos:',
+      pricingNote: 'Presupuesto gratuito y sin compromiso. Todas las mosquiteras se hacen a medida — el precio final depende de las dimensiones.',
+      pricing: [
+        { label: 'Mosquitera enrollable vertical', value: '90€ – 180€/unid.' },
+        { label: 'Mosquitera enrollable lateral', value: '120€ – 250€/unid.' },
+        { label: 'Mosquitera fija / corredera', value: '40€ – 120€/unid.' },
+        { label: 'Mano de obra (instalación)', value: 'Incluida en el precio' },
+      ],
+      faq: [
+        { q: '¿Qué tipos de mosquiteras instalan?', a: 'Instalamos mosquiteras enrollables verticales (ideales para ventanas), enrollables laterales (para puertas y huecos anchos) y fijas o correderas. Todas a medida.' },
+        { q: '¿Las mosquiteras son compatibles con las persianas?', a: 'Sí. Las mosquiteras se instalan junto a la ventana o puerta y funcionan con sus persianas sin interferir en su funcionamiento.' },
+        { q: '¿La mosquitera deja pasar el aire y la luz?', a: 'Sí. La malla es lo bastante fina para dejar pasar el aire y la luz de forma natural, impidiendo la entrada de mosquitos y otros insectos.' },
+        { q: '¿Las mosquiteras se hacen a medida?', a: 'Sí, cada mosquitera se fabrica a la medida exacta de su hueco para un ajuste perfecto y discreto.' },
+      ],
+    },
+    de: {
+      faqTitle: 'Häufige Fragen — Insektenschutz',
+      pricingTitle: 'Was kostet ein Insektenschutz?',
+      pricingIntro: 'Der Preis hängt vom Modell, den Maßen der Öffnung und der Art der Befestigung ab. Durchschnittliche Richtwerte:',
+      pricingNote: 'Kostenloser, unverbindlicher Kostenvoranschlag. Alle Gitter werden maßgefertigt — der Endpreis hängt von den Maßen ab.',
+      pricing: [
+        { label: 'Senkrechtes Rollo-Insektenschutz', value: '90€ – 180€/Einheit' },
+        { label: 'Seitliches Rollo-Insektenschutz', value: '120€ – 250€/Einheit' },
+        { label: 'Festes / Schiebe-Insektengitter', value: '40€ – 120€/Einheit' },
+        { label: 'Montage (Installation)', value: 'Im Preis enthalten' },
+      ],
+      faq: [
+        { q: 'Welche Arten von Insektenschutz installieren Sie?', a: 'Wir installieren senkrechte Rollo-Insektenschutzgitter (ideal für Fenster), seitliche Rollos (für Türen und breite Öffnungen) sowie feste oder Schiebegitter. Alles maßgefertigt.' },
+        { q: 'Ist der Insektenschutz mit Jalousien kompatibel?', a: 'Ja. Der Insektenschutz wird am Fenster oder an der Tür montiert und funktioniert zusammen mit Ihren Jalousien, ohne deren Betrieb zu stören.' },
+        { q: 'Lässt das Gitter Luft und Licht durch?', a: 'Ja. Das Gewebe ist fein genug, um Luft und Licht durchzulassen, hält aber Mücken und andere Insekten fern.' },
+        { q: 'Wird der Insektenschutz maßgefertigt?', a: 'Ja, jedes Gitter wird exakt nach dem Maß Ihrer Öffnung gefertigt — für einen perfekten, unauffälligen Sitz.' },
+      ],
+    },
+    it: {
+      faqTitle: 'Domande Frequenti — Zanzariere',
+      pricingTitle: 'Quanto costa una zanzariera?',
+      pricingIntro: 'Il prezzo dipende dal modello, dalle dimensioni del vano e dal tipo di fissaggio. Valori medi indicativi:',
+      pricingNote: 'Preventivo gratuito e senza impegno. Tutte le zanzariere sono su misura — il prezzo finale dipende dalle dimensioni.',
+      pricing: [
+        { label: 'Zanzariera avvolgibile verticale', value: '90€ – 180€/unità' },
+        { label: 'Zanzariera avvolgibile laterale', value: '120€ – 250€/unità' },
+        { label: 'Zanzariera fissa / scorrevole', value: '40€ – 120€/unità' },
+        { label: 'Manodopera (installazione)', value: 'Inclusa nel prezzo' },
+      ],
+      faq: [
+        { q: 'Che tipi di zanzariere installate?', a: 'Installiamo zanzariere avvolgibili verticali (ideali per finestre), avvolgibili laterali (per porte e ampie aperture) e fisse o scorrevoli. Tutte su misura.' },
+        { q: 'Le zanzariere sono compatibili con le tende?', a: 'Sì. Le zanzariere si montano a livello della finestra o della porta e funzionano insieme alle tende senza interferire con il loro funzionamento.' },
+        { q: 'La zanzariera lascia passare aria e luce?', a: 'Sì. La rete è abbastanza fine da lasciar passare aria e luce, impedendo al contempo l\'ingresso di zanzare e altri insetti.' },
+        { q: 'Le zanzariere sono su misura?', a: 'Sì, ogni zanzariera è realizzata sulla misura esatta del tuo vano per un adattamento perfetto e discreto.' },
       ],
     },
   },

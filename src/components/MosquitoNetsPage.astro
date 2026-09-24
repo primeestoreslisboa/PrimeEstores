@@ -1,0 +1,602 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ContactForm from './ContactForm.astro';
+import RelatedServices from './RelatedServices.astro';
+import type { Lang } from '../i18n/utils';
+
+export interface Props { lang?: Lang }
+const { lang = 'pt' } = Astro.props;
+const baseUrl = 'https://primeestores.pt';
+
+const pagePath: Record<Lang, string> = {
+  pt: '/servicos/redes-mosquiteiras/',
+  en: '/en/services/insect-screens/',
+  fr: '/fr/services/moustiquaires/',
+  es: '/es/servicios/mosquiteras/',
+  de: '/de/dienstleistungen/insektenschutz/',
+  it: '/it/servizi/zanzariere/',
+  ru: '/ru/services/insect-screens/',
+  uk: '/uk/services/insect-screens/',
+};
+
+const links: Record<Lang, { home: string; quote: string; zones: string; electric: string; manual: string; smart: string }> = {
+  pt: { home: '/',    quote: '/orcamento/',      zones: '/zonas-que-servimos/',     electric: '/servicos/estores-eletricos/',            manual: '/servicos/estores-manuais/',                smart: '/servicos/casa-inteligente/' },
+  en: { home: '/en/', quote: '/en/quote/',       zones: '/en/coverage-areas/',      electric: '/en/services/electric-blinds/',           manual: '/en/services/manual-blinds/',               smart: '/en/services/smart-home/' },
+  fr: { home: '/fr/', quote: '/fr/devis/',       zones: '/fr/zones-couvertes/',     electric: '/fr/services/stores-electriques/',        manual: '/fr/services/stores-manuels/',              smart: '/fr/services/maison-connectee/' },
+  es: { home: '/es/', quote: '/es/presupuesto/', zones: '/es/zonas-cobertura/',     electric: '/es/servicios/persianas-electricas/',     manual: '/es/servicios/persianas-manuales/',         smart: '/es/servicios/hogar-inteligente/' },
+  de: { home: '/de/', quote: '/de/angebot/',     zones: '/de/versorgungsgebiete/',  electric: '/de/dienstleistungen/elektrische-jalousien/', manual: '/de/dienstleistungen/manuelle-jalousien/', smart: '/de/dienstleistungen/smart-home/' },
+  it: { home: '/it/', quote: '/it/preventivo/',  zones: '/it/zone-servite/',        electric: '/it/servizi/tende-elettriche/',           manual: '/it/servizi/tende-manuali/',                smart: '/it/servizi/casa-intelligente/' },
+  ru: { home: '/ru/', quote: '/ru/quote/',       zones: '/ru/coverage-areas/',      electric: '/ru/services/electric-blinds/',           manual: '/ru/services/manual-blinds/',               smart: '/ru/services/smart-home/' },
+  uk: { home: '/uk/', quote: '/uk/quote/',       zones: '/uk/coverage-areas/',      electric: '/uk/services/electric-blinds/',           manual: '/uk/services/manual-blinds/',               smart: '/uk/services/smart-home/' },
+};
+
+interface C {
+  metaTitle: string; metaDesc: string; keywords: string; serviceName: string; serviceDesc: string;
+  badge: string; bcHome: string; bcLeaf: string;
+  h1: string; subtitle: string; callNow: string; ctaQuote: string;
+  introH2: string; introP1: string; introP2: string;
+  modelsH2: string; models: { title: string; desc: string }[];
+  advantagesH2: string; advantages: { title: string; desc: string }[];
+  processH2: string; process: { step: string; title: string; desc: string }[];
+  localH2: string; localP: string; chipPrefix: string; zonesLink: string;
+  faqH2: string; faqs: { q: string; a: string }[];
+  sideTitle: string; sideText: string; alsoTitle: string; alsoElectric: string; alsoManual: string; alsoSmart: string;
+  finalTitle: string; finalText: string; finalContact: string;
+  zonas: string[];
+}
+
+const LX = { pt: 'Lisboa', en: 'Lisbon', fr: 'Lisbonne', es: 'Lisboa', de: 'Lissabon', it: 'Lisbona', ru: 'Лиссабон', uk: 'Лісабон' };
+
+const content: Record<Lang, C> = {
+  pt: {
+    metaTitle: 'Redes Mosquiteiras em Lisboa | Prime Estores',
+    metaDesc: 'Instalação de redes mosquiteiras à medida em Lisboa e Grande Lisboa: de enrolar vertical e de enrolar lateral. Ar fresco sem insetos. Orçamento gratuito.',
+    keywords: 'redes mosquiteiras Lisboa, rede mosquiteira de enrolar, mosquiteira lateral, mosquiteira à medida, redes para janelas, redes para portas, instalação redes mosquiteiras',
+    serviceName: 'Instalação de Redes Mosquiteiras em Lisboa',
+    serviceDesc: 'Instalação de redes mosquiteiras à medida em Lisboa e Grande Lisboa — modelos de enrolar vertical e lateral.',
+    badge: 'Serviço', bcHome: 'Início', bcLeaf: 'Redes Mosquiteiras',
+    h1: 'Redes Mosquiteiras em Lisboa e Grande Lisboa',
+    subtitle: 'Aproveite o ar fresco sem mosquitos nem insetos. Instalamos redes mosquiteiras à medida — de enrolar vertical e lateral — em toda a Grande Lisboa.',
+    callNow: 'Ligar Agora: +351 923 348 323', ctaQuote: 'Pedir Orçamento Grátis',
+    introH2: 'Redes mosquiteiras à medida',
+    introP1: 'As redes mosquiteiras permitem manter janelas e portas abertas para arejar a casa, sem deixar entrar mosquitos, moscas e outros insetos. São discretas, deixam passar o ar e a luz, e integram-se com os seus estores.',
+    introP2: 'Na Prime Estores fabricamos e instalamos redes mosquiteiras à medida exata do seu vão, em toda a Grande Lisboa. Aconselhamos o modelo mais adequado a cada janela ou porta e tratamos de tudo, da medição à instalação.',
+    modelsH2: 'Modelos que instalamos',
+    models: [
+      { title: 'Rede de enrolar vertical', desc: 'Sobe e desce como um estore e recolhe-se numa caixa discreta quando não é necessária. Ideal para janelas.' },
+      { title: 'Rede de enrolar lateral', desc: 'Abre e fecha para o lado, ocupando pouco espaço. Ideal para portas, varandas e vãos largos ou de correr.' },
+    ],
+    advantagesH2: 'Vantagens das redes mosquiteiras',
+    advantages: [
+      { title: 'Ar fresco sem insetos', desc: 'Areje a casa mantendo mosquitos e insetos do lado de fora.' },
+      { title: 'Feitas à medida', desc: 'Fabricadas ao milímetro para um encaixe perfeito e discreto.' },
+      { title: 'Discretas', desc: 'Recolhem-se quando não são usadas, sem alterar o visual da casa.' },
+      { title: 'Duráveis e fáceis', desc: 'Materiais resistentes, de utilização simples e baixa manutenção.' },
+    ],
+    processH2: 'Como funciona',
+    process: [
+      { step: '01', title: 'Contacto e medição', desc: 'Ligue-nos ou preencha o formulário. Deslocamo-nos para medir e aconselhar o modelo, com orçamento gratuito.' },
+      { step: '02', title: 'Escolha do modelo', desc: 'Ajudamo-lo a escolher entre rede de enrolar vertical ou lateral, cor e tipo de malha.' },
+      { step: '03', title: 'Fabrico à medida', desc: 'A rede é fabricada à medida exata do seu vão, para um encaixe perfeito.' },
+      { step: '04', title: 'Instalação', desc: 'Instalamos no local de forma limpa e rápida, e deixamos tudo a funcionar.' },
+    ],
+    localH2: 'Redes mosquiteiras em toda a Grande Lisboa',
+    localP: 'Instalamos redes mosquiteiras ao domicílio em Lisboa e nos concelhos vizinhos, com deslocação gratuita na maior parte da Grande Lisboa:',
+    chipPrefix: 'Redes mosquiteiras em', zonesLink: 'Ver todas as zonas que servimos →',
+    faqH2: 'Perguntas frequentes',
+    faqs: [
+      { q: 'Que tipos de redes mosquiteiras instalam?', a: 'Instalamos redes de enrolar verticais (ideais para janelas) e de enrolar laterais (para portas e vãos largos), além de redes fixas ou de correr. Todas feitas à medida.' },
+      { q: 'As redes são compatíveis com os estores?', a: 'Sim. Instalam-se junto à janela ou porta e funcionam em conjunto com os estores, sem interferir no seu funcionamento.' },
+      { q: 'A rede deixa passar ar e luz?', a: 'Sim. A malha é fina o suficiente para deixar passar ar e luz naturalmente, impedindo a entrada de mosquitos e outros insetos.' },
+      { q: 'As redes são feitas à medida?', a: 'Sim, todas as redes são fabricadas à medida exata do seu vão, para um encaixe perfeito e discreto.' },
+    ],
+    sideTitle: 'Quer arejar sem mosquitos?', sideText: 'Ligue diretamente e marcamos a medição gratuita com a maior brevidade.',
+    alsoTitle: 'Também instalamos', alsoElectric: 'Estores elétricos', alsoManual: 'Estores manuais', alsoSmart: 'Casa inteligente',
+    finalTitle: 'Pronto para uma casa fresca e sem insetos?', finalText: 'Peça o seu orçamento gratuito. Respondemos em menos de 24 horas.', finalContact: 'Falar com a Nossa Equipa',
+    zonas: ['Lisboa', 'Sintra', 'Cascais', 'Oeiras', 'Almada', 'Setúbal', 'Amadora', 'Loures', 'Odivelas', 'Vila Franca de Xira', 'Mafra', 'Sesimbra', 'Palmela'],
+  },
+  en: {
+    metaTitle: 'Insect Screens in Lisbon | Prime Estores',
+    metaDesc: 'Made-to-measure insect screen installation in Lisbon and Greater Lisbon: vertical roller and side roller models. Fresh air with no insects. Free quote.',
+    keywords: 'insect screens Lisbon, mosquito screens, roller insect screen, side insect screen, made-to-measure screens, window screens, door screens',
+    serviceName: 'Insect Screen Installation in Lisbon',
+    serviceDesc: 'Made-to-measure insect screen installation in Lisbon and Greater Lisbon — vertical and side roller models.',
+    badge: 'Service', bcHome: 'Home', bcLeaf: 'Insect Screens',
+    h1: 'Insect Screens in Lisbon and Greater Lisbon',
+    subtitle: 'Enjoy fresh air with no mosquitoes or insects. We install made-to-measure insect screens — vertical roller and side roller — across all of Greater Lisbon.',
+    callNow: 'Call Now: +351 923 348 323', ctaQuote: 'Get a Free Quote',
+    introH2: 'Made-to-measure insect screens',
+    introP1: 'Insect screens let you keep windows and doors open to air the house without letting in mosquitoes, flies and other insects. They are discreet, let air and light through, and fit alongside your blinds.',
+    introP2: 'At Prime Estores we make and install insect screens to the exact size of your opening, across all of Greater Lisbon. We advise the best model for each window or door and handle everything, from measuring to installation.',
+    modelsH2: 'Models we install',
+    models: [
+      { title: 'Vertical roller screen', desc: 'Rolls up and down like a blind and retracts into a discreet box when not in use. Ideal for windows.' },
+      { title: 'Side (lateral) roller screen', desc: 'Opens and closes sideways, taking up little space. Ideal for doors, balconies and wide or sliding openings.' },
+    ],
+    advantagesH2: 'Benefits of insect screens',
+    advantages: [
+      { title: 'Fresh air without insects', desc: 'Air your home while keeping mosquitoes and insects outside.' },
+      { title: 'Made to measure', desc: 'Manufactured to the millimetre for a perfect, discreet fit.' },
+      { title: 'Discreet', desc: 'They retract when not in use, without changing the look of your home.' },
+      { title: 'Durable and easy', desc: 'Hard-wearing materials, simple to use and low maintenance.' },
+    ],
+    processH2: 'How it works',
+    process: [
+      { step: '01', title: 'Contact and measuring', desc: 'Call us or fill in the form. We come to measure and advise on the model, with a free quote.' },
+      { step: '02', title: 'Choose the model', desc: 'We help you choose between a vertical or side roller screen, colour and mesh type.' },
+      { step: '03', title: 'Made to measure', desc: 'The screen is manufactured to the exact size of your opening for a perfect fit.' },
+      { step: '04', title: 'Installation', desc: 'We install on site cleanly and quickly, and leave everything working.' },
+    ],
+    localH2: 'Insect screens across Greater Lisbon',
+    localP: 'We install insect screens at your home in Lisbon and neighbouring municipalities, with free call-out across most of Greater Lisbon:',
+    chipPrefix: 'Insect screens in', zonesLink: 'See all the areas we serve →',
+    faqH2: 'Frequently asked questions',
+    faqs: [
+      { q: 'What types of insect screens do you install?', a: 'We install vertical roller screens (ideal for windows) and side roller screens (for doors and wide openings), plus fixed or sliding screens. All made to measure.' },
+      { q: 'Are the screens compatible with blinds?', a: 'Yes. They are fitted at the window or door and work alongside your blinds without interfering with their operation.' },
+      { q: 'Do the screens let air and light through?', a: 'Yes. The mesh is fine enough to let air and light through naturally while keeping mosquitoes and other insects out.' },
+      { q: 'Are the screens made to measure?', a: 'Yes, every screen is manufactured to the exact size of your opening for a perfect, discreet fit.' },
+    ],
+    sideTitle: 'Want fresh air without mosquitoes?', sideText: 'Call us directly and we will book your free measuring visit as soon as possible.',
+    alsoTitle: 'We also install', alsoElectric: 'Electric blinds', alsoManual: 'Manual blinds', alsoSmart: 'Smart home',
+    finalTitle: 'Ready for a fresh, insect-free home?', finalText: 'Request your free quote. We reply in under 24 hours.', finalContact: 'Talk to Our Team',
+    zonas: ['Lisbon', 'Sintra', 'Cascais', 'Oeiras', 'Almada', 'Setúbal', 'Amadora', 'Loures', 'Odivelas', 'Vila Franca de Xira', 'Mafra', 'Sesimbra', 'Palmela'],
+  },
+  fr: {
+    metaTitle: 'Moustiquaires à Lisbonne | Prime Estores',
+    metaDesc: 'Installation de moustiquaires sur mesure à Lisbonne et dans le Grand Lisbonne : enroulables verticales et latérales. De l\'air frais sans insectes. Devis gratuit.',
+    keywords: 'moustiquaires Lisbonne, moustiquaire enroulable, moustiquaire latérale, moustiquaire sur mesure, moustiquaires fenêtres, moustiquaires portes',
+    serviceName: 'Installation de moustiquaires à Lisbonne',
+    serviceDesc: 'Installation de moustiquaires sur mesure à Lisbonne et dans le Grand Lisbonne — modèles enroulables verticaux et latéraux.',
+    badge: 'Service', bcHome: 'Accueil', bcLeaf: 'Moustiquaires',
+    h1: 'Moustiquaires à Lisbonne et dans le Grand Lisbonne',
+    subtitle: 'Profitez de l\'air frais sans moustiques ni insectes. Nous installons des moustiquaires sur mesure — enroulables verticales et latérales — dans tout le Grand Lisbonne.',
+    callNow: 'Appeler : +351 923 348 323', ctaQuote: 'Demander un devis gratuit',
+    introH2: 'Moustiquaires sur mesure',
+    introP1: 'Les moustiquaires permettent de garder fenêtres et portes ouvertes pour aérer la maison, sans laisser entrer moustiques, mouches et autres insectes. Discrètes, elles laissent passer l\'air et la lumière et s\'intègrent avec vos stores.',
+    introP2: 'Chez Prime Estores, nous fabriquons et installons des moustiquaires à la dimension exacte de votre ouverture, dans tout le Grand Lisbonne. Nous conseillons le modèle le plus adapté à chaque fenêtre ou porte et nous occupons de tout, de la prise de mesures à la pose.',
+    modelsH2: 'Modèles que nous installons',
+    models: [
+      { title: 'Moustiquaire enroulable verticale', desc: 'Monte et descend comme un store et se range dans un coffre discret quand elle n\'est pas utilisée. Idéale pour les fenêtres.' },
+      { title: 'Moustiquaire enroulable latérale', desc: 'S\'ouvre et se ferme sur le côté, en occupant peu de place. Idéale pour portes, balcons et grandes ouvertures ou baies coulissantes.' },
+    ],
+    advantagesH2: 'Les avantages des moustiquaires',
+    advantages: [
+      { title: 'De l\'air frais sans insectes', desc: 'Aérez votre maison en gardant moustiques et insectes à l\'extérieur.' },
+      { title: 'Sur mesure', desc: 'Fabriquées au millimètre pour un ajustement parfait et discret.' },
+      { title: 'Discrètes', desc: 'Elles se replient quand elles ne servent pas, sans changer l\'aspect de la maison.' },
+      { title: 'Durables et faciles', desc: 'Matériaux résistants, simples d\'utilisation et à faible entretien.' },
+    ],
+    processH2: 'Comment ça marche',
+    process: [
+      { step: '01', title: 'Contact et prise de mesures', desc: 'Appelez-nous ou remplissez le formulaire. Nous venons mesurer et conseiller le modèle, avec un devis gratuit.' },
+      { step: '02', title: 'Choix du modèle', desc: 'Nous vous aidons à choisir entre une moustiquaire enroulable verticale ou latérale, la couleur et le type de maille.' },
+      { step: '03', title: 'Fabrication sur mesure', desc: 'La moustiquaire est fabriquée à la dimension exacte de votre ouverture pour un ajustement parfait.' },
+      { step: '04', title: 'Pose', desc: 'Nous posons sur place, proprement et rapidement, et laissons tout fonctionnel.' },
+    ],
+    localH2: 'Moustiquaires dans tout le Grand Lisbonne',
+    localP: 'Nous installons des moustiquaires à domicile à Lisbonne et dans les communes voisines, avec déplacement gratuit dans la majeure partie du Grand Lisbonne :',
+    chipPrefix: 'Moustiquaires à', zonesLink: 'Voir toutes les zones que nous couvrons →',
+    faqH2: 'Questions fréquentes',
+    faqs: [
+      { q: 'Quels types de moustiquaires installez-vous ?', a: 'Nous installons des moustiquaires enroulables verticales (idéales pour les fenêtres) et latérales (pour portes et grandes ouvertures), ainsi que des modèles fixes ou coulissants. Toutes sur mesure.' },
+      { q: 'Les moustiquaires sont-elles compatibles avec les stores ?', a: 'Oui. Elles se posent au niveau de la fenêtre ou de la porte et fonctionnent avec vos stores sans gêner leur fonctionnement.' },
+      { q: 'La moustiquaire laisse-t-elle passer l\'air et la lumière ?', a: 'Oui. La maille est assez fine pour laisser passer l\'air et la lumière tout en empêchant l\'entrée des moustiques et autres insectes.' },
+      { q: 'Les moustiquaires sont-elles sur mesure ?', a: 'Oui, chaque moustiquaire est fabriquée à la dimension exacte de votre ouverture pour un ajustement parfait et discret.' },
+    ],
+    sideTitle: 'Envie d\'air frais sans moustiques ?', sideText: 'Appelez-nous directement et nous fixons votre visite de mesure gratuite au plus vite.',
+    alsoTitle: 'Nous installons aussi', alsoElectric: 'Stores électriques', alsoManual: 'Stores manuels', alsoSmart: 'Maison connectée',
+    finalTitle: 'Prêt pour une maison fraîche et sans insectes ?', finalText: 'Demandez votre devis gratuit. Nous répondons en moins de 24 heures.', finalContact: 'Parler à notre équipe',
+    zonas: ['Lisbonne', 'Sintra', 'Cascais', 'Oeiras', 'Almada', 'Setúbal', 'Amadora', 'Loures', 'Odivelas', 'Vila Franca de Xira', 'Mafra', 'Sesimbra', 'Palmela'],
+  },
+  es: {
+    metaTitle: 'Mosquiteras en Lisboa | Prime Estores',
+    metaDesc: 'Instalación de mosquiteras a medida en Lisboa y el Gran Lisboa: enrollables verticales y laterales. Aire fresco sin insectos. Presupuesto gratuito.',
+    keywords: 'mosquiteras Lisboa, mosquitera enrollable, mosquitera lateral, mosquitera a medida, mosquiteras ventanas, mosquiteras puertas',
+    serviceName: 'Instalación de mosquiteras en Lisboa',
+    serviceDesc: 'Instalación de mosquiteras a medida en Lisboa y el Gran Lisboa — modelos enrollables verticales y laterales.',
+    badge: 'Servicio', bcHome: 'Inicio', bcLeaf: 'Mosquiteras',
+    h1: 'Mosquiteras en Lisboa y el Gran Lisboa',
+    subtitle: 'Disfrute del aire fresco sin mosquitos ni insectos. Instalamos mosquiteras a medida — enrollables verticales y laterales — en todo el Gran Lisboa.',
+    callNow: 'Llamar: +351 923 348 323', ctaQuote: 'Pedir presupuesto gratis',
+    introH2: 'Mosquiteras a medida',
+    introP1: 'Las mosquiteras permiten mantener ventanas y puertas abiertas para ventilar la casa, sin dejar entrar mosquitos, moscas y otros insectos. Son discretas, dejan pasar el aire y la luz y se integran con sus persianas.',
+    introP2: 'En Prime Estores fabricamos e instalamos mosquiteras a la medida exacta de su hueco, en todo el Gran Lisboa. Le aconsejamos el modelo más adecuado para cada ventana o puerta y nos encargamos de todo, de la medición a la instalación.',
+    modelsH2: 'Modelos que instalamos',
+    models: [
+      { title: 'Mosquitera enrollable vertical', desc: 'Sube y baja como una persiana y se recoge en un cajón discreto cuando no se usa. Ideal para ventanas.' },
+      { title: 'Mosquitera enrollable lateral', desc: 'Se abre y cierra hacia el lado, ocupando poco espacio. Ideal para puertas, balcones y huecos anchos o correderos.' },
+    ],
+    advantagesH2: 'Ventajas de las mosquiteras',
+    advantages: [
+      { title: 'Aire fresco sin insectos', desc: 'Ventile su casa manteniendo mosquitos e insectos fuera.' },
+      { title: 'Hechas a medida', desc: 'Fabricadas al milímetro para un ajuste perfecto y discreto.' },
+      { title: 'Discretas', desc: 'Se recogen cuando no se usan, sin alterar el aspecto de la casa.' },
+      { title: 'Duraderas y fáciles', desc: 'Materiales resistentes, de uso sencillo y bajo mantenimiento.' },
+    ],
+    processH2: 'Cómo funciona',
+    process: [
+      { step: '01', title: 'Contacto y medición', desc: 'Llámenos o rellene el formulario. Nos desplazamos para medir y aconsejar el modelo, con presupuesto gratuito.' },
+      { step: '02', title: 'Elección del modelo', desc: 'Le ayudamos a elegir entre mosquitera enrollable vertical o lateral, color y tipo de malla.' },
+      { step: '03', title: 'Fabricación a medida', desc: 'La mosquitera se fabrica a la medida exacta de su hueco para un ajuste perfecto.' },
+      { step: '04', title: 'Instalación', desc: 'Instalamos in situ de forma limpia y rápida, y dejamos todo funcionando.' },
+    ],
+    localH2: 'Mosquiteras en todo el Gran Lisboa',
+    localP: 'Instalamos mosquiteras a domicilio en Lisboa y municipios vecinos, con desplazamiento gratuito en la mayor parte del Gran Lisboa:',
+    chipPrefix: 'Mosquiteras en', zonesLink: 'Ver todas las zonas que cubrimos →',
+    faqH2: 'Preguntas frecuentes',
+    faqs: [
+      { q: '¿Qué tipos de mosquiteras instalan?', a: 'Instalamos mosquiteras enrollables verticales (ideales para ventanas) y laterales (para puertas y huecos anchos), además de fijas o correderas. Todas a medida.' },
+      { q: '¿Las mosquiteras son compatibles con las persianas?', a: 'Sí. Se instalan junto a la ventana o puerta y funcionan con sus persianas sin interferir en su funcionamiento.' },
+      { q: '¿La mosquitera deja pasar el aire y la luz?', a: 'Sí. La malla es lo bastante fina para dejar pasar el aire y la luz de forma natural, impidiendo la entrada de mosquitos y otros insectos.' },
+      { q: '¿Las mosquiteras se hacen a medida?', a: 'Sí, cada mosquitera se fabrica a la medida exacta de su hueco para un ajuste perfecto y discreto.' },
+    ],
+    sideTitle: '¿Quiere ventilar sin mosquitos?', sideText: 'Llámenos directamente y concertamos la medición gratuita lo antes posible.',
+    alsoTitle: 'También instalamos', alsoElectric: 'Persianas eléctricas', alsoManual: 'Persianas manuales', alsoSmart: 'Hogar inteligente',
+    finalTitle: '¿Listo para una casa fresca y sin insectos?', finalText: 'Solicite su presupuesto gratuito. Respondemos en menos de 24 horas.', finalContact: 'Hablar con nuestro equipo',
+    zonas: ['Lisboa', 'Sintra', 'Cascais', 'Oeiras', 'Almada', 'Setúbal', 'Amadora', 'Loures', 'Odivelas', 'Vila Franca de Xira', 'Mafra', 'Sesimbra', 'Palmela'],
+  },
+  de: {
+    metaTitle: 'Insektenschutz in Lissabon | Prime Estores',
+    metaDesc: 'Maßgefertigter Insektenschutz in Lissabon und im Großraum Lissabon: senkrechte und seitliche Rollos. Frische Luft ohne Insekten. Kostenloser Kostenvoranschlag.',
+    keywords: 'Insektenschutz Lissabon, Fliegengitter, Rollo-Insektenschutz, seitliches Insektengitter, Insektenschutz nach Maß, Fenster Insektenschutz, Tür Insektenschutz',
+    serviceName: 'Installation von Insektenschutz in Lissabon',
+    serviceDesc: 'Maßgefertigter Insektenschutz in Lissabon und im Großraum Lissabon — senkrechte und seitliche Rollo-Modelle.',
+    badge: 'Leistung', bcHome: 'Startseite', bcLeaf: 'Insektenschutz',
+    h1: 'Insektenschutz in Lissabon und im Großraum Lissabon',
+    subtitle: 'Genießen Sie frische Luft ohne Mücken und Insekten. Wir installieren maßgefertigten Insektenschutz — senkrechte und seitliche Rollos — im gesamten Großraum Lissabon.',
+    callNow: 'Anrufen: +351 923 348 323', ctaQuote: 'Kostenlosen Kostenvoranschlag anfordern',
+    introH2: 'Insektenschutz nach Maß',
+    introP1: 'Insektenschutzgitter ermöglichen es, Fenster und Türen zum Lüften offen zu lassen, ohne Mücken, Fliegen und andere Insekten hereinzulassen. Sie sind unauffällig, lassen Luft und Licht durch und passen zu Ihren Jalousien.',
+    introP2: 'Bei Prime Estores fertigen und montieren wir Insektenschutz exakt nach dem Maß Ihrer Öffnung, im gesamten Großraum Lissabon. Wir empfehlen das passende Modell für jedes Fenster oder jede Tür und kümmern uns um alles, vom Aufmaß bis zur Montage.',
+    modelsH2: 'Modelle, die wir installieren',
+    models: [
+      { title: 'Senkrechtes Rollo', desc: 'Fährt wie eine Jalousie hoch und runter und verschwindet bei Nichtgebrauch in einem unauffälligen Kasten. Ideal für Fenster.' },
+      { title: 'Seitliches Rollo', desc: 'Öffnet und schließt seitlich und braucht wenig Platz. Ideal für Türen, Balkone und breite oder Schiebeöffnungen.' },
+    ],
+    advantagesH2: 'Vorteile des Insektenschutzes',
+    advantages: [
+      { title: 'Frische Luft ohne Insekten', desc: 'Lüften Sie Ihr Zuhause und halten Sie Mücken und Insekten draußen.' },
+      { title: 'Maßgefertigt', desc: 'Millimetergenau gefertigt für einen perfekten, unauffälligen Sitz.' },
+      { title: 'Unauffällig', desc: 'Sie ziehen sich bei Nichtgebrauch zurück, ohne das Erscheinungsbild zu verändern.' },
+      { title: 'Langlebig und einfach', desc: 'Widerstandsfähige Materialien, einfache Bedienung und wenig Wartung.' },
+    ],
+    processH2: 'So funktioniert es',
+    process: [
+      { step: '01', title: 'Kontakt und Aufmaß', desc: 'Rufen Sie an oder füllen Sie das Formular aus. Wir kommen zum Aufmaß und beraten zum Modell, mit kostenlosem Kostenvoranschlag.' },
+      { step: '02', title: 'Modellauswahl', desc: 'Wir helfen Ihnen bei der Wahl zwischen senkrechtem und seitlichem Rollo, Farbe und Gewebeart.' },
+      { step: '03', title: 'Fertigung nach Maß', desc: 'Der Insektenschutz wird exakt nach dem Maß Ihrer Öffnung gefertigt.' },
+      { step: '04', title: 'Montage', desc: 'Wir montieren vor Ort sauber und schnell und übergeben alles funktionsbereit.' },
+    ],
+    localH2: 'Insektenschutz im gesamten Großraum Lissabon',
+    localP: 'Wir installieren Insektenschutz bei Ihnen zu Hause in Lissabon und den Nachbargemeinden, mit kostenloser Anfahrt im Großteil des Großraums Lissabon:',
+    chipPrefix: 'Insektenschutz in', zonesLink: 'Alle von uns bedienten Gebiete ansehen →',
+    faqH2: 'Häufige Fragen',
+    faqs: [
+      { q: 'Welche Arten von Insektenschutz installieren Sie?', a: 'Wir installieren senkrechte Rollos (ideal für Fenster) und seitliche Rollos (für Türen und breite Öffnungen) sowie feste oder Schiebegitter. Alles maßgefertigt.' },
+      { q: 'Ist der Insektenschutz mit Jalousien kompatibel?', a: 'Ja. Er wird am Fenster oder an der Tür montiert und funktioniert zusammen mit Ihren Jalousien, ohne deren Betrieb zu stören.' },
+      { q: 'Lässt das Gitter Luft und Licht durch?', a: 'Ja. Das Gewebe ist fein genug, um Luft und Licht durchzulassen, hält aber Mücken und andere Insekten fern.' },
+      { q: 'Wird der Insektenschutz maßgefertigt?', a: 'Ja, jedes Gitter wird exakt nach dem Maß Ihrer Öffnung gefertigt — für einen perfekten, unauffälligen Sitz.' },
+    ],
+    sideTitle: 'Frische Luft ohne Mücken?', sideText: 'Rufen Sie uns direkt an und wir vereinbaren schnellstmöglich Ihren kostenlosen Aufmaßtermin.',
+    alsoTitle: 'Wir installieren auch', alsoElectric: 'Elektrische Jalousien', alsoManual: 'Manuelle Jalousien', alsoSmart: 'Smart Home',
+    finalTitle: 'Bereit für ein frisches, insektenfreies Zuhause?', finalText: 'Fordern Sie Ihren kostenlosen Kostenvoranschlag an. Wir antworten in weniger als 24 Stunden.', finalContact: 'Mit unserem Team sprechen',
+    zonas: ['Lissabon', 'Sintra', 'Cascais', 'Oeiras', 'Almada', 'Setúbal', 'Amadora', 'Loures', 'Odivelas', 'Vila Franca de Xira', 'Mafra', 'Sesimbra', 'Palmela'],
+  },
+  it: {
+    metaTitle: 'Zanzariere a Lisbona | Prime Estores',
+    metaDesc: 'Installazione di zanzariere su misura a Lisbona e nella Grande Lisbona: avvolgibili verticali e laterali. Aria fresca senza insetti. Preventivo gratuito.',
+    keywords: 'zanzariere Lisbona, zanzariera avvolgibile, zanzariera laterale, zanzariera su misura, zanzariere finestre, zanzariere porte',
+    serviceName: 'Installazione di zanzariere a Lisbona',
+    serviceDesc: 'Installazione di zanzariere su misura a Lisbona e nella Grande Lisbona — modelli avvolgibili verticali e laterali.',
+    badge: 'Servizio', bcHome: 'Home', bcLeaf: 'Zanzariere',
+    h1: 'Zanzariere a Lisbona e nella Grande Lisbona',
+    subtitle: 'Goditi l\'aria fresca senza zanzare né insetti. Installiamo zanzariere su misura — avvolgibili verticali e laterali — in tutta la Grande Lisbona.',
+    callNow: 'Chiama: +351 923 348 323', ctaQuote: 'Richiedi un preventivo gratuito',
+    introH2: 'Zanzariere su misura',
+    introP1: 'Le zanzariere permettono di tenere finestre e porte aperte per arieggiare casa, senza far entrare zanzare, mosche e altri insetti. Sono discrete, lasciano passare aria e luce e si integrano con le tue tende.',
+    introP2: 'Da Prime Estores realizziamo e installiamo zanzariere sulla misura esatta del tuo vano, in tutta la Grande Lisbona. Consigliamo il modello più adatto a ogni finestra o porta e ci occupiamo di tutto, dal rilievo all\'installazione.',
+    modelsH2: 'Modelli che installiamo',
+    models: [
+      { title: 'Zanzariera avvolgibile verticale', desc: 'Sale e scende come una tenda e si ritira in un cassonetto discreto quando non serve. Ideale per finestre.' },
+      { title: 'Zanzariera avvolgibile laterale', desc: 'Si apre e si chiude lateralmente, occupando poco spazio. Ideale per porte, balconi e ampie aperture o scorrevoli.' },
+    ],
+    advantagesH2: 'I vantaggi delle zanzariere',
+    advantages: [
+      { title: 'Aria fresca senza insetti', desc: 'Arieggia casa tenendo zanzare e insetti all\'esterno.' },
+      { title: 'Su misura', desc: 'Realizzate al millimetro per un adattamento perfetto e discreto.' },
+      { title: 'Discrete', desc: 'Si ritirano quando non servono, senza alterare l\'aspetto della casa.' },
+      { title: 'Durevoli e facili', desc: 'Materiali resistenti, semplici da usare e a bassa manutenzione.' },
+    ],
+    processH2: 'Come funziona',
+    process: [
+      { step: '01', title: 'Contatto e rilievo', desc: 'Chiamaci o compila il modulo. Veniamo a misurare e a consigliare il modello, con preventivo gratuito.' },
+      { step: '02', title: 'Scelta del modello', desc: 'Ti aiutiamo a scegliere tra zanzariera avvolgibile verticale o laterale, colore e tipo di rete.' },
+      { step: '03', title: 'Realizzazione su misura', desc: 'La zanzariera è realizzata sulla misura esatta del tuo vano per un adattamento perfetto.' },
+      { step: '04', title: 'Installazione', desc: 'Installiamo sul posto in modo pulito e rapido, lasciando tutto funzionante.' },
+    ],
+    localH2: 'Zanzariere in tutta la Grande Lisbona',
+    localP: 'Installiamo zanzariere a domicilio a Lisbona e nei comuni vicini, con trasferta gratuita nella maggior parte della Grande Lisbona:',
+    chipPrefix: 'Zanzariere a', zonesLink: 'Vedi tutte le zone che serviamo →',
+    faqH2: 'Domande frequenti',
+    faqs: [
+      { q: 'Che tipi di zanzariere installate?', a: 'Installiamo zanzariere avvolgibili verticali (ideali per finestre) e laterali (per porte e ampie aperture), oltre a fisse o scorrevoli. Tutte su misura.' },
+      { q: 'Le zanzariere sono compatibili con le tende?', a: 'Sì. Si montano a livello della finestra o della porta e funzionano insieme alle tende senza interferire con il loro funzionamento.' },
+      { q: 'La zanzariera lascia passare aria e luce?', a: 'Sì. La rete è abbastanza fine da lasciar passare aria e luce, impedendo al contempo l\'ingresso di zanzare e altri insetti.' },
+      { q: 'Le zanzariere sono su misura?', a: 'Sì, ogni zanzariera è realizzata sulla misura esatta del tuo vano per un adattamento perfetto e discreto.' },
+    ],
+    sideTitle: 'Vuoi arieggiare senza zanzare?', sideText: 'Chiamaci direttamente e fissiamo il rilievo gratuito al più presto.',
+    alsoTitle: 'Installiamo anche', alsoElectric: 'Tende elettriche', alsoManual: 'Tende manuali', alsoSmart: 'Casa intelligente',
+    finalTitle: 'Pronto per una casa fresca e senza insetti?', finalText: 'Richiedi il tuo preventivo gratuito. Rispondiamo in meno di 24 ore.', finalContact: 'Parla con il nostro team',
+    zonas: ['Lisbona', 'Sintra', 'Cascais', 'Oeiras', 'Almada', 'Setúbal', 'Amadora', 'Loures', 'Odivelas', 'Vila Franca de Xira', 'Mafra', 'Sesimbra', 'Palmela'],
+  },
+  ru: {
+    metaTitle: 'Москитные сетки в Лиссабоне | Prime Estores',
+    metaDesc: 'Установка москитных сеток на заказ в Лиссабоне и Большом Лиссабоне: рулонные вертикальные и боковые. Свежий воздух без насекомых. Бесплатная смета.',
+    keywords: 'москитные сетки Лиссабон, рулонная москитная сетка, боковая москитная сетка, москитные сетки на заказ, сетки на окна, сетки на двери',
+    serviceName: 'Установка москитных сеток в Лиссабоне',
+    serviceDesc: 'Установка москитных сеток на заказ в Лиссабоне и Большом Лиссабоне — рулонные вертикальные и боковые модели.',
+    badge: 'Услуга', bcHome: 'Главная', bcLeaf: 'Москитные сетки',
+    h1: 'Москитные сетки в Лиссабоне и Большом Лиссабоне',
+    subtitle: 'Наслаждайтесь свежим воздухом без комаров и насекомых. Устанавливаем москитные сетки на заказ — рулонные вертикальные и боковые — по всему Большому Лиссабону.',
+    callNow: 'Позвонить: +351 923 348 323', ctaQuote: 'Получить бесплатную смету',
+    introH2: 'Москитные сетки на заказ',
+    introP1: 'Москитные сетки позволяют держать окна и двери открытыми для проветривания, не впуская комаров, мух и других насекомых. Они незаметны, пропускают воздух и свет и сочетаются с вашими рольставнями.',
+    introP2: 'В Prime Estores мы изготавливаем и устанавливаем москитные сетки точно по размеру вашего проёма по всему Большому Лиссабону. Подбираем подходящую модель для каждого окна или двери и берём на себя всё — от замера до установки.',
+    modelsH2: 'Модели, которые мы устанавливаем',
+    models: [
+      { title: 'Рулонная вертикальная сетка', desc: 'Поднимается и опускается как рольставень и убирается в незаметный короб, когда не нужна. Идеально для окон.' },
+      { title: 'Рулонная боковая сетка', desc: 'Открывается и закрывается вбок, занимая мало места. Идеально для дверей, балконов и широких или раздвижных проёмов.' },
+    ],
+    advantagesH2: 'Преимущества москитных сеток',
+    advantages: [
+      { title: 'Свежий воздух без насекомых', desc: 'Проветривайте дом, оставляя комаров и насекомых снаружи.' },
+      { title: 'Изготовление на заказ', desc: 'Изготовлены с точностью до миллиметра для идеальной, незаметной посадки.' },
+      { title: 'Незаметные', desc: 'Убираются, когда не используются, не меняя вид дома.' },
+      { title: 'Прочные и простые', desc: 'Износостойкие материалы, простое использование и минимальный уход.' },
+    ],
+    processH2: 'Как это работает',
+    process: [
+      { step: '01', title: 'Контакт и замер', desc: 'Позвоните или заполните форму. Приезжаем для замера и подбора модели, с бесплатной сметой.' },
+      { step: '02', title: 'Выбор модели', desc: 'Помогаем выбрать между вертикальной и боковой рулонной сеткой, цвет и тип сетки.' },
+      { step: '03', title: 'Изготовление на заказ', desc: 'Сетка изготавливается точно по размеру вашего проёма для идеальной посадки.' },
+      { step: '04', title: 'Установка', desc: 'Устанавливаем на месте аккуратно и быстро, оставляя всё работающим.' },
+    ],
+    localH2: 'Москитные сетки по всему Большому Лиссабону',
+    localP: 'Устанавливаем москитные сетки с выездом в Лиссабоне и соседних муниципалитетах, с бесплатным выездом по большей части Большого Лиссабона:',
+    chipPrefix: 'Москитные сетки в', zonesLink: 'Посмотреть все зоны обслуживания →',
+    faqH2: 'Часто задаваемые вопросы',
+    faqs: [
+      { q: 'Какие типы москитных сеток вы устанавливаете?', a: 'Устанавливаем рулонные вертикальные сетки (для окон) и боковые (для дверей и широких проёмов), а также фиксированные или раздвижные. Все на заказ.' },
+      { q: 'Совместимы ли сетки с рольставнями?', a: 'Да. Они монтируются на окно или дверь и работают вместе с рольставнями, не мешая их работе.' },
+      { q: 'Пропускает ли сетка воздух и свет?', a: 'Да. Сетка достаточно тонкая, чтобы пропускать воздух и свет, но при этом не пускает комаров и других насекомых.' },
+      { q: 'Сетки изготавливаются на заказ?', a: 'Да, каждая сетка изготавливается точно по размеру вашего проёма для идеальной, незаметной посадки.' },
+    ],
+    sideTitle: 'Хотите проветривать без комаров?', sideText: 'Позвоните напрямую, и мы как можно скорее назначим бесплатный замер.',
+    alsoTitle: 'Также устанавливаем', alsoElectric: 'Электрические рольставни', alsoManual: 'Ручные рольставни', alsoSmart: 'Умный дом',
+    finalTitle: 'Готовы к свежему дому без насекомых?', finalText: 'Запросите бесплатную смету. Отвечаем менее чем за 24 часа.', finalContact: 'Связаться с нашей командой',
+    zonas: ['Лиссабон', 'Синтра', 'Кашкайш', 'Оэйраш', 'Алмада', 'Сетубал', 'Амадора', 'Лориш', 'Одивелаш', 'Вила-Франка-де-Шира', 'Мафра', 'Сезимбра', 'Палмела'],
+  },
+  uk: {
+    metaTitle: 'Москітні сітки в Лісабоні | Prime Estores',
+    metaDesc: 'Встановлення москітних сіток на замовлення в Лісабоні та Великому Лісабоні: рулонні вертикальні та бічні. Свіже повітря без комах. Безкоштовний кошторис.',
+    keywords: 'москітні сітки Лісабон, рулонна москітна сітка, бічна москітна сітка, москітні сітки на замовлення, сітки на вікна, сітки на двері',
+    serviceName: 'Встановлення москітних сіток у Лісабоні',
+    serviceDesc: 'Встановлення москітних сіток на замовлення в Лісабоні та Великому Лісабоні — рулонні вертикальні та бічні моделі.',
+    badge: 'Послуга', bcHome: 'Головна', bcLeaf: 'Москітні сітки',
+    h1: 'Москітні сітки в Лісабоні та Великому Лісабоні',
+    subtitle: 'Насолоджуйтеся свіжим повітрям без комарів і комах. Встановлюємо москітні сітки на замовлення — рулонні вертикальні та бічні — по всьому Великому Лісабону.',
+    callNow: 'Зателефонувати: +351 923 348 323', ctaQuote: 'Отримати безкоштовний кошторис',
+    introH2: 'Москітні сітки на замовлення',
+    introP1: 'Москітні сітки дозволяють тримати вікна та двері відкритими для провітрювання, не впускаючи комарів, мух та інших комах. Вони непомітні, пропускають повітря і світло та поєднуються з вашими ролетами.',
+    introP2: 'У Prime Estores ми виготовляємо та встановлюємо москітні сітки точно за розміром вашого прорізу по всьому Великому Лісабону. Радимо відповідну модель для кожного вікна чи дверей і беремо на себе все — від заміру до встановлення.',
+    modelsH2: 'Моделі, які ми встановлюємо',
+    models: [
+      { title: 'Рулонна вертикальна сітка', desc: 'Піднімається та опускається як ролет і ховається в непомітний короб, коли не потрібна. Ідеально для вікон.' },
+      { title: 'Рулонна бічна сітка', desc: 'Відкривається та закривається вбік, займаючи мало місця. Ідеально для дверей, балконів і широких або розсувних прорізів.' },
+    ],
+    advantagesH2: 'Переваги москітних сіток',
+    advantages: [
+      { title: 'Свіже повітря без комах', desc: 'Провітрюйте дім, залишаючи комарів і комах ззовні.' },
+      { title: 'Виготовлення на замовлення', desc: 'Виготовлені з точністю до міліметра для ідеальної, непомітної посадки.' },
+      { title: 'Непомітні', desc: 'Ховаються, коли не використовуються, не змінюючи вигляд дому.' },
+      { title: 'Міцні та прості', desc: 'Зносостійкі матеріали, просте використання та мінімальний догляд.' },
+    ],
+    processH2: 'Як це працює',
+    process: [
+      { step: '01', title: 'Контакт і замір', desc: 'Зателефонуйте або заповніть форму. Приїжджаємо для заміру та підбору моделі, з безкоштовним кошторисом.' },
+      { step: '02', title: 'Вибір моделі', desc: 'Допомагаємо обрати між вертикальною та бічною рулонною сіткою, колір і тип сітки.' },
+      { step: '03', title: 'Виготовлення на замовлення', desc: 'Сітка виготовляється точно за розміром вашого прорізу для ідеальної посадки.' },
+      { step: '04', title: 'Встановлення', desc: 'Встановлюємо на місці акуратно та швидко, залишаючи все працюючим.' },
+    ],
+    localH2: 'Москітні сітки по всьому Великому Лісабону',
+    localP: 'Встановлюємо москітні сітки з виїздом у Лісабоні та сусідніх муніципалітетах, з безкоштовним виїздом по більшій частині Великого Лісабона:',
+    chipPrefix: 'Москітні сітки в', zonesLink: 'Переглянути всі зони обслуговування →',
+    faqH2: 'Часті запитання',
+    faqs: [
+      { q: 'Які типи москітних сіток ви встановлюєте?', a: 'Встановлюємо рулонні вертикальні сітки (для вікон) і бічні (для дверей і широких прорізів), а також фіксовані чи розсувні. Усі на замовлення.' },
+      { q: 'Чи сумісні сітки з ролетами?', a: 'Так. Вони монтуються на вікно чи двері та працюють разом з ролетами, не заважаючи їхній роботі.' },
+      { q: 'Чи пропускає сітка повітря і світло?', a: 'Так. Сітка достатньо тонка, щоб пропускати повітря і світло, але не пускає комарів та інших комах.' },
+      { q: 'Чи виготовляються сітки на замовлення?', a: 'Так, кожна сітка виготовляється точно за розміром вашого прорізу для ідеальної, непомітної посадки.' },
+    ],
+    sideTitle: 'Хочете провітрювати без комарів?', sideText: 'Зателефонуйте напряму, і ми якнайшвидше призначимо безкоштовний замір.',
+    alsoTitle: 'Також встановлюємо', alsoElectric: 'Електричні ролети', alsoManual: 'Ручні ролети', alsoSmart: 'Розумний дім',
+    finalTitle: 'Готові до свіжого дому без комах?', finalText: 'Замовте безкоштовний кошторис. Відповідаємо менш ніж за 24 години.', finalContact: 'Звʼязатися з нашою командою',
+    zonas: ['Лісабон', 'Сінтра', 'Кашкайш', 'Оейраш', 'Алмада', 'Сетубал', 'Амадора', 'Лоуреш', 'Одівелаш', 'Віла-Франка-де-Шіра', 'Мафра', 'Сезімбра', 'Палмела'],
+  },
+};
+
+const c = content[lang] ?? content.pt;
+const l = links[lang] ?? links.pt;
+const pageUrl = `${baseUrl}${pagePath[lang] ?? pagePath.pt}`;
+
+const serviceSchema = {
+  '@context': 'https://schema.org', '@type': 'Service',
+  name: c.serviceName, serviceType: c.bcLeaf,
+  provider: { '@type': 'LocalBusiness', name: 'Prime Estores', telephone: '+351923348323', url: baseUrl },
+  areaServed: { '@type': 'State', name: `${LX[lang]}` }, description: c.serviceDesc,
+};
+const breadcrumbSchema = {
+  '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: c.bcHome, item: `${baseUrl}${l.home}` },
+    { '@type': 'ListItem', position: 2, name: c.bcLeaf, item: pageUrl },
+  ],
+};
+const faqSchema = {
+  '@context': 'https://schema.org', '@type': 'FAQPage',
+  mainEntity: c.faqs.map(f => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+};
+
+const netIcon = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4h16v16H4zM4 9h16M4 14h16M9 4v16M14 4v16"/>';
+const checkIcon = '<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>';
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+<script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+<script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+<Layout title={c.metaTitle} description={c.metaDesc} keywords={c.keywords} canonicalURL={pageUrl} schemaType="Service" serviceName={c.serviceName} serviceDescription={c.serviceDesc} lang={lang}>
+  <section class="bg-gradient-to-br from-[#1A1A1A] to-[#8B1A1A] text-white py-16 lg:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <nav aria-label="Breadcrumb" class="mb-6">
+        <ol class="flex items-center gap-2 text-sm text-white/80">
+          <li><a href={l.home} class="hover:text-white transition-colors">{c.bcHome}</a></li>
+          <li aria-hidden="true"><span>/</span></li>
+          <li><span class="text-white">{c.bcLeaf}</span></li>
+        </ol>
+      </nav>
+      <div class="max-w-3xl">
+        <span class="inline-block bg-white/10 border border-white/20 text-white text-xs font-semibold uppercase tracking-widest px-3 py-1 rounded-full mb-4">{c.badge}</span>
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black leading-tight mb-4">{c.h1}</h1>
+        <p class="text-lg sm:text-xl text-white/80 leading-relaxed mb-8">{c.subtitle}</p>
+        <div class="flex flex-col sm:flex-row gap-3">
+          <a href={l.quote} class="inline-flex items-center justify-center gap-2 bg-white text-[#8B1A1A] font-bold px-6 py-3.5 rounded-lg hover:bg-gray-100 transition-colors">{c.ctaQuote}</a>
+          <a href="tel:+351923348323" class="inline-flex items-center justify-center gap-2 border-2 border-white text-white font-bold px-6 py-3.5 rounded-lg hover:bg-white/10 transition-colors">+351 923 348 323</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Intro -->
+  <section class="py-16 lg:py-20 bg-white">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl lg:text-3xl font-black text-[#1A1A1A] mb-4">{c.introH2}</h2>
+      <p class="text-gray-600 leading-relaxed mb-4">{c.introP1}</p>
+      <p class="text-gray-600 leading-relaxed">{c.introP2}</p>
+    </div>
+  </section>
+
+  <!-- Models -->
+  <section class="py-16 lg:py-20 bg-[#F5F5F5]">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl lg:text-3xl font-black text-[#1A1A1A] mb-10 text-center">{c.modelsH2}</h2>
+      <div class="grid sm:grid-cols-2 gap-6">
+        {c.models.map(m => (
+          <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+            <div class="w-12 h-12 bg-[#8B1A1A] rounded-xl flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><Fragment set:html={netIcon} /></svg>
+            </div>
+            <h3 class="font-bold text-[#1A1A1A] mb-2">{m.title}</h3>
+            <p class="text-gray-500 text-sm leading-relaxed">{m.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Advantages + process + form -->
+  <section class="py-16 lg:py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-3 gap-12">
+        <div class="lg:col-span-2">
+          <h2 class="text-2xl lg:text-3xl font-black text-[#1A1A1A] mb-6">{c.advantagesH2}</h2>
+          <div class="grid sm:grid-cols-2 gap-4 mb-10">
+            {c.advantages.map(item => (
+              <div class="flex gap-3 p-4 bg-[#F5F5F5] rounded-xl">
+                <svg class="w-5 h-5 text-[#8B1A1A] flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><Fragment set:html={checkIcon} /></svg>
+                <div>
+                  <div class="font-semibold text-[#1A1A1A] text-sm">{item.title}</div>
+                  <div class="text-gray-500 text-xs mt-0.5">{item.desc}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <h2 class="text-2xl font-black text-[#1A1A1A] mb-6">{c.processH2}</h2>
+          <ol class="space-y-4 mb-10">
+            {c.process.map(item => (
+              <li class="flex gap-4">
+                <div class="flex-shrink-0 w-10 h-10 bg-[#8B1A1A] text-white rounded-full flex items-center justify-center font-black text-sm">{item.step}</div>
+                <div>
+                  <div class="font-semibold text-[#1A1A1A]">{item.title}</div>
+                  <div class="text-gray-500 text-sm mt-0.5">{item.desc}</div>
+                </div>
+              </li>
+            ))}
+          </ol>
+
+          <h2 class="text-2xl font-black text-[#1A1A1A] mb-4">{c.localH2}</h2>
+          <p class="text-gray-600 leading-relaxed mb-4">{c.localP}</p>
+          <div class="flex flex-wrap gap-2 mb-4">
+            {c.zonas.map(zona => (
+              <span class="bg-[#F5F5F5] border border-gray-200 text-gray-700 text-sm font-medium px-3 py-1.5 rounded-full">{c.chipPrefix} {zona}</span>
+            ))}
+          </div>
+          <a href={l.zones} class="text-[#8B1A1A] font-semibold hover:underline text-sm">{c.zonesLink}</a>
+        </div>
+
+        <div class="space-y-6">
+          <div class="bg-[#8B1A1A] rounded-2xl p-6 text-white">
+            <h3 class="font-black text-xl mb-2">{c.sideTitle}</h3>
+            <p class="text-red-100 text-sm mb-4">{c.sideText}</p>
+            <a href="tel:+351923348323" class="flex items-center justify-center gap-2 bg-white text-[#8B1A1A] font-bold px-4 py-3 rounded-lg hover:bg-gray-100 transition-colors text-sm w-full">+351 923 348 323</a>
+          </div>
+          <ContactForm showTitle={true} lang={lang} />
+          <div class="bg-[#F5F5F5] rounded-2xl p-6">
+            <h3 class="font-bold text-[#1A1A1A] mb-4">{c.alsoTitle}</h3>
+            <ul class="space-y-2 text-sm">
+              <li><a href={l.electric} class="text-[#8B1A1A] hover:underline">{c.alsoElectric} →</a></li>
+              <li><a href={l.manual} class="text-[#8B1A1A] hover:underline">{c.alsoManual} →</a></li>
+              <li><a href={l.smart} class="text-[#8B1A1A] hover:underline">{c.alsoSmart} →</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-16 lg:py-20 bg-[#F5F5F5]" aria-labelledby="mn-faq">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 id="mn-faq" class="text-2xl lg:text-3xl font-black text-[#1A1A1A] mb-8 text-center">{c.faqH2}</h2>
+      <div class="space-y-3">
+        {c.faqs.map((faq, index) => (
+          <details class="bg-white rounded-xl border border-gray-200 overflow-hidden group" id={`mn-faq-${index}`}>
+            <summary class="flex items-center justify-between gap-4 px-6 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors">
+              <h3 class="font-semibold text-[#1A1A1A] text-base pr-2">{faq.q}</h3>
+              <span class="flex-shrink-0 w-6 h-6 flex items-center justify-center rounded-full bg-red-50 text-[#8B1A1A] group-open:bg-[#8B1A1A] group-open:text-white transition-colors" aria-hidden="true">
+                <svg class="w-4 h-4 transition-transform group-open:rotate-45" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+              </span>
+            </summary>
+            <div class="px-6 pb-4 pt-0"><p class="text-gray-600 text-sm leading-relaxed">{faq.a}</p></div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="py-16 bg-[#1A1A1A] text-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-2xl lg:text-3xl font-black mb-4">{c.finalTitle}</h2>
+      <p class="text-gray-400 text-lg mb-8 max-w-2xl mx-auto">{c.finalText}</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href={l.quote} class="inline-flex items-center justify-center gap-2 bg-[#8B1A1A] text-white font-bold px-8 py-4 rounded-lg hover:bg-[#7a1717] transition-colors">{c.ctaQuote}</a>
+        <a href="tel:+351923348323" class="inline-flex items-center justify-center gap-2 border-2 border-white text-white font-bold px-8 py-4 rounded-lg hover:bg-white/10 transition-colors">{c.finalContact}</a>
+      </div>
+    </div>
+  </section>
+
+  <RelatedServices current="mosquito-nets" lang={lang} />
+</Layout>

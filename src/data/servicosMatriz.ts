@@ -89,4 +89,16 @@ export const servicosMatriz: ServicoMatriz[] = [
     intro: z => `O motor do seu estore elétrico avariou em ${z.nome}? A Prime Estores faz a troca de motor de estores elétricos ao domicílio em ${z.nome}, com diagnóstico, motor adequado e programação dos fins de curso. Orçamento gratuito.`,
     detail: z => `Deslocamo-nos a ${z.nome} muitas vezes no próprio dia, com motores em stock. ${z.detail}`,
   },
+  {
+    slug: 'redes-mosquiteiras',
+    type: 'mosquito-nets',
+    nome: 'Redes Mosquiteiras',
+    serviceHref: '/servicos/redes-mosquiteiras/',
+    h1: z => `Redes Mosquiteiras em ${z}`,
+    title: z => `Redes Mosquiteiras em ${z} — Instalação à Medida`,
+    description: z => `Instalação de redes mosquiteiras à medida em ${z}: de enrolar vertical e lateral, para janelas e portas. Ar fresco sem insetos, com deslocação gratuita na maior parte da Grande Lisboa. Orçamento gratuito.`,
+    keywords: z => `redes mosquiteiras ${z}, rede mosquiteira de enrolar ${z}, mosquiteira lateral ${z}, mosquiteira à medida ${z}, redes para janelas ${z}, redes para portas ${z}`,
+    intro: z => `Quer arejar a casa sem mosquitos em ${z.nome}? A Prime Estores instala redes mosquiteiras à medida em ${z.nome} — de enrolar vertical para janelas e lateral para portas e vãos largos —, com deslocação gratuita na maior parte da Grande Lisboa e orçamento gratuito.`,
+    detail: z => `Deslocamo-nos a ${z.nome} para medir e aconselhar o modelo mais adequado a cada vão, e fabricamos a rede à medida exata para um encaixe perfeito. ${z.detail}`,
+  },
 ];

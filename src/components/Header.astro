@@ -112,6 +112,19 @@ const smartHomeService: Record<Lang, { href: string; label: string }> = {
 };
 navLinks[1].dropdown!.push(smartHomeService[lang]);
 
+// "Insect Screens" service — appended to the services dropdown in every language.
+const mosquitoService: Record<Lang, { href: string; label: string }> = {
+  pt: { href: '/servicos/redes-mosquiteiras/',      label: 'Redes Mosquiteiras' },
+  en: { href: '/en/services/insect-screens/',        label: 'Insect Screens' },
+  fr: { href: '/fr/services/moustiquaires/',         label: 'Moustiquaires' },
+  es: { href: '/es/servicios/mosquiteras/',          label: 'Mosquiteras' },
+  de: { href: '/de/dienstleistungen/insektenschutz/', label: 'Insektenschutz' },
+  it: { href: '/it/servizi/zanzariere/',             label: 'Zanzariere' },
+  ru: { href: '/ru/services/insect-screens/',        label: 'Москитные сетки' },
+  uk: { href: '/uk/services/insect-screens/',        label: 'Москітні сітки' },
+};
+navLinks[1].dropdown!.push(mosquitoService[lang]);
+
 // "About" page — localized route + label per language (inserted after the
 // per-language reassignments so it never disturbs the index-based edits above)
 const aboutLink: Record<Lang, { href: string; label: string }> = {

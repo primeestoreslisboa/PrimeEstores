@@ -90,4 +90,16 @@ export const servicosMatrizEn: ServicoMatrizEn[] = [
     intro: z => `Has your electric blind motor failed in ${z.nome}? Prime Estores replaces electric blind motors at your home in ${z.nome}, with diagnosis, the right motor and limit programming. Free quote.`,
     detail: z => `We travel to ${z.nome} often on the same day, with motors in stock. ${z.detail}`,
   },
+  {
+    slug: 'insect-screens',
+    type: 'mosquito-nets',
+    nome: 'Insect Screens',
+    serviceHref: '/en/services/insect-screens/',
+    h1: z => `Insect Screens in ${z}`,
+    title: z => `Insect Screens in ${z} — Made-to-Measure Installation`,
+    description: z => `Made-to-measure insect screen installation in ${z}: vertical and side roller models for windows and doors. Fresh air with no insects, free call-out across most of Greater Lisbon. Free quote.`,
+    keywords: z => `insect screens ${z}, mosquito screens ${z}, roller insect screen ${z}, side insect screen ${z}, made-to-measure screens ${z}, window screens ${z}, door screens ${z}`,
+    intro: z => `Want to air your home without mosquitoes in ${z.nome}? Prime Estores installs made-to-measure insect screens in ${z.nome} — vertical roller for windows and side roller for doors and wide openings — with free call-out across most of Greater Lisbon and a free quote.`,
+    detail: z => `We travel to ${z.nome} to measure and advise on the best model for each opening, and manufacture the screen to the exact size for a perfect fit. ${z.detail}`,
+  },
 ];
